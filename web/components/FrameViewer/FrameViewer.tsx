@@ -1,25 +1,181 @@
 'use client';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { frameIndex, hotspotVisible } from './math';
+
 type Props = { slug: string; mode?: 'drag' | 'scroll' };
-type Manifest = { rotate: { count: number; pattern: string; loop?: boolean }; explode?: { count: number; pattern: string }; hotspots?: { id: string; name: string; frame: number; x: number; y: number; color: string }[]; background?: string };
+type Hotspot = { id: string; name: string; frame: number; x: number; y: number; color: string };
+type ExplodeHotspot = { id: string; name: string; group: string; color: string; points: ([number, number] | null)[] };
+type Sequence = { count: number; pattern: string; loop?: boolean };
+type Manifest = { width: number; height: number; rotate: Sequence; explode?: Sequence & { labelsFrom?: number; hotspots?: ExplodeHotspot[] }; hotspots?: Hotspot[]; background?: string };
+
 export default function FrameViewer({ slug, mode = 'drag' }: Props) {
-  const canvas = useRef<HTMLCanvasElement>(null), stage = useRef<HTMLDivElement>(null), images = useRef<(HTMLImageElement | undefined)[]>([]), position = useRef(0), drag = useRef<{ x: number } | null>(null);
-  const [manifest, setManifest] = useState<Manifest | null>(null), [progress, setProgress] = useState(0), [ready, setReady] = useState(false), [exploded, setExploded] = useState(false), [missing, setMissing] = useState(false), [activeHotspot, setActiveHotspot] = useState<string | null>(null), [inView,setInView]=useState(false);
+  const canvas = useRef<HTMLCanvasElement>(null);
+  const stage = useRef<HTMLDivElement>(null);
+  const images = useRef<(HTMLImageElement | undefined)[]>([]);
+  const position = useRef(0);
+  const drag = useRef<{ x: number } | null>(null);
+  const [manifest, setManifest] = useState<Manifest | null>(null);
+  const [progress, setProgress] = useState(0);
+  const [ready, setReady] = useState(false);
+  const [exploded, setExploded] = useState(false);
+  const [missing, setMissing] = useState(false);
+  const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
+  const [inView, setInView] = useState(false);
+  const [viewFrame, setViewFrame] = useState(0);
   const count = exploded ? manifest?.explode?.count ?? 0 : manifest?.rotate.count ?? 1;
-  const draw = useCallback(() => { const c = canvas.current, ctx = c?.getContext('2d'); if (!c || !ctx) return; const dpr = window.devicePixelRatio || 1, r = c.getBoundingClientRect(); if (!r.width || !r.height) return; if (c.width !== Math.round(r.width*dpr) || c.height !== Math.round(r.height*dpr)) { c.width = Math.round(r.width*dpr); c.height = Math.round(r.height*dpr); } ctx.setTransform(dpr,0,0,dpr,0,0); ctx.fillStyle = manifest?.background || '#10101b'; ctx.fillRect(0,0,r.width,r.height); const img = images.current[frameIndex(position.current,count)]; if (img?.complete && img.naturalWidth) { const scale = Math.min(r.width/img.naturalWidth,r.height/img.naturalHeight); const w=img.naturalWidth*scale,h=img.naturalHeight*scale; ctx.drawImage(img,(r.width-w)/2,(r.height-h)/2,w,h); } }, [count, manifest]);
-  const drawRef=useRef(draw); drawRef.current=draw;
-  useEffect(()=>{const el=stage.current;if(!el)return;const observer=new IntersectionObserver(entries=>setInView(entries[0]?.isIntersecting??false),{rootMargin:'160px'});observer.observe(el);return()=>observer.disconnect();},[]);
-  useEffect(() => { if(!inView)return;let cancelled = false; setManifest(null); setMissing(false); setReady(false); setProgress(0); setExploded(false); position.current = 0; images.current=[]; const poster=new Image(); poster.onload=()=>{if(!cancelled){images.current[0]=poster;drawRef.current();}};poster.src=`/objects/${slug}/poster.webp`; fetch(`/objects/${slug}/manifest.json`).then(r=>{ if(!r.ok) throw new Error(); return r.json() as Promise<Manifest>; }).then(m=>{if(!cancelled)setManifest(m)}).catch(()=>{ if(!cancelled)setMissing(true); }); return ()=>{cancelled=true;}; },[slug,inView]);
-  useEffect(() => { if(!inView){images.current=[];return;}if(!manifest)return; let cancelled=false; setReady(false); setProgress(0); const sequence=exploded?manifest.explode:manifest.rotate;if(!sequence){setExploded(false);return;} const total=sequence.count, arr: (HTMLImageElement|undefined)[]=new Array(total); images.current=arr; const load=(i:number)=>new Promise<void>(resolve=>{const im=new Image();im.onload=()=>{arr[i]=im;resolve();};im.onerror=()=>resolve();im.src=`/objects/${slug}/${sequence.pattern.replace('{0000}',String(i+1).padStart(4,'0'))}`;});
-    void (async()=>{await load(0);if(cancelled)return;setProgress(Math.round(100/total));draw();const coarse=Array.from({length:total},(_,i)=>i).filter(i=>i%8===0&&i!==0);await Promise.all(coarse.map(load));if(cancelled)return;setReady(true);setProgress(Math.round((1+coarse.length)*100/total));draw();for(let start=1;start<total;start+=12){await Promise.all(Array.from({length:Math.min(12,total-start)},(_,n)=>start+n).filter(i=>!arr[i]).map(load));if(cancelled)return;setProgress(Math.min(100,Math.round((Math.min(total,start+12))*100/total)));draw();}})();return()=>{cancelled=true;};},[manifest,exploded,slug,draw,inView]);
-  useEffect(()=>{ draw(); const ro=new ResizeObserver(draw); if(canvas.current)ro.observe(canvas.current); return()=>ro.disconnect(); },[draw]);
-  useEffect(()=>{if(mode!=='scroll'||!ready)return; const fn=()=>{const r=stage.current?.getBoundingClientRect(); if(r){ position.current=Math.max(0,Math.min(1,(window.innerHeight-r.top)/(window.innerHeight+r.height)))*Math.max(0,count-1); draw();}};window.addEventListener('scroll',fn,{passive:true});fn();return()=>window.removeEventListener('scroll',fn);},[mode,ready,count,draw]);
-  const move=(x:number)=>{if(!drag.current)return;const dx=x-drag.current.x;position.current=(position.current-dx/7+count)%count;drag.current={x};draw();};
-  const end=()=>{drag.current=null;};
-  useEffect(()=>{const key=(e:KeyboardEvent)=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){position.current=(position.current+(e.key==='ArrowLeft'?-1:1)+count)%count;draw();}};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[count,draw]);
-  const current=frameIndex(position.current,count);
-  const reset=()=>{position.current=0;setExploded(false);draw();};
-  return <div ref={stage} className={`viewer ${mode==='scroll'?'viewer-scroll':''}`} aria-label={`${slug} 3D viewer`}><canvas ref={canvas} className="viewer-canvas" role="img" aria-label={`Interactive 3D view of ${slug}`} onPointerDown={e=>{if(mode==='drag'){e.currentTarget.setPointerCapture(e.pointerId);drag.current={x:e.clientX};}}} onPointerMove={e=>move(e.clientX)} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} tabIndex={0}/>{missing&&<div className="viewer-empty"><span>✦</span><b>3D coming soon</b><small>Frame pack not added yet</small></div>}{!missing&&<><div className="viewer-tag">↔ DRAG TO ROTATE{manifest&&<span> · {manifest.rotate.count} VIEWS</span>}</div>{!exploded&&manifest?.hotspots?.filter(h=>hotspotVisible(current,h.frame,count)).map(h=><button key={h.id} className="hotspot" style={{left:`${h.x*100}%`,top:`${h.y*100}%`,background:h.color}} onClick={()=>setActiveHotspot(activeHotspot===h.id?null:h.id)} aria-label={h.name}>{activeHotspot===h.id&&<span>{h.name}</span>}</button>)}{!ready&&<div className="viewer-loading"><span>LOADING OBJECT</span><i><b style={{width:`${progress}%`}}/></i></div>}</>}
-    <div className="viewer-controls"><button type="button" className="viewer-action" disabled={!manifest?.explode} title={manifest?.explode?(exploded?'Assemble parts':'Explode view'):'Exploded view is not included in this pack'} onClick={()=>{if(manifest?.explode){position.current=0;setExploded(!exploded);}}}>{exploded?'Assemble parts':manifest&&!manifest.explode?'Explode unavailable':'Explode view'}</button><button type="button" className="viewer-action" onClick={reset}>Reset</button><button type="button" className="viewer-icon" aria-label="Fullscreen" title="Fullscreen" onClick={()=>stage.current?.requestFullscreen()}>⛶</button></div></div>;
+
+  const draw = useCallback(() => {
+    const c = canvas.current, ctx = c?.getContext('2d');
+    if (!c || !ctx) return;
+    const dpr = window.devicePixelRatio || 1, r = c.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    if (c.width !== Math.round(r.width * dpr) || c.height !== Math.round(r.height * dpr)) {
+      c.width = Math.round(r.width * dpr);
+      c.height = Math.round(r.height * dpr);
+    }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.fillStyle = manifest?.background || '#10101b';
+    ctx.fillRect(0, 0, r.width, r.height);
+    const img = images.current[frameIndex(position.current, count)];
+    if (img?.complete && img.naturalWidth) {
+      const scale = Math.min(r.width / img.naturalWidth, r.height / img.naturalHeight);
+      const w = img.naturalWidth * scale, h = img.naturalHeight * scale;
+      ctx.drawImage(img, (r.width - w) / 2, (r.height - h) / 2, w, h);
+    }
+  }, [count, manifest]);
+  const drawRef = useRef(draw);
+  drawRef.current = draw;
+
+  useEffect(() => {
+    const el = stage.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(entries => setInView(entries[0]?.isIntersecting ?? false), { rootMargin: '160px' });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!inView) return;
+    let cancelled = false;
+    setManifest(null); setMissing(false); setReady(false); setProgress(0); setExploded(false); setActiveHotspot(null); setViewFrame(0);
+    position.current = 0; images.current = [];
+    const poster = new Image();
+    poster.onload = () => { if (!cancelled) { images.current[0] = poster; drawRef.current(); } };
+    poster.src = `/objects/${slug}/poster.webp`;
+    fetch(`/objects/${slug}/manifest.json`).then(r => {
+      if (!r.ok) throw new Error();
+      return r.json() as Promise<Manifest>;
+    }).then(m => { if (!cancelled) setManifest(m); }).catch(() => { if (!cancelled) setMissing(true); });
+    return () => { cancelled = true; };
+  }, [slug, inView]);
+
+  useEffect(() => {
+    if (!inView) { images.current = []; return; }
+    if (!manifest) return;
+    let cancelled = false;
+    setReady(false); setProgress(0);
+    const sequence = exploded ? manifest.explode : manifest.rotate;
+    if (!sequence) { setExploded(false); return; }
+    const total = sequence.count, arr: (HTMLImageElement | undefined)[] = new Array(total);
+    images.current = arr;
+    const load = (i: number) => new Promise<void>(resolve => {
+      const im = new Image();
+      im.onload = () => { arr[i] = im; resolve(); };
+      im.onerror = () => resolve();
+      im.src = `/objects/${slug}/${sequence.pattern.replace('{0000}', String(i + 1).padStart(4, '0'))}`;
+    });
+    void (async () => {
+      const initial = [...new Set([0, frameIndex(position.current, total)])];
+      await Promise.all(initial.map(load));
+      if (cancelled) return;
+      setProgress(Math.round(initial.length * 100 / total)); draw();
+      const coarse = Array.from({ length: total }, (_, i) => i).filter(i => i % 8 === 0 && i !== 0 && !arr[i]);
+      await Promise.all(coarse.map(load));
+      if (cancelled) return;
+      setReady(true); setProgress(Math.round((initial.length + coarse.length) * 100 / total)); draw();
+      for (let start = 1; start < total; start += 12) {
+        await Promise.all(Array.from({ length: Math.min(12, total - start) }, (_, n) => start + n).filter(i => !arr[i]).map(load));
+        if (cancelled) return;
+        setProgress(Math.min(100, Math.round(Math.min(total, start + 12) * 100 / total))); draw();
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [manifest, exploded, slug, draw, inView]);
+
+  useEffect(() => {
+    draw();
+    const ro = new ResizeObserver(draw);
+    if (canvas.current) ro.observe(canvas.current);
+    return () => ro.disconnect();
+  }, [draw]);
+
+  useEffect(() => {
+    if (mode !== 'scroll' || !ready) return;
+    const fn = () => {
+      const r = stage.current?.getBoundingClientRect();
+      if (r) {
+        position.current = Math.max(0, Math.min(1, (window.innerHeight - r.top) / (window.innerHeight + r.height))) * Math.max(0, count - 1);
+        setViewFrame(frameIndex(position.current, count)); draw();
+      }
+    };
+    window.addEventListener('scroll', fn, { passive: true }); fn();
+    return () => window.removeEventListener('scroll', fn);
+  }, [mode, ready, count, draw]);
+
+  const move = (x: number) => {
+    if (!drag.current) return;
+    const dx = x - drag.current.x;
+    position.current = (position.current - dx / 7 + count) % count;
+    drag.current = { x };
+    setViewFrame(frameIndex(position.current, count)); draw();
+  };
+  const end = () => { drag.current = null; };
+  useEffect(() => {
+    const key = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        position.current = (position.current + (e.key === 'ArrowLeft' ? -1 : 1) + count) % count;
+        setViewFrame(frameIndex(position.current, count)); draw();
+      }
+    };
+    window.addEventListener('keydown', key);
+    return () => window.removeEventListener('keydown', key);
+  }, [count, draw]);
+
+  const current = viewFrame;
+  const hotspots = exploded
+    ? (manifest?.explode?.hotspots ?? []).flatMap(part => {
+        const point = part.points[current];
+        if (current + 1 < (manifest?.explode?.labelsFrom ?? 1) || !point) return [];
+        return [{ id: part.id, name: part.name, x: point[0], y: point[1], color: part.color }];
+      })
+    : (manifest?.hotspots ?? []).filter(h => hotspotVisible(current, h.frame, count));
+  const hotspotStyle = (x: number, y: number) => {
+    const r = canvas.current?.getBoundingClientRect();
+    if (!r || !manifest) return { left: `${x * 100}%`, top: `${y * 100}%` };
+    const scale = Math.min(r.width / manifest.width, r.height / manifest.height);
+    const imageWidth = manifest.width * scale, imageHeight = manifest.height * scale;
+    return { left: `${(r.width - imageWidth) / 2 + x * imageWidth}px`, top: `${(r.height - imageHeight) / 2 + y * imageHeight}px` };
+  };
+  const reset = () => { position.current = 0; setViewFrame(0); setExploded(false); setActiveHotspot(null); draw(); };
+  const toggleExplode = () => {
+    if (!manifest?.explode) return;
+    setActiveHotspot(null);
+    if (exploded) { position.current = 0; setViewFrame(0); setExploded(false); }
+    else { const last = manifest.explode.count - 1; position.current = last; setViewFrame(last); setExploded(true); }
+  };
+
+  return <div ref={stage} className={`viewer ${mode === 'scroll' ? 'viewer-scroll' : ''}`} aria-label={`${slug} 3D viewer`}>
+    <canvas ref={canvas} className="viewer-canvas" role="img" aria-label={`Interactive 3D view of ${slug}`} onPointerDown={e => { if (mode === 'drag') { e.currentTarget.setPointerCapture(e.pointerId); drag.current = { x: e.clientX }; } }} onPointerMove={e => move(e.clientX)} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} tabIndex={0} />
+    {missing && <div className="viewer-empty"><span>✦</span><b>3D coming soon</b><small>Frame pack not added yet</small></div>}
+    {!missing && <>
+      <div className="viewer-tag">↔ {exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'DRAG TO ROTATE'} · {count} VIEWS</div>
+      {hotspots.map(h => <button key={h.id} className="hotspot" style={{ ...hotspotStyle(h.x, h.y), background: h.color }} onClick={() => setActiveHotspot(activeHotspot === h.id ? null : h.id)} aria-label={h.name} title={h.name}>{activeHotspot === h.id && <span>{h.name}</span>}</button>)}
+      {!ready && <div className="viewer-loading"><span>{exploded ? 'LOADING EXPLODED VIEW' : 'LOADING OBJECT'}</span><i><b style={{ width: `${progress}%` }} /></i></div>}
+    </>}
+    <div className="viewer-controls">
+      <button type="button" className="viewer-action" disabled={!manifest?.explode} title={exploded ? 'Assemble parts' : 'Explode view'} onClick={toggleExplode}>{exploded ? 'Assemble parts' : 'Explode view'}</button>
+      <button type="button" className="viewer-action" onClick={reset}>Reset</button>
+      <button type="button" className="viewer-icon" aria-label="Fullscreen" title="Fullscreen" onClick={() => stage.current?.requestFullscreen()}>⛶</button>
+    </div>
+  </div>;
 }
