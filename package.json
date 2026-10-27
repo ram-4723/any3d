@@ -1,0 +1,10 @@
+{
+  "name": "3d-anything",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
+    "validate-packs": "node scripts/validate-packs.mjs",
+    "generate-placeholders": "python scripts/generate_placeholders.py"
+  }
+}

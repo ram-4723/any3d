@@ -1,0 +1,20 @@
+server:
+  port: ${PORT:8080}
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    url: ${DATABASE_URL:jdbc:h2:mem:anything;MODE=PostgreSQL;DB_CLOSE_DELAY=-1}
+    username: ${DATABASE_USERNAME:sa}
+    password: ${DATABASE_PASSWORD:}
+    driver-class-name: ${DATABASE_DRIVER:org.h2.Driver}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  h2:
+    console:
+      enabled: true
+app:
+  cors-origin: ${CORS_ORIGIN:http://localhost:3000}
+  seed-dir: ${SEED_DIR:}
