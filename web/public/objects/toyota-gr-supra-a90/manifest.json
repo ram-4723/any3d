@@ -1,0 +1,11 @@
+{
+  "slug": "toyota-gr-supra-a90",
+  "width": 1600,
+  "height": 900,
+  "rotate": {
+    "count": 144,
+    "pattern": "rotate/{0000}.webp",
+    "loop": true
+  },
+  "background": "#101112"
+}
