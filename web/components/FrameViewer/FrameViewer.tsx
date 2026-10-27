@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { frameIndex, hotspotVisible } from './math';
 
 type Props = { slug: string; mode?: 'drag' | 'scroll' };
-type Hotspot = { id: string; name: string; frame: number; x: number; y: number; color: string };
+type Hotspot = { id: string; name: string; group?: string; frame: number; x: number; y: number; color: string };
 type ExplodeHotspot = { id: string; name: string; group: string; color: string; points: ([number, number] | null)[] };
 type Sequence = { count: number; pattern: string; loop?: boolean };
 type Manifest = { width: number; height: number; rotate: Sequence; explode?: Sequence & { labelsFrom?: number; hotspots?: ExplodeHotspot[] }; hotspots?: Hotspot[]; background?: string };
@@ -20,6 +20,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const [exploded, setExploded] = useState(false);
   const [missing, setMissing] = useState(false);
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
+  const [hoveredHotspot, setHoveredHotspot] = useState<string | null>(null);
   const [inView, setInView] = useState(false);
   const [viewFrame, setViewFrame] = useState(0);
   const count = exploded ? manifest?.explode?.count ?? 0 : manifest?.rotate.count ?? 1;
@@ -57,7 +58,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   useEffect(() => {
     if (!inView) return;
     let cancelled = false;
-    setManifest(null); setMissing(false); setReady(false); setProgress(0); setExploded(false); setActiveHotspot(null); setViewFrame(0);
+    setManifest(null); setMissing(false); setReady(false); setProgress(0); setExploded(false); setActiveHotspot(null); setHoveredHotspot(null); setViewFrame(0);
     position.current = 0; images.current = [];
     const poster = new Image();
     poster.onload = () => { if (!cancelled) { images.current[0] = poster; drawRef.current(); } };
@@ -146,7 +147,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     ? (manifest?.explode?.hotspots ?? []).flatMap(part => {
         const point = part.points[current];
         if (current + 1 < (manifest?.explode?.labelsFrom ?? 1) || !point) return [];
-        return [{ id: part.id, name: part.name, x: point[0], y: point[1], color: part.color }];
+        return [{ id: part.id, name: part.name, group: part.group, x: point[0], y: point[1], color: part.color }];
       })
     : (manifest?.hotspots ?? []).filter(h => hotspotVisible(current, h.frame, count));
   const hotspotStyle = (x: number, y: number) => {
@@ -156,10 +157,11 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     const imageWidth = manifest.width * scale, imageHeight = manifest.height * scale;
     return { left: `${(r.width - imageWidth) / 2 + x * imageWidth}px`, top: `${(r.height - imageHeight) / 2 + y * imageHeight}px` };
   };
-  const reset = () => { position.current = 0; setViewFrame(0); setExploded(false); setActiveHotspot(null); draw(); };
+  const reset = () => { position.current = 0; setViewFrame(0); setExploded(false); setActiveHotspot(null); setHoveredHotspot(null); draw(); };
   const toggleExplode = () => {
     if (!manifest?.explode) return;
     setActiveHotspot(null);
+    setHoveredHotspot(null);
     if (exploded) { position.current = 0; setViewFrame(0); setExploded(false); }
     else { const last = manifest.explode.count - 1; position.current = last; setViewFrame(last); setExploded(true); }
   };
@@ -169,7 +171,11 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     {missing && <div className="viewer-empty"><span>✦</span><b>3D coming soon</b><small>Frame pack not added yet</small></div>}
     {!missing && <>
       <div className="viewer-tag">↔ {exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'DRAG TO ROTATE'} · {count} VIEWS</div>
-      {hotspots.map(h => <button key={h.id} className="hotspot" style={{ ...hotspotStyle(h.x, h.y), background: h.color }} onClick={() => setActiveHotspot(activeHotspot === h.id ? null : h.id)} aria-label={h.name} title={h.name}>{activeHotspot === h.id && <span>{h.name}</span>}</button>)}
+      {hotspots.map(h => {
+        const alignment = [h.y < 0.16 && 'hotspot-below', h.x < 0.12 && 'hotspot-align-left', h.x > 0.88 && 'hotspot-align-right'].filter(Boolean).join(' ');
+        const selected = activeHotspot === h.id, hovered = hoveredHotspot === h.id;
+        return <button key={h.id} type="button" className={'hotspot ' + alignment} style={hotspotStyle(h.x, h.y)} onPointerEnter={() => setHoveredHotspot(h.id)} onPointerLeave={() => setHoveredHotspot(null)} onFocus={() => setHoveredHotspot(h.id)} onBlur={() => setHoveredHotspot(null)} onClick={() => { if (selected) { setActiveHotspot(null); setHoveredHotspot(null); } else setActiveHotspot(h.id); }} aria-label={h.name} aria-pressed={selected}>{(selected || hovered) && <span className="hotspot-label" role="tooltip">{h.group && <small>{h.group}</small>}{h.name}</span>}</button>;
+      })}
       {!ready && <div className="viewer-loading"><span>{exploded ? 'LOADING EXPLODED VIEW' : 'LOADING OBJECT'}</span><i><b style={{ width: `${progress}%` }} /></i></div>}
     </>}
     <div className="viewer-controls">
