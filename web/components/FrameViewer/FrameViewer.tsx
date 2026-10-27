@@ -17,7 +17,9 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const [manifest, setManifest] = useState<Manifest | null>(null);
   const [progress, setProgress] = useState(0);
   const [ready, setReady] = useState(false);
+  const [allFramesLoaded, setAllFramesLoaded] = useState(false);
   const [exploded, setExploded] = useState(false);
+  const [explodeDirection, setExplodeDirection] = useState<1 | -1 | 0>(0);
   const [missing, setMissing] = useState(false);
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
   const [hoveredHotspot, setHoveredHotspot] = useState<string | null>(null);
@@ -58,7 +60,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   useEffect(() => {
     if (!inView) return;
     let cancelled = false;
-    setManifest(null); setMissing(false); setReady(false); setProgress(0); setExploded(false); setActiveHotspot(null); setHoveredHotspot(null); setViewFrame(0);
+    setManifest(null); setMissing(false); setReady(false); setAllFramesLoaded(false); setProgress(0); setExploded(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); setViewFrame(0);
     position.current = 0; images.current = [];
     const poster = new Image();
     poster.onload = () => { if (!cancelled) { images.current[0] = poster; drawRef.current(); } };
@@ -74,7 +76,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     if (!inView) { images.current = []; return; }
     if (!manifest) return;
     let cancelled = false;
-    setReady(false); setProgress(0);
+    setReady(false); setAllFramesLoaded(false); setProgress(0);
     const sequence = exploded ? manifest.explode : manifest.rotate;
     if (!sequence) { setExploded(false); return; }
     const total = sequence.count, arr: (HTMLImageElement | undefined)[] = new Array(total);
@@ -99,10 +101,34 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
         if (cancelled) return;
         setProgress(Math.min(100, Math.round(Math.min(total, start + 12) * 100 / total))); draw();
       }
+      if (cancelled) return;
+      setProgress(100); setAllFramesLoaded(true);
     })();
     return () => { cancelled = true; };
   }, [manifest, exploded, slug, draw, inView]);
 
+  useEffect(() => {
+    if (!exploded || explodeDirection === 0 || !allFramesLoaded) return;
+    let raf = 0;
+    const start = position.current;
+    const target = explodeDirection > 0 ? count - 1 : 0;
+    const distance = Math.abs(target - start);
+    const duration = Math.max(700, distance * 25);
+    const began = performance.now();
+    const step = (now: number) => {
+      const progress = Math.min(1, (now - began) / duration);
+      const eased = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+      const frame = Math.round(start + (target - start) * eased);
+      position.current = frame;
+      setViewFrame(frame);
+      draw();
+      if (progress < 1) { raf = requestAnimationFrame(step); return; }
+      setExplodeDirection(0);
+      if (explodeDirection < 0) { position.current = 0; setViewFrame(0); setExploded(false); }
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [exploded, explodeDirection, allFramesLoaded, count, draw]);
   useEffect(() => {
     draw();
     const ro = new ResizeObserver(draw);
@@ -134,6 +160,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        setExplodeDirection(0);
         position.current = (position.current + (e.key === 'ArrowLeft' ? -1 : 1) + count) % count;
         setViewFrame(frameIndex(position.current, count)); draw();
       }
@@ -157,17 +184,17 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     const imageWidth = manifest.width * scale, imageHeight = manifest.height * scale;
     return { left: `${(r.width - imageWidth) / 2 + x * imageWidth}px`, top: `${(r.height - imageHeight) / 2 + y * imageHeight}px` };
   };
-  const reset = () => { position.current = 0; setViewFrame(0); setExploded(false); setActiveHotspot(null); setHoveredHotspot(null); draw(); };
+  const reset = () => { position.current = 0; setViewFrame(0); setExploded(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); draw(); };
   const toggleExplode = () => {
     if (!manifest?.explode) return;
     setActiveHotspot(null);
     setHoveredHotspot(null);
-    if (exploded) { position.current = 0; setViewFrame(0); setExploded(false); }
-    else { const last = manifest.explode.count - 1; position.current = last; setViewFrame(last); setExploded(true); }
+    if (exploded) setExplodeDirection(-1);
+    else { position.current = 0; setViewFrame(0); setExploded(true); setAllFramesLoaded(false); setExplodeDirection(1); }
   };
 
   return <div ref={stage} className={`viewer ${mode === 'scroll' ? 'viewer-scroll' : ''}`} aria-label={`${slug} 3D viewer`}>
-    <canvas ref={canvas} className="viewer-canvas" role="img" aria-label={`Interactive 3D view of ${slug}`} onPointerDown={e => { if (mode === 'drag') { e.currentTarget.setPointerCapture(e.pointerId); drag.current = { x: e.clientX }; } }} onPointerMove={e => move(e.clientX)} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} tabIndex={0} />
+    <canvas ref={canvas} className="viewer-canvas" role="img" aria-label={`Interactive 3D view of ${slug}`} onPointerDown={e => { if (mode === 'drag') { setExplodeDirection(0); e.currentTarget.setPointerCapture(e.pointerId); drag.current = { x: e.clientX }; } }} onPointerMove={e => move(e.clientX)} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} tabIndex={0} />
     {missing && <div className="viewer-empty"><span>✦</span><b>3D coming soon</b><small>Frame pack not added yet</small></div>}
     {!missing && <>
       <div className="viewer-tag">↔ {exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'DRAG TO ROTATE'} · {count} VIEWS</div>
@@ -176,10 +203,10 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
         const selected = activeHotspot === h.id, hovered = hoveredHotspot === h.id;
         return <button key={h.id} type="button" className={'hotspot ' + alignment} style={hotspotStyle(h.x, h.y)} onPointerEnter={() => setHoveredHotspot(h.id)} onPointerLeave={() => setHoveredHotspot(null)} onFocus={() => setHoveredHotspot(h.id)} onBlur={() => setHoveredHotspot(null)} onClick={() => { if (selected) { setActiveHotspot(null); setHoveredHotspot(null); } else setActiveHotspot(h.id); }} aria-label={h.name} aria-pressed={selected}>{(selected || hovered) && <span className="hotspot-label" role="tooltip">{h.group && <small>{h.group}</small>}{h.name}</span>}</button>;
       })}
-      {!ready && <div className="viewer-loading"><span>{exploded ? 'LOADING EXPLODED VIEW' : 'LOADING OBJECT'}</span><i><b style={{ width: `${progress}%` }} /></i></div>}
+      {(!ready || (exploded && explodeDirection !== 0 && !allFramesLoaded)) && <div className="viewer-loading"><span>{exploded && explodeDirection !== 0 ? 'PREPARING EXPLODED VIEW' : 'LOADING OBJECT'}</span><i><b style={{ width: `${progress}%` }} /></i></div>}
     </>}
     <div className="viewer-controls">
-      <button type="button" className="viewer-action" disabled={!manifest?.explode} title={exploded ? 'Assemble parts' : 'Explode view'} onClick={toggleExplode}>{exploded ? 'Assemble parts' : 'Explode view'}</button>
+      <button type="button" className="viewer-action" disabled={!manifest?.explode} title={exploded ? 'Assemble parts' : 'Explode view'} onClick={toggleExplode}>{exploded ? (explodeDirection === -1 ? 'Assembling…' : 'Assemble parts') : 'Explode view'}</button>
       <button type="button" className="viewer-action" onClick={reset}>Reset</button>
       <button type="button" className="viewer-icon" aria-label="Fullscreen" title="Fullscreen" onClick={() => stage.current?.requestFullscreen()}>⛶</button>
     </div>
