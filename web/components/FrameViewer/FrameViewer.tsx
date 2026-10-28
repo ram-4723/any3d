@@ -5,7 +5,7 @@ import { frameIndex, hotspotVisible } from './math';
 type Props = { slug: string; mode?: 'drag' | 'scroll' };
 type Hotspot = { id: string; name: string; group?: string; frame: number; x: number; y: number; color: string };
 type ExplodeHotspot = { id: string; name: string; group: string; color: string; points: ([number, number] | null)[] };
-type Sequence = { count: number; pattern: string; loop?: boolean };
+type Sequence = { count: number; pattern: string; loop?: boolean; startFrame?: number };
 type Manifest = { width: number; height: number; rotate: Sequence; explode?: Sequence & { labelsFrom?: number; hotspots?: ExplodeHotspot[] }; hotspots?: Hotspot[]; background?: string };
 
 export default function FrameViewer({ slug, mode = 'drag' }: Props) {
@@ -26,6 +26,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const [inView, setInView] = useState(false);
   const [viewFrame, setViewFrame] = useState(0);
   const count = exploded ? manifest?.explode?.count ?? 0 : manifest?.rotate.count ?? 1;
+  const explodeStart = Math.max(0, Math.min(count - 1, (manifest?.explode?.startFrame ?? 1) - 1));
 
   const draw = useCallback(() => {
     const c = canvas.current, ctx = c?.getContext('2d');
@@ -111,7 +112,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     if (!exploded || explodeDirection === 0 || !allFramesLoaded) return;
     let raf = 0;
     const start = position.current;
-    const target = explodeDirection > 0 ? count - 1 : 0;
+    const target = explodeDirection > 0 ? count - 1 : explodeStart;
     const distance = Math.abs(target - start);
     const duration = Math.max(700, distance * 25);
     const began = performance.now();
@@ -128,7 +129,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     };
     raf = requestAnimationFrame(step);
     return () => cancelAnimationFrame(raf);
-  }, [exploded, explodeDirection, allFramesLoaded, count, draw]);
+  }, [exploded, explodeDirection, allFramesLoaded, count, draw, explodeStart]);
   useEffect(() => {
     draw();
     const ro = new ResizeObserver(draw);
@@ -152,7 +153,8 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const move = (x: number) => {
     if (!drag.current) return;
     const dx = x - drag.current.x;
-    position.current = (position.current - dx / 7 + count) % count;
+    const next = position.current - dx / 7;
+    position.current = exploded ? Math.max(explodeStart, Math.min(count - 1, next)) : (next + count) % count;
     drag.current = { x };
     setViewFrame(frameIndex(position.current, count)); draw();
   };
@@ -161,13 +163,14 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     const key = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
         setExplodeDirection(0);
-        position.current = (position.current + (e.key === 'ArrowLeft' ? -1 : 1) + count) % count;
+        const next = position.current + (e.key === 'ArrowLeft' ? -1 : 1);
+        position.current = exploded ? Math.max(explodeStart, Math.min(count - 1, next)) : (next + count) % count;
         setViewFrame(frameIndex(position.current, count)); draw();
       }
     };
     window.addEventListener('keydown', key);
     return () => window.removeEventListener('keydown', key);
-  }, [count, draw]);
+  }, [count, draw, exploded, explodeStart]);
 
   const current = viewFrame;
   const hotspots = exploded
@@ -190,14 +193,14 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     setActiveHotspot(null);
     setHoveredHotspot(null);
     if (exploded) setExplodeDirection(-1);
-    else { position.current = 0; setViewFrame(0); setExploded(true); setAllFramesLoaded(false); setExplodeDirection(1); }
+    else { position.current = explodeStart; setViewFrame(explodeStart); setExploded(true); setAllFramesLoaded(false); setExplodeDirection(1); }
   };
 
   return <div ref={stage} className={`viewer ${mode === 'scroll' ? 'viewer-scroll' : ''}`} aria-label={`${slug} 3D viewer`}>
     <canvas ref={canvas} className="viewer-canvas" role="img" aria-label={`Interactive 3D view of ${slug}`} onPointerDown={e => { if (mode === 'drag') { setExplodeDirection(0); e.currentTarget.setPointerCapture(e.pointerId); drag.current = { x: e.clientX }; } }} onPointerMove={e => move(e.clientX)} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} tabIndex={0} />
     {missing && <div className="viewer-empty"><span>✦</span><b>3D coming soon</b><small>Frame pack not added yet</small></div>}
     {!missing && <>
-      <div className="viewer-tag">↔ {exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'DRAG TO ROTATE'} · {count} VIEWS</div>
+      <div className="viewer-tag">↔ {exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'DRAG TO ROTATE'} · {exploded ? count - explodeStart : count} VIEWS</div>
       {hotspots.map(h => {
         const alignment = [h.y < 0.16 && 'hotspot-below', h.x < 0.12 && 'hotspot-align-left', h.x > 0.88 && 'hotspot-align-right'].filter(Boolean).join(' ');
         const selected = activeHotspot === h.id, hovered = hoveredHotspot === h.id;

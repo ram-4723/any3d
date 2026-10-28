@@ -10,6 +10,7 @@
  "background": "#101112",
  "explode": {
   "count": 120,
+  "startFrame": 30,
   "pattern": "explode/{0000}.webp",
   "loop": false,
   "labelsFrom": 60,
