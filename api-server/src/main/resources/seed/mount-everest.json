@@ -1,1 +1,461 @@
-{"slug":"mount-everest","name":{"en":"Mount Everest","hi":"माउंट एवरेस्ट"},"category":"nature","tagline":{"en":"A giant among the clouds.","hi":"बादलों के बीच एक विशालकाय।"},"summary":{"en":"A sample profile for exploring the 3D Anything experience.","hi":"3D Anything अनुभव के लिए एक नमूना प्रोफ़ाइल।"},"specs":[{"label":{"en":"Height","hi":"ऊंचाई"},"value":8848.86,"unit":"m"},{"label":{"en":"Location","hi":"स्थान"},"value":"Nepal / China","unit":""},{"label":{"en":"First ascent","hi":"पहली चढ़ाई"},"value":1953,"unit":""}],"funFacts":[{"text":{"en":"This is clearly labelled sample content. Replace it with a verified fact and source.","hi":"यह स्पष्ट रूप से नमूना सामग्री है। इसे सत्यापित तथ्य और स्रोत से बदलें।"},"sourceUrl":"https://example.com","sample":true}],"celebrityLinks":[{"person":"Tenzing Norgay","relation":{"en":"Sample connection","hi":"नमूना संबंध"},"sourceUrl":"https://example.com","sample":true}],"rarity":"Highest peak","hasFramePack":true,"tags":["mountain","himalaya","nature"],"sample":true}
+{
+    "slug":  "mount-everest",
+    "specs":  [
+                  {
+                      "label":  {
+                                    "hi":  "Height (official, 2020 Nepal–China survey)",
+                                    "en":  "Height (official, 2020 Nepal–China survey)"
+                                },
+                      "unit":  "m",
+                      "value":  "8,848.86"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Height in feet",
+                                    "en":  "Height in feet"
+                                },
+                      "unit":  "ft",
+                      "value":  "29,032"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Earlier official height",
+                                    "en":  "Earlier official height"
+                                },
+                      "unit":  "",
+                      "value":  "8,848 m (Survey of India, 1950s); China\u0027s rock height 8,844.43 m (2005)"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Prominence",
+                                    "en":  "Prominence"
+                                },
+                      "unit":  "",
+                      "value":  "8,848.86 m (equal to its height: as the highest point on Earth it is the special case, ranked 1st)"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Summit coordinates",
+                                    "en":  "Summit coordinates"
+                                },
+                      "unit":  "",
+                      "value":  "27°59′18″N 86°55′31″E (27.9883, 86.9253)"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Location",
+                                    "en":  "Location"
+                                },
+                      "unit":  "",
+                      "value":  "Border of Solukhumbu District, Koshi Province, Nepal and Tingri County, Tibet Autonomous Region, China"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Range",
+                                    "en":  "Range"
+                                },
+                      "unit":  "",
+                      "value":  "Mahalangur Himal, Himalayas"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Nearest giant neighbours",
+                                    "en":  "Nearest giant neighbours"
+                                },
+                      "unit":  "",
+                      "value":  "Lhotse 8,516 m; Nuptse 7,855 m; Changtse 7,580 m"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Protected area",
+                                    "en":  "Protected area"
+                                },
+                      "unit":  "",
+                      "value":  "Sagarmatha National Park (Nepal), UNESCO World Heritage Site since 1979; Qomolangma National Nature Reserve (China)"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Summit rock",
+                                    "en":  "Summit rock"
+                                },
+                      "unit":  "",
+                      "value":  "Ordovician marine limestone (Qomolangma Formation)"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "First ascent",
+                                    "en":  "First ascent"
+                                },
+                      "unit":  "",
+                      "value":  "29 May 1953, 11:30 am, Tenzing Norgay and Edmund Hillary (British expedition led by John Hunt)"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "First woman on top",
+                                    "en":  "First woman on top"
+                                },
+                      "unit":  "",
+                      "value":  "Junko Tabei (Japan), 16 May 1975"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "First ascent without bottled oxygen",
+                                    "en":  "First ascent without bottled oxygen"
+                                },
+                      "unit":  "",
+                      "value":  "Reinhold Messner and Peter Habeler, 1978"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Total summits (all routes, to Dec 2025)",
+                                    "en":  "Total summits (all routes, to Dec 2025)"
+                                },
+                      "unit":  "",
+                      "value":  "13,737 by 7,563 different people (Himalayan Database)"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Deaths (all routes, 1921–2025)",
+                                    "en":  "Deaths (all routes, 1921–2025)"
+                                },
+                      "unit":  "",
+                      "value":  "339 (Himalayan Database); 5 more confirmed in spring 2026"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Record season",
+                                    "en":  "Record season"
+                                },
+                      "unit":  "",
+                      "value":  "Spring 2026: 1,008 summits from the Nepal side (preliminary, Nepal Department of Tourism)"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Most summits by one person",
+                                    "en":  "Most summits by one person"
+                                },
+                      "unit":  "",
+                      "value":  "32, Kami Rita Sherpa (17 May 2026)"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Death zone",
+                                    "en":  "Death zone"
+                                },
+                      "unit":  "",
+                      "value":  "Above about 8,000 m"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Air pressure at the summit",
+                                    "en":  "Air pressure at the summit"
+                                },
+                      "unit":  "",
+                      "value":  "About one third of sea level"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Main climbing season",
+                                    "en":  "Main climbing season"
+                                },
+                      "unit":  "",
+                      "value":  "May, before the monsoon (spring season March–May)"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Nepal permit fee (foreigners, normal route)",
+                                    "en":  "Nepal permit fee (foreigners, normal route)"
+                                },
+                      "unit":  "",
+                      "value":  "15,000 USD spring / 7,500 autumn / 3,750 winter or summer (from 1 Sep 2025)"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Main routes",
+                                    "en":  "Main routes"
+                                },
+                      "unit":  "",
+                      "value":  "Southeast Ridge via South Col (Nepal) and North/Northeast Ridge (Tibet); about 98% of all summits use these two"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Nearest sea",
+                                    "en":  "Nearest sea"
+                                },
+                      "unit":  "",
+                      "value":  "Bay of Bengal, almost 700 km away"
+                  },
+                  {
+                      "label":  {
+                                    "hi":  "Growing?",
+                                    "en":  "Growing?"
+                                },
+                      "unit":  "",
+                      "value":  "Yes, GPS shows about 2 mm per year of uplift (UCL, 2024)"
+                  }
+              ],
+    "tags":  [
+                 "everest",
+                 "sagarmatha",
+                 "chomolungma",
+                 "himalayas",
+                 "nepal",
+                 "tibet",
+                 "china",
+                 "mountain",
+                 "highest-mountain",
+                 "eight-thousander",
+                 "seven-summits",
+                 "tenzing-norgay",
+                 "edmund-hillary",
+                 "sherpa",
+                 "death-zone"
+             ],
+    "celebrityLinks":  [
+                           {
+                               "sourceUrl":  "https://en.wikipedia.org/wiki/Tenzing_Norgay",
+                               "person":  "Tenzing Norgay",
+                               "relation":  {
+                                                "hi":  "Sherpa climber who made the first ascent with Hillary in 1953; he lived in Darjeeling, took Indian citizenship and became the first Director of Field Training at the Himalayan Mountaineering Institute, Darjeeling (1954)",
+                                                "en":  "Sherpa climber who made the first ascent with Hillary in 1953; he lived in Darjeeling, took Indian citizenship and became the first Director of Field Training at the Himalayan Mountaineering Institute, Darjeeling (1954)"
+                                            }
+                           },
+                           {
+                               "sourceUrl":  "https://en.wikipedia.org/wiki/Edmund_Hillary",
+                               "person":  "Sir Edmund Hillary",
+                               "relation":  {
+                                                "hi":  "New Zealand beekeeper-turned-climber who made the first ascent; from 1960 he devoted himself to helping the Sherpa people through the Himalayan Trust, which he founded",
+                                                "en":  "New Zealand beekeeper-turned-climber who made the first ascent; from 1960 he devoted himself to helping the Sherpa people through the Himalayan Trust, which he founded"
+                                            }
+                           },
+                           {
+                               "sourceUrl":  "https://en.wikipedia.org/wiki/George_Everest",
+                               "person":  "Sir George Everest",
+                               "relation":  {
+                                                "hi":  "Surveyor General of India the mountain is named after, although he never saw it and opposed the naming",
+                                                "en":  "Surveyor General of India the mountain is named after, although he never saw it and opposed the naming"
+                                            }
+                           },
+                           {
+                               "sourceUrl":  "http://news.bbc.co.uk/2/hi/south_asia/3193576.stm",
+                               "person":  "Radhanath Sikdar",
+                               "relation":  {
+                                                "hi":  "Indian mathematician at the survey in Dehradun who first calculated in 1852 that Peak XV was the world\u0027s highest",
+                                                "en":  "Indian mathematician at the survey in Dehradun who first calculated in 1852 that Peak XV was the world\u0027s highest"
+                                            }
+                           },
+                           {
+                               "sourceUrl":  "https://en.wikipedia.org/wiki/Junko_Tabei",
+                               "person":  "Junko Tabei",
+                               "relation":  {
+                                                "hi":  "Japanese climber, first woman to summit (16 May 1975) and first woman to complete the Seven Summits",
+                                                "en":  "Japanese climber, first woman to summit (16 May 1975) and first woman to complete the Seven Summits"
+                                            }
+                           },
+                           {
+                               "sourceUrl":  "https://en.wikipedia.org/wiki/Mount_Everest",
+                               "person":  "Reinhold Messner",
+                               "relation":  {
+                                                "hi":  "Italian climber who made the first ascent without bottled oxygen with Peter Habeler (1978), then the first solo ascent without oxygen (1980)",
+                                                "en":  "Italian climber who made the first ascent without bottled oxygen with Peter Habeler (1978), then the first solo ascent without oxygen (1980)"
+                                            }
+                           },
+                           {
+                               "sourceUrl":  "https://www.tatasteel.com/corporate/our-organisation/campaigns/bachendri-pal/",
+                               "person":  "Bachendri Pal",
+                               "relation":  {
+                                                "hi":  "First Indian woman on top, 23 May 1984; later led the Tata Steel Adventure Foundation and received the Padma Bhushan (2019)",
+                                                "en":  "First Indian woman on top, 23 May 1984; later led the Tata Steel Adventure Foundation and received the Padma Bhushan (2019)"
+                                            }
+                           },
+                           {
+                               "sourceUrl":  "https://en.wikipedia.org/wiki/Arunima_Sinha",
+                               "person":  "Arunima Sinha",
+                               "relation":  {
+                                                "hi":  "Former national volleyball player, first female amputee on Everest (21 May 2013), Padma Shri 2015",
+                                                "en":  "Former national volleyball player, first female amputee on Everest (21 May 2013), Padma Shri 2015"
+                                            }
+                           },
+                           {
+                               "sourceUrl":  "https://indianexpress.com/article/india/india-others/13-year-old-malavath-purna-becomes-youngest-woman-to-scale-everest/",
+                               "person":  "Malavath Purna",
+                               "relation":  {
+                                                "hi":  "Girl from Telangana who became the youngest female summiter in 2014 at 13 years 11 months",
+                                                "en":  "Girl from Telangana who became the youngest female summiter in 2014 at 13 years 11 months"
+                                            }
+                           },
+                           {
+                               "sourceUrl":  "https://www.guinnessworldrecords.com/world-records/63829-most-conquests-of-mt-everest",
+                               "person":  "Kami Rita Sherpa",
+                               "relation":  {
+                                                "hi":  "Record holder with 32 summits (as of 17 May 2026)",
+                                                "en":  "Record holder with 32 summits (as of 17 May 2026)"
+                                            }
+                           },
+                           {
+                               "sourceUrl":  "https://www.bbc.com/news/articles/c3927ejpj4eo",
+                               "person":  "Lhakpa Sherpa",
+                               "relation":  {
+                                                "hi":  "Women\u0027s record holder with 11 summits (May 2026)",
+                                                "en":  "Women\u0027s record holder with 11 summits (May 2026)"
+                                            }
+                           }
+                       ],
+    "category":  "nature",
+    "funFacts":  [
+                     {
+                         "text":  {
+                                      "hi":  "It is named after a man who never saw it. Sir George Everest, a former Surveyor General of India, even objected to the honour, but the name became official in 1865. He pronounced it \u0027Eve-rest\u0027.",
+                                      "en":  "It is named after a man who never saw it. Sir George Everest, a former Surveyor General of India, even objected to the honour, but the name became official in 1865. He pronounced it \u0027Eve-rest\u0027."
+                                  },
+                         "sourceUrl":  "https://en.wikipedia.org/wiki/George_Everest"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "An Indian mathematician found it first: in 1852 Radhanath Sikdar, working for the survey at Dehradun, calculated that Peak XV was the highest mountain in the world.",
+                                      "en":  "An Indian mathematician found it first: in 1852 Radhanath Sikdar, working for the survey at Dehradun, calculated that Peak XV was the highest mountain in the world."
+                                  },
+                         "sourceUrl":  "http://news.bbc.co.uk/2/hi/south_asia/3193576.stm"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "The 1856 survey worked out exactly 29,000 ft, but that looked too much like a rounded guess, so the announced height was 29,002 ft.",
+                                      "en":  "The 1856 survey worked out exactly 29,000 ft, but that looked too much like a rounded guess, so the announced height was 29,002 ft."
+                                  },
+                         "sourceUrl":  "https://thebmc.co.uk/en/everest-facts-and-figures"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "The very top is made of limestone that formed on an ancient sea floor, with marine fossils. The IUGS listed these \u0027highest rocks on the planet\u0027 as a geological heritage site in 2022.",
+                                      "en":  "The very top is made of limestone that formed on an ancient sea floor, with marine fossils. The IUGS listed these \u0027highest rocks on the planet\u0027 as a geological heritage site in 2022."
+                                  },
+                         "sourceUrl":  "https://en.wikipedia.org/wiki/Mount_Everest#Geology"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "Everest is still growing. GPS shows it rising about 2 mm a year, and a 2024 study says a river capture about 89,000 years ago has lifted it 15–50 m higher than it would otherwise be.",
+                                      "en":  "Everest is still growing. GPS shows it rising about 2 mm a year, and a 2024 study says a river capture about 89,000 years ago has lifted it 15–50 m higher than it would otherwise be."
+                                  },
+                         "sourceUrl":  "https://www.ucl.ac.uk/news/2024/sep/river-pushing-mount-everests-peak"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "Its height grew by 86 cm on paper in 2020, when Nepal and China agreed for the first time to measure the snow cap, not just the rock.",
+                                      "en":  "Its height grew by 86 cm on paper in 2020, when Nepal and China agreed for the first time to measure the snow cap, not just the rock."
+                                  },
+                         "sourceUrl":  "https://www.bbc.com/news/world-asia-55218443"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "It is the highest point above sea level, but not the tallest mountain: Mauna Kea in Hawaii is taller from its base on the ocean floor, and Ecuador\u0027s Chimborazo summit is farther from Earth\u0027s centre because Earth bulges at the equator.",
+                                      "en":  "It is the highest point above sea level, but not the tallest mountain: Mauna Kea in Hawaii is taller from its base on the ocean floor, and Ecuador\u0027s Chimborazo summit is farther from Earth\u0027s centre because Earth bulges at the equator."
+                                  },
+                         "sourceUrl":  "https://en.wikipedia.org/wiki/Mount_Everest#Comparisons"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "Tenzing Norgay and Edmund Hillary reached the top at 11:30 am on 29 May 1953. Years later Tenzing revealed that Hillary had stepped on the summit first.",
+                                      "en":  "Tenzing Norgay and Edmund Hillary reached the top at 11:30 am on 29 May 1953. Years later Tenzing revealed that Hillary had stepped on the summit first."
+                                  },
+                         "sourceUrl":  "https://en.wikipedia.org/wiki/Mount_Everest#First_successful_ascent_by_Tenzing_and_Hillary,_1953"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "Before Everest, Edmund Hillary was a beekeeper in New Zealand, working with his father and brother.",
+                                      "en":  "Before Everest, Edmund Hillary was a beekeeper in New Zealand, working with his father and brother."
+                                  },
+                         "sourceUrl":  "https://en.wikipedia.org/wiki/Edmund_Hillary"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "Bachendri Pal became the first Indian woman to summit, at 1:07 pm on 23 May 1984, after surviving an avalanche that hit her camp a week earlier.",
+                                      "en":  "Bachendri Pal became the first Indian woman to summit, at 1:07 pm on 23 May 1984, after surviving an avalanche that hit her camp a week earlier."
+                                  },
+                         "sourceUrl":  "https://en.wikipedia.org/wiki/Bachendri_Pal"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "Arunima Sinha lost a leg in 2011 after robbers pushed her from a train. On 21 May 2013 she became, as widely reported, the first female amputee to climb Everest.",
+                                      "en":  "Arunima Sinha lost a leg in 2011 after robbers pushed her from a train. On 21 May 2013 she became, as widely reported, the first female amputee to climb Everest."
+                                  },
+                         "sourceUrl":  "https://www.theguardian.com/world/2013/may/22/first-female-amputee-scales-everest"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "Malavath Purna from Telangana reached the top from the Tibet side on 25 May 2014, aged 13 years and 11 months, making her the youngest girl ever to summit.",
+                                      "en":  "Malavath Purna from Telangana reached the top from the Tibet side on 25 May 2014, aged 13 years and 11 months, making her the youngest girl ever to summit."
+                                  },
+                         "sourceUrl":  "https://indianexpress.com/article/india/india-others/13-year-old-malavath-purna-becomes-youngest-woman-to-scale-everest/"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "Kami Rita Sherpa, \u0027Everest Man\u0027, has stood on top 32 times, the latest on 17 May 2026 at age 56. His first summit was in 1994.",
+                                      "en":  "Kami Rita Sherpa, \u0027Everest Man\u0027, has stood on top 32 times, the latest on 17 May 2026 at age 56. His first summit was in 1994."
+                                  },
+                         "sourceUrl":  "https://www.guinnessworldrecords.com/world-records/63829-most-conquests-of-mt-everest"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "Lhakpa Sherpa holds the women\u0027s record with 11 summits, reached on the same day in May 2026 that Kami Rita made his 32nd.",
+                                      "en":  "Lhakpa Sherpa holds the women\u0027s record with 11 summits, reached on the same day in May 2026 that Kami Rita made his 32nd."
+                                  },
+                         "sourceUrl":  "https://www.bbc.com/news/articles/c3927ejpj4eo"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "The youngest summiter is Jordan Romero (USA), aged 13 in 2010. The oldest is Yuichiro Miura (Japan), aged 80 years and 223 days in 2013.",
+                                      "en":  "The youngest summiter is Jordan Romero (USA), aged 13 in 2010. The oldest is Yuichiro Miura (Japan), aged 80 years and 223 days in 2013."
+                                  },
+                         "sourceUrl":  "https://www.guinnessworldrecords.com/world-records/oldest-person-to-climb-mt-everest-male"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "Spring 2026 was the busiest season ever, with 1,008 summits from the Nepal side and 274 people on top on a single day (20 May).",
+                                      "en":  "Spring 2026 was the busiest season ever, with 1,008 summits from the Nepal side and 274 people on top on a single day (20 May)."
+                                  },
+                         "sourceUrl":  "https://www.alanarnette.com/2026/06/02/everest-2026-season-summary-records-crowds-trash-winds/"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "Sherpas and other hired climbers now make more summits than paying clients: 7,081 vs 6,656 up to the end of 2025.",
+                                      "en":  "Sherpas and other hired climbers now make more summits than paying clients: 7,081 vs 6,656 up to the end of 2025."
+                                  },
+                         "sourceUrl":  "https://www.alanarnette.com/2026/01/26/everest-by-the-numbers-2026-edition/"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "At the summit the air pressure is only about a third of sea level. A person flown straight there from sea level, above 8,500 m, would likely pass out within two or three minutes.",
+                                      "en":  "At the summit the air pressure is only about a third of sea level. A person flown straight there from sea level, above 8,500 m, would likely pass out within two or three minutes."
+                                  },
+                         "sourceUrl":  "https://en.wikipedia.org/wiki/Mount_Everest#Death_zone"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "A Nepali permit to climb the normal route in spring costs US$15,000 per person since September 2025, up from US$11,000.",
+                                      "en":  "A Nepali permit to climb the normal route in spring costs US$15,000 per person since September 2025, up from US$11,000."
+                                  },
+                         "sourceUrl":  "https://tourismdepartment.gov.np/pages/mountaineering-fee/"
+                     },
+                     {
+                         "text":  {
+                                      "hi":  "The summit has been described as about the size of a dining-room table.",
+                                      "en":  "The summit has been described as about the size of a dining-room table."
+                                  },
+                         "sourceUrl":  "https://en.wikipedia.org/wiki/Mount_Everest#Summit"
+                     }
+                 ],
+    "name":  {
+                 "hi":  "माउंट एवरेस्ट",
+                 "en":  "Mount Everest"
+             },
+    "summary":  {
+                    "hi":  "Mount Everest is the highest mountain on Earth above sea level. It sits in the Mahalangur Himal section of the Himalayas, and the Nepal–China border runs across its summit. Nepal and China jointly announced its current official height, 8,848.86 m, on 8 December 2020. Tenzing Norgay and Edmund Hillary made the first confirmed ascent on 29 May 1953, and by the end of 2025 the Himalayan Database counted 13,737 summits by 7,563 different people.",
+                    "en":  "Mount Everest is the highest mountain on Earth above sea level. It sits in the Mahalangur Himal section of the Himalayas, and the Nepal–China border runs across its summit. Nepal and China jointly announced its current official height, 8,848.86 m, on 8 December 2020. Tenzing Norgay and Edmund Hillary made the first confirmed ascent on 29 May 1953, and by the end of 2025 the Himalayan Database counted 13,737 summits by 7,563 different people."
+                },
+    "hasFramePack":  true,
+    "rarity":  "@{en=There is only one highest point on Earth. By the end of 2025 about 7,560 different people had stood on top, and about 98.6% of all summits used one of the two standard routes.}",
+    "tagline":  {
+                    "hi":  "The roof of the world: 8,848.86 m of former seabed on the Nepal–China border",
+                    "en":  "The roof of the world: 8,848.86 m of former seabed on the Nepal–China border"
+                }
+}
