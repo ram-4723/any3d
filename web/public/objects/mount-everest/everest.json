@@ -1,0 +1,545 @@
+{
+  "slug": "mount-everest",
+  "name": {
+    "en": "Mount Everest"
+  },
+  "fullName": {
+    "en": "Mount Everest (Sagarmatha / Chomolungma), the highest mountain on Earth"
+  },
+  "localNames": [
+    {
+      "name": "Sagarmatha",
+      "language": "Nepali",
+      "meaning": "usually given as 'Skyhead' or 'brow of the sky'"
+    },
+    {
+      "name": "Chomolungma (also Qomolangma, Jomolangma)",
+      "language": "Tibetan",
+      "meaning": "usually given as 'Holy Mother' or 'Goddess Mother of the Earth'"
+    },
+    {
+      "name": "Zhumulangma Feng",
+      "language": "Chinese",
+      "meaning": "phonetic transcription of the Tibetan name"
+    },
+    {
+      "name": "Peak XV",
+      "language": "English (historic)",
+      "meaning": "temporary label used by the British survey before 1865"
+    }
+  ],
+  "category": "nature",
+  "tagline": {
+    "en": "The roof of the world: 8,848.86 m of former seabed on the Nepal–China border"
+  },
+  "summary": {
+    "en": "Mount Everest is the highest mountain on Earth above sea level. It sits in the Mahalangur Himal section of the Himalayas, and the Nepal–China border runs across its summit. Nepal and China jointly announced its current official height, 8,848.86 m, on 8 December 2020. Tenzing Norgay and Edmund Hillary made the first confirmed ascent on 29 May 1953, and by the end of 2025 the Himalayan Database counted 13,737 summits by 7,563 different people."
+  },
+  "specs": [
+    {
+      "label": {
+        "en": "Height (official, 2020 Nepal–China survey)"
+      },
+      "value": "8,848.86",
+      "unit": "m"
+    },
+    {
+      "label": {
+        "en": "Height in feet"
+      },
+      "value": "29,032",
+      "unit": "ft"
+    },
+    {
+      "label": {
+        "en": "Earlier official height"
+      },
+      "value": "8,848 m (Survey of India, 1950s); China's rock height 8,844.43 m (2005)",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Prominence"
+      },
+      "value": "8,848.86 m (equal to its height: as the highest point on Earth it is the special case, ranked 1st)",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Summit coordinates"
+      },
+      "value": "27°59′18″N 86°55′31″E (27.9883, 86.9253)",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Location"
+      },
+      "value": "Border of Solukhumbu District, Koshi Province, Nepal and Tingri County, Tibet Autonomous Region, China",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Range"
+      },
+      "value": "Mahalangur Himal, Himalayas",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Nearest giant neighbours"
+      },
+      "value": "Lhotse 8,516 m; Nuptse 7,855 m; Changtse 7,580 m",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Protected area"
+      },
+      "value": "Sagarmatha National Park (Nepal), UNESCO World Heritage Site since 1979; Qomolangma National Nature Reserve (China)",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Summit rock"
+      },
+      "value": "Ordovician marine limestone (Qomolangma Formation)",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "First ascent"
+      },
+      "value": "29 May 1953, 11:30 am, Tenzing Norgay and Edmund Hillary (British expedition led by John Hunt)",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "First woman on top"
+      },
+      "value": "Junko Tabei (Japan), 16 May 1975",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "First ascent without bottled oxygen"
+      },
+      "value": "Reinhold Messner and Peter Habeler, 1978",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Total summits (all routes, to Dec 2025)"
+      },
+      "value": "13,737 by 7,563 different people (Himalayan Database)",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Deaths (all routes, 1921–2025)"
+      },
+      "value": "339 (Himalayan Database); 5 more confirmed in spring 2026",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Record season"
+      },
+      "value": "Spring 2026: 1,008 summits from the Nepal side (preliminary, Nepal Department of Tourism)",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Most summits by one person"
+      },
+      "value": "32, Kami Rita Sherpa (17 May 2026)",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Death zone"
+      },
+      "value": "Above about 8,000 m",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Air pressure at the summit"
+      },
+      "value": "About one third of sea level",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Main climbing season"
+      },
+      "value": "May, before the monsoon (spring season March–May)",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Nepal permit fee (foreigners, normal route)"
+      },
+      "value": "15,000 USD spring / 7,500 autumn / 3,750 winter or summer (from 1 Sep 2025)",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Main routes"
+      },
+      "value": "Southeast Ridge via South Col (Nepal) and North/Northeast Ridge (Tibet); about 98% of all summits use these two",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Nearest sea"
+      },
+      "value": "Bay of Bengal, almost 700 km away",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Growing?"
+      },
+      "value": "Yes, GPS shows about 2 mm per year of uplift (UCL, 2024)",
+      "unit": ""
+    }
+  ],
+  "funFacts": [
+    {
+      "text": {
+        "en": "It is named after a man who never saw it. Sir George Everest, a former Surveyor General of India, even objected to the honour, but the name became official in 1865. He pronounced it 'Eve-rest'."
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/George_Everest"
+    },
+    {
+      "text": {
+        "en": "An Indian mathematician found it first: in 1852 Radhanath Sikdar, working for the survey at Dehradun, calculated that Peak XV was the highest mountain in the world."
+      },
+      "sourceUrl": "http://news.bbc.co.uk/2/hi/south_asia/3193576.stm"
+    },
+    {
+      "text": {
+        "en": "The 1856 survey worked out exactly 29,000 ft, but that looked too much like a rounded guess, so the announced height was 29,002 ft."
+      },
+      "sourceUrl": "https://thebmc.co.uk/en/everest-facts-and-figures"
+    },
+    {
+      "text": {
+        "en": "The very top is made of limestone that formed on an ancient sea floor, with marine fossils. The IUGS listed these 'highest rocks on the planet' as a geological heritage site in 2022."
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mount_Everest#Geology"
+    },
+    {
+      "text": {
+        "en": "Everest is still growing. GPS shows it rising about 2 mm a year, and a 2024 study says a river capture about 89,000 years ago has lifted it 15–50 m higher than it would otherwise be."
+      },
+      "sourceUrl": "https://www.ucl.ac.uk/news/2024/sep/river-pushing-mount-everests-peak"
+    },
+    {
+      "text": {
+        "en": "Its height grew by 86 cm on paper in 2020, when Nepal and China agreed for the first time to measure the snow cap, not just the rock."
+      },
+      "sourceUrl": "https://www.bbc.com/news/world-asia-55218443"
+    },
+    {
+      "text": {
+        "en": "It is the highest point above sea level, but not the tallest mountain: Mauna Kea in Hawaii is taller from its base on the ocean floor, and Ecuador's Chimborazo summit is farther from Earth's centre because Earth bulges at the equator."
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mount_Everest#Comparisons"
+    },
+    {
+      "text": {
+        "en": "Tenzing Norgay and Edmund Hillary reached the top at 11:30 am on 29 May 1953. Years later Tenzing revealed that Hillary had stepped on the summit first."
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mount_Everest#First_successful_ascent_by_Tenzing_and_Hillary,_1953"
+    },
+    {
+      "text": {
+        "en": "Before Everest, Edmund Hillary was a beekeeper in New Zealand, working with his father and brother."
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Edmund_Hillary"
+    },
+    {
+      "text": {
+        "en": "Bachendri Pal became the first Indian woman to summit, at 1:07 pm on 23 May 1984, after surviving an avalanche that hit her camp a week earlier."
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bachendri_Pal"
+    },
+    {
+      "text": {
+        "en": "Arunima Sinha lost a leg in 2011 after robbers pushed her from a train. On 21 May 2013 she became, as widely reported, the first female amputee to climb Everest."
+      },
+      "sourceUrl": "https://www.theguardian.com/world/2013/may/22/first-female-amputee-scales-everest"
+    },
+    {
+      "text": {
+        "en": "Malavath Purna from Telangana reached the top from the Tibet side on 25 May 2014, aged 13 years and 11 months, making her the youngest girl ever to summit."
+      },
+      "sourceUrl": "https://indianexpress.com/article/india/india-others/13-year-old-malavath-purna-becomes-youngest-woman-to-scale-everest/"
+    },
+    {
+      "text": {
+        "en": "Kami Rita Sherpa, 'Everest Man', has stood on top 32 times, the latest on 17 May 2026 at age 56. His first summit was in 1994."
+      },
+      "sourceUrl": "https://www.guinnessworldrecords.com/world-records/63829-most-conquests-of-mt-everest"
+    },
+    {
+      "text": {
+        "en": "Lhakpa Sherpa holds the women's record with 11 summits, reached on the same day in May 2026 that Kami Rita made his 32nd."
+      },
+      "sourceUrl": "https://www.bbc.com/news/articles/c3927ejpj4eo"
+    },
+    {
+      "text": {
+        "en": "The youngest summiter is Jordan Romero (USA), aged 13 in 2010. The oldest is Yuichiro Miura (Japan), aged 80 years and 223 days in 2013."
+      },
+      "sourceUrl": "https://www.guinnessworldrecords.com/world-records/oldest-person-to-climb-mt-everest-male"
+    },
+    {
+      "text": {
+        "en": "Spring 2026 was the busiest season ever, with 1,008 summits from the Nepal side and 274 people on top on a single day (20 May)."
+      },
+      "sourceUrl": "https://www.alanarnette.com/2026/06/02/everest-2026-season-summary-records-crowds-trash-winds/"
+    },
+    {
+      "text": {
+        "en": "Sherpas and other hired climbers now make more summits than paying clients: 7,081 vs 6,656 up to the end of 2025."
+      },
+      "sourceUrl": "https://www.alanarnette.com/2026/01/26/everest-by-the-numbers-2026-edition/"
+    },
+    {
+      "text": {
+        "en": "At the summit the air pressure is only about a third of sea level. A person flown straight there from sea level, above 8,500 m, would likely pass out within two or three minutes."
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mount_Everest#Death_zone"
+    },
+    {
+      "text": {
+        "en": "A Nepali permit to climb the normal route in spring costs US$15,000 per person since September 2025, up from US$11,000."
+      },
+      "sourceUrl": "https://tourismdepartment.gov.np/pages/mountaineering-fee/"
+    },
+    {
+      "text": {
+        "en": "The summit has been described as about the size of a dining-room table."
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mount_Everest#Summit"
+    }
+  ],
+  "famousPeople": [
+    {
+      "person": "Tenzing Norgay",
+      "relation": {
+        "en": "Sherpa climber who made the first ascent with Hillary in 1953; he lived in Darjeeling, took Indian citizenship and became the first Director of Field Training at the Himalayan Mountaineering Institute, Darjeeling (1954)"
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tenzing_Norgay"
+    },
+    {
+      "person": "Sir Edmund Hillary",
+      "relation": {
+        "en": "New Zealand beekeeper-turned-climber who made the first ascent; from 1960 he devoted himself to helping the Sherpa people through the Himalayan Trust, which he founded"
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Edmund_Hillary"
+    },
+    {
+      "person": "Sir George Everest",
+      "relation": {
+        "en": "Surveyor General of India the mountain is named after, although he never saw it and opposed the naming"
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/George_Everest"
+    },
+    {
+      "person": "Radhanath Sikdar",
+      "relation": {
+        "en": "Indian mathematician at the survey in Dehradun who first calculated in 1852 that Peak XV was the world's highest"
+      },
+      "sourceUrl": "http://news.bbc.co.uk/2/hi/south_asia/3193576.stm"
+    },
+    {
+      "person": "Junko Tabei",
+      "relation": {
+        "en": "Japanese climber, first woman to summit (16 May 1975) and first woman to complete the Seven Summits"
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Junko_Tabei"
+    },
+    {
+      "person": "Reinhold Messner",
+      "relation": {
+        "en": "Italian climber who made the first ascent without bottled oxygen with Peter Habeler (1978), then the first solo ascent without oxygen (1980)"
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mount_Everest"
+    },
+    {
+      "person": "Bachendri Pal",
+      "relation": {
+        "en": "First Indian woman on top, 23 May 1984; later led the Tata Steel Adventure Foundation and received the Padma Bhushan (2019)"
+      },
+      "sourceUrl": "https://www.tatasteel.com/corporate/our-organisation/campaigns/bachendri-pal/"
+    },
+    {
+      "person": "Arunima Sinha",
+      "relation": {
+        "en": "Former national volleyball player, first female amputee on Everest (21 May 2013), Padma Shri 2015"
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arunima_Sinha"
+    },
+    {
+      "person": "Malavath Purna",
+      "relation": {
+        "en": "Girl from Telangana who became the youngest female summiter in 2014 at 13 years 11 months"
+      },
+      "sourceUrl": "https://indianexpress.com/article/india/india-others/13-year-old-malavath-purna-becomes-youngest-woman-to-scale-everest/"
+    },
+    {
+      "person": "Kami Rita Sherpa",
+      "relation": {
+        "en": "Record holder with 32 summits (as of 17 May 2026)"
+      },
+      "sourceUrl": "https://www.guinnessworldrecords.com/world-records/63829-most-conquests-of-mt-everest"
+    },
+    {
+      "person": "Lhakpa Sherpa",
+      "relation": {
+        "en": "Women's record holder with 11 summits (May 2026)"
+      },
+      "sourceUrl": "https://www.bbc.com/news/articles/c3927ejpj4eo"
+    }
+  ],
+  "pins": [
+    {
+      "id": "ebc-south",
+      "name": "Everest Base Camp (South, Nepal)",
+      "altitudeM": 5364,
+      "altitudeNote": "sources give 5,334–5,400 m; the camp sits on a moving glacier",
+      "lat": 28.0072,
+      "lon": 86.8594,
+      "coordsApprox": true,
+      "coordsSource": "Wikipedia 'Everest base camps' (28°0′26″N 86°51′34″E)",
+      "description": "Tent city on the Khumbu Glacier where Nepal-side expeditions live for weeks to acclimatise."
+    },
+    {
+      "id": "khumbu-icefall",
+      "name": "Khumbu Icefall",
+      "altitudeM": 5486,
+      "altitudeNote": "elevation given by Wikipedia; the icefall spans a few hundred metres of height above Base Camp",
+      "lat": 27.9958,
+      "lon": 86.8728,
+      "coordsApprox": true,
+      "coordsSource": "Wikipedia 'Khumbu Icefall' (27°59′45″N 86°52′22″E)",
+      "description": "A shifting maze of crevasses and house-sized ice blocks, crossed on ladders; one of the deadliest parts of the route."
+    },
+    {
+      "id": "camp-1",
+      "name": "Camp 1",
+      "altitudeM": 6065,
+      "altitudeNote": "sources disagree: 5,943 m (Arnette) to 6,065 m (Wikipedia)",
+      "lat": 27.985,
+      "lon": 86.885,
+      "coordsApprox": true,
+      "coordsSource": "ESTIMATE ONLY (no published coordinate found): placed above the top of the icefall at the entrance of the Western Cwm; must be checked on the terrain",
+      "description": "First camp above the icefall, at the mouth of the Western Cwm."
+    },
+    {
+      "id": "camp-2",
+      "name": "Camp 2 (Advanced Base Camp)",
+      "altitudeM": 6400,
+      "altitudeNote": "sources disagree: 6,400 m (Arnette, Wikipedia table) or 6,500 m (Wikipedia text)",
+      "lat": 27.978,
+      "lon": 86.905,
+      "coordsApprox": true,
+      "coordsSource": "ESTIMATE ONLY (no published coordinate found): head of the Western Cwm near the foot of the Lhotse Face; Wikipedia's Western Cwm point is 27°58′51″N 86°53′53″E",
+      "description": "Main high camp in the Western Cwm, the 'Valley of Silence', at the foot of the Lhotse Face."
+    },
+    {
+      "id": "camp-3",
+      "name": "Camp 3 (Lhotse Face)",
+      "altitudeM": 7162,
+      "altitudeNote": "sources disagree widely: 6,800 m (Wikipedia table), 7,162 m (Arnette), 7,470 m (Wikipedia text); in some years there are several Camp 3 sites",
+      "lat": 27.972,
+      "lon": 86.922,
+      "coordsApprox": true,
+      "coordsSource": "ESTIMATE ONLY (no published coordinate found): ledge on the Lhotse Face between Camp 2 and the South Col",
+      "description": "Tents cut into a steep ice ledge on the Lhotse Face, reached on fixed ropes."
+    },
+    {
+      "id": "camp-4",
+      "name": "Camp 4 (South Col)",
+      "altitudeM": 7986,
+      "altitudeNote": "sources disagree: 7,920 m (Wikipedia text), 7,986 m (Arnette, Wikipedia 1952 Swiss figure), about 8,000 m (Wikipedia table)",
+      "lat": 27.975,
+      "lon": 86.9321,
+      "coordsApprox": true,
+      "coordsSource": "Wikipedia 'South Col' (27°58′30″N 86°55′55.5″E)",
+      "description": "Windy saddle between Everest and Lhotse; the start of the death zone and of the midnight summit push."
+    },
+    {
+      "id": "hillary-step",
+      "name": "Hillary Step",
+      "altitudeM": 8790,
+      "altitudeNote": "8,770 m (Arnette) or 8,790 m (Wikipedia); the rock step was reported changed or destroyed by the 2015 earthquake",
+      "lat": 27.9871,
+      "lon": 86.9256,
+      "coordsApprox": true,
+      "coordsSource": "Wikipedia 'Hillary Step' (via Wikidata)",
+      "description": "A 12 m rock wall just below the top, first climbed by Hillary and Tenzing; reported changed by the 2015 earthquake."
+    },
+    {
+      "id": "summit",
+      "name": "Summit",
+      "altitudeM": 8848.86,
+      "altitudeNote": "official 2020 Nepal–China snow-surface height",
+      "lat": 27.9883,
+      "lon": 86.9253,
+      "coordsApprox": false,
+      "coordsSource": "Wikipedia 'Mount Everest' (27°59′18″N 86°55′31″E, via Peakbagger)",
+      "description": "The highest point on Earth, on the Nepal–China border, about the size of a dining table."
+    },
+    {
+      "id": "ebc-north",
+      "name": "North Base Camp (Tibet)",
+      "altitudeM": 5150,
+      "altitudeNote": "sources give about 5,150–5,200 m",
+      "lat": 28.1414,
+      "lon": 86.8514,
+      "coordsApprox": true,
+      "coordsSource": "Wikipedia 'Everest base camps' (28°8′29″N 86°51′5″E)",
+      "description": "Gravel plain below the Rongbuk Glacier, reachable by road, where the North Ridge route starts."
+    }
+  ],
+  "route": {
+    "name": "South Col / Southeast Ridge route (Nepal)",
+    "order": [
+      "ebc-south",
+      "khumbu-icefall",
+      "camp-1",
+      "camp-2",
+      "camp-3",
+      "camp-4",
+      "hillary-step",
+      "summit"
+    ],
+    "note": "The route also passes the Geneva Spur and Yellow Band (between Camp 3 and Camp 4), the Balcony (about 8,400 m) and the South Summit (about 8,750 m). These are not pinned."
+  },
+  "rarity": {
+    "en": "There is only one highest point on Earth. By the end of 2025 about 7,560 different people had stood on top, and about 98.6% of all summits used one of the two standard routes."
+  },
+  "hasFramePack": false,
+  "tags": [
+    "everest",
+    "sagarmatha",
+    "chomolungma",
+    "himalayas",
+    "nepal",
+    "tibet",
+    "china",
+    "mountain",
+    "highest-mountain",
+    "eight-thousander",
+    "seven-summits",
+    "tenzing-norgay",
+    "edmund-hillary",
+    "sherpa",
+    "death-zone"
+  ]
+}

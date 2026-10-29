@@ -6,7 +6,10 @@ type Props = { slug: string; mode?: 'drag' | 'scroll' };
 type Hotspot = { id: string; name: string; group?: string; frame: number; x: number; y: number; color: string };
 type ExplodeHotspot = { id: string; name: string; group: string; color: string; points: ([number, number] | null)[] };
 type Sequence = { count: number; pattern: string; loop?: boolean; startFrame?: number };
-type Manifest = { width: number; height: number; rotate: Sequence; explode?: Sequence & { labelsFrom?: number; hotspots?: ExplodeHotspot[] }; hotspots?: Hotspot[]; background?: string };
+type CampHotspot = { id: string; name: string; approx: boolean; offModel?: boolean; points: ([number, number] | null)[] };
+type RouteFrame = { frame: number; points: [number, number, number][] };
+type CampDetail = { id: string; name: string; altitudeM?: number; altitudeNote?: string; lat?: number; lon?: number; coordsApprox?: boolean; coordsSource?: string; description: string };
+type Manifest = { width: number; height: number; rotate: Sequence & { hotspots?: CampHotspot[]; route?: { id: string; name: string; frames: RouteFrame[] } }; explode?: Sequence & { labelsFrom?: number; hotspots?: ExplodeHotspot[] }; hotspots?: Hotspot[]; background?: string };
 
 export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -23,6 +26,9 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const [missing, setMissing] = useState(false);
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
   const [hoveredHotspot, setHoveredHotspot] = useState<string | null>(null);
+  const [campsRoute, setCampsRoute] = useState(false);
+  const [campDetails, setCampDetails] = useState<CampDetail[] | null>(null);
+  const [activeCamp, setActiveCamp] = useState<string | null>(null);
   const [inView, setInView] = useState(false);
   const [viewFrame, setViewFrame] = useState(0);
   const count = exploded ? manifest?.explode?.count ?? 0 : manifest?.rotate.count ?? 1;
@@ -72,6 +78,22 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     }).then(m => { if (!cancelled) setManifest(m); }).catch(() => { if (!cancelled) setMissing(true); });
     return () => { cancelled = true; };
   }, [slug, inView]);
+
+  useEffect(() => {
+    if (slug !== 'mount-everest' || !campsRoute) {
+      setActiveCamp(null);
+      return;
+    }
+    let cancelled = false;
+    fetch('/objects/mount-everest/everest.json')
+      .then(response => {
+        if (!response.ok) throw new Error('Everest camp information is unavailable');
+        return response.json() as Promise<{ pins: CampDetail[] }>;
+      })
+      .then(data => { if (!cancelled) setCampDetails(data.pins); })
+      .catch(() => { if (!cancelled) setCampDetails([]); });
+    return () => { cancelled = true; };
+  }, [slug, campsRoute]);
 
   useEffect(() => {
     if (!inView) { images.current = []; return; }
@@ -187,6 +209,22 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     const imageWidth = manifest.width * scale, imageHeight = manifest.height * scale;
     return { left: `${(r.width - imageWidth) / 2 + x * imageWidth}px`, top: `${(r.height - imageHeight) / 2 + y * imageHeight}px` };
   };
+  const imageBounds = (() => {
+    const r = canvas.current?.getBoundingClientRect();
+    if (!r || !manifest) return { left: 0, top: 0, width: '100%', height: '100%' };
+    const scale = Math.min(r.width / manifest.width, r.height / manifest.height);
+    const width = manifest.width * scale, height = manifest.height * scale;
+    return { left: (r.width - width) / 2, top: (r.height - height) / 2, width, height };
+  })();
+  const visibleCampPins = campsRoute && slug === 'mount-everest' && !exploded
+    ? (manifest?.rotate.hotspots ?? []).flatMap(pin => {
+        const point = pin.points[current];
+        return point ? [{ ...pin, x: point[0], y: point[1] }] : [];
+      })
+    : [];
+  const visibleRoutePoints = campsRoute && slug === 'mount-everest' && !exploded
+    ? (manifest?.rotate.route?.frames[current]?.points ?? []).filter(point => point[2] === 1)
+    : [];
   const reset = () => { position.current = 0; setViewFrame(0); setExploded(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); draw(); };
   const toggleExplode = () => {
     if (!manifest?.explode) return;
@@ -201,6 +239,31 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     {missing && <div className="viewer-empty"><span>✦</span><b>3D coming soon</b><small>Frame pack not added yet</small></div>}
     {!missing && <>
       <div className="viewer-tag">↔ {exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'DRAG TO ROTATE'} · {exploded ? count - explodeStart : count} VIEWS</div>
+      {campsRoute && slug === 'mount-everest' && !exploded && <>
+        <svg className="camp-route-line" aria-label={manifest?.rotate.route?.name ?? 'Everest climbing route'} style={imageBounds} viewBox={`0 0 ${manifest?.width ?? 1600} ${manifest?.height ?? 900}`} preserveAspectRatio="none">
+          <polyline points={visibleRoutePoints.map(([x, y]) => `${x * (manifest?.width ?? 1600)},${y * (manifest?.height ?? 900)}`).join(' ')} />
+        </svg>
+        {visibleCampPins.map(pin => {
+          const details = campDetails?.find(camp => camp.id === pin.id);
+          const selected = activeCamp === pin.id;
+          const alignment = [pin.y < 0.2 && 'camp-label-below', pin.x < 0.16 && 'camp-label-left', pin.x > 0.84 && 'camp-label-right'].filter(Boolean).join(' ');
+          return <div className={`camp-marker ${alignment}`} key={pin.id} style={hotspotStyle(pin.x, pin.y)}>
+            <button type="button" className="camp-pin-button" aria-label={`Show details for ${pin.name}${pin.approx ? ', approximate location' : ''}`} aria-expanded={selected} onClick={() => setActiveCamp(selected ? null : pin.id)}>
+              <span className="camp-pin-icon" aria-hidden="true" />
+              <span className="camp-pin-label">{pin.name}{pin.approx && <small>approx.</small>}</span>
+            </button>
+            {selected && <aside className="camp-info-card" role="dialog" aria-label={`${pin.name} details`}>
+              <button type="button" className="camp-info-close" aria-label="Close camp details" onClick={() => setActiveCamp(null)}>×</button>
+              <b>{details?.name ?? pin.name}</b>
+              {details?.altitudeM && <strong>{details.altitudeM.toLocaleString()} m <small>ALTITUDE</small></strong>}
+              {details?.description && <p>{details.description}</p>}
+              {details?.altitudeNote && <small>{details.altitudeNote}</small>}
+              {details?.coordsApprox && <small>Coordinates approximate · {details.lat?.toFixed(4)}° N, {details.lon?.toFixed(4)}° E</small>}
+              {details?.coordsSource && <small>Location source: {details.coordsSource}</small>}
+            </aside>}
+          </div>;
+        })}
+      </>}
       {hotspots.map(h => {
         const alignment = [h.y < 0.16 && 'hotspot-below', h.x < 0.12 && 'hotspot-align-left', h.x > 0.88 && 'hotspot-align-right'].filter(Boolean).join(' ');
         const selected = activeHotspot === h.id, hovered = hoveredHotspot === h.id;
@@ -209,7 +272,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
       {(!ready || (exploded && explodeDirection !== 0 && !allFramesLoaded)) && <div className="viewer-loading"><span>{exploded && explodeDirection !== 0 ? 'PREPARING EXPLODED VIEW' : 'LOADING OBJECT'}</span><i><b style={{ width: `${progress}%` }} /></i></div>}
     </>}
     <div className="viewer-controls">
-      <button type="button" className="viewer-action" disabled={!manifest?.explode} title={exploded ? 'Assemble parts' : 'Explode view'} onClick={toggleExplode}>{exploded ? (explodeDirection === -1 ? 'Assembling…' : 'Assemble parts') : 'Explode view'}</button>
+      {slug === 'mount-everest' ? <button type="button" className={`viewer-action ${campsRoute ? 'viewer-action-active' : ''}`} aria-pressed={campsRoute} title="Toggle camps and climbing route" onClick={() => { setCampsRoute(value => !value); setActiveCamp(null); }}>Camps &amp; Route</button> : <button type="button" className="viewer-action" disabled={!manifest?.explode} title={exploded ? 'Assemble parts' : 'Explode view'} onClick={toggleExplode}>{exploded ? (explodeDirection === -1 ? 'Assembling…' : 'Assemble parts') : 'Explode view'}</button>}
       <button type="button" className="viewer-action" onClick={reset}>Reset</button>
       <button type="button" className="viewer-icon" aria-label="Fullscreen" title="Fullscreen" onClick={() => stage.current?.requestFullscreen()}>⛶</button>
     </div>
