@@ -16,6 +16,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const stage = useRef<HTMLDivElement>(null);
   const images = useRef<(HTMLImageElement | undefined)[]>([]);
   const position = useRef(0);
+  const zoomFactor = useRef(1);
   const drag = useRef<{ x: number } | null>(null);
   const [manifest, setManifest] = useState<Manifest | null>(null);
   const [progress, setProgress] = useState(0);
@@ -30,6 +31,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const [campDetails, setCampDetails] = useState<CampDetail[] | null>(null);
   const [activeCamp, setActiveCamp] = useState<string | null>(null);
   const [hoveredCamp, setHoveredCamp] = useState<string | null>(null);
+  const [zoom, setZoom] = useState(1);
   const [inView, setInView] = useState(false);
   const [viewFrame, setViewFrame] = useState(0);
   const count = exploded ? manifest?.explode?.count ?? 0 : manifest?.rotate.count ?? 1;
@@ -49,7 +51,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     ctx.fillRect(0, 0, r.width, r.height);
     const img = images.current[frameIndex(position.current, count)];
     if (img?.complete && img.naturalWidth) {
-      const scale = Math.min(r.width / img.naturalWidth, r.height / img.naturalHeight);
+      const scale = Math.min(r.width / img.naturalWidth, r.height / img.naturalHeight) * zoomFactor.current;
       const w = img.naturalWidth * scale, h = img.naturalHeight * scale;
       ctx.drawImage(img, (r.width - w) / 2, (r.height - h) / 2, w, h);
     }
@@ -68,7 +70,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   useEffect(() => {
     if (!inView) return;
     let cancelled = false;
-    setManifest(null); setMissing(false); setReady(false); setAllFramesLoaded(false); setProgress(0); setExploded(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); setViewFrame(0);
+    setManifest(null); setMissing(false); setReady(false); setAllFramesLoaded(false); setProgress(0); setExploded(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); setViewFrame(0); zoomFactor.current = 1; setZoom(1);
     position.current = 0; images.current = [];
     const poster = new Image();
     poster.onload = () => { if (!cancelled) { images.current[0] = poster; drawRef.current(); } };
@@ -176,7 +178,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const move = (x: number) => {
     if (!drag.current) return;
     const dx = x - drag.current.x;
-    const next = position.current - dx / 7;
+    const next = position.current + dx / 7;
     position.current = exploded ? Math.max(explodeStart, Math.min(count - 1, next)) : (next + count) % count;
     drag.current = { x };
     setViewFrame(frameIndex(position.current, count)); draw();
@@ -206,14 +208,14 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const hotspotStyle = (x: number, y: number) => {
     const r = canvas.current?.getBoundingClientRect();
     if (!r || !manifest) return { left: `${x * 100}%`, top: `${y * 100}%` };
-    const scale = Math.min(r.width / manifest.width, r.height / manifest.height);
+    const scale = Math.min(r.width / manifest.width, r.height / manifest.height) * zoomFactor.current;
     const imageWidth = manifest.width * scale, imageHeight = manifest.height * scale;
     return { left: `${(r.width - imageWidth) / 2 + x * imageWidth}px`, top: `${(r.height - imageHeight) / 2 + y * imageHeight}px` };
   };
   const imageBounds = (() => {
     const r = canvas.current?.getBoundingClientRect();
     if (!r || !manifest) return { left: 0, top: 0, width: '100%', height: '100%' };
-    const scale = Math.min(r.width / manifest.width, r.height / manifest.height);
+    const scale = Math.min(r.width / manifest.width, r.height / manifest.height) * zoomFactor.current;
     const width = manifest.width * scale, height = manifest.height * scale;
     return { left: (r.width - width) / 2, top: (r.height - height) / 2, width, height };
   })();
@@ -226,7 +228,14 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const visibleRoutePoints = campsRoute && slug === 'mount-everest' && !exploded
     ? (manifest?.rotate.route?.frames[current]?.points ?? []).filter(point => point[2] === 1)
     : [];
-  const reset = () => { position.current = 0; setViewFrame(0); setExploded(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); draw(); };
+  const reset = () => { position.current = 0; setViewFrame(0); setExploded(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); zoomFactor.current = 1; setZoom(1); draw(); };
+  const adjustZoom = (amount: number) => {
+    const next = Math.max(1, Math.min(3, Math.round((zoomFactor.current + amount) * 100) / 100));
+    if (next === zoomFactor.current) return;
+    zoomFactor.current = next;
+    setZoom(next);
+    draw();
+  };
   const toggleExplode = () => {
     if (!manifest?.explode) return;
     setActiveHotspot(null);
@@ -274,6 +283,11 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     </>}
     <div className="viewer-controls">
       {slug === 'mount-everest' ? <button type="button" className={`viewer-action ${campsRoute ? 'viewer-action-active' : ''}`} aria-pressed={campsRoute} title="Toggle camps and climbing route" onClick={() => { setCampsRoute(value => !value); setActiveCamp(null); setHoveredCamp(null); }}>Camps &amp; Route</button> : <button type="button" className="viewer-action" disabled={!manifest?.explode} title={exploded ? 'Assemble parts' : 'Explode view'} onClick={toggleExplode}>{exploded ? (explodeDirection === -1 ? 'Assembling…' : 'Assemble parts') : 'Explode view'}</button>}
+      <div className="viewer-zoom-group" role="group" aria-label="Zoom controls">
+        <button type="button" aria-label="Zoom out" title="Zoom out" disabled={zoom <= 1} onClick={() => adjustZoom(-0.25)}>−</button>
+        <span aria-live="polite">{Math.round(zoom * 100)}%</span>
+        <button type="button" aria-label="Zoom in" title="Zoom in" disabled={zoom >= 3} onClick={() => adjustZoom(0.25)}>+</button>
+      </div>
       <button type="button" className="viewer-action" onClick={reset}>Reset</button>
       <button type="button" className="viewer-icon" aria-label="Fullscreen" title="Fullscreen" onClick={() => stage.current?.requestFullscreen()}>⛶</button>
     </div>
