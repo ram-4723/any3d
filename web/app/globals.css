@@ -36,5 +36,7 @@
 .viewer-zoom-group>span{min-width:34px;text-align:center;color:#d7d5ce;font:8px 'DM Mono',monospace}
 .hero-object .viewer-controls{display:flex;top:10px;right:10px}
 .hero-object .viewer-controls>:not(.viewer-zoom-group){display:none}
+.viewer-canvas-zoomed{touch-action:none;cursor:grab}
+.viewer-canvas-zoomed:active{cursor:grabbing}
 
 .asset-credits{margin-top:20px;padding:17px 19px;border:1px solid #ebe8e2;border-radius:12px;background:#fff;color:#6f6a72;font-size:10px;line-height:1.7}.asset-credits h2{margin:0 0 8px;color:#29272e;font:600 11px 'DM Mono',monospace;letter-spacing:.04em;text-transform:uppercase}.asset-credits p{margin:6px 0}.asset-credits a{color:#8a5874;text-decoration:underline;text-underline-offset:2px}

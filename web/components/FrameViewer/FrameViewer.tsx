@@ -17,7 +17,8 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const images = useRef<(HTMLImageElement | undefined)[]>([]);
   const position = useRef(0);
   const zoomFactor = useRef(1);
-  const drag = useRef<{ x: number } | null>(null);
+  const panPosition = useRef({ x: 0, y: 0 });
+  const drag = useRef<{ x: number; y: number } | null>(null);
   const [manifest, setManifest] = useState<Manifest | null>(null);
   const [progress, setProgress] = useState(0);
   const [ready, setReady] = useState(false);
@@ -32,6 +33,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const [activeCamp, setActiveCamp] = useState<string | null>(null);
   const [hoveredCamp, setHoveredCamp] = useState<string | null>(null);
   const [zoom, setZoom] = useState(1);
+  const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
   const [inView, setInView] = useState(false);
   const [viewFrame, setViewFrame] = useState(0);
   const count = exploded ? manifest?.explode?.count ?? 0 : manifest?.rotate.count ?? 1;
@@ -53,7 +55,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     if (img?.complete && img.naturalWidth) {
       const scale = Math.min(r.width / img.naturalWidth, r.height / img.naturalHeight) * zoomFactor.current;
       const w = img.naturalWidth * scale, h = img.naturalHeight * scale;
-      ctx.drawImage(img, (r.width - w) / 2, (r.height - h) / 2, w, h);
+      ctx.drawImage(img, (r.width - w) / 2 + panPosition.current.x, (r.height - h) / 2 + panPosition.current.y, w, h);
     }
   }, [count, manifest]);
   const drawRef = useRef(draw);
@@ -70,7 +72,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   useEffect(() => {
     if (!inView) return;
     let cancelled = false;
-    setManifest(null); setMissing(false); setReady(false); setAllFramesLoaded(false); setProgress(0); setExploded(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); setViewFrame(0); zoomFactor.current = 1; setZoom(1);
+    setManifest(null); setMissing(false); setReady(false); setAllFramesLoaded(false); setProgress(0); setExploded(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); setViewFrame(0); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 });
     position.current = 0; images.current = [];
     const poster = new Image();
     poster.onload = () => { if (!cancelled) { images.current[0] = poster; drawRef.current(); } };
@@ -175,12 +177,29 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     return () => window.removeEventListener('scroll', fn);
   }, [mode, ready, count, draw]);
 
-  const move = (x: number) => {
+  const constrainPan = (offset: { x: number; y: number }, scale = zoomFactor.current) => {
+    const r = canvas.current?.getBoundingClientRect();
+    if (!r || !manifest) return { x: 0, y: 0 };
+    const fit = Math.min(r.width / manifest.width, r.height / manifest.height);
+    const maxX = Math.max(0, (manifest.width * fit * scale - r.width) / 2);
+    const maxY = Math.max(0, (manifest.height * fit * scale - r.height) / 2);
+    return { x: Math.max(-maxX, Math.min(maxX, offset.x)), y: Math.max(-maxY, Math.min(maxY, offset.y)) };
+  };
+  const move = (x: number, y: number) => {
     if (!drag.current) return;
     const dx = x - drag.current.x;
+    const dy = y - drag.current.y;
+    if (zoomFactor.current > 1) {
+      const offset = constrainPan({ x: panPosition.current.x + dx, y: panPosition.current.y + dy });
+      panPosition.current = offset;
+      drag.current = { x, y };
+      setPanOffset(offset);
+      draw();
+      return;
+    }
     const next = position.current + dx / 7;
     position.current = exploded ? Math.max(explodeStart, Math.min(count - 1, next)) : (next + count) % count;
-    drag.current = { x };
+    drag.current = { x, y };
     setViewFrame(frameIndex(position.current, count)); draw();
   };
   const end = () => { drag.current = null; };
@@ -210,14 +229,14 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     if (!r || !manifest) return { left: `${x * 100}%`, top: `${y * 100}%` };
     const scale = Math.min(r.width / manifest.width, r.height / manifest.height) * zoomFactor.current;
     const imageWidth = manifest.width * scale, imageHeight = manifest.height * scale;
-    return { left: `${(r.width - imageWidth) / 2 + x * imageWidth}px`, top: `${(r.height - imageHeight) / 2 + y * imageHeight}px` };
+    return { left: `${(r.width - imageWidth) / 2 + panOffset.x + x * imageWidth}px`, top: `${(r.height - imageHeight) / 2 + panOffset.y + y * imageHeight}px` };
   };
   const imageBounds = (() => {
     const r = canvas.current?.getBoundingClientRect();
     if (!r || !manifest) return { left: 0, top: 0, width: '100%', height: '100%' };
     const scale = Math.min(r.width / manifest.width, r.height / manifest.height) * zoomFactor.current;
     const width = manifest.width * scale, height = manifest.height * scale;
-    return { left: (r.width - width) / 2, top: (r.height - height) / 2, width, height };
+    return { left: (r.width - width) / 2 + panOffset.x, top: (r.height - height) / 2 + panOffset.y, width, height };
   })();
   const visibleCampPins = campsRoute && slug === 'mount-everest' && !exploded
     ? (manifest?.rotate.hotspots ?? []).flatMap(pin => {
@@ -228,12 +247,15 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const visibleRoutePoints = campsRoute && slug === 'mount-everest' && !exploded
     ? (manifest?.rotate.route?.frames[current]?.points ?? []).filter(point => point[2] === 1)
     : [];
-  const reset = () => { position.current = 0; setViewFrame(0); setExploded(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); zoomFactor.current = 1; setZoom(1); draw(); };
+  const reset = () => { position.current = 0; setViewFrame(0); setExploded(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); draw(); };
   const adjustZoom = (amount: number) => {
     const next = Math.max(1, Math.min(3, Math.round((zoomFactor.current + amount) * 100) / 100));
     if (next === zoomFactor.current) return;
     zoomFactor.current = next;
     setZoom(next);
+    const offset = constrainPan(panPosition.current, next);
+    panPosition.current = offset;
+    setPanOffset(offset);
     draw();
   };
   const toggleExplode = () => {
@@ -245,7 +267,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   };
 
   return <div ref={stage} className={`viewer ${mode === 'scroll' ? 'viewer-scroll' : ''}`} aria-label={`${slug} 3D viewer`}>
-    <canvas ref={canvas} className="viewer-canvas" role="img" aria-label={`Interactive 3D view of ${slug}`} onPointerDown={e => { if (mode === 'drag') { setExplodeDirection(0); e.currentTarget.setPointerCapture(e.pointerId); drag.current = { x: e.clientX }; } }} onPointerMove={e => move(e.clientX)} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} tabIndex={0} />
+    <canvas ref={canvas} className={`viewer-canvas ${zoom > 1 ? 'viewer-canvas-zoomed' : ''}`} role="img" aria-label={`Interactive 3D view of ${slug}`} onPointerDown={e => { if (mode === 'drag') { setExplodeDirection(0); e.currentTarget.setPointerCapture(e.pointerId); drag.current = { x: e.clientX, y: e.clientY }; } }} onPointerMove={e => move(e.clientX, e.clientY)} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} tabIndex={0} />
     {missing && <div className="viewer-empty"><span>✦</span><b>3D coming soon</b><small>Frame pack not added yet</small></div>}
     {!missing && <>
       <div className="viewer-tag">↔ {exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'DRAG TO ROTATE'} · {exploded ? count - explodeStart : count} VIEWS</div>
