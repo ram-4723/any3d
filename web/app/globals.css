@@ -12,14 +12,15 @@
 .camp-route-line{position:absolute;z-index:3;pointer-events:none;overflow:visible}
 .camp-route-line polyline{fill:none;stroke:#f6c96a;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;filter:drop-shadow(0 1px 3px #17150e)}
 .camp-marker{position:absolute;z-index:6;transform:translate(-50%,-50%);width:max-content;max-width:180px}
-.camp-pin-button{display:flex;align-items:center;gap:6px;max-width:180px;padding:5px 8px 5px 5px;border:1px solid #ffffff9c;border-radius:20px;background:#151914eF;color:#fff8e7;box-shadow:0 2px 10px #0008;cursor:pointer;font:600 10px/1.2 'DM Sans',sans-serif}
-.camp-pin-button:hover,.camp-pin-button:focus-visible{border-color:#ffdc8c;background:#25281f;outline:2px solid #ffdc8c;outline-offset:2px}
-.camp-pin-icon{position:relative;flex:0 0 11px;width:11px;height:11px;border:2px solid #fff9e9;border-radius:50% 50% 50% 0;background:#e5ad43;box-shadow:0 0 0 3px #151914a6;transform:rotate(-45deg)}
-.camp-pin-label{display:flex;align-items:center;gap:4px;white-space:nowrap}
+.camp-pin-button{position:relative;display:block;width:16px;height:16px;padding:0;border:0;border-radius:50%;background:transparent;cursor:pointer}
+.camp-pin-button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.camp-pin-icon{display:block;width:11px;height:11px;margin:auto;border:2px solid #fff;border-radius:50%;background:#f0444e;box-shadow:0 0 0 3px #f0444e55,0 1px 5px #000b;transition:transform .14s ease,box-shadow .14s ease}
+.camp-pin-button:hover .camp-pin-icon,.camp-pin-button:focus-visible .camp-pin-icon{transform:scale(1.3);box-shadow:0 0 0 4px #f0444e66,0 1px 7px #000b}
+.camp-pin-label{position:absolute;left:50%;bottom:calc(100% + 7px);display:flex;align-items:center;gap:4px;width:max-content;max-width:190px;transform:translateX(-50%);padding:5px 8px;border:1px solid #ffffff55;border-radius:6px;background:#151914ed;color:#fff8e7;box-shadow:0 3px 12px #0009;white-space:nowrap;font:600 10px/1.2 'DM Sans',sans-serif;pointer-events:none}
 .camp-pin-label small{color:#f1d69e;font:8px 'DM Mono',monospace}
-.camp-label-below .camp-pin-button{transform:translateY(18px)}
-.camp-label-left{transform:translate(0,-50%)}
-.camp-label-right{transform:translate(-100%,-50%)}
+.camp-label-below .camp-pin-label{top:calc(100% + 7px);bottom:auto}
+.camp-label-left .camp-pin-label{left:calc(100% + 7px);bottom:50%;transform:none}
+.camp-label-right .camp-pin-label{left:auto;right:calc(100% + 7px);bottom:50%;transform:none}
 .camp-info-card{position:absolute;left:50%;bottom:calc(100% + 10px);z-index:10;width:220px;max-width:min(220px,75vw);padding:13px 14px;border:1px solid #ffffff38;border-radius:10px;background:#151914f5;color:#f7f4ed;box-shadow:0 10px 30px #0009;transform:translateX(-50%);text-align:left;white-space:normal}
 .camp-label-below .camp-info-card{top:calc(100% + 30px);bottom:auto}
 .camp-label-left .camp-info-card{left:0;transform:none}

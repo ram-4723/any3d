@@ -29,6 +29,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const [campsRoute, setCampsRoute] = useState(false);
   const [campDetails, setCampDetails] = useState<CampDetail[] | null>(null);
   const [activeCamp, setActiveCamp] = useState<string | null>(null);
+  const [hoveredCamp, setHoveredCamp] = useState<string | null>(null);
   const [inView, setInView] = useState(false);
   const [viewFrame, setViewFrame] = useState(0);
   const count = exploded ? manifest?.explode?.count ?? 0 : manifest?.rotate.count ?? 1;
@@ -248,9 +249,9 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
           const selected = activeCamp === pin.id;
           const alignment = [pin.y < 0.2 && 'camp-label-below', pin.x < 0.16 && 'camp-label-left', pin.x > 0.84 && 'camp-label-right'].filter(Boolean).join(' ');
           return <div className={`camp-marker ${alignment}`} key={pin.id} style={hotspotStyle(pin.x, pin.y)}>
-            <button type="button" className="camp-pin-button" aria-label={`Show details for ${pin.name}${pin.approx ? ', approximate location' : ''}`} aria-expanded={selected} onClick={() => setActiveCamp(selected ? null : pin.id)}>
+            <button type="button" className="camp-pin-button" aria-label={`Show details for ${pin.name}${pin.approx ? ', approximate location' : ''}`} aria-expanded={selected} onPointerEnter={() => setHoveredCamp(pin.id)} onPointerLeave={() => setHoveredCamp(null)} onFocus={() => setHoveredCamp(pin.id)} onBlur={() => setHoveredCamp(null)} onClick={() => setActiveCamp(selected ? null : pin.id)}>
               <span className="camp-pin-icon" aria-hidden="true" />
-              <span className="camp-pin-label">{pin.name}{pin.approx && <small>approx.</small>}</span>
+              {hoveredCamp === pin.id && <span className="camp-pin-label">{pin.name}{pin.approx && <small>approx.</small>}</span>}
             </button>
             {selected && <aside className="camp-info-card" role="dialog" aria-label={`${pin.name} details`}>
               <button type="button" className="camp-info-close" aria-label="Close camp details" onClick={() => setActiveCamp(null)}>×</button>
@@ -272,7 +273,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
       {(!ready || (exploded && explodeDirection !== 0 && !allFramesLoaded)) && <div className="viewer-loading"><span>{exploded && explodeDirection !== 0 ? 'PREPARING EXPLODED VIEW' : 'LOADING OBJECT'}</span><i><b style={{ width: `${progress}%` }} /></i></div>}
     </>}
     <div className="viewer-controls">
-      {slug === 'mount-everest' ? <button type="button" className={`viewer-action ${campsRoute ? 'viewer-action-active' : ''}`} aria-pressed={campsRoute} title="Toggle camps and climbing route" onClick={() => { setCampsRoute(value => !value); setActiveCamp(null); }}>Camps &amp; Route</button> : <button type="button" className="viewer-action" disabled={!manifest?.explode} title={exploded ? 'Assemble parts' : 'Explode view'} onClick={toggleExplode}>{exploded ? (explodeDirection === -1 ? 'Assembling…' : 'Assemble parts') : 'Explode view'}</button>}
+      {slug === 'mount-everest' ? <button type="button" className={`viewer-action ${campsRoute ? 'viewer-action-active' : ''}`} aria-pressed={campsRoute} title="Toggle camps and climbing route" onClick={() => { setCampsRoute(value => !value); setActiveCamp(null); setHoveredCamp(null); }}>Camps &amp; Route</button> : <button type="button" className="viewer-action" disabled={!manifest?.explode} title={exploded ? 'Assemble parts' : 'Explode view'} onClick={toggleExplode}>{exploded ? (explodeDirection === -1 ? 'Assembling…' : 'Assemble parts') : 'Explode view'}</button>}
       <button type="button" className="viewer-action" onClick={reset}>Reset</button>
       <button type="button" className="viewer-icon" aria-label="Fullscreen" title="Fullscreen" onClick={() => stage.current?.requestFullscreen()}>⛶</button>
     </div>
