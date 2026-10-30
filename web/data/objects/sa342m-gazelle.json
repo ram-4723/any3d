@@ -1,0 +1,119 @@
+{
+  "slug": "sa342m-gazelle",
+  "name": {
+    "hi": "Gazelle SA342M",
+    "en": "Gazelle SA342M"
+  },
+  "category": "aircraft",
+  "tagline": {
+    "hi": "The fast, glass-nosed French scout that introduced the Fenestron",
+    "en": "The fast, glass-nosed French scout that introduced the Fenestron"
+  },
+  "summary": {
+    "hi": "The Gazelle is a light five-seat helicopter designed by Sud Aviation and built by Aérospatiale, first flown in 1967. It was the first production helicopter with a Fenestron, a fan-in-fin tail rotor. The SA342M is the French Army (ALAT) anti-tank version: a single Turbomeca Astazou XIV M engine, four HOT wire-guided missiles and a roof sight for the gunner. Upgraded SA342M1 Viviane machines added a thermal night sight and are still in service.",
+    "en": "The Gazelle is a light five-seat helicopter designed by Sud Aviation and built by Aérospatiale, first flown in 1967. It was the first production helicopter with a Fenestron, a fan-in-fin tail rotor. The SA342M is the French Army (ALAT) anti-tank version: a single Turbomeca Astazou XIV M engine, four HOT wire-guided missiles and a roof sight for the gunner. Upgraded SA342M1 Viviane machines added a thermal night sight and are still in service."
+  },
+  "specs": [
+    {
+      "label": {
+        "hi": "Crew",
+        "en": "Crew"
+      },
+      "unit": "",
+      "value": "2 (pilot + gunner/commander)"
+    },
+    {
+      "label": {
+        "hi": "Seats",
+        "en": "Seats"
+      },
+      "unit": "",
+      "value": "Pilot + 4 passengers"
+    },
+    {
+      "label": {
+        "hi": "Engine",
+        "en": "Engine"
+      },
+      "unit": "",
+      "value": "1 × Turbomeca Astazou XIV M turboshaft, about 870 hp max"
+    },
+    {
+      "label": {
+        "hi": "Main rotor",
+        "en": "Main rotor"
+      },
+      "unit": "",
+      "value": "3 blades, 10.50 m diameter"
+    },
+    {
+      "label": {
+        "hi": "Tail rotor",
+        "en": "Tail rotor"
+      },
+      "unit": "",
+      "value": "Fenestron, 13 blades, 0.69 m"
+    },
+    {
+      "label": {
+        "hi": "Length",
+        "en": "Length"
+      },
+      "unit": "",
+      "value": "11.97 m (rotors turning), 9.53 m fuselage"
+    },
+    {
+      "label": {
+        "hi": "Height",
+        "en": "Height"
+      },
+      "unit": "",
+      "value": "3.19 m"
+    },
+    {
+      "label": {
+        "hi": "Max weight",
+        "en": "Max weight"
+      },
+      "unit": "",
+      "value": "1,900 kg"
+    },
+    {
+      "label": {
+        "hi": "Cruise speed",
+        "en": "Cruise speed"
+      },
+      "unit": "",
+      "value": "240 km/h"
+    },
+    {
+      "label": {
+        "hi": "Armament",
+        "en": "Armament"
+      },
+      "unit": "",
+      "value": "4 × HOT anti-tank missiles (about 4 km range)"
+    }
+  ],
+  "funFacts": [
+    {
+      "text": {
+        "hi": "Rendered from a third-party 3D model. Labels describe the real SA342M Gazelle; the model is not an exact replica.",
+        "en": "Rendered from a third-party 3D model. Labels describe the real SA342M Gazelle; the model is not an exact replica."
+      },
+      "sourceUrl": "https://sketchfab.com/3d-models/sa342m-gazelle-2eb65cec2060459085ea4f06db44d668"
+    }
+  ],
+  "celebrityLinks": [],
+  "rarity": "SA342M · French Army",
+  "hasFramePack": true,
+  "tags": [
+    "aerospace",
+    "helicopter",
+    "gazelle",
+    "sa342m",
+    "french-army",
+    "fenestron",
+    "rotorcraft"
+  ]
+}

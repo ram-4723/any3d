@@ -87,12 +87,12 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   }, [slug, inView]);
 
   useEffect(() => {
-    if (slug !== 'bmw-s1000rr') {
+    if (slug !== 'bmw-s1000rr' && slug !== 'sa342m-gazelle') {
       setPartDetails([]);
       return;
     }
     let cancelled = false;
-    fetch('/objects/bmw-s1000rr/bmw-s1000rr.json')
+    fetch(`/objects/${slug}/${slug}.json`)
       .then(response => response.ok ? response.json() as Promise<{ parts?: PartDetail[] }> : Promise.reject())
       .then(data => { if (!cancelled) setPartDetails(data.parts ?? []); })
       .catch(() => { if (!cancelled) setPartDetails([]); });
@@ -316,7 +316,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
         const selected = activeHotspot === h.id, hovered = hoveredHotspot === h.id;
         return <button key={h.id} type="button" className={'hotspot ' + alignment} style={hotspotStyle(h.x, h.y)} onPointerEnter={() => setHoveredHotspot(h.id)} onPointerLeave={() => setHoveredHotspot(null)} onFocus={() => setHoveredHotspot(h.id)} onBlur={() => setHoveredHotspot(null)} onClick={() => { if (selected) { setActiveHotspot(null); setHoveredHotspot(null); } else setActiveHotspot(h.id); }} aria-label={h.name} aria-pressed={selected}>{(selected || hovered) && <span className="hotspot-label" role="tooltip">{h.group && <small>{h.group}</small>}{h.name}</span>}</button>;
       })}
-      {slug === 'bmw-s1000rr' && activeHotspot && (() => {
+      {activeHotspot && partDetails.length > 0 && (() => {
         const part = partDetails.find(item => item.id === activeHotspot);
         if (!part) return null;
         return <aside className="part-info-card" role="dialog" aria-label={`${part.name.en} details`}>
@@ -324,7 +324,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
           <small>{part.category}</small><b>{part.name.en}</b><p>{part.desc.en}</p>
         </aside>;
       })()}
-      {slug === 'bmw-s1000rr' && manifest?.credit && <a className="viewer-credit" href="https://sketchfab.com/3d-models/bmw-s1000-rr-1873aed292d6465694119bd81860a0c2" target="_blank" rel="noreferrer">{manifest.credit}</a>}
+      {manifest?.credit && <a className="viewer-credit" href={slug === 'sa342m-gazelle' ? 'https://sketchfab.com/3d-models/sa342m-gazelle-2eb65cec2060459085ea4f06db44d668' : 'https://sketchfab.com/3d-models/bmw-s1000-rr-1873aed292d6465694119bd81860a0c2'} target="_blank" rel="noreferrer">{manifest.credit}</a>}
       {(!ready || (exploded && explodeDirection !== 0 && !allFramesLoaded)) && <div className="viewer-loading"><span>{exploded && explodeDirection !== 0 ? 'PREPARING EXPLODED VIEW' : 'LOADING OBJECT'}</span><i><b style={{ width: `${progress}%` }} /></i></div>}
     </>}
     <div className="viewer-controls">

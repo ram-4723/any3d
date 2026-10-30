@@ -1,0 +1,188 @@
+{
+  "slug": "sa342m-gazelle",
+  "name": {
+    "en": "Gazelle SA342M"
+  },
+  "fullName": {
+    "en": "Aérospatiale SA342M Gazelle (French Army anti-tank helicopter)"
+  },
+  "category": "aircraft",
+  "tagline": {
+    "en": "The fast, glass-nosed French scout that introduced the Fenestron"
+  },
+  "summary": {
+    "en": "The Gazelle is a light five-seat helicopter designed by Sud Aviation and built by Aérospatiale, first flown in 1967. It was the first production helicopter with a Fenestron, a fan-in-fin tail rotor. The SA342M is the French Army (ALAT) anti-tank version: a single Turbomeca Astazou XIV M engine, four HOT wire-guided missiles and a roof sight for the gunner. Upgraded SA342M1 Viviane machines added a thermal night sight and are still in service."
+  },
+  "specs": {
+    "en": [
+      [
+        "Crew",
+        "2 (pilot + gunner/commander)"
+      ],
+      [
+        "Seats",
+        "Pilot + 4 passengers"
+      ],
+      [
+        "Engine",
+        "1 × Turbomeca Astazou XIV M turboshaft, about 870 hp max"
+      ],
+      [
+        "Main rotor",
+        "3 blades, 10.50 m diameter"
+      ],
+      [
+        "Tail rotor",
+        "Fenestron, 13 blades, 0.69 m"
+      ],
+      [
+        "Length",
+        "11.97 m (rotors turning), 9.53 m fuselage"
+      ],
+      [
+        "Height",
+        "3.19 m"
+      ],
+      [
+        "Max weight",
+        "1,900 kg"
+      ],
+      [
+        "Cruise speed",
+        "240 km/h"
+      ],
+      [
+        "Armament",
+        "4 × HOT anti-tank missiles (about 4 km range)"
+      ]
+    ]
+  },
+  "parts": [
+    {
+      "id": "rotor_blades",
+      "name": {
+        "en": "Main rotor blades"
+      },
+      "desc": {
+        "en": "Three blades turning on a 10.5 m rotor disc. Upgraded Viviane-standard Gazelles use heavier-duty Écureuil (AS355/AS555 Fennec) blades to cope with the higher weight."
+      },
+      "category": "ROTOR"
+    },
+    {
+      "id": "rotor_head",
+      "name": {
+        "en": "Rotor head & mast"
+      },
+      "desc": {
+        "en": "The hub holds the three blades and changes their pitch through the swashplate, which is how the pilot climbs, descends and steers."
+      },
+      "category": "ROTOR"
+    },
+    {
+      "id": "gearbox",
+      "name": {
+        "en": "Main gearbox"
+      },
+      "desc": {
+        "en": "Slows the engine's high-speed output down to rotor speed and drives both the main rotor mast and the tail drive shaft."
+      },
+      "category": "DRIVETRAIN"
+    },
+    {
+      "id": "engine",
+      "name": {
+        "en": "Turbomeca Astazou XIV M engine"
+      },
+      "desc": {
+        "en": "A single turboshaft engine mounted openly behind the gearbox under a slim cowling. It runs at a constant 43,000 rpm and is rated at about 870 hp maximum."
+      },
+      "category": "ENGINE"
+    },
+    {
+      "id": "roof_sight",
+      "name": {
+        "en": "Roof-mounted sight"
+      },
+      "desc": {
+        "en": "The gunner's stabilised sight above the cabin. On the SA342M1 Viviane it adds a thermal camera and laser rangefinder for night firing of HOT missiles."
+      },
+      "category": "SENSORS"
+    },
+    {
+      "id": "canopy",
+      "name": {
+        "en": "Glazed canopy"
+      },
+      "desc": {
+        "en": "The large curved 'glasshouse' windows give the two crew an almost all-round view, which matters for low-level scouting."
+      },
+      "category": "COCKPIT"
+    },
+    {
+      "id": "fuselage",
+      "name": {
+        "en": "Cabin & fuselage"
+      },
+      "desc": {
+        "en": "The main structure carrying the crew seats, controls and fuel. It seats a pilot plus up to four passengers."
+      },
+      "category": "AIRFRAME"
+    },
+    {
+      "id": "weapons",
+      "name": {
+        "en": "Weapon outriggers"
+      },
+      "desc": {
+        "en": "Side mounts that carry the armament. The SA342M's main weapon is four wire-guided HOT anti-tank missiles with a range of about 4 km."
+      },
+      "category": "WEAPONS"
+    },
+    {
+      "id": "tail_boom",
+      "name": {
+        "en": "Tail boom"
+      },
+      "desc": {
+        "en": "A slender tube that carries the tail drive shaft back to the Fenestron and holds the tail surfaces."
+      },
+      "category": "AIRFRAME"
+    },
+    {
+      "id": "tail_fins",
+      "name": {
+        "en": "Horizontal stabiliser & endplates"
+      },
+      "desc": {
+        "en": "Small fixed wings with end fins that keep the helicopter steady in pitch and yaw during fast forward flight."
+      },
+      "category": "STABILITY"
+    },
+    {
+      "id": "fenestron",
+      "name": {
+        "en": "Fenestron tail rotor"
+      },
+      "desc": {
+        "en": "A 13-blade fan inside the tail fin, 0.69 m across, spinning at about 5,800 rpm. The Gazelle was the first production helicopter with a Fenestron, which is safer and quieter than an open tail rotor."
+      },
+      "category": "ROTOR"
+    },
+    {
+      "id": "skids",
+      "name": {
+        "en": "Landing skids"
+      },
+      "desc": {
+        "en": "Simple tubular skids instead of wheels: light, strong and able to land on rough or uneven ground."
+      },
+      "category": "LANDING GEAR"
+    }
+  ],
+  "note": {
+    "en": "Rendered from a third-party 3D model. Labels describe the real SA342M Gazelle; the model is not an exact replica."
+  },
+  "credit": "SA342M Gazelle 3D model by VTX (sketchfab.com/VTX_car), CC BY-NC-SA 4.0",
+  "creditPlacement": "bottom corner of the page, always visible",
+  "licence": "CC BY-NC-SA 4.0 — page must stay non-commercial (no ads, no paid features)"
+}
