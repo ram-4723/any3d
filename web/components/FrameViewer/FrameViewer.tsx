@@ -4,12 +4,13 @@ import { frameIndex, hotspotVisible } from './math';
 
 type Props = { slug: string; mode?: 'drag' | 'scroll' };
 type Hotspot = { id: string; name: string; group?: string; frame: number; x: number; y: number; color: string };
-type ExplodeHotspot = { id: string; name: string; group: string; color: string; points: ([number, number] | null)[] };
+type ExplodeHotspot = { id: string; name: string; group?: string; category?: string; color?: string; points: ([number, number] | null)[] };
 type Sequence = { count: number; pattern: string; loop?: boolean; startFrame?: number };
 type CampHotspot = { id: string; name: string; approx: boolean; offModel?: boolean; points: ([number, number] | null)[] };
 type RouteFrame = { frame: number; points: [number, number, number][] };
 type CampDetail = { id: string; name: string; altitudeM?: number; altitudeNote?: string; lat?: number; lon?: number; coordsApprox?: boolean; coordsSource?: string; description: string };
-type Manifest = { width: number; height: number; rotate: Sequence & { hotspots?: CampHotspot[]; route?: { id: string; name: string; frames: RouteFrame[] } }; explode?: Sequence & { labelsFrom?: number; hotspots?: ExplodeHotspot[] }; hotspots?: Hotspot[]; background?: string };
+type PartDetail = { id: string; category: string; name: { en: string }; desc: { en: string } };
+type Manifest = { width: number; height: number; rotate: Sequence & { hotspots?: CampHotspot[]; route?: { id: string; name: string; frames: RouteFrame[] } }; explode?: Sequence & { labelsFrom?: number; hotspots?: ExplodeHotspot[] }; hotspots?: Hotspot[]; background?: string; credit?: string };
 
 export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -30,6 +31,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const [hoveredHotspot, setHoveredHotspot] = useState<string | null>(null);
   const [campsRoute, setCampsRoute] = useState(false);
   const [campDetails, setCampDetails] = useState<CampDetail[] | null>(null);
+  const [partDetails, setPartDetails] = useState<PartDetail[]>([]);
   const [activeCamp, setActiveCamp] = useState<string | null>(null);
   const [hoveredCamp, setHoveredCamp] = useState<string | null>(null);
   const [zoom, setZoom] = useState(1);
@@ -83,6 +85,19 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     }).then(m => { if (!cancelled) setManifest(m); }).catch(() => { if (!cancelled) setMissing(true); });
     return () => { cancelled = true; };
   }, [slug, inView]);
+
+  useEffect(() => {
+    if (slug !== 'bmw-s1000rr') {
+      setPartDetails([]);
+      return;
+    }
+    let cancelled = false;
+    fetch('/objects/bmw-s1000rr/bmw-s1000rr.json')
+      .then(response => response.ok ? response.json() as Promise<{ parts?: PartDetail[] }> : Promise.reject())
+      .then(data => { if (!cancelled) setPartDetails(data.parts ?? []); })
+      .catch(() => { if (!cancelled) setPartDetails([]); });
+    return () => { cancelled = true; };
+  }, [slug]);
 
   useEffect(() => {
     if (slug !== 'mount-everest' || !campsRoute) {
@@ -221,7 +236,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     ? (manifest?.explode?.hotspots ?? []).flatMap(part => {
         const point = part.points[current];
         if (current + 1 < (manifest?.explode?.labelsFrom ?? 1) || !point) return [];
-        return [{ id: part.id, name: part.name, group: part.group, x: point[0], y: point[1], color: part.color }];
+        return [{ id: part.id, name: part.name, group: part.category ?? part.group, x: point[0], y: point[1], color: part.color }];
       })
     : (manifest?.hotspots ?? []).filter(h => hotspotVisible(current, h.frame, count));
   const hotspotStyle = (x: number, y: number) => {
@@ -301,6 +316,15 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
         const selected = activeHotspot === h.id, hovered = hoveredHotspot === h.id;
         return <button key={h.id} type="button" className={'hotspot ' + alignment} style={hotspotStyle(h.x, h.y)} onPointerEnter={() => setHoveredHotspot(h.id)} onPointerLeave={() => setHoveredHotspot(null)} onFocus={() => setHoveredHotspot(h.id)} onBlur={() => setHoveredHotspot(null)} onClick={() => { if (selected) { setActiveHotspot(null); setHoveredHotspot(null); } else setActiveHotspot(h.id); }} aria-label={h.name} aria-pressed={selected}>{(selected || hovered) && <span className="hotspot-label" role="tooltip">{h.group && <small>{h.group}</small>}{h.name}</span>}</button>;
       })}
+      {slug === 'bmw-s1000rr' && activeHotspot && (() => {
+        const part = partDetails.find(item => item.id === activeHotspot);
+        if (!part) return null;
+        return <aside className="part-info-card" role="dialog" aria-label={`${part.name.en} details`}>
+          <button type="button" className="camp-info-close" aria-label="Close part details" onClick={() => setActiveHotspot(null)}>×</button>
+          <small>{part.category}</small><b>{part.name.en}</b><p>{part.desc.en}</p>
+        </aside>;
+      })()}
+      {slug === 'bmw-s1000rr' && manifest?.credit && <a className="viewer-credit" href="https://sketchfab.com/3d-models/bmw-s1000-rr-1873aed292d6465694119bd81860a0c2" target="_blank" rel="noreferrer">{manifest.credit}</a>}
       {(!ready || (exploded && explodeDirection !== 0 && !allFramesLoaded)) && <div className="viewer-loading"><span>{exploded && explodeDirection !== 0 ? 'PREPARING EXPLODED VIEW' : 'LOADING OBJECT'}</span><i><b style={{ width: `${progress}%` }} /></i></div>}
     </>}
     <div className="viewer-controls">

@@ -8,7 +8,15 @@ async function staticObjects(): Promise<ObjectEntry[]> {
 }
 export async function getObjects(): Promise<ObjectEntry[]> {
   const base = process.env.NEXT_PUBLIC_API_URL;
-  if (base) try { const response = await fetch(`${base}/api/objects`, { next: { revalidate: 60 } }); if (response.ok) return await response.json(); } catch { /* Static fallback keeps Vercel usable. */ }
-  return staticObjects();
+  const local = await staticObjects();
+  if (base) try {
+    const response = await fetch(`${base}/api/objects`, { next: { revalidate: 60 } });
+    if (response.ok) {
+      const remote = await response.json() as ObjectEntry[];
+      const remoteSlugs = new Set(remote.map(item => item.slug));
+      return [...remote, ...local.filter(item => !remoteSlugs.has(item.slug))];
+    }
+  } catch { /* Static fallback keeps Vercel usable. */ }
+  return local;
 }
 export async function getObject(slug: string) { return (await getObjects()).find(item => item.slug === slug); }

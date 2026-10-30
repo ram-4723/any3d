@@ -1,0 +1,218 @@
+{
+ "slug": "bmw-s1000rr",
+ "name": {
+  "en": "BMW S 1000 RR"
+ },
+ "fullName": {
+  "en": "BMW S 1000 RR superbike"
+ },
+ "category": "cars-bikes",
+ "tagline": {
+  "en": "BMW's 210 hp, 303 km/h superbike for road and track"
+ },
+ "summary": {
+  "en": "The S 1000 RR is BMW Motorrad's flagship superbike. Its 999 cc ShiftCam inline-four makes 210 hp, it weighs 198 kg ready to ride, and it reaches 100 km/h in about 3.2 seconds. Track-derived parts like winglets, M brake ducts and Race ABS come from BMW's World Superbike programme."
+ },
+ "specs": {
+  "en": [
+   [
+    "Engine",
+    "999 cc inline-four, ShiftCam, water/oil-cooled"
+   ],
+   [
+    "Power",
+    "210 hp (154 kW) at 13,750 rpm"
+   ],
+   [
+    "Torque",
+    "113 Nm at 11,000 rpm"
+   ],
+   [
+    "Top speed",
+    "303 km/h"
+   ],
+   [
+    "0–100 km/h",
+    "3.21 s"
+   ],
+   [
+    "Weight",
+    "198 kg road-ready, 185 kg dry"
+   ],
+   [
+    "Gearbox",
+    "6-speed, chain drive"
+   ],
+   [
+    "Frame",
+    "Cast-aluminium bridge frame"
+   ],
+   [
+    "Front brakes",
+    "Twin 320 mm discs, 4-piston calipers"
+   ],
+   [
+    "Fuel tank",
+    "16.5 l"
+   ]
+  ]
+ },
+ "parts": [
+  {
+   "id": "engine",
+   "category": "ENGINE",
+   "name": {
+    "en": "999 cc inline-four engine"
+   },
+   "desc": {
+    "en": "Water/oil-cooled four-cylinder with titanium valves and BMW ShiftCam variable intake timing. Makes 210 hp (154 kW) at 13,750 rpm and 113 Nm at 11,000 rpm. The cast-aluminium bridge frame wraps around it and uses the engine as a load-bearing part."
+   }
+  },
+  {
+   "id": "frame",
+   "category": "CHASSIS",
+   "name": {
+    "en": "Aluminium bridge frame"
+   },
+   "desc": {
+    "en": "Cast-aluminium twin-spar bridge frame with a bolt-on rear subframe. It wraps over the engine, which acts as a stressed member, and carries the steering head, swingarm pivot and seat."
+   }
+  },
+  {
+   "id": "radiator",
+   "category": "COOLING",
+   "name": {
+    "en": "Radiator & oil cooler"
+   },
+   "desc": {
+    "en": "Curved water radiator mounted ahead of the engine behind the front fairing, fed by the fairing's air ducts. Keeps the four-cylinder at working temperature on track and in traffic."
+   }
+  },
+  {
+   "id": "exhaust",
+   "category": "EXHAUST",
+   "name": {
+    "en": "Exhaust system"
+   },
+   "desc": {
+    "en": "Collects the four header pipes under the engine and runs them to a short side silencer, with a closed-loop catalytic converter to meet EU5+ emissions."
+   }
+  },
+  {
+   "id": "fuel_tank",
+   "category": "BODYWORK",
+   "name": {
+    "en": "Fuel tank"
+   },
+   "desc": {
+    "en": "Holds 16.5 litres of fuel, with about 4 litres in reserve. Its shape gives the rider's knees and chest a place to tuck in at speed."
+   }
+  },
+  {
+   "id": "seat_tail",
+   "category": "BODYWORK",
+   "name": {
+    "en": "Seat & tail section"
+   },
+   "desc": {
+    "en": "The rider's seat sits 832 mm off the ground (858 mm with the sport seat). The slim tail unit hides the rear subframe and tail light."
+   }
+  },
+  {
+   "id": "front_fairing",
+   "category": "AERO",
+   "name": {
+    "en": "Front fairing & headlights"
+   },
+   "desc": {
+    "en": "The nose cone cuts through the air and holds the LED headlights. Newer RRs add winglets to the side panels for extra front-end downforce."
+   }
+  },
+  {
+   "id": "windscreen",
+   "category": "AERO",
+   "name": {
+    "en": "Windscreen"
+   },
+   "desc": {
+    "en": "A tall, curved screen that pushes the airflow over the rider's helmet when tucked in on a straight. Top speed is 303 km/h."
+   }
+  },
+  {
+   "id": "cockpit",
+   "category": "CONTROLS",
+   "name": {
+    "en": "Cockpit & clip-on bars"
+   },
+   "desc": {
+    "en": "Low clip-on handlebars, the throttle and brake levers, and the colour TFT dashboard that shows riding modes like Rain, Road, Dynamic and Race."
+   }
+  },
+  {
+   "id": "side_fairings",
+   "category": "AERO",
+   "name": {
+    "en": "Side fairings"
+   },
+   "desc": {
+    "en": "Side panels that smooth the airflow around the engine and channel cooling air to and from the radiator."
+   }
+  },
+  {
+   "id": "front_fork",
+   "category": "SUSPENSION",
+   "name": {
+    "en": "45 mm upside-down fork"
+   },
+   "desc": {
+    "en": "Fully adjustable front suspension with 120 mm of travel. Its steering head angle is 66.4°, set for quick, precise turn-in."
+   }
+  },
+  {
+   "id": "front_wheel",
+   "category": "BRAKES",
+   "name": {
+    "en": "Front wheel & twin brakes"
+   },
+   "desc": {
+    "en": "A 17-inch cast-aluminium wheel with a 120/70 tyre and twin 320 mm discs gripped by four-piston fixed calipers, backed by Race ABS."
+   }
+  },
+  {
+   "id": "rear_wheel",
+   "category": "WHEELS",
+   "name": {
+    "en": "Rear wheel & brake"
+   },
+   "desc": {
+    "en": "A wide 6-inch rim with a 190/55 ZR17 tyre to put the power down, plus a single 220 mm rear disc."
+   }
+  },
+  {
+   "id": "swingarm",
+   "category": "SUSPENSION",
+   "name": {
+    "en": "Swingarm & rear shock"
+   },
+   "desc": {
+    "en": "An aluminium swingarm with BMW's Full Floater Pro rear suspension: 118 mm of travel with adjustable preload, rebound and compression."
+   }
+  },
+  {
+   "id": "chain_drive",
+   "category": "DRIVETRAIN",
+   "name": {
+    "en": "Chain drive"
+   },
+   "desc": {
+    "en": "A 525 chain with 17/46 sprockets carries power from the six-speed straight-cut gearbox to the rear wheel."
+   }
+  }
+ ],
+ "note": {
+  "en": "Rendered from a third-party 3D model. Labels describe the real current S 1000 RR; the model is not an exact replica."
+ },
+ "credit": "BMW S1000 RR 3D model by VTX (sketchfab.com/VTX_car), CC BY-NC-SA 4.0",
+ "creditPlacement": "bottom corner of the page, always visible",
+ "licence": "CC BY-NC-SA 4.0 — page must stay non-commercial (no ads, no paid features)"
+}

@@ -1,0 +1,118 @@
+{
+  "slug": "bmw-s1000rr",
+  "name": {
+    "en": "BMW S 1000 RR",
+    "hi": "BMW S 1000 RR"
+  },
+  "category": "cars-bikes",
+  "tagline": {
+    "en": "BMW's 210 hp, 303 km/h superbike for road and track",
+    "hi": "BMW's 210 hp, 303 km/h superbike for road and track"
+  },
+  "summary": {
+    "en": "The S 1000 RR is BMW Motorrad's flagship superbike. Its 999 cc ShiftCam inline-four makes 210 hp, it weighs 198 kg ready to ride, and it reaches 100 km/h in about 3.2 seconds. Track-derived parts like winglets, M brake ducts and Race ABS come from BMW's World Superbike programme.",
+    "hi": "The S 1000 RR is BMW Motorrad's flagship superbike. Its 999 cc ShiftCam inline-four makes 210 hp, it weighs 198 kg ready to ride, and it reaches 100 km/h in about 3.2 seconds. Track-derived parts like winglets, M brake ducts and Race ABS come from BMW's World Superbike programme."
+  },
+  "specs": [
+    {
+      "label": {
+        "en": "Engine",
+        "hi": "Engine"
+      },
+      "unit": "",
+      "value": "999 cc inline-four, ShiftCam, water/oil-cooled"
+    },
+    {
+      "label": {
+        "en": "Power",
+        "hi": "Power"
+      },
+      "unit": "",
+      "value": "210 hp (154 kW) at 13,750 rpm"
+    },
+    {
+      "label": {
+        "en": "Torque",
+        "hi": "Torque"
+      },
+      "unit": "",
+      "value": "113 Nm at 11,000 rpm"
+    },
+    {
+      "label": {
+        "en": "Top speed",
+        "hi": "Top speed"
+      },
+      "unit": "",
+      "value": "303 km/h"
+    },
+    {
+      "label": {
+        "en": "0–100 km/h",
+        "hi": "0–100 km/h"
+      },
+      "unit": "",
+      "value": "3.21 s"
+    },
+    {
+      "label": {
+        "en": "Weight",
+        "hi": "Weight"
+      },
+      "unit": "",
+      "value": "198 kg road-ready, 185 kg dry"
+    },
+    {
+      "label": {
+        "en": "Gearbox",
+        "hi": "Gearbox"
+      },
+      "unit": "",
+      "value": "6-speed, chain drive"
+    },
+    {
+      "label": {
+        "en": "Frame",
+        "hi": "Frame"
+      },
+      "unit": "",
+      "value": "Cast-aluminium bridge frame"
+    },
+    {
+      "label": {
+        "en": "Front brakes",
+        "hi": "Front brakes"
+      },
+      "unit": "",
+      "value": "Twin 320 mm discs, 4-piston calipers"
+    },
+    {
+      "label": {
+        "en": "Fuel tank",
+        "hi": "Fuel tank"
+      },
+      "unit": "",
+      "value": "16.5 l"
+    }
+  ],
+  "funFacts": [
+    {
+      "sourceUrl": "https://sketchfab.com/3d-models/bmw-s1000-rr-1873aed292d6465694119bd81860a0c2",
+      "text": {
+        "en": "Rendered from a third-party 3D model. Labels describe the real current S 1000 RR; the model is not an exact replica.",
+        "hi": "Rendered from a third-party 3D model. Labels describe the real current S 1000 RR; the model is not an exact replica."
+      }
+    }
+  ],
+  "celebrityLinks": [],
+  "rarity": "210 HP · 303 KM/H",
+  "hasFramePack": true,
+  "tags": [
+    "bmw",
+    "s1000rr",
+    "motorcycle",
+    "superbike",
+    "inline-four",
+    "motorsport"
+  ]
+}
