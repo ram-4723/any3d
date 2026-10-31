@@ -16,6 +16,8 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const images = useRef<(HTMLImageElement | undefined)[]>([]);
+  const lastDrawnImage = useRef<HTMLImageElement | null>(null);
+  const requestFrame = useRef<(index: number) => void>(() => {});
   const position = useRef(0);
   const zoomFactor = useRef(1);
   const panPosition = useRef({ x: 0, y: 0 });
@@ -51,14 +53,15 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
       c.height = Math.round(r.height * dpr);
     }
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const current = images.current[frameIndex(position.current, count)];
+    const img = current?.complete && current.naturalWidth ? current : lastDrawnImage.current;
     ctx.fillStyle = manifest?.background || '#10101b';
     ctx.fillRect(0, 0, r.width, r.height);
-    const img = images.current[frameIndex(position.current, count)];
-    if (img?.complete && img.naturalWidth) {
-      const scale = Math.min(r.width / img.naturalWidth, r.height / img.naturalHeight) * zoomFactor.current;
-      const w = img.naturalWidth * scale, h = img.naturalHeight * scale;
-      ctx.drawImage(img, (r.width - w) / 2 + panPosition.current.x, (r.height - h) / 2 + panPosition.current.y, w, h);
-    }
+    if (!img?.complete || !img.naturalWidth) return;
+    if (img === current) lastDrawnImage.current = img;
+    const scale = Math.min(r.width / img.naturalWidth, r.height / img.naturalHeight) * zoomFactor.current;
+    const w = img.naturalWidth * scale, h = img.naturalHeight * scale;
+    ctx.drawImage(img, (r.width - w) / 2 + panPosition.current.x, (r.height - h) / 2 + panPosition.current.y, w, h);
   }, [count, manifest]);
   const drawRef = useRef(draw);
   drawRef.current = draw;
@@ -74,7 +77,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   useEffect(() => {
     if (!inView) return;
     let cancelled = false;
-    setManifest(null); setMissing(false); setReady(false); setAllFramesLoaded(false); setProgress(0); setExploded(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); setViewFrame(0); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 });
+    setManifest(null); setMissing(false); setReady(false); setAllFramesLoaded(false); setProgress(0); setExploded(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); setViewFrame(0); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); lastDrawnImage.current = null;
     position.current = 0; images.current = [];
     const poster = new Image();
     poster.onload = () => { if (!cancelled) { images.current[0] = poster; drawRef.current(); } };
@@ -119,17 +122,32 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     if (!inView) { images.current = []; return; }
     if (!manifest) return;
     let cancelled = false;
+    requestFrame.current = () => {};
     setReady(false); setAllFramesLoaded(false); setProgress(0);
     const sequence = exploded ? manifest.explode : manifest.rotate;
     if (!sequence) { setExploded(false); return; }
     const total = sequence.count, arr: (HTMLImageElement | undefined)[] = new Array(total);
     images.current = arr;
-    const load = (i: number) => new Promise<void>(resolve => {
-      const im = new Image();
-      im.onload = () => { arr[i] = im; resolve(); };
-      im.onerror = () => resolve();
-      im.src = `/objects/${slug}/${sequence.pattern.replace('{0000}', String(i + 1).padStart(4, '0'))}`;
-    });
+    const pending = new Map<number, Promise<void>>();
+    const load = (i: number) => {
+      if (arr[i]) return Promise.resolve();
+      const existing = pending.get(i);
+      if (existing) return existing;
+      const promise = new Promise<void>(resolve => {
+        const im = new Image();
+        im.onload = () => {
+          if (cancelled) { resolve(); return; }
+          arr[i] = im;
+          if (frameIndex(position.current, total) === i) drawRef.current();
+          resolve();
+        };
+        im.onerror = () => resolve();
+        im.src = `/objects/${slug}/${sequence.pattern.replace('{0000}', String(i + 1).padStart(4, '0'))}`;
+      });
+      pending.set(i, promise);
+      return promise;
+    };
+    requestFrame.current = index => { void load(index); };
     void (async () => {
       const initial = [...new Set([0, frameIndex(position.current, total)])];
       await Promise.all(initial.map(load));
@@ -147,7 +165,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
       if (cancelled) return;
       setProgress(100); setAllFramesLoaded(true);
     })();
-    return () => { cancelled = true; };
+    return () => { cancelled = true; requestFrame.current = () => {}; };
   }, [manifest, exploded, slug, draw, inView]);
 
   useEffect(() => {
@@ -185,7 +203,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
       const r = stage.current?.getBoundingClientRect();
       if (r) {
         position.current = Math.max(0, Math.min(1, (window.innerHeight - r.top) / (window.innerHeight + r.height))) * Math.max(0, count - 1);
-        setViewFrame(frameIndex(position.current, count)); draw();
+        setViewFrame(frameIndex(position.current, count)); requestFrame.current(frameIndex(position.current, count)); draw();
       }
     };
     window.addEventListener('scroll', fn, { passive: true }); fn();
@@ -215,7 +233,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     const next = position.current + dx / 7;
     position.current = exploded ? Math.max(explodeStart, Math.min(count - 1, next)) : (next + count) % count;
     drag.current = { x, y };
-    setViewFrame(frameIndex(position.current, count)); draw();
+    setViewFrame(frameIndex(position.current, count)); requestFrame.current(frameIndex(position.current, count)); draw();
   };
   const end = () => { drag.current = null; };
   useEffect(() => {
@@ -224,7 +242,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
         setExplodeDirection(0);
         const next = position.current + (e.key === 'ArrowLeft' ? -1 : 1);
         position.current = exploded ? Math.max(explodeStart, Math.min(count - 1, next)) : (next + count) % count;
-        setViewFrame(frameIndex(position.current, count)); draw();
+        setViewFrame(frameIndex(position.current, count)); requestFrame.current(frameIndex(position.current, count)); draw();
       }
     };
     window.addEventListener('keydown', key);
