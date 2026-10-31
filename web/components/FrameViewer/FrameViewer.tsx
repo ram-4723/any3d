@@ -236,19 +236,6 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     setViewFrame(frameIndex(position.current, count)); requestFrame.current(frameIndex(position.current, count)); draw();
   };
   const end = () => { drag.current = null; };
-  useEffect(() => {
-    const key = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-        setExplodeDirection(0);
-        const next = position.current + (e.key === 'ArrowLeft' ? -1 : 1);
-        position.current = exploded ? Math.max(explodeStart, Math.min(count - 1, next)) : (next + count) % count;
-        setViewFrame(frameIndex(position.current, count)); requestFrame.current(frameIndex(position.current, count)); draw();
-      }
-    };
-    window.addEventListener('keydown', key);
-    return () => window.removeEventListener('keydown', key);
-  }, [count, draw, exploded, explodeStart]);
-
   const current = viewFrame;
   const hotspots = exploded
     ? (manifest?.explode?.hotspots ?? []).flatMap(part => {
@@ -300,7 +287,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   };
 
   return <div ref={stage} className={`viewer ${mode === 'scroll' ? 'viewer-scroll' : ''}`} aria-label={`${slug} 3D viewer`}>
-    <canvas ref={canvas} className={`viewer-canvas ${zoom > 1 ? 'viewer-canvas-zoomed' : ''}`} role="img" aria-label={`Interactive 3D view of ${slug}`} onPointerDown={e => { if (mode === 'drag') { setExplodeDirection(0); e.currentTarget.setPointerCapture(e.pointerId); drag.current = { x: e.clientX, y: e.clientY }; } }} onPointerMove={e => move(e.clientX, e.clientY)} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} tabIndex={0} />
+    <canvas ref={canvas} className={`viewer-canvas ${zoom > 1 ? 'viewer-canvas-zoomed' : ''}`} role="img" aria-label={`Interactive 3D view of ${slug}`} onPointerDown={e => { if (mode === 'drag') { setExplodeDirection(0); e.currentTarget.setPointerCapture(e.pointerId); drag.current = { x: e.clientX, y: e.clientY }; } }} onPointerMove={e => move(e.clientX, e.clientY)} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} onKeyDown={e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); setExplodeDirection(0); const next = position.current + (e.key === 'ArrowLeft' ? -1 : 1); position.current = exploded ? Math.max(explodeStart, Math.min(count - 1, next)) : (next + count) % count; setViewFrame(frameIndex(position.current, count)); requestFrame.current(frameIndex(position.current, count)); draw(); } }} tabIndex={0} />
     {missing && <div className="viewer-empty"><span>✦</span><b>3D coming soon</b><small>Frame pack not added yet</small></div>}
     {!missing && <>
       <div className="viewer-tag">↔ {exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'DRAG TO ROTATE'} · {exploded ? count - explodeStart : count} VIEWS</div>
