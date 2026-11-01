@@ -1,0 +1,108 @@
+{
+  "slug": "valley-of-flowers",
+  "name": {
+    "hi": "फूलों की घाटी + नंदा देवी",
+    "en": "Valley of Flowers + Nanda Devi"
+  },
+  "category": "nature",
+  "tagline": {
+    "hi": "नंदा देवी की छांव में हिमालय की पुष्प घाटी।",
+    "en": "A Himalayan flower valley beneath the crown of Nanda Devi."
+  },
+  "summary": {
+    "hi": "हिमनदों से बनी और पुष्पावती नदी से पोषित एक ऊंची हिमालयी घाटी। मानसून में इसके ढलान जंगली फूलों से भर जाते हैं और चारों ओर हिमालयी चोटियां दिखाई देती हैं। इस 3D मॉडल में दृश्य रचना के लिए नंदा देवी को घाटी के करीब दिखाया गया है।",
+    "en": "A high Himalayan meadow carved by glaciers and fed by the Pushpawati River. In monsoon, wildflowers carpet its slopes beneath a ring of peaks. This 3D diorama brings the nearby landscape to life, with Nanda Devi moved closer for the composition."
+  },
+  "specs": [
+    {
+      "label": {
+        "hi": "घाटी की ऊंचाई",
+        "en": "Valley elevation"
+      },
+      "unit": "m",
+      "value": "3,350–3,650"
+    },
+    {
+      "label": {
+        "hi": "घाटी का क्षेत्रफल",
+        "en": "Valley area"
+      },
+      "unit": "km²",
+      "value": "87.5"
+    },
+    {
+      "label": {
+        "hi": "नंदा देवी की ऊंचाई",
+        "en": "Nanda Devi height"
+      },
+      "unit": "m",
+      "value": "7,817"
+    },
+    {
+      "label": {
+        "hi": "दर्ज पुष्प प्रजातियां",
+        "en": "Flowering species recorded"
+      },
+      "unit": "species",
+      "value": "498"
+    },
+    {
+      "label": {
+        "hi": "संरक्षित क्षेत्र",
+        "en": "Protected area"
+      },
+      "unit": "ha",
+      "value": "71,210"
+    },
+    {
+      "label": {
+        "hi": "यूनेस्को सूचीकरण",
+        "en": "UNESCO inscription"
+      },
+      "unit": "",
+      "value": "1988 · extended 2005"
+    }
+  ],
+  "funFacts": [
+    {
+      "sourceUrl": "https://en.wikipedia.org/wiki/Valley_of_Flowers_National_Park",
+      "text": {
+        "hi": "वनस्पतिशास्त्रियों ने यहां 520 पौधों की प्रजातियां दर्ज कीं, जिनमें 498 फूलों वाली हैं।",
+        "en": "Botanists recorded 520 plant species here, including 498 flowering species."
+      }
+    },
+    {
+      "sourceUrl": "https://whc.unesco.org/en/list/335",
+      "text": {
+        "hi": "फूलों की घाटी और नंदा देवी 2005 में एक यूनेस्को विश्व धरोहर स्थल में शामिल हुए; मूल सूचीकरण 1988 में हुआ था।",
+        "en": "The Valley of Flowers and Nanda Devi became one UNESCO World Heritage Site in 2005, extending the original 1988 inscription."
+      }
+    },
+    {
+      "sourceUrl": "https://bioportalstprod.blob.core.windows.net/portal-media-public/docs/MAB_2015108127_UNES1037_EX_0.pdf",
+      "text": {
+        "hi": "पुष्पावती नदी टिपरा हिमनद से निकलती है और घांघरिया में लक्ष्मण गंगा से मिलती है।",
+        "en": "The Pushpawati River begins at Tipra Glacier and meets the Lakshman Ganga at Ghangaria."
+      }
+    },
+    {
+      "sourceUrl": "https://whc.unesco.org/en/list/335",
+      "text": {
+        "hi": "नंदा देवी 7,817 मीटर ऊंची है। इस कलात्मक मॉडल में दृश्य रचना के लिए इसे घाटी के करीब दिखाया गया है।",
+        "en": "Nanda Devi rises to 7,817 metres. In this artistic diorama, it is moved closer to the valley for the composition."
+      }
+    }
+  ],
+  "celebrityLinks": [],
+  "rarity": "UNESCO · Uttarakhand",
+  "hasFramePack": true,
+  "tags": [
+    "uttarakhand",
+    "himalaya",
+    "nanda-devi",
+    "wildflowers",
+    "national-park",
+    "unesco",
+    "valley-of-flowers"
+  ]
+}

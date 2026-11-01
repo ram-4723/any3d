@@ -6,11 +6,11 @@ type Props = { slug: string; mode?: 'drag' | 'scroll' };
 type Hotspot = { id: string; name: string; group?: string; frame: number; x: number; y: number; color: string };
 type ExplodeHotspot = { id: string; name: string; group?: string; category?: string; color?: string; points: ([number, number] | null)[] };
 type Sequence = { count: number; pattern: string; loop?: boolean; startFrame?: number };
-type CampHotspot = { id: string; name: string; approx: boolean; offModel?: boolean; points: ([number, number] | null)[] };
+type CampHotspot = { id: string; name: string; category?: string; details?: string; approx: boolean; offModel?: boolean; points: ([number, number] | null)[] };
 type RouteFrame = { frame: number; points: [number, number, number][] };
 type CampDetail = { id: string; name: string; altitudeM?: number; altitudeNote?: string; lat?: number; lon?: number; coordsApprox?: boolean; coordsSource?: string; description: string };
 type PartDetail = { id: string; category: string; name: { en: string }; desc: { en: string } };
-type Manifest = { width: number; height: number; rotate: Sequence & { hotspots?: CampHotspot[]; route?: { id: string; name: string; frames: RouteFrame[] } }; explode?: Sequence & { labelsFrom?: number; hotspots?: ExplodeHotspot[] }; hotspots?: Hotspot[]; background?: string; credit?: string };
+type Manifest = { width: number; height: number; rotate: Sequence & { hotspots?: CampHotspot[]; route?: { id: string; name: string; frames: RouteFrame[] } }; explode?: Sequence & { labelsFrom?: number; hotspots?: ExplodeHotspot[] }; hotspots?: Hotspot[]; background?: string; credit?: string; credits?: string };
 
 export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -264,6 +264,12 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
         return point ? [{ ...pin, x: point[0], y: point[1] }] : [];
       })
     : [];
+  const visibleValleyPins = slug === 'valley-of-flowers' && !exploded
+    ? (manifest?.rotate.hotspots ?? []).flatMap(pin => {
+        const point = pin.points[current];
+        return point ? [{ ...pin, x: point[0], y: point[1] }] : [];
+      })
+    : [];
   const visibleRoutePoints = campsRoute && slug === 'mount-everest' && !exploded
     ? (manifest?.rotate.route?.frames[current]?.points ?? []).filter(point => point[2] === 1)
     : [];
@@ -316,6 +322,22 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
           </div>;
         })}
       </>}
+      {slug === 'valley-of-flowers' && !exploded && visibleValleyPins.map(pin => {
+        const selected = activeCamp === pin.id;
+        const alignment = [pin.y < 0.2 && 'camp-label-below', pin.x < 0.16 && 'camp-label-left', pin.x > 0.84 && 'camp-label-right'].filter(Boolean).join(' ');
+        return <div className={`camp-marker ${alignment}`} key={pin.id} style={hotspotStyle(pin.x, pin.y)}>
+          <button type="button" className="camp-pin-button" aria-label={`${pin.category ?? 'PLACE'}: ${pin.name}${pin.approx ? ', approximate position' : ''}`} aria-expanded={selected} onPointerEnter={() => setHoveredCamp(pin.id)} onPointerLeave={() => setHoveredCamp(null)} onFocus={() => setHoveredCamp(pin.id)} onBlur={() => setHoveredCamp(null)} onClick={() => setActiveCamp(selected ? null : pin.id)}>
+            <span className="camp-pin-icon" aria-hidden="true" />
+            {hoveredCamp === pin.id && <span className="camp-pin-label">{pin.name}{pin.approx && <small>approx.</small>}</span>}
+          </button>
+          {selected && <aside className="camp-info-card valley-info-card" role="dialog" aria-label={`${pin.name} details`}>
+            <button type="button" className="camp-info-close" aria-label="Close place details" onClick={() => setActiveCamp(null)}>×</button>
+            <small>{pin.category}</small><b>{pin.name}</b><p>{pin.details}</p>
+            {pin.approx && <small>Approximate position</small>}
+            {pin.offModel && <small>Shown at model edge, true direction</small>}
+          </aside>}
+        </div>;
+      })}
       {hotspots.map(h => {
         const alignment = [h.y < 0.16 && 'hotspot-below', h.x < 0.12 && 'hotspot-align-left', h.x > 0.88 && 'hotspot-align-right'].filter(Boolean).join(' ');
         const selected = activeHotspot === h.id, hovered = hoveredHotspot === h.id;
@@ -329,7 +351,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
           <small>{part.category}</small><b>{part.name.en}</b><p>{part.desc.en}</p>
         </aside>;
       })()}
-      {manifest?.credit && <a className="viewer-credit" href={slug === 'sa342m-gazelle' ? 'https://sketchfab.com/3d-models/sa342m-gazelle-2eb65cec2060459085ea4f06db44d668' : 'https://sketchfab.com/3d-models/bmw-s1000-rr-1873aed292d6465694119bd81860a0c2'} target="_blank" rel="noreferrer">{manifest.credit}</a>}
+      {(manifest?.credit || (slug === 'valley-of-flowers' && manifest?.credits)) && <a className="viewer-credit" href={slug === 'valley-of-flowers' ? '/objects/valley-of-flowers/CREDITS.md' : slug === 'sa342m-gazelle' ? 'https://sketchfab.com/3d-models/sa342m-gazelle-2eb65cec2060459085ea4f06db44d668' : 'https://sketchfab.com/3d-models/bmw-s1000-rr-1873aed292d6465694119bd81860a0c2'} target="_blank" rel="noreferrer">{manifest?.credit ?? manifest?.credits}</a>}
       {(!ready || (exploded && explodeDirection !== 0 && !allFramesLoaded)) && <div className="viewer-loading"><span>{exploded && explodeDirection !== 0 ? 'PREPARING EXPLODED VIEW' : 'LOADING OBJECT'}</span><i><b style={{ width: `${progress}%` }} /></i></div>}
     </>}
     <div className="viewer-controls">

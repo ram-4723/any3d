@@ -1,0 +1,162 @@
+{
+ "object": "Valley of Flowers + Nanda Devi (Uttarakhand, India)",
+ "note": "Artistic diorama. Real Copernicus terrain around the valley; Nanda Devi is moved about 45 km closer (it is really ~45 km SE). Trees and waterfalls are exaggerated. Label positions marked approx are approximate.",
+ "verified": "Facts checked 31 Oct 2026 (IST) against the sources in SOURCES.md",
+ "labels": [
+  {
+   "id": "vof",
+   "category": "NATIONAL PARK",
+   "name": "Valley of Flowers",
+   "details": "A hanging glacial valley in the Garhwal Himalaya. Its central meadows sit at about 3,350–3,650 m, and the park covers 87.5 km². In 1931 British climbers Frank Smythe, Eric Shipton and R. L. Holdsworth lost their way coming back from Kamet and stumbled into it full of flowers. Smythe returned in 1937, and his 1938 book 'The Valley of Flowers' made it famous. It was made a national park in the early 1980s, and in 2005 it joined Nanda Devi in the UNESCO World Heritage Site 'Nanda Devi and Valley of Flowers National Parks'. Botanist C. P. Kala's ten-year survey counted 520 plant species (498 flowering). The bloom peaks with the monsoon, roughly mid-July to mid-August. Open about June to October; no overnight stays inside.",
+   "x_m": -954.1,
+   "y_m": 1441.1,
+   "approx": false
+  },
+  {
+   "id": "legge",
+   "category": "STORY",
+   "name": "Joan Margaret Legge's grave",
+   "details": "In 1939 Joan Margaret Legge, a botanist sent by the Royal Botanic Gardens, Kew, came to collect flowers. On 4 July 1939 she slipped on a rocky slope and died. Her sister later put up a memorial near the spot, at Kundaliyasain in the middle of the valley, and trekkers still stop there today. (Grave position on the model is approximate.)",
+   "x_m": -286.2,
+   "y_m": 1274.8,
+   "approx": true
+  },
+  {
+   "id": "pushpawati",
+   "category": "RIVER",
+   "name": "Pushpawati River",
+   "details": "The 'river of flowers'. It is born at the Tipra Glacier and runs the length of the valley, milky with glacial silt. At Ghangaria it joins the Lakshman Ganga from Hemkund, and the combined stream (also called the Bhyundar Ganga) drops to meet the Alaknanda, a Ganga headwater, at Govindghat.",
+   "x_m": 1780.0,
+   "y_m": 1380.0,
+   "approx": true
+  },
+  {
+   "id": "tipra",
+   "category": "GLACIER",
+   "name": "Tipra Glacier",
+   "details": "The glacier at the eastern head of the valley, coming down from Gauri Parbat (about 6,700 m, the highest point in the park). Its meltwater gives rise to the Pushpawati. (Position on the model is approximate.)",
+   "x_m": 5438.6,
+   "y_m": 2549.5,
+   "approx": true
+  },
+  {
+   "id": "nandadevi",
+   "category": "PEAK · 7,817 M",
+   "name": "Nanda Devi",
+   "details": "India's second-highest mountain, after Kangchenjunga, and the highest that lies entirely within India. Its name means 'Bliss-Giving Goddess', and it is the patron goddess of Garhwal and Kumaon. Before 1808 it was thought to be the highest mountain in the world. It is a twin: a 2 km ridge links it to Nanda Devi East, or Sunanda Devi (7,434 m). Bill Tilman and Noel Odell reached the top on 29 August 1936, the highest summit anyone had climbed until Annapurna in 1950. Note: on this model the peak is moved much closer. In reality it stands about 45 km south-east of the valley.",
+   "x_m": 4300.0,
+   "y_m": -4600.0,
+   "approx": false
+  },
+  {
+   "id": "sanctuary",
+   "category": "WILDERNESS",
+   "name": "Nanda Devi Sanctuary",
+   "details": "A ring of peaks, twelve of them above 6,400 m, surrounds the mountain. The only break is the Rishi Ganga gorge, one of the deepest in the world. Climber Hugh Ruttledge wrote that just getting inside was harder than reaching the North Pole. Eric Shipton and Bill Tilman, with Sherpas Angtharkay, Pasang and Kusang, finally forced a way in in 1934. The sanctuary was closed to climbers and grazing in 1983 and is the core of Nanda Devi National Park, a UNESCO site since 1988.",
+   "x_m": 2500.0,
+   "y_m": -3100.0,
+   "approx": true
+  },
+  {
+   "id": "cia",
+   "category": "MYSTERY",
+   "name": "The lost nuclear device (1965)",
+   "details": "In October 1965 a secret team from the CIA and India's Intelligence Bureau, led by M. S. Kohli, carried a SNAP-19C nuclear generator up Nanda Devi. It was meant to power a sensor spying on Chinese missile tests. A blizzard stopped them at Camp IV, and on 16 October they tied the device to a rock and retreated. When they returned in spring 1966, the rock and the generator were gone, swept away by an avalanche, and searches up to 1968 never found it. US records put the fuel at about 1.9 kg of plutonium, about 1.4–1.7 kg of it Pu-238; some Indian accounts say up to 5 kg. The loss stayed secret until 1978. (Position on the model is approximate.)",
+   "x_m": 3950.0,
+   "y_m": -5300.0,
+   "approx": true
+  },
+  {
+   "id": "unsoeld",
+   "category": "STORY",
+   "name": "Nanda Devi Unsoeld",
+   "details": "American climber Willi Unsoeld named his daughter after the mountain, calling it the most beautiful he had seen. In 1976 she joined him on an Indo-American expedition to climb a new route on its north side. Ill and stuck at Camp IV (about 7,300 m) by storms, she said calmly 'I am going to die' and died on 8 September 1976, aged 22. Her body was committed to the snows of the mountain that bore her name. Her father's telegram home ended: 'From beauty into beauty.' (Position on the model is approximate.)",
+   "x_m": 4450.0,
+   "y_m": -3800.0,
+   "approx": true
+  },
+  {
+   "id": "hemkund",
+   "category": "PILGRIMAGE",
+   "name": "Hemkund Sahib",
+   "details": "A Sikh gurdwara beside a glacial lake ringed by seven peaks, at about 4,150–4,630 m (sources differ; the Survey of India gives 4,572 m). According to the Dasam Granth, Guru Gobind Singh meditated here in a former life. Pilgrims climb a 6 km stone path from Ghangaria, about 1,100 m of ascent, and roughly 150,000 come each season. Beside the lake stands the older Lokpal Lakshman temple. Shown at its real position relative to the valley.",
+   "x_m": 95.4,
+   "y_m": -1640.6,
+   "approx": false
+  },
+  {
+   "id": "lakshmanganga",
+   "category": "RIVER",
+   "name": "Lakshman Ganga",
+   "details": "It drains Hemkund lake (Lokpal) and rushes down to meet the Pushpawati at Ghangaria. Below the meeting the combined river is still called the Lakshman Ganga (Bhyundar Ganga) as far as Govindghat.",
+   "x_m": -1040.0,
+   "y_m": -1480.0,
+   "approx": true
+  },
+  {
+   "id": "ghangaria",
+   "category": "BASE VILLAGE",
+   "name": "Ghangaria (Govinddham)",
+   "details": "The last settlement in the Bhyundar valley, at about 3,050 m, where the Pushpawati and the Lakshman Ganga meet. It is the only overnight base for both the Valley of Flowers and Hemkund Sahib. Visitors come by shared taxi from Govindghat to Pulna, then a roughly 10 km trail on foot, pony or a 5-minute helicopter hop. It is lived in only from about May to October.",
+   "x_m": -2041.8,
+   "y_m": -1474.3,
+   "approx": false
+  },
+  {
+   "id": "brahmakamal",
+   "category": "FLOWER",
+   "name": "Brahma Kamal",
+   "details": "Saussurea obvallata, Uttarakhand's state flower. Its purple flower heads hide inside layers of yellow-green papery bracts that shield them from the cold. It grows among rocks at about 3,700–4,600 m and flowers from July to September. It is offered at hill shrines like Badrinath and to the goddesses Nanda and Sunanda. (Position on the model is approximate.)",
+   "x_m": 667.9,
+   "y_m": -1108.5,
+   "approx": true
+  },
+  {
+   "id": "bluepoppy",
+   "category": "FLOWER",
+   "name": "Himalayan blue poppy",
+   "details": "Meconopsis aculeata, the 'Queen of Himalayan flowers': prickly, sky-blue and globally threatened. It is rare in the valley itself and most abundant around Hemkund lake from mid-July to August. Other monsoon highlights include pink Impatiens sulcata (which turns the valley pink in early August), geraniums, primulas, cobra lilies, potentillas and anemones. (Position on the model is approximate.)",
+   "x_m": -286.2,
+   "y_m": -1330.2,
+   "approx": true
+  },
+  {
+   "id": "forest",
+   "category": "FOREST",
+   "name": "Birch & rhododendron belt",
+   "details": "The tree line is at about 3,200–3,500 m. Below it grow Himalayan white birch (Betula utilis, the bhojpatra whose bark was once used as paper), west Himalayan fir, rhododendron, Himalayan maple and yew. These are the small trees on the lower slopes of the model. (Tree size is exaggerated so they show.)",
+   "x_m": -5247.7,
+   "y_m": -2771.2,
+   "approx": true
+  },
+  {
+   "id": "wildlife",
+   "category": "WILDLIFE",
+   "name": "Who lives here",
+   "details": "Asiatic black bear, Himalayan musk deer, blue sheep (bharal), Himalayan tahr, serow, goral and red fox. A 2004 survey confirmed snow leopards in the park. Birds include the lammergeier, Himalayan monal and snow pigeon.",
+   "x_m": -2862.4,
+   "y_m": 2217.0,
+   "approx": true
+  },
+  {
+   "id": "rataban",
+   "category": "PEAK · ~6,166 M",
+   "name": "Rataban",
+   "details": "A peak at the head of the valley near the Tipra Glacier. It is usually listed at 6,166 m, though the park's own UNESCO description gives 6,126 m. An Indo-New Zealand team made the first ascent in 1980 from a base camp at the head of the valley. Its real position is just beyond the edge of the model, so the label sits on the rim in its true direction.",
+   "x_m": 7855.2,
+   "y_m": 3597.9,
+   "approx": true,
+   "offModel": true,
+   "bearingDeg": 65.4
+  },
+  {
+   "id": "waterfalls",
+   "category": "WATERFALL",
+   "name": "Meltwater cascades",
+   "details": "Many streams and small waterfalls pour down from the glaciers into the Pushpawati, swelling in the monsoon. The model shows three, drawn larger than life.",
+   "x_m": -2100.0,
+   "y_m": 1720.0,
+   "approx": true
+  }
+ ]
+}
