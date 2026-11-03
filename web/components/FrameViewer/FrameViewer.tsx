@@ -255,7 +255,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
         if (current + 1 < (manifest?.explode?.labelsFrom ?? 1) || !point) return [];
         return [{ id: part.id, name: part.name, group: part.category ?? part.group, x: point[0], y: point[1], color: part.color }];
       })
-    : (manifest?.hotspots ?? []).filter(h => hotspotVisible(current, h.frame, count));
+    : (manifest?.hotspots ?? []).filter(h => h.frame === undefined || hotspotVisible(current, h.frame, count));
   const hotspotStyle = (x: number, y: number) => {
     const r = canvas.current?.getBoundingClientRect();
     if (!r || !manifest) return { left: `${x * 100}%`, top: `${y * 100}%` };
