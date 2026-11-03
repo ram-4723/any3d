@@ -1,0 +1,149 @@
+{
+  "slug": "porsche-992-gt3r",
+  "name": {
+    "en": "Porsche 911 GT3 R (992)",
+    "hi": "पोर्श 911 GT3 R (992)"
+  },
+  "category": "cars-bikes",
+  "tagline": {
+    "en": "A 4.2-litre flat-six built for GT endurance racing.",
+    "hi": "GT एंड्यूरेंस रेसिंग के लिए बना 4.2-लीटर फ्लैट-सिक्स।"
+  },
+  "summary": {
+    "en": "The 992-generation 911 GT3 R is Porsche’s customer racing car for GT3 competition. Its naturally aspirated, rear-mounted 4.2-litre flat-six makes up to about 565 hp, depending on Balance of Performance. A six-speed sequential gearbox, carbon-fibre bodywork and race-focused cockpit are built for long stints and fast pit stops.",
+    "hi": "992 पीढ़ी की 911 GT3 R, GT3 प्रतियोगिताओं के लिए पोर्श की ग्राहक रेस कार है। इसका पीछे लगा नैचुरली एस्पिरेटेड 4.2-लीटर फ्लैट-सिक्स Balance of Performance के अनुसार लगभग 565 hp तक देता है। छह-स्पीड सीक्वेंशियल गियरबॉक्स, कार्बन-फाइबर बॉडी और रेस-कॉकपिट लंबी रेस और तेज़ पिट स्टॉप के लिए बनाए गए हैं।"
+  },
+  "specs": [
+    {
+      "label": {
+        "en": "Engine",
+        "hi": "इंजन"
+      },
+      "value": "4,194 cc water-cooled flat-six, rear-mounted",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Power",
+        "hi": "शक्ति"
+      },
+      "value": "About 565 hp (416 kW), depending on BoP",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Transmission",
+        "hi": "गियरबॉक्स"
+      },
+      "value": "Six-speed sequential constant-mesh",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Drive",
+        "hi": "ड्राइव"
+      },
+      "value": "Rear-wheel drive",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Base weight",
+        "hi": "आधार भार"
+      },
+      "value": "About 1,250",
+      "unit": "kg · BoP dependent"
+    },
+    {
+      "label": {
+        "en": "Wheelbase",
+        "hi": "व्हीलबेस"
+      },
+      "value": "2,507",
+      "unit": "mm"
+    },
+    {
+      "label": {
+        "en": "Length",
+        "hi": "लंबाई"
+      },
+      "value": "4,619",
+      "unit": "mm"
+    },
+    {
+      "label": {
+        "en": "Width",
+        "hi": "चौड़ाई"
+      },
+      "value": "2,039 front · 2,050 rear",
+      "unit": "mm"
+    },
+    {
+      "label": {
+        "en": "Front brakes",
+        "hi": "सामने के ब्रेक"
+      },
+      "value": "390 mm discs · six-piston calipers",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Fuel cell",
+        "hi": "ईंधन टैंक"
+      },
+      "value": "117",
+      "unit": "L"
+    }
+  ],
+  "funFacts": [
+    {
+      "text": {
+        "en": "The flat-six grew from 3,997 to 4,194 cc—about a five per cent increase over the previous GT3 R.",
+        "hi": "फ्लैट-सिक्स का आकार पिछले GT3 R के 3,997 cc से बढ़कर 4,194 cc हुआ—लगभग पाँच प्रतिशत की वृद्धि।"
+      },
+      "sourceUrl": "https://newsroom.porsche.com/en_US/2022/motorsport/porsche-911-gt3-r-generation-992-customer-racing-car-premiere-29222.html"
+    },
+    {
+      "text": {
+        "en": "The rear wing uses swan-neck mounts to keep its underside clear for cleaner airflow.",
+        "hi": "पिछला विंग स्वान-नेक माउंट पर लगा है, जिससे उसके नीचे हवा साफ़ ढंग से बहती है।"
+      },
+      "sourceUrl": "https://newsroom.porsche.com/en_US/2022/motorsport/porsche-911-gt3-r-generation-992-customer-racing-car-premiere-29222.html"
+    },
+    {
+      "text": {
+        "en": "The seat stays fixed while the pedal assembly moves longitudinally, helping drivers of different sizes find a secure position.",
+        "hi": "सीट स्थिर रहती है, जबकि पैडल असेंबली आगे-पीछे समायोजित होती है ताकि अलग-अलग कद के ड्राइवर सुरक्षित स्थिति पा सकें।"
+      },
+      "sourceUrl": "https://newsroom.porsche.com/en_US/2022/motorsport/porsche-911-gt3-r-generation-992-customer-racing-car-premiere-29222.html"
+    },
+    {
+      "text": {
+        "en": "The 992 GT3 R was prepared for customer teams to race from the 2023 season, starting with the Rolex 24 at Daytona.",
+        "hi": "992 GT3 R को 2023 सीज़न से ग्राहक टीमों की रेसिंग के लिए तैयार किया गया था; इसकी शुरुआत Daytona की Rolex 24 रेस से हुई।"
+      },
+      "sourceUrl": "https://newsroom.porsche.com/en_US/2022/motorsport/porsche-911-gt3-r-generation-992-customer-racing-car-premiere-29222.html"
+    },
+    {
+      "text": {
+        "en": "Six-piston front calipers clamp 390 mm steel discs; the rear brakes use four-piston calipers and 370 mm discs.",
+        "hi": "आगे छह-पिस्टन कैलिपर 390 mm स्टील डिस्क पर काम करते हैं; पीछे चार-पिस्टन कैलिपर और 370 mm डिस्क हैं।"
+      },
+      "sourceUrl": "https://newsroom.porsche.com/en_US/2022/motorsport/porsche-911-gt3-r-generation-992-customer-racing-car-premiere-29222.html"
+    }
+  ],
+  "celebrityLinks": [],
+  "rarity": "FIA GT3 · 4.2 L flat-six",
+  "hasFramePack": true,
+  "tags": [
+    "porsche",
+    "911",
+    "gt3-r",
+    "992",
+    "motorsport",
+    "gt3",
+    "race-car",
+    "endurance",
+    "flat-six"
+  ]
+}
