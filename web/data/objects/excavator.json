@@ -1,1 +1,139 @@
-{"slug":"excavator","name":{"en":"Excavator","hi":"एक्सकेवेटर"},"category":"machines","tagline":{"en":"Big wheels, bigger moves.","hi":"बड़े पहिए, और भी बड़े काम।"},"summary":{"en":"A sample profile for exploring the 3D Anything experience.","hi":"3D Anything अनुभव के लिए एक नमूना प्रोफ़ाइल।"},"specs":[{"label":{"en":"Weight","hi":"वज़न"},"value":22,"unit":"t"},{"label":{"en":"Reach","hi":"पहुंच"},"value":9.5,"unit":"m"},{"label":{"en":"Year","hi":"वर्ष"},"value":2024,"unit":""}],"funFacts":[{"text":{"en":"This is clearly labelled sample content. Replace it with a verified fact and source.","hi":"यह स्पष्ट रूप से नमूना सामग्री है। इसे सत्यापित तथ्य और स्रोत से बदलें।"},"sourceUrl":"https://example.com","sample":true}],"celebrityLinks":[{"person":"Construction","relation":{"en":"Sample connection","hi":"नमूना संबंध"},"sourceUrl":"https://example.com","sample":true}],"rarity":"Heavy machine","hasFramePack":true,"tags":["machine","construction","digging"],"sample":true}
+{
+  "slug": "excavator",
+  "name": {
+    "en": "Bagger 288-Class Excavator",
+    "hi": "बागर 288 श्रेणी का उत्खनन यंत्र"
+  },
+  "category": "machines",
+  "tagline": {
+    "en": "A 220-metre giant that moves a mine, one bucket at a time.",
+    "hi": "220 मीटर का विशालकाय, जो हर बाल्टी के साथ खदान को आकार देता है।"
+  },
+  "summary": {
+    "en": "This frame model is a fictional, game-style giant bucket-wheel excavator presented at Bagger 288 scale. Its turntable reveals the digging wheel, long boom, loading bridge and crawler systems; switch on Labels to inspect parts, or compare the machine with a 1.78 m person. Bagger 288 itself is a real German bucket-wheel excavator built by Krupp for RWE. The model is scaled to 220 m long and is not an exact replica.",
+    "hi": "यह फ्रेम मॉडल बागर 288 के पैमाने पर दिखाया गया एक काल्पनिक, गेम-शैली का विशाल बकेट-व्हील उत्खनन यंत्र है। घूमते दृश्य में खुदाई का पहिया, लंबा बूम, लोडिंग ब्रिज और क्रॉलर सिस्टम देखें; पुर्ज़े जानने के लिए Labels चालू करें या मशीन की तुलना 1.78 मीटर के व्यक्ति से करें। वास्तविक बागर 288 जर्मनी में RWE के लिए Krupp द्वारा बनाया गया बकेट-व्हील उत्खनन यंत्र है। यह मॉडल 220 मीटर लंबाई के पैमाने पर है, सटीक प्रतिकृति नहीं।"
+  },
+  "specs": [
+    {
+      "label": {
+        "en": "Overall length",
+        "hi": "कुल लंबाई"
+      },
+      "value": "220",
+      "unit": "m"
+    },
+    {
+      "label": {
+        "en": "Width",
+        "hi": "चौड़ाई"
+      },
+      "value": "46",
+      "unit": "m"
+    },
+    {
+      "label": {
+        "en": "Height",
+        "hi": "ऊंचाई"
+      },
+      "value": "96",
+      "unit": "m"
+    },
+    {
+      "label": {
+        "en": "Operating mass",
+        "hi": "परिचालन भार"
+      },
+      "value": "13,500",
+      "unit": "t"
+    },
+    {
+      "label": {
+        "en": "Bucket wheel diameter",
+        "hi": "बकेट व्हील का व्यास"
+      },
+      "value": "21.6",
+      "unit": "m"
+    },
+    {
+      "label": {
+        "en": "Buckets on wheel",
+        "hi": "पहिए पर बाल्टियां"
+      },
+      "value": "18",
+      "unit": "buckets"
+    },
+    {
+      "label": {
+        "en": "Bucket capacity",
+        "hi": "बाल्टी की क्षमता"
+      },
+      "value": "6.6",
+      "unit": "m³ each"
+    },
+    {
+      "label": {
+        "en": "Excavating capacity",
+        "hi": "खुदाई क्षमता"
+      },
+      "value": "240,000",
+      "unit": "m³/day"
+    },
+    {
+      "label": {
+        "en": "Installed power",
+        "hi": "स्थापित शक्ति"
+      },
+      "value": "16.56",
+      "unit": "MW"
+    },
+    {
+      "label": {
+        "en": "Travel speed",
+        "hi": "चलने की गति"
+      },
+      "value": "0.1–0.6",
+      "unit": "km/h"
+    }
+  ],
+  "funFacts": [
+    {
+      "text": {
+        "en": "Bagger 288 can excavate up to 240,000 cubic metres of coal or overburden a day—roughly enough to fill 96 Olympic-sized swimming pools.",
+        "hi": "बागर 288 एक दिन में 240,000 घन मीटर तक कोयला या मिट्टी निकाल सकता है—लगभग 96 ओलंपिक आकार के स्विमिंग पूल भरने जितना।"
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bagger_288"
+    },
+    {
+      "text": {
+        "en": "Its 21.6 m digging wheel carries eighteen buckets, each with a capacity of 6.6 m³.",
+        "hi": "इसके 21.6 मीटर के खुदाई पहिए पर अठारह बाल्टियां हैं; हर एक की क्षमता 6.6 घन मीटर है।"
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bagger_288"
+    },
+    {
+      "text": {
+        "en": "In 2001, the whole machine travelled about 22 km to a new mine over three weeks, crossing a motorway, a river and a railway.",
+        "hi": "2001 में पूरी मशीन तीन सप्ताह में लगभग 22 किमी दूर नई खदान तक चली; रास्ते में एक मोटरवे, नदी और रेलवे पार किए।"
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bagger_288"
+    },
+    {
+      "text": {
+        "en": "This pack’s turntable shows a game-style model inspired by Bagger 288; its proportions and details are not an engineering-accurate replica.",
+        "hi": "इस पैक का घूमता मॉडल बागर 288 से प्रेरित गेम-शैली का दृश्य है; इसके अनुपात और विवरण इंजीनियरिंग-सटीक प्रतिकृति नहीं हैं।"
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bagger_288"
+    }
+  ],
+  "celebrityLinks": [],
+  "rarity": "220 m · 13,500 t",
+  "hasFramePack": true,
+  "tags": [
+    "bagger-288",
+    "excavator",
+    "bucket-wheel",
+    "mining",
+    "heavy-machinery",
+    "construction"
+  ]
+}

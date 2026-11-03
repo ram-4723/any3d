@@ -3,14 +3,18 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { frameIndex, hotspotVisible } from './math';
 
 type Props = { slug: string; mode?: 'drag' | 'scroll' };
-type Hotspot = { id: string; name: string; group?: string; frame: number; x: number; y: number; color: string };
+type Hotspot = { id: string; name: string; group?: string; frame?: number; x: number; y: number; color?: string; details?: string; source?: string };
 type ExplodeHotspot = { id: string; name: string; group?: string; category?: string; color?: string; points: ([number, number] | null)[] };
 type Sequence = { count: number; pattern: string; loop?: boolean; startFrame?: number };
 type CampHotspot = { id: string; name: string; category?: string; details?: string; approx: boolean; offModel?: boolean; points: ([number, number] | null)[] };
+type ExcavatorHotspot = { id: string; name: string; category: string; details: string; source: string; points: (string | [number, number] | null)[] };
+type HumanHotspot = { id: string; name: string; category: string; details: string; source: string; point: [number, number] };
+type Point = [number, number] | null;
+const parsePoint = (point: string | [number, number] | null | undefined): Point => { if (Array.isArray(point)) return point; if (typeof point !== 'string') return null; const values = point.trim().split(/[\s,]+/).map(Number); return values.length === 2 && values.every(Number.isFinite) ? [values[0], values[1]] : null; };
 type RouteFrame = { frame: number; points: [number, number, number][] };
 type CampDetail = { id: string; name: string; altitudeM?: number; altitudeNote?: string; lat?: number; lon?: number; coordsApprox?: boolean; coordsSource?: string; description: string };
 type PartDetail = { id: string; category: string; name: { en: string }; desc: { en: string } };
-type Manifest = { width: number; height: number; rotate: Sequence & { hotspots?: CampHotspot[]; route?: { id: string; name: string; frames: RouteFrame[] } }; explode?: Sequence & { labelsFrom?: number; hotspots?: ExplodeHotspot[] }; hotspots?: Hotspot[]; background?: string; credit?: string; credits?: string };
+type Manifest = { width: number; height: number; rotate: Sequence & { hotspots?: (CampHotspot | ExcavatorHotspot)[]; route?: { id: string; name: string; frames: RouteFrame[] } }; explode?: Sequence & { labelsFrom?: number; hotspots?: ExplodeHotspot[] }; humanScale?: { image: string; hotspots: HumanHotspot[] }; hotspots?: Hotspot[]; background?: string; credit?: string; credits?: string };
 
 export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -27,6 +31,8 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const [ready, setReady] = useState(false);
   const [allFramesLoaded, setAllFramesLoaded] = useState(false);
   const [exploded, setExploded] = useState(false);
+  const [showLabels, setShowLabels] = useState(false);
+  const [humanScale, setHumanScale] = useState(false);
   const [explodeDirection, setExplodeDirection] = useState<1 | -1 | 0>(0);
   const [missing, setMissing] = useState(false);
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
@@ -40,7 +46,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
   const [inView, setInView] = useState(false);
   const [viewFrame, setViewFrame] = useState(0);
-  const count = exploded ? manifest?.explode?.count ?? 0 : manifest?.rotate.count ?? 1;
+  const count = humanScale ? 1 : exploded ? manifest?.explode?.count ?? 0 : manifest?.rotate.count ?? 1;
   const explodeStart = Math.max(0, Math.min(count - 1, (manifest?.explode?.startFrame ?? 1) - 1));
 
   const draw = useCallback(() => {
@@ -53,7 +59,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
       c.height = Math.round(r.height * dpr);
     }
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const current = images.current[frameIndex(position.current, count)];
+    const current = images.current[humanScale ? 0 : frameIndex(position.current, count)];
     const img = current?.complete && current.naturalWidth ? current : lastDrawnImage.current;
     ctx.fillStyle = manifest?.background || '#10101b';
     ctx.fillRect(0, 0, r.width, r.height);
@@ -62,7 +68,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     const scale = Math.min(r.width / img.naturalWidth, r.height / img.naturalHeight) * zoomFactor.current;
     const w = img.naturalWidth * scale, h = img.naturalHeight * scale;
     ctx.drawImage(img, (r.width - w) / 2 + panPosition.current.x, (r.height - h) / 2 + panPosition.current.y, w, h);
-  }, [count, manifest]);
+  }, [count, manifest, humanScale]);
   const drawRef = useRef(draw);
   drawRef.current = draw;
 
@@ -77,7 +83,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   useEffect(() => {
     if (!inView) return;
     let cancelled = false;
-    setManifest(null); setMissing(false); setReady(false); setAllFramesLoaded(false); setProgress(0); setExploded(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); setViewFrame(0); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); lastDrawnImage.current = null;
+    setManifest(null); setMissing(false); setReady(false); setAllFramesLoaded(false); setProgress(0); setExploded(false); setExplodeDirection(0); setShowLabels(false); setHumanScale(false); setActiveHotspot(null); setHoveredHotspot(null); setViewFrame(0); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); lastDrawnImage.current = null;
     position.current = 0; images.current = [];
     const poster = new Image();
     poster.onload = () => { if (!cancelled) { images.current[0] = poster; drawRef.current(); } };
@@ -124,7 +130,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     let cancelled = false;
     requestFrame.current = () => {};
     setReady(false); setAllFramesLoaded(false); setProgress(0);
-    const sequence = exploded ? manifest.explode : manifest.rotate;
+    const sequence = humanScale && manifest.humanScale ? { count: 1, pattern: manifest.humanScale.image } : exploded ? manifest.explode : manifest.rotate;
     if (!sequence) { setExploded(false); return; }
     const total = sequence.count, arr: (HTMLImageElement | undefined)[] = new Array(total);
     images.current = arr;
@@ -166,7 +172,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
       setProgress(100); setAllFramesLoaded(true);
     })();
     return () => { cancelled = true; requestFrame.current = () => {}; };
-  }, [manifest, exploded, slug, draw, inView]);
+  }, [manifest, exploded, humanScale, slug, draw, inView]);
 
   useEffect(() => {
     if (!exploded || explodeDirection === 0 || !allFramesLoaded) return;
@@ -230,6 +236,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
       draw();
       return;
     }
+    if (humanScale) { drag.current = { x, y }; return; }
     const next = position.current + dx / 7;
     position.current = exploded ? Math.max(explodeStart, Math.min(count - 1, next)) : (next + count) % count;
     drag.current = { x, y };
@@ -237,7 +244,11 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   };
   const end = () => { drag.current = null; };
   const current = viewFrame;
-  const hotspots = exploded
+  const hotspots: Hotspot[] = humanScale
+    ? (manifest?.humanScale?.hotspots ?? []).map(point => ({ id: point.id, name: point.name, group: point.category, x: point.point[0], y: point.point[1], color: '#f0444e', details: point.details, source: point.source }))
+    : slug === 'excavator' && !exploded && showLabels
+      ? (manifest?.rotate.hotspots ?? []).flatMap((part) => { const point = parsePoint((part as ExcavatorHotspot).points?.[current] as string | [number, number] | null); return point ? [{ id: part.id, name: part.name, group: (part as ExcavatorHotspot).category, x: point[0], y: point[1], color: '#f0444e', details: (part as ExcavatorHotspot).details, source: (part as ExcavatorHotspot).source }] : []; })
+    : exploded
     ? (manifest?.explode?.hotspots ?? []).flatMap(part => {
         const point = part.points[current];
         if (current + 1 < (manifest?.explode?.labelsFrom ?? 1) || !point) return [];
@@ -259,13 +270,13 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     return { left: (r.width - width) / 2 + panOffset.x, top: (r.height - height) / 2 + panOffset.y, width, height };
   })();
   const visibleCampPins = campsRoute && slug === 'mount-everest' && !exploded
-    ? (manifest?.rotate.hotspots ?? []).flatMap(pin => {
+    ? ((manifest?.rotate.hotspots ?? []) as CampHotspot[]).flatMap(pin => {
         const point = pin.points[current];
         return point ? [{ ...pin, x: point[0], y: point[1] }] : [];
       })
     : [];
   const visibleValleyPins = slug === 'valley-of-flowers' && !exploded
-    ? (manifest?.rotate.hotspots ?? []).flatMap(pin => {
+    ? ((manifest?.rotate.hotspots ?? []) as CampHotspot[]).flatMap(pin => {
         const point = pin.points[current];
         return point ? [{ ...pin, x: point[0], y: point[1] }] : [];
       })
@@ -273,7 +284,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const visibleRoutePoints = campsRoute && slug === 'mount-everest' && !exploded
     ? (manifest?.rotate.route?.frames[current]?.points ?? []).filter(point => point[2] === 1)
     : [];
-  const reset = () => { position.current = 0; setViewFrame(0); setExploded(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); draw(); };
+  const reset = () => { position.current = 0; setViewFrame(0); setExploded(false); setHumanScale(false); setActiveCamp(null); setShowLabels(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); draw(); };
   const adjustZoom = (amount: number) => {
     const next = Math.max(1, Math.min(3, Math.round((zoomFactor.current + amount) * 100) / 100));
     if (next === zoomFactor.current) return;
@@ -285,7 +296,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     draw();
   };
   const toggleExplode = () => {
-    if (!manifest?.explode) return;
+    if (!manifest?.explode || humanScale) return;
     setActiveHotspot(null);
     setHoveredHotspot(null);
     if (exploded) setExplodeDirection(-1);
@@ -296,7 +307,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     <canvas ref={canvas} className={`viewer-canvas ${zoom > 1 ? 'viewer-canvas-zoomed' : ''}`} role="img" aria-label={`Interactive 3D view of ${slug}`} onPointerDown={e => { if (mode === 'drag') { setExplodeDirection(0); e.currentTarget.setPointerCapture(e.pointerId); drag.current = { x: e.clientX, y: e.clientY }; } }} onPointerMove={e => move(e.clientX, e.clientY)} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} onKeyDown={e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); setExplodeDirection(0); const next = position.current + (e.key === 'ArrowLeft' ? -1 : 1); position.current = exploded ? Math.max(explodeStart, Math.min(count - 1, next)) : (next + count) % count; setViewFrame(frameIndex(position.current, count)); requestFrame.current(frameIndex(position.current, count)); draw(); } }} tabIndex={0} />
     {missing && <div className="viewer-empty"><span>✦</span><b>3D coming soon</b><small>Frame pack not added yet</small></div>}
     {!missing && <>
-      <div className="viewer-tag">↔ {exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'DRAG TO ROTATE'} · {exploded ? count - explodeStart : count} VIEWS</div>
+      <div className="viewer-tag">↔ {humanScale ? "HUMAN SCALE · 5'10\" (1.78 M)" : exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'DRAG TO ROTATE'} · {humanScale ? 'SCALE REFERENCE' : exploded ? count - explodeStart : count} {humanScale ? '' : 'VIEWS'}</div>
       {campsRoute && slug === 'mount-everest' && !exploded && <>
         <svg className="camp-route-line" aria-label={manifest?.rotate.route?.name ?? 'Everest climbing route'} style={imageBounds} viewBox={`0 0 ${manifest?.width ?? 1600} ${manifest?.height ?? 900}`} preserveAspectRatio="none">
           <polyline points={visibleRoutePoints.map(([x, y]) => `${x * (manifest?.width ?? 1600)},${y * (manifest?.height ?? 900)}`).join(' ')} />
@@ -341,8 +352,9 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
       {hotspots.map(h => {
         const alignment = [h.y < 0.16 && 'hotspot-below', h.x < 0.12 && 'hotspot-align-left', h.x > 0.88 && 'hotspot-align-right'].filter(Boolean).join(' ');
         const selected = activeHotspot === h.id, hovered = hoveredHotspot === h.id;
-        return <button key={h.id} type="button" className={'hotspot ' + alignment} style={hotspotStyle(h.x, h.y)} onPointerEnter={() => setHoveredHotspot(h.id)} onPointerLeave={() => setHoveredHotspot(null)} onFocus={() => setHoveredHotspot(h.id)} onBlur={() => setHoveredHotspot(null)} onClick={() => { if (selected) { setActiveHotspot(null); setHoveredHotspot(null); } else setActiveHotspot(h.id); }} aria-label={h.name} aria-pressed={selected}>{(selected || hovered) && <span className="hotspot-label" role="tooltip">{h.group && <small>{h.group}</small>}{h.name}</span>}</button>;
+        return <button key={h.id} type="button" className={'hotspot ' + (slug === 'excavator' ? 'excavator-hotspot ' : '') + alignment} style={hotspotStyle(h.x, h.y)} onPointerEnter={() => setHoveredHotspot(h.id)} onPointerLeave={() => setHoveredHotspot(null)} onFocus={() => setHoveredHotspot(h.id)} onBlur={() => setHoveredHotspot(null)} onClick={() => { if (selected) { setActiveHotspot(null); setHoveredHotspot(null); } else setActiveHotspot(h.id); }} aria-label={h.name} aria-pressed={selected}>{slug === 'excavator' && <span className="camp-pin-icon" aria-hidden="true"/>}{(selected || hovered) && <span className="hotspot-label" role="tooltip">{h.group && <small>{h.group}</small>}{h.name}</span>}</button>;
       })}
+      {slug === 'excavator' && activeHotspot && (() => { const item = humanScale ? manifest?.humanScale?.hotspots.find(point => point.id === activeHotspot) : manifest?.rotate.hotspots?.find(point => point.id === activeHotspot) as ExcavatorHotspot | undefined; if (!item) return null; return <aside className="part-info-card" role="dialog" aria-label={`${item.name} details`}><button type="button" className="camp-info-close" aria-label="Close part details" onClick={() => setActiveHotspot(null)}>×</button><small>{item.category}</small><b>{item.name}</b><p>{item.details}</p><a href={item.source} target="_blank" rel="noreferrer">↗ Source</a></aside>; })()}
       {activeHotspot && partDetails.length > 0 && (() => {
         const part = partDetails.find(item => item.id === activeHotspot);
         if (!part) return null;
@@ -351,10 +363,11 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
           <small>{part.category}</small><b>{part.name.en}</b><p>{part.desc.en}</p>
         </aside>;
       })()}
-      {(manifest?.credit || (slug === 'valley-of-flowers' && manifest?.credits)) && <a className="viewer-credit" href={slug === 'valley-of-flowers' ? '/objects/valley-of-flowers/CREDITS.md' : slug === 'sa342m-gazelle' ? 'https://sketchfab.com/3d-models/sa342m-gazelle-2eb65cec2060459085ea4f06db44d668' : 'https://sketchfab.com/3d-models/bmw-s1000-rr-1873aed292d6465694119bd81860a0c2'} target="_blank" rel="noreferrer">{manifest?.credit ?? manifest?.credits}</a>}
+      {(manifest?.credit || (slug === 'valley-of-flowers' && manifest?.credits)) && <a className="viewer-credit" href={slug === 'valley-of-flowers' || slug === 'excavator' ? `/objects/${slug}/CREDITS.md` : slug === 'sa342m-gazelle' ? 'https://sketchfab.com/3d-models/sa342m-gazelle-2eb65cec2060459085ea4f06db44d668' : 'https://sketchfab.com/3d-models/bmw-s1000-rr-1873aed292d6465694119bd81860a0c2'} target="_blank" rel="noreferrer">{manifest?.credit ?? manifest?.credits}</a>}
       {(!ready || (exploded && explodeDirection !== 0 && !allFramesLoaded)) && <div className="viewer-loading"><span>{exploded && explodeDirection !== 0 ? 'PREPARING EXPLODED VIEW' : 'LOADING OBJECT'}</span><i><b style={{ width: `${progress}%` }} /></i></div>}
     </>}
     <div className="viewer-controls">
+      {slug === 'excavator' && <><button type="button" className={`viewer-action excavator-label-toggle ${showLabels ? 'viewer-action-active' : ''}`} disabled={humanScale} aria-pressed={showLabels} onClick={() => { setShowLabels(value => !value); setActiveHotspot(null); setHoveredHotspot(null); }}>Labels</button><button type="button" className={`viewer-action excavator-human-toggle ${humanScale ? 'viewer-action-active' : ''}`} aria-pressed={humanScale} onClick={() => { setHumanScale(value => !value); setActiveHotspot(null); setHoveredHotspot(null); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); }}>Human 5'10"</button></>}
       {slug === 'mount-everest' ? <button type="button" className={`viewer-action ${campsRoute ? 'viewer-action-active' : ''}`} aria-pressed={campsRoute} title="Toggle camps and climbing route" onClick={() => { setCampsRoute(value => !value); setActiveCamp(null); setHoveredCamp(null); }}>Camps &amp; Route</button> : <button type="button" className="viewer-action" disabled={!manifest?.explode} title={exploded ? 'Assemble parts' : 'Explode view'} onClick={toggleExplode}>{exploded ? (explodeDirection === -1 ? 'Assembling…' : 'Assemble parts') : 'Explode view'}</button>}
       <div className="viewer-zoom-group" role="group" aria-label="Zoom controls">
         <button type="button" aria-label="Zoom out" title="Zoom out" disabled={zoom <= 1} onClick={() => adjustZoom(-0.25)}>−</button>
