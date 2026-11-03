@@ -10,8 +10,8 @@
     "hi": "220 मीटर का विशालकाय, जो हर बाल्टी के साथ खदान को आकार देता है।"
   },
   "summary": {
-    "en": "This frame model is a fictional, game-style giant bucket-wheel excavator presented at Bagger 288 scale. Its turntable reveals the digging wheel, long boom, loading bridge and crawler systems; switch on Labels to inspect parts, or compare the machine with a 1.78 m person. Bagger 288 itself is a real German bucket-wheel excavator built by Krupp for RWE. The model is scaled to 220 m long and is not an exact replica.",
-    "hi": "यह फ्रेम मॉडल बागर 288 के पैमाने पर दिखाया गया एक काल्पनिक, गेम-शैली का विशाल बकेट-व्हील उत्खनन यंत्र है। घूमते दृश्य में खुदाई का पहिया, लंबा बूम, लोडिंग ब्रिज और क्रॉलर सिस्टम देखें; पुर्ज़े जानने के लिए Labels चालू करें या मशीन की तुलना 1.78 मीटर के व्यक्ति से करें। वास्तविक बागर 288 जर्मनी में RWE के लिए Krupp द्वारा बनाया गया बकेट-व्हील उत्खनन यंत्र है। यह मॉडल 220 मीटर लंबाई के पैमाने पर है, सटीक प्रतिकृति नहीं।"
+    "en": "Explore a giant bucket-wheel excavator at Bagger 288 scale. Its turntable reveals the digging wheel, long boom, loading bridge and crawler systems; switch on Labels to inspect parts, or compare the machine with a 1.78 m person. The real Bagger 288 was built by Krupp for RWE.",
+    "hi": "बागर 288 के पैमाने पर बने विशाल बकेट-व्हील उत्खनन यंत्र को घुमाकर देखें। इसमें खुदाई का पहिया, लंबा बूम, लोडिंग ब्रिज और क्रॉलर सिस्टम दिखाई देते हैं; पुर्ज़ों के नाम जानने के लिए Labels दबाएं या मशीन की तुलना 1.78 मीटर के व्यक्ति से करें। वास्तविक बागर 288 जर्मनी में RWE के लिए Krupp द्वारा बनाया गया था।"
   },
   "specs": [
     {
@@ -119,8 +119,8 @@
     },
     {
       "text": {
-        "en": "This pack’s turntable shows a game-style model inspired by Bagger 288; its proportions and details are not an engineering-accurate replica.",
-        "hi": "इस पैक का घूमता मॉडल बागर 288 से प्रेरित गेम-शैली का दृश्य है; इसके अनुपात और विवरण इंजीनियरिंग-सटीक प्रतिकृति नहीं हैं।"
+        "en": "A bucket-wheel excavator combines a rotating wheel of buckets with conveyor belts to move material continuously from the mine face.",
+        "hi": "बकेट-व्हील उत्खनन यंत्र घूमती बाल्टियों और कन्वेयर बेल्ट की मदद से खदान से सामग्री लगातार हटाता है।"
       },
       "sourceUrl": "https://en.wikipedia.org/wiki/Bagger_288"
     }

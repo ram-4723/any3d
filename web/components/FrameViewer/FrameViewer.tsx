@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { frameIndex, hotspotVisible } from './math';
 
 type Props = { slug: string; mode?: 'drag' | 'scroll' };
@@ -13,13 +13,21 @@ type HumanHotspot = { id: string; name: string; category: string; details: strin
 type Point = [number, number] | null;
 const parsePoint = (point: string | [number, number] | null | undefined): Point => { if (Array.isArray(point)) return point; if (typeof point !== 'string') return null; const values = point.trim().split(/[\s,]+/).map(Number); return values.length === 2 && values.every(Number.isFinite) ? [values[0], values[1]] : null; };
 type RouteFrame = { frame: number; points: [number, number, number][] };
-type CampDetail = { id: string; name: string; altitudeM?: number; altitudeNote?: string; lat?: number; lon?: number; coordsApprox?: boolean; coordsSource?: string; description: string };
+type CampDetail = { id: string; name: string; altitudeM?: number; altitudeNote?: string; lat?: number; lon?: number; coordsApprox?: boolean; coordsSource?: string; description: string; image?: HotspotPhoto };
 type PartDetail = { id: string; category: string; name: { en: string }; desc: { en: string } };
 type Manifest = { width: number; height: number; rotate: Sequence & { hotspots?: (CampHotspot | ExcavatorHotspot)[]; route?: { id: string; name: string; frames: RouteFrame[] } }; explode?: Sequence & { labelsFrom?: number; hotspots?: ExplodeHotspot[] }; humanScale?: { image: string; hotspots: HumanHotspot[] }; hotspots?: Hotspot[]; background?: string; credit?: string; credits?: string };
+
+const excavatorPhoto: HotspotPhoto = {
+  url: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Bagger_288_2012.jpg/960px-Bagger_288_2012.jpg',
+  sourceUrl: 'https://commons.wikimedia.org/wiki/File:Bagger_288_2012.jpg',
+  credit: 'Pappnaas666 · CC BY-SA 3.0',
+  caption: 'Bagger 288 at the Garzweiler open-cast mine, Germany',
+};
 
 export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const stage = useRef<HTMLDivElement>(null);
+  const campCardRef = useRef<HTMLElement>(null);
   const images = useRef<(HTMLImageElement | undefined)[]>([]);
   const lastDrawnImage = useRef<HTMLImageElement | null>(null);
   const requestFrame = useRef<(index: number) => void>(() => {});
@@ -276,7 +284,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
         return point ? [{ ...pin, x: point[0], y: point[1] }] : [];
       })
     : [];
-  const visibleValleyPins = slug === 'valley-of-flowers' && !exploded
+  const visibleValleyPins = slug === 'valley-of-flowers' && !exploded && showLabels
     ? ((manifest?.rotate.hotspots ?? []) as CampHotspot[]).flatMap(pin => {
         const point = pin.points[current];
         return point ? [{ ...pin, x: point[0], y: point[1] }] : [];
@@ -285,6 +293,40 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const visibleRoutePoints = campsRoute && slug === 'mount-everest' && !exploded
     ? (manifest?.rotate.route?.frames[current]?.points ?? []).filter(point => point[2] === 1)
     : [];
+  const activeCampPin = [...visibleCampPins, ...visibleValleyPins].find(pin => pin.id === activeCamp);
+  const activeCampDetails = campDetails?.find(camp => camp.id === activeCamp);
+  const activeCampImage = activeCampPin?.image ?? activeCampDetails?.image;
+  useLayoutEffect(() => {
+    const card = campCardRef.current;
+    const viewer = stage.current;
+    const pin = activeCampPin;
+    if (!card || !viewer || !pin) return;
+
+    const placeCard = () => {
+      const bounds = viewer.getBoundingClientRect();
+      const anchor = hotspotStyle(pin.x, pin.y);
+      const toPixels = (value: string | number, size: number) => typeof value === 'number'
+        ? value
+        : value.endsWith('%') ? Number.parseFloat(value) * size / 100 : Number.parseFloat(value);
+      const anchorX = toPixels(anchor.left, bounds.width);
+      const anchorY = toPixels(anchor.top, bounds.height);
+      const width = card.offsetWidth;
+      const height = card.offsetHeight;
+      const left = Math.max(8, Math.min(bounds.width - width - 8, anchorX - width / 2));
+      const preferredTop = anchorY > bounds.height / 2 ? anchorY - height - 14 : anchorY + 14;
+      const top = Math.max(8, Math.min(bounds.height - height - 8, preferredTop));
+      card.style.left = `${left}px`;
+      card.style.top = `${top}px`;
+      card.style.visibility = 'visible';
+    };
+
+    card.style.visibility = 'hidden';
+    placeCard();
+    const observer = new ResizeObserver(placeCard);
+    observer.observe(viewer);
+    observer.observe(card);
+    return () => observer.disconnect();
+  }, [activeCampPin?.id, activeCampPin?.x, activeCampPin?.y, activeCamp, current, zoom, panOffset, manifest]);
   const reset = () => { position.current = 0; setViewFrame(0); setExploded(false); setHumanScale(false); setActiveCamp(null); setShowLabels(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); draw(); };
   const adjustZoom = (amount: number) => {
     const next = Math.max(1, Math.min(3, Math.round((zoomFactor.current + amount) * 100) / 100));
@@ -322,15 +364,6 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
               <span className="camp-pin-icon" aria-hidden="true" />
               {hoveredCamp === pin.id && <span className="camp-pin-label">{pin.name}{pin.approx && <small>approx.</small>}</span>}
             </button>
-            {selected && <aside className="camp-info-card" role="dialog" aria-label={`${pin.name} details`}>
-              <button type="button" className="camp-info-close" aria-label="Close camp details" onClick={() => setActiveCamp(null)}>×</button>
-              <b>{details?.name ?? pin.name}</b>
-              {details?.altitudeM && <strong>{details.altitudeM.toLocaleString()} m <small>ALTITUDE</small></strong>}
-              {details?.description && <p>{details.description}</p>}
-              {details?.altitudeNote && <small>{details.altitudeNote}</small>}
-              {details?.coordsApprox && <small>Coordinates approximate · {details.lat?.toFixed(4)}° N, {details.lon?.toFixed(4)}° E</small>}
-              {details?.coordsSource && <small>Location source: {details.coordsSource}</small>}
-            </aside>}
           </div>;
         })}
       </>}
@@ -342,20 +375,27 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
             <span className="camp-pin-icon" aria-hidden="true" />
             {selected && <span className="camp-pin-label">{pin.name}{pin.approx && <small>approx.</small>}</span>}
           </button>
-          {selected && <aside className="camp-info-card valley-info-card" role="dialog" aria-label={`${pin.name} details`}>
-            <button type="button" className="camp-info-close" aria-label="Close place details" onClick={() => setActiveCamp(null)}>×</button>
-            {pin.image && <figure className="valley-photo"><img src={pin.image.url} alt={pin.image.caption} loading="lazy"/><a href={pin.image.sourceUrl} target="_blank" rel="noreferrer" aria-label={`Photo source: ${pin.image.credit}`}>{pin.image.credit}<span> ↗</span></a></figure>}<small>{pin.category}</small><b>{pin.name}</b><p>{pin.details}</p>
-            {pin.approx && <small>Approximate position</small>}
-            {pin.offModel && <small>Shown at model edge, true direction</small>}
-          </aside>}
         </div>;
       })}
+      {activeCampPin && <aside ref={campCardRef} className="camp-info-card viewer-place-card" role="dialog" aria-label={`${activeCampPin.name} details`} style={{ left: 0, top: 0, visibility: 'hidden' }}>
+        <button type="button" className="camp-info-close" aria-label="Close place details" onClick={() => setActiveCamp(null)}>×</button>
+        {activeCampImage && <figure className="viewer-info-photo"><img src={activeCampImage.url} alt={activeCampImage.caption} loading="lazy"/><a href={activeCampImage.sourceUrl} target="_blank" rel="noreferrer" aria-label={`Photo source: ${activeCampImage.credit}`}>{activeCampImage.credit}<span> ↗</span></a></figure>}
+        <small>{activeCampPin.category ?? 'MOUNTAIN ROUTE'}</small>
+        <b>{activeCampDetails?.name ?? activeCampPin.name}</b>
+        {activeCampDetails?.altitudeM && <strong>{activeCampDetails.altitudeM.toLocaleString()} m <small>ALTITUDE</small></strong>}
+        <p>{activeCampDetails?.description ?? activeCampPin.details}</p>
+        {activeCampDetails?.altitudeNote && <small>{activeCampDetails.altitudeNote}</small>}
+        {activeCampDetails?.coordsApprox && <small>Coordinates approximate · {activeCampDetails.lat?.toFixed(4)}° N, {activeCampDetails.lon?.toFixed(4)}° E</small>}
+        {activeCampDetails?.coordsSource && <small>Location source: {activeCampDetails.coordsSource}</small>}
+        {activeCampPin.approx && !activeCampDetails && <small>Approximate position</small>}
+        {activeCampPin.offModel && <small>Shown at model edge, true direction</small>}
+      </aside>}
       {hotspots.map(h => {
         const alignment = [h.y < 0.16 && 'hotspot-below', h.x < 0.12 && 'hotspot-align-left', h.x > 0.88 && 'hotspot-align-right'].filter(Boolean).join(' ');
         const selected = activeHotspot === h.id, hovered = hoveredHotspot === h.id;
         return <button key={h.id} type="button" className={'hotspot ' + (slug === 'excavator' ? 'excavator-hotspot ' : '') + alignment} style={hotspotStyle(h.x, h.y)} onPointerEnter={() => setHoveredHotspot(h.id)} onPointerLeave={() => setHoveredHotspot(null)} onFocus={() => setHoveredHotspot(h.id)} onBlur={() => setHoveredHotspot(null)} onClick={() => { if (selected) { setActiveHotspot(null); setHoveredHotspot(null); } else setActiveHotspot(h.id); }} aria-label={h.name} aria-pressed={selected}>{slug === 'excavator' && <span className="camp-pin-icon" aria-hidden="true"/>}{(selected || hovered) && <span className="hotspot-label" role="tooltip">{h.group && <small>{h.group}</small>}{h.name}</span>}</button>;
       })}
-      {slug === 'excavator' && activeHotspot && (() => { const item = humanScale ? manifest?.humanScale?.hotspots.find(point => point.id === activeHotspot) : manifest?.rotate.hotspots?.find(point => point.id === activeHotspot) as ExcavatorHotspot | undefined; if (!item) return null; return <aside className="part-info-card" role="dialog" aria-label={`${item.name} details`}><button type="button" className="camp-info-close" aria-label="Close part details" onClick={() => setActiveHotspot(null)}>×</button><small>{item.category}</small><b>{item.name}</b><p>{item.details}</p><a href={item.source} target="_blank" rel="noreferrer">↗ Source</a></aside>; })()}
+      {slug === 'excavator' && activeHotspot && (() => { const item = humanScale ? manifest?.humanScale?.hotspots.find(point => point.id === activeHotspot) : manifest?.rotate.hotspots?.find(point => point.id === activeHotspot) as ExcavatorHotspot | undefined; if (!item) return null; return <aside className="part-info-card" role="dialog" aria-label={`${item.name} details`}><button type="button" className="camp-info-close" aria-label="Close part details" onClick={() => setActiveHotspot(null)}>×</button><figure className="viewer-info-photo"><img src={excavatorPhoto.url} alt={excavatorPhoto.caption} loading="lazy"/><a href={excavatorPhoto.sourceUrl} target="_blank" rel="noreferrer">{excavatorPhoto.credit}<span> ↗</span></a></figure><small>{item.category}</small><b>{item.name}</b><p>{item.details}</p><a href={item.source} target="_blank" rel="noreferrer">↗ Part details source</a></aside>; })()}
       {activeHotspot && partDetails.length > 0 && (() => {
         const part = partDetails.find(item => item.id === activeHotspot);
         if (!part) return null;
@@ -369,7 +409,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     </>}
     <div className="viewer-controls">
       {slug === 'excavator' && <><button type="button" className={`viewer-action excavator-label-toggle ${showLabels ? 'viewer-action-active' : ''}`} disabled={humanScale} aria-pressed={showLabels} onClick={() => { setShowLabels(value => !value); setActiveHotspot(null); setHoveredHotspot(null); }}>Labels</button><button type="button" className={`viewer-action excavator-human-toggle ${humanScale ? 'viewer-action-active' : ''}`} aria-pressed={humanScale} onClick={() => { setHumanScale(value => !value); setActiveHotspot(null); setHoveredHotspot(null); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); }}>Human 5'10"</button></>}
-      {slug === 'mount-everest' ? <button type="button" className={`viewer-action ${campsRoute ? 'viewer-action-active' : ''}`} aria-pressed={campsRoute} title="Toggle camps and climbing route" onClick={() => { setCampsRoute(value => !value); setActiveCamp(null); setHoveredCamp(null); }}>Camps &amp; Route</button> : <button type="button" className="viewer-action" disabled={!manifest?.explode} title={exploded ? 'Assemble parts' : 'Explode view'} onClick={toggleExplode}>{exploded ? (explodeDirection === -1 ? 'Assembling…' : 'Assemble parts') : 'Explode view'}</button>}
+      {slug === 'mount-everest' ? <button type="button" className={`viewer-action ${campsRoute ? 'viewer-action-active' : ''}`} aria-pressed={campsRoute} title="Toggle camps and climbing route" onClick={() => { setCampsRoute(value => !value); setActiveCamp(null); setHoveredCamp(null); }}>Camps &amp; Route</button> : slug === 'valley-of-flowers' ? <button type="button" className={`viewer-action ${showLabels ? 'viewer-action-active' : ''}`} aria-pressed={showLabels} title="Toggle place markers" onClick={() => { setShowLabels(value => !value); setActiveCamp(null); setHoveredCamp(null); }}>Labels</button> : <button type="button" className="viewer-action" disabled={!manifest?.explode} title={exploded ? 'Assemble parts' : 'Explode view'} onClick={toggleExplode}>{exploded ? (explodeDirection === -1 ? 'Assembling…' : 'Assemble parts') : 'Explode view'}</button>}
       <div className="viewer-zoom-group" role="group" aria-label="Zoom controls">
         <button type="button" aria-label="Zoom out" title="Zoom out" disabled={zoom <= 1} onClick={() => adjustZoom(-0.25)}>−</button>
         <span aria-live="polite">{Math.round(zoom * 100)}%</span>

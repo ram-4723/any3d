@@ -416,7 +416,13 @@
       "lon": 86.8594,
       "coordsApprox": true,
       "coordsSource": "Wikipedia 'Everest base camps' (28°0′26″N 86°51′34″E)",
-      "description": "Tent city on the Khumbu Glacier where Nepal-side expeditions live for weeks to acclimatise."
+      "description": "Tent city on the Khumbu Glacier where Nepal-side expeditions live for weeks to acclimatise.",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/KhumbuIcefall.jpg/960px-KhumbuIcefall.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:KhumbuIcefall.jpg",
+        "credit": "Uwe Gille · CC BY-SA 3.0",
+        "caption": "Khumbu Icefall on the Nepal-side climbing route"
+      }
     },
     {
       "id": "khumbu-icefall",
@@ -427,7 +433,13 @@
       "lon": 86.8728,
       "coordsApprox": true,
       "coordsSource": "Wikipedia 'Khumbu Icefall' (27°59′45″N 86°52′22″E)",
-      "description": "A shifting maze of crevasses and house-sized ice blocks, crossed on ladders; one of the deadliest parts of the route."
+      "description": "A shifting maze of crevasses and house-sized ice blocks, crossed on ladders; one of the deadliest parts of the route.",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/KhumbuIcefall.jpg/960px-KhumbuIcefall.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:KhumbuIcefall.jpg",
+        "credit": "Uwe Gille · CC BY-SA 3.0",
+        "caption": "Khumbu Icefall on the Nepal-side climbing route"
+      }
     },
     {
       "id": "camp-1",
@@ -438,7 +450,13 @@
       "lon": 86.885,
       "coordsApprox": true,
       "coordsSource": "ESTIMATE ONLY (no published coordinate found): placed above the top of the icefall at the entrance of the Western Cwm; must be checked on the terrain",
-      "description": "First camp above the icefall, at the mouth of the Western Cwm."
+      "description": "First camp above the icefall, at the mouth of the Western Cwm.",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/KhumbuIcefall.jpg/960px-KhumbuIcefall.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:KhumbuIcefall.jpg",
+        "credit": "Uwe Gille · CC BY-SA 3.0",
+        "caption": "Khumbu Icefall on the Nepal-side climbing route"
+      }
     },
     {
       "id": "camp-2",
@@ -449,7 +467,13 @@
       "lon": 86.905,
       "coordsApprox": true,
       "coordsSource": "ESTIMATE ONLY (no published coordinate found): head of the Western Cwm near the foot of the Lhotse Face; Wikipedia's Western Cwm point is 27°58′51″N 86°53′53″E",
-      "description": "Main high camp in the Western Cwm, the 'Valley of Silence', at the foot of the Lhotse Face."
+      "description": "Main high camp in the Western Cwm, the 'Valley of Silence', at the foot of the Lhotse Face.",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/KhumbuIcefall.jpg/960px-KhumbuIcefall.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:KhumbuIcefall.jpg",
+        "credit": "Uwe Gille · CC BY-SA 3.0",
+        "caption": "Khumbu Icefall on the Nepal-side climbing route"
+      }
     },
     {
       "id": "camp-3",
@@ -460,7 +484,13 @@
       "lon": 86.922,
       "coordsApprox": true,
       "coordsSource": "ESTIMATE ONLY (no published coordinate found): ledge on the Lhotse Face between Camp 2 and the South Col",
-      "description": "Tents cut into a steep ice ledge on the Lhotse Face, reached on fixed ropes."
+      "description": "Tents cut into a steep ice ledge on the Lhotse Face, reached on fixed ropes.",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/KhumbuIcefall.jpg/960px-KhumbuIcefall.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:KhumbuIcefall.jpg",
+        "credit": "Uwe Gille · CC BY-SA 3.0",
+        "caption": "Khumbu Icefall on the Nepal-side climbing route"
+      }
     },
     {
       "id": "camp-4",
@@ -471,7 +501,13 @@
       "lon": 86.9321,
       "coordsApprox": true,
       "coordsSource": "Wikipedia 'South Col' (27°58′30″N 86°55′55.5″E)",
-      "description": "Windy saddle between Everest and Lhotse; the start of the death zone and of the midnight summit push."
+      "description": "Windy saddle between Everest and Lhotse; the start of the death zone and of the midnight summit push.",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/South_Cole.jpg/960px-South_Cole.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:South_Cole.jpg",
+        "credit": "AngeliSherpa · CC BY-SA 4.0",
+        "caption": "Everest Camp IV at the South Col"
+      }
     },
     {
       "id": "hillary-step",
@@ -482,7 +518,13 @@
       "lon": 86.9256,
       "coordsApprox": true,
       "coordsSource": "Wikipedia 'Hillary Step' (via Wikidata)",
-      "description": "A 12 m rock wall just below the top, first climbed by Hillary and Tenzing; reported changed by the 2015 earthquake."
+      "description": "A 12 m rock wall just below the top, first climbed by Hillary and Tenzing; reported changed by the 2015 earthquake.",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Everest_Summit.jpg/960px-Everest_Summit.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Everest_Summit.jpg",
+        "credit": "Alfonso.mnr · CC0 1.0",
+        "caption": "Mount Everest summit, photographed in 2017"
+      }
     },
     {
       "id": "summit",
@@ -493,7 +535,13 @@
       "lon": 86.9253,
       "coordsApprox": false,
       "coordsSource": "Wikipedia 'Mount Everest' (27°59′18″N 86°55′31″E, via Peakbagger)",
-      "description": "The highest point on Earth, on the Nepal–China border, about the size of a dining table."
+      "description": "The highest point on Earth, on the Nepal–China border, about the size of a dining table.",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Everest_Summit.jpg/960px-Everest_Summit.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Everest_Summit.jpg",
+        "credit": "Alfonso.mnr · CC0 1.0",
+        "caption": "Mount Everest summit, photographed in 2017"
+      }
     },
     {
       "id": "ebc-north",
@@ -504,7 +552,13 @@
       "lon": 86.8514,
       "coordsApprox": true,
       "coordsSource": "Wikipedia 'Everest base camps' (28°8′29″N 86°51′5″E)",
-      "description": "Gravel plain below the Rongbuk Glacier, reachable by road, where the North Ridge route starts."
+      "description": "Gravel plain below the Rongbuk Glacier, reachable by road, where the North Ridge route starts.",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Rongbuk_Monastery_Everest.jpg/960px-Rongbuk_Monastery_Everest.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rongbuk_Monastery_Everest.jpg",
+        "credit": "Csearl · CC BY-SA 3.0",
+        "caption": "Rongbuk Monastery, Tibet, photographed on a trek toward Everest Advanced Base Camp"
+      }
     }
   ],
   "route": {
