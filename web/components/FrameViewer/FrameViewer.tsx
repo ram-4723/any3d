@@ -6,7 +6,8 @@ type Props = { slug: string; mode?: 'drag' | 'scroll' };
 type Hotspot = { id: string; name: string; group?: string; frame?: number; x: number; y: number; color?: string; details?: string; source?: string };
 type ExplodeHotspot = { id: string; name: string; group?: string; category?: string; color?: string; points: ([number, number] | null)[] };
 type Sequence = { count: number; pattern: string; loop?: boolean; startFrame?: number };
-type CampHotspot = { id: string; name: string; category?: string; details?: string; approx: boolean; offModel?: boolean; points: ([number, number] | null)[] };
+type HotspotPhoto = { url: string; sourceUrl: string; credit: string; caption: string };
+type CampHotspot = { id: string; name: string; category?: string; details?: string; approx: boolean; offModel?: boolean; image?: HotspotPhoto; points: ([number, number] | null)[] };
 type ExcavatorHotspot = { id: string; name: string; category: string; details: string; source: string; points: (string | [number, number] | null)[] };
 type HumanHotspot = { id: string; name: string; category: string; details: string; source: string; point: [number, number] };
 type Point = [number, number] | null;
@@ -339,11 +340,11 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
         return <div className={`camp-marker ${alignment}`} key={pin.id} style={hotspotStyle(pin.x, pin.y)}>
           <button type="button" className="camp-pin-button" aria-label={`${pin.category ?? 'PLACE'}: ${pin.name}${pin.approx ? ', approximate position' : ''}`} aria-expanded={selected} onPointerEnter={() => setHoveredCamp(pin.id)} onPointerLeave={() => setHoveredCamp(null)} onFocus={() => setHoveredCamp(pin.id)} onBlur={() => setHoveredCamp(null)} onClick={() => setActiveCamp(selected ? null : pin.id)}>
             <span className="camp-pin-icon" aria-hidden="true" />
-            {hoveredCamp === pin.id && <span className="camp-pin-label">{pin.name}{pin.approx && <small>approx.</small>}</span>}
+            {selected && <span className="camp-pin-label">{pin.name}{pin.approx && <small>approx.</small>}</span>}
           </button>
           {selected && <aside className="camp-info-card valley-info-card" role="dialog" aria-label={`${pin.name} details`}>
             <button type="button" className="camp-info-close" aria-label="Close place details" onClick={() => setActiveCamp(null)}>×</button>
-            <small>{pin.category}</small><b>{pin.name}</b><p>{pin.details}</p>
+            {pin.image && <figure className="valley-photo"><img src={pin.image.url} alt={pin.image.caption} loading="lazy"/><a href={pin.image.sourceUrl} target="_blank" rel="noreferrer" aria-label={`Photo source: ${pin.image.credit}`}>{pin.image.credit}<span> ↗</span></a></figure>}<small>{pin.category}</small><b>{pin.name}</b><p>{pin.details}</p>
             {pin.approx && <small>Approximate position</small>}
             {pin.offModel && <small>Shown at model edge, true direction</small>}
           </aside>}
