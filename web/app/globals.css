@@ -262,6 +262,40 @@ button,select{touch-action:manipulation}
 .part-info-card{max-height:calc(100% - 20px);overflow-y:auto;overscroll-behavior:contain}
 @media(max-width:600px){.viewer-place-card{width:min(320px,calc(100% - 16px));max-height:calc(100% - 16px);padding:9px 11px}.viewer-info-photo{aspect-ratio:16/8.5;margin-top:7px}.part-info-card{left:8px;bottom:48px;width:calc(100% - 16px);max-height:calc(100% - 56px)}}
 
+/* Final interaction and content polish */
+:root{--muted:#66636b;--line:#e7e4de;--accent:#ed6c91}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.topbar nav a,.footer a,.text-link{transition:color .18s ease}
+.hero-object .viewer{border:1px solid #ffffff28;box-shadow:0 28px 72px #31273530}
+.card-art{background:#222428}
+.object-card:not(.object-card-framepack) .card-art{background:linear-gradient(145deg,#f2efea,#e4e1db)}
+.object-card-framepack .card-art{background:#202224}
+.object-card-framepack .card-art img{inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:normal;transition:transform .45s cubic-bezier(.2,.7,.25,1)}
+.object-card-framepack:hover .card-art img,.object-card-framepack:focus-visible .card-art img{transform:scale(1.035)}
+.card-art:after{position:absolute;inset:auto 0 0;height:28%;content:"";background:linear-gradient(transparent,#0002);pointer-events:none}
+.card-category,.card-arrow{z-index:1}
+.card-copy{gap:12px;min-height:74px}
+.card-copy>div{min-width:0}
+.card-copy h3{line-height:1.25}
+.card-copy p{max-width:42ch;line-height:1.5}
+.rarity{flex-shrink:0;max-width:48%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.search-overlay{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.search-box{border:1px solid #ffffffc9;box-shadow:0 28px 90px #11121b45}
+.search-results a:focus-visible{outline-offset:-2px}
+.listing-total{font-variant-numeric:tabular-nums}
+.filter-row button{min-height:40px}
+.detail-panel{scrollbar-color:#d2cfd0 transparent;scrollbar-width:thin}
+.viewer-controls button{min-height:40px}
+.empty-story{color:#66636b;font-size:13px;line-height:1.7}
+@media(max-width:600px){
+  .card-copy{align-items:flex-start;min-height:76px}
+  .rarity{max-width:43%;font-size:7px}
+  .card-copy h3{font-size:15px}
+  .card-copy p{font-size:11px}
+  .viewer-controls button{min-height:42px}
+}
+@media(prefers-reduced-motion:reduce){.object-card-framepack .card-art img{transition:none}}
+
 
 /* Desktop and intermediate-screen polish */
 @media(min-width:1101px){

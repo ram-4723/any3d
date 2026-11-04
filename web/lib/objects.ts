@@ -13,10 +13,11 @@ export async function getObjects(): Promise<ObjectEntry[]> {
     const response = await fetch(`${base}/api/objects`, { next: { revalidate: 60 } });
     if (response.ok) {
       const remote = await response.json() as ObjectEntry[];
-      const remoteSlugs = new Set(remote.map(item => item.slug));
-      return [...remote, ...local.filter(item => !remoteSlugs.has(item.slug))];
+      const publishedRemote = remote.filter(item => !item.sample);
+      const remoteSlugs = new Set(publishedRemote.map(item => item.slug));
+      return [...publishedRemote, ...local.filter(item => !item.sample && !remoteSlugs.has(item.slug))];
     }
   } catch { /* Static fallback keeps Vercel usable. */ }
-  return local;
+  return local.filter(item => !item.sample);
 }
 export async function getObject(slug: string) { return (await getObjects()).find(item => item.slug === slug); }

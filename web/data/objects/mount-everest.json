@@ -453,7 +453,7 @@
                     "en":  "Mount Everest is the highest mountain on Earth above sea level. It sits in the Mahalangur Himal section of the Himalayas, and the Nepal–China border runs across its summit. Nepal and China jointly announced its current official height, 8,848.86 m, on 8 December 2020. Tenzing Norgay and Edmund Hillary made the first confirmed ascent on 29 May 1953, and by the end of 2025 the Himalayan Database counted 13,737 summits by 7,563 different people."
                 },
     "hasFramePack":  true,
-    "rarity":  "@{en=There is only one highest point on Earth. By the end of 2025 about 7,560 different people had stood on top, and about 98.6% of all summits used one of the two standard routes.}",
+    "rarity":  "8,848.86 m · Earth's highest summit",
     "tagline":  {
                     "hi":  "The roof of the world: 8,848.86 m of former seabed on the Nepal–China border",
                     "en":  "The roof of the world: 8,848.86 m of former seabed on the Nepal–China border"
