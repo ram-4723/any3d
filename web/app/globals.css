@@ -295,6 +295,17 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{ou
   .viewer-controls button{min-height:42px}
 }
 @media(prefers-reduced-motion:reduce){.object-card-framepack .card-art img{transition:none}}
+.guna-hotspot{width:44px;height:44px}
+.guna-hotspot .hotspot-label{border-radius:10px;padding:9px 12px;backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+.guna-hotspot .hotspot-label small{color:#ffbd5a}
+.guna-part-info-card{left:auto;right:14px;bottom:14px;width:min(370px,calc(100% - 28px));max-height:calc(100% - 28px);padding:19px 20px;border-radius:14px}
+.guna-part-info-card>small{font-size:9px;color:#ffc166}
+.guna-part-info-card>b{font-size:17px;line-height:1.35}
+.guna-part-info-card>p{font-size:12px;line-height:1.65}
+.guna-safety-note{border-color:#e6cba9;background:linear-gradient(135deg,#fffaf2,#fff)}
+.guna-safety-note h2{color:#704b23}
+.guna-safety-note p:first-of-type{color:#54391d;font-weight:700}
+@media(max-width:600px){.guna-part-info-card{left:8px;right:8px;bottom:8px;width:auto;max-height:min(64%,440px);padding:15px 16px}.guna-part-info-card>p{font-size:12px;line-height:1.6}.guna-hotspot{width:48px;height:48px}}
 
 
 /* Desktop and intermediate-screen polish */
