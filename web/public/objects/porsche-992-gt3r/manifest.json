@@ -160,7 +160,13 @@
           null,
           null,
           null
-        ]
+        ],
+        "image": {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/DSC7543_%2852402268311%29.jpg?width=960",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:DSC7543_(52402268311).jpg",
+          "credit": "Osajus Photography · CC BY 2.0",
+          "caption": "Porsche 911 GT3 R (992) at a race weekend"
+        }
       },
       {
         "id": "wing",
@@ -508,7 +514,13 @@
             0.7291,
             0.2858
           ]
-        ]
+        ],
+        "image": {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Porsche_rutronik.jpg?width=960",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Porsche_rutronik256.jpg",
+          "credit": "Chaos12041 · CC BY-SA 4.0",
+          "caption": "Rutronik Racing Porsche 911 GT3 R"
+        }
       },
       {
         "id": "wheels",
@@ -661,7 +673,13 @@
           null,
           null,
           null
-        ]
+        ],
+        "image": {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Wright_Porsche_WGI23_11.jpg?width=960",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wright_Porsche_WGI23_11.jpg",
+          "credit": "SmackJam · CC BY-SA 4.0",
+          "caption": "Wright Motorsports Porsche 992 GT3 R on track"
+        }
       },
       {
         "id": "brakes",
@@ -814,7 +832,13 @@
           null,
           null,
           null
-        ]
+        ],
+        "image": {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/DSC7543_%2852402268311%29.jpg?width=960",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:DSC7543_(52402268311).jpg",
+          "credit": "Osajus Photography · CC BY 2.0",
+          "caption": "Porsche 911 GT3 R (992) at a race weekend"
+        }
       },
       {
         "id": "carbon",
@@ -967,7 +991,13 @@
           null,
           null,
           null
-        ]
+        ],
+        "image": {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Porsche_rutronik.jpg?width=960",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Porsche_rutronik256.jpg",
+          "credit": "Chaos12041 · CC BY-SA 4.0",
+          "caption": "Rutronik Racing Porsche 911 GT3 R"
+        }
       },
       {
         "id": "cockpit",
@@ -1120,7 +1150,13 @@
           null,
           null,
           null
-        ]
+        ],
+        "image": {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Wright_Porsche_WGI23_11.jpg?width=960",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wright_Porsche_WGI23_11.jpg",
+          "credit": "SmackJam · CC BY-SA 4.0",
+          "caption": "Wright Motorsports Porsche 992 GT3 R on track"
+        }
       },
       {
         "id": "lights",
@@ -1273,7 +1309,13 @@
           null,
           null,
           null
-        ]
+        ],
+        "image": {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/DSC7543_%2852402268311%29.jpg?width=960",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:DSC7543_(52402268311).jpg",
+          "credit": "Osajus Photography · CC BY 2.0",
+          "caption": "Porsche 911 GT3 R (992) at a race weekend"
+        }
       },
       {
         "id": "radiator",
@@ -1426,7 +1468,13 @@
           null,
           null,
           null
-        ]
+        ],
+        "image": {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Porsche_rutronik.jpg?width=960",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Porsche_rutronik256.jpg",
+          "credit": "Chaos12041 · CC BY-SA 4.0",
+          "caption": "Rutronik Racing Porsche 911 GT3 R"
+        }
       },
       {
         "id": "fuel",
@@ -1579,7 +1627,13 @@
           null,
           null,
           null
-        ]
+        ],
+        "image": {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Wright_Porsche_WGI23_11.jpg?width=960",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wright_Porsche_WGI23_11.jpg",
+          "credit": "SmackJam · CC BY-SA 4.0",
+          "caption": "Wright Motorsports Porsche 992 GT3 R on track"
+        }
       },
       {
         "id": "debut",
@@ -1732,7 +1786,13 @@
           null,
           null,
           null
-        ]
+        ],
+        "image": {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/DSC7543_%2852402268311%29.jpg?width=960",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:DSC7543_(52402268311).jpg",
+          "credit": "Osajus Photography · CC BY 2.0",
+          "caption": "Porsche 911 GT3 R (992) at a race weekend"
+        }
       }
     ]
   },

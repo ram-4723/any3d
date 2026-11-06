@@ -1033,7 +1033,13 @@
      null,
      null,
      null
-    ]
+    ],
+    "image": {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Valley_of_flowers%2C_Uttarakhand.jpg?width=960",
+     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Valley_of_flowers,_Uttarakhand.jpg",
+     "credit": "Manas Badge · CC BY-SA 4.0",
+     "caption": "A stream through the Valley of Flowers, Uttarakhand"
+    }
    },
    {
     "id": "tipra",
@@ -2200,7 +2206,13 @@
       0.6837,
       0.3316
      ]
-    ]
+    ],
+    "image": {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Nanda_Devi_peak_view_from_outer_Sanctuary_near_Bujgara_Jun_1980.jpg?width=960",
+     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nanda_Devi_peak_view_from_outer_Sanctuary_near_Bujgara_Jun_1980.jpg",
+     "credit": "Asmdorje · CC BY-SA 4.0",
+     "caption": "Nanda Devi viewed from the outer sanctuary near Bujgara"
+    }
    },
    {
     "id": "cia",
@@ -4315,7 +4327,13 @@
       0.5516,
       0.3836
      ]
-    ]
+    ],
+    "image": {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Brahma_Kamal_Flower.jpg?width=960",
+     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brahma_Kamal_Flower.jpg",
+     "credit": "Mihir Hiremath · CC BY-SA 4.0",
+     "caption": "Brahma Kamal (Saussurea obvallata)"
+    }
    },
    {
     "id": "bluepoppy",

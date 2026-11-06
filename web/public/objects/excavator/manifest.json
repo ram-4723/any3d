@@ -13,7 +13,7 @@
     "id": "wheel",
     "category": "Digging",
     "name": "Bucket wheel",
-    "details": "The digging head of a Bagger 288 is 21.6 m across, taller than a seven-storey building, and carries 18 buckets. Each bucket holds 6.6 m\u00b3, about a small car's worth of earth, and the wheel keeps turning non-stop as the boom swings slowly sideways.",
+    "details": "The digging head of a Bagger 288 is 21.6 m across, taller than a seven-storey building, and carries 18 buckets. Each bucket holds 6.6 m³, about a small car's worth of earth, and the wheel keeps turning non-stop as the boom swings slowly sideways.",
     "source": "https://en.wikipedia.org/wiki/Bagger_288",
     "points": [
      null,
@@ -208,7 +208,13 @@
      null,
      null,
      null
-    ]
+    ],
+    "image": {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bagger_288_2012.jpg?width=960",
+     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bagger_288_2012.jpg",
+     "credit": "Pappnaas666 · CC BY-SA 3.0",
+     "caption": "Bagger 288 at the Garzweiler lignite mine"
+    }
    },
    {
     "id": "wheelboom",
@@ -361,13 +367,19 @@
      null,
      null,
      null
-    ]
+    ],
+    "image": {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bagger_288_Tagebau_Garzweiler_DE_2017_A.jpg?width=960",
+     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bagger_288_Tagebau_Garzweiler_DE_2017_A.jpg",
+     "credit": "Bluecloud9 · CC BY-SA 2.0",
+     "caption": "Bagger 288 at Garzweiler, photographed in 2017"
+    }
    },
    {
     "id": "conveyor",
     "category": "Material flow",
     "name": "Conveyor belts",
-    "details": "Earth falls from the buckets onto belts that carry it back through the machine and out over the loading bridge. A Bagger 288 can move 240,000 m\u00b3 of overburden a day, the same as digging a football pitch 30 m deep.",
+    "details": "Earth falls from the buckets onto belts that carry it back through the machine and out over the loading bridge. A Bagger 288 can move 240,000 m³ of overburden a day, the same as digging a football pitch 30 m deep.",
     "source": "https://en.wikipedia.org/wiki/Bagger_288",
     "points": [
      null,
@@ -514,7 +526,13 @@
      null,
      null,
      null
-    ]
+    ],
+    "image": {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bagger_288_Tagebau_Garzweiler_DE_2017_B.jpg?width=960",
+     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bagger_288_Tagebau_Garzweiler_DE_2017_B.jpg",
+     "credit": "Bluecloud9 · CC BY-SA 2.0",
+     "caption": "A second 2017 view of Bagger 288 at Garzweiler"
+    }
    },
    {
     "id": "masts",
@@ -982,7 +1000,13 @@
      null,
      null,
      null
-    ]
+    ],
+    "image": {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bagger_288_2012.jpg?width=960",
+     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bagger_288_2012.jpg",
+     "credit": "Pappnaas666 · CC BY-SA 3.0",
+     "caption": "Bagger 288 at the Garzweiler lignite mine"
+    }
    },
    {
     "id": "superstructure",
@@ -1135,7 +1159,13 @@
      null,
      null,
      null
-    ]
+    ],
+    "image": {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bagger_288_Tagebau_Garzweiler_DE_2017_A.jpg?width=960",
+     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bagger_288_Tagebau_Garzweiler_DE_2017_A.jpg",
+     "credit": "Bluecloud9 · CC BY-SA 2.0",
+     "caption": "Bagger 288 at Garzweiler, photographed in 2017"
+    }
    },
    {
     "id": "counterweight",
@@ -1354,7 +1384,13 @@
      null,
      null,
      null
-    ]
+    ],
+    "image": {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bagger_288_Tagebau_Garzweiler_DE_2017_B.jpg?width=960",
+     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bagger_288_Tagebau_Garzweiler_DE_2017_B.jpg",
+     "credit": "Bluecloud9 · CC BY-SA 2.0",
+     "caption": "A second 2017 view of Bagger 288 at Garzweiler"
+    }
    },
    {
     "id": "crawlers",
@@ -1714,7 +1750,13 @@
       0.4059,
       0.6333
      ]
-    ]
+    ],
+    "image": {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bagger_288_2012.jpg?width=960",
+     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bagger_288_2012.jpg",
+     "credit": "Pappnaas666 · CC BY-SA 3.0",
+     "caption": "Bagger 288 at the Garzweiler lignite mine"
+    }
    },
    {
     "id": "bridge",
@@ -2059,7 +2101,13 @@
      null,
      null,
      null
-    ]
+    ],
+    "image": {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bagger_288_Tagebau_Garzweiler_DE_2017_A.jpg?width=960",
+     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bagger_288_Tagebau_Garzweiler_DE_2017_A.jpg",
+     "credit": "Bluecloud9 · CC BY-SA 2.0",
+     "caption": "Bagger 288 at Garzweiler, photographed in 2017"
+    }
    },
    {
     "id": "bridgecrawler",
@@ -2437,7 +2485,13 @@
       0.9213,
       0.728
      ]
-    ]
+    ],
+    "image": {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bagger_288_Tagebau_Garzweiler_DE_2017_B.jpg?width=960",
+     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bagger_288_Tagebau_Garzweiler_DE_2017_B.jpg",
+     "credit": "Bluecloud9 · CC BY-SA 2.0",
+     "caption": "A second 2017 view of Bagger 288 at Garzweiler"
+    }
    },
    {
     "id": "record",
@@ -2788,7 +2842,13 @@
      null,
      null,
      null
-    ]
+    ],
+    "image": {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bagger_288_2012.jpg?width=960",
+     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bagger_288_2012.jpg",
+     "credit": "Pappnaas666 · CC BY-SA 3.0",
+     "caption": "Bagger 288 at the Garzweiler lignite mine"
+    }
    }
   ]
  },
@@ -2809,5 +2869,5 @@
    }
   ]
  },
- "credit": "Excavator model: heedongq (CC BY-NC 4.0) \u00b7 Human: suasanakreasi (CC BY 4.0) \u00b7 via Sketchfab"
+ "credit": "Excavator model: heedongq (CC BY-NC 4.0) · Human: suasanakreasi (CC BY 4.0) · via Sketchfab"
 }

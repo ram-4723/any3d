@@ -8,10 +8,29 @@ type ExplodeHotspot = { id: string; name: string; group?: string; category?: str
 type Sequence = { count: number; pattern: string; loop?: boolean; startFrame?: number };
 type HotspotPhoto = { url: string; sourceUrl: string; credit: string; caption: string };
 type CampHotspot = { id: string; name: string; category?: string; details?: string; approx: boolean; offModel?: boolean; image?: HotspotPhoto; points: ([number, number] | null)[] };
-type ExcavatorHotspot = { id: string; name: string; category: string; details: string; source: string; points: (string | [number, number] | null)[] };
-type HumanHotspot = { id: string; name: string; category: string; details: string; source: string; point: [number, number] };
+type ExcavatorHotspot = { id: string; name: string; category: string; details: string; source: string; image?: HotspotPhoto; points: (string | [number, number] | null)[] };
+type HumanHotspot = { id: string; name: string; category: string; details: string; source: string; image?: HotspotPhoto; point: [number, number] };
 type Point = [number, number] | null;
 const parsePoint = (point: string | [number, number] | null | undefined): Point => { if (Array.isArray(point)) return point; if (typeof point !== 'string') return null; const values = point.trim().split(/[\s,]+/).map(Number); return values.length === 2 && values.every(Number.isFinite) ? [values[0], values[1]] : null; };
+const estimatedHotspotPoint = (slug: string, id: string, frame: number): Point => {
+  const angle = ((frame - 18) * Math.PI) / 72;
+  const sin = Math.sin(angle), cos = Math.cos(angle);
+  if (slug === 'porsche-992-gt3r') {
+    const positions: Record<string, [number, number, number]> = {
+      engine: [-0.15, 0, 0.49], wheels: [0.18, 0.1, 0.64], brakes: [0.2, 0.1, 0.64],
+      carbon: [0.04, 0.14, 0.58], cockpit: [0, 0.02, 0.41], lights: [0.27, 0, 0.49],
+      radiator: [0.23, 0, 0.56], fuel: [-0.02, 0.13, 0.53],
+    };
+    const part = positions[id];
+    return part ? [Math.max(0.08, Math.min(0.92, 0.5 + part[0] * sin + part[1] * cos)), part[2] + Math.abs(cos) * (id === 'wheels' || id === 'brakes' ? 0.01 : 0)] : null;
+  }
+  if (slug === 'excavator') {
+    const positions: Record<string, [number, number, number]> = { wheelboom: [0.28, 0.38, 0], conveyor: [-0.18, 0.55, 0], superstructure: [0, 0.52, 0.04] };
+    const part = positions[id];
+    return part ? [Math.max(0.08, Math.min(0.92, 0.5 + part[0] * sin + part[2] * cos)), part[1]] : null;
+  }
+  return null;
+};
 type RouteFrame = { frame: number; points: [number, number, number][] };
 type CampDetail = { id: string; name: string; altitudeM?: number; altitudeNote?: string; lat?: number; lon?: number; coordsApprox?: boolean; coordsSource?: string; description: string; image?: HotspotPhoto };
 type PartDetail = { id: string; category: string; name: { en: string }; desc: { en: string } };
@@ -257,7 +276,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const hotspots: Hotspot[] = humanScale
     ? (manifest?.humanScale?.hotspots ?? []).map(point => ({ id: point.id, name: point.name, group: point.category, x: point.point[0], y: point.point[1], color: '#f0444e', details: point.details, source: point.source }))
     : (slug === 'excavator' || slug === 'porsche-992-gt3r') && !exploded && showLabels
-      ? (manifest?.rotate.hotspots ?? []).flatMap((part) => { const point = parsePoint((part as ExcavatorHotspot).points?.[current] as string | [number, number] | null); return point ? [{ id: part.id, name: part.name, group: (part as ExcavatorHotspot).category, x: point[0], y: point[1], color: '#f0444e', details: (part as ExcavatorHotspot).details, source: (part as ExcavatorHotspot).source }] : []; })
+      ? (manifest?.rotate.hotspots ?? []).flatMap((part) => { const tracked = (part as ExcavatorHotspot).points ?? []; const point = parsePoint(tracked[current] as string | [number, number] | null) ?? (tracked.some(value => parsePoint(value as string | [number, number] | null)) ? null : estimatedHotspotPoint(slug, part.id, current)); return point ? [{ id: part.id, name: part.name, group: (part as ExcavatorHotspot).category, x: point[0], y: point[1], color: '#f0444e', details: (part as ExcavatorHotspot).details, source: (part as ExcavatorHotspot).source }] : []; })
     : exploded
     ? (manifest?.explode?.hotspots ?? []).flatMap(part => {
         const point = part.points[current];
@@ -351,7 +370,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     <canvas ref={canvas} className={`viewer-canvas ${zoom > 1 ? 'viewer-canvas-zoomed' : ''}`} role="img" aria-label={`Interactive 3D view of ${slug}`} onPointerDown={e => { if (mode === 'drag') { setExplodeDirection(0); e.currentTarget.setPointerCapture(e.pointerId); drag.current = { x: e.clientX, y: e.clientY }; } }} onPointerMove={e => move(e.clientX, e.clientY)} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} onKeyDown={e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); setExplodeDirection(0); const next = position.current + (e.key === 'ArrowLeft' ? -1 : 1); position.current = exploded ? Math.max(explodeStart, Math.min(count - 1, next)) : (next + count) % count; setViewFrame(frameIndex(position.current, count)); requestFrame.current(frameIndex(position.current, count)); draw(); } }} tabIndex={0} />
     {missing && <div className="viewer-empty"><span>✦</span><b>3D coming soon</b><small>Frame pack not added yet</small></div>}
     {!missing && <>
-      <div className="viewer-tag">↔ {humanScale ? "HUMAN SCALE · 5'10\" (1.78 M)" : exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'DRAG TO ROTATE'} · {humanScale ? 'SCALE REFERENCE' : exploded ? count - explodeStart : count} {humanScale ? '' : 'VIEWS'}</div>
+      <div className="viewer-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.7 9A7 7 0 0 1 18 6.5L20 8M4 16l2 1.5A7 7 0 0 0 18.3 15"/></svg><span>{humanScale ? "HUMAN SCALE · 5'10\" (1.78 M)" : exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'ROTATE TO EXPLORE'}</span><small>{humanScale ? 'SCALE REFERENCE' : exploded ? count - explodeStart : count} {humanScale ? '' : 'VIEWS'}</small></div>
       {campsRoute && slug === 'mount-everest' && !exploded && <>
         <svg className="camp-route-line" aria-label={manifest?.rotate.route?.name ?? 'Everest climbing route'} style={imageBounds} viewBox={`0 0 ${manifest?.width ?? 1600} ${manifest?.height ?? 900}`} preserveAspectRatio="none">
           <polyline points={visibleRoutePoints.map(([x, y]) => `${x * (manifest?.width ?? 1600)},${y * (manifest?.height ?? 900)}`).join(' ')} />
@@ -396,7 +415,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
         const selected = activeHotspot === h.id, hovered = hoveredHotspot === h.id;
         return <button key={h.id} type="button" className={'hotspot ' + (slug === 'excavator' ? 'excavator-hotspot ' : '') + alignment} style={hotspotStyle(h.x, h.y)} onPointerEnter={() => setHoveredHotspot(h.id)} onPointerLeave={() => setHoveredHotspot(null)} onFocus={() => setHoveredHotspot(h.id)} onBlur={() => setHoveredHotspot(null)} onClick={() => { if (selected) { setActiveHotspot(null); setHoveredHotspot(null); } else setActiveHotspot(h.id); }} aria-label={h.name} aria-pressed={selected}>{(slug === 'excavator' || slug === 'porsche-992-gt3r') && <span className="camp-pin-icon" aria-hidden="true"/>}{(selected || hovered) && <span className="hotspot-label" role="tooltip">{h.group && <small>{h.group}</small>}{h.name}</span>}</button>;
       })}
-      {(slug === 'excavator' || slug === 'porsche-992-gt3r') && activeHotspot && (() => { const item = humanScale ? manifest?.humanScale?.hotspots.find(point => point.id === activeHotspot) : manifest?.rotate.hotspots?.find(point => point.id === activeHotspot) as ExcavatorHotspot | undefined; if (!item) return null; return <aside className="part-info-card" role="dialog" aria-label={`${item.name} details`}><button type="button" className="camp-info-close" aria-label="Close part details" onClick={() => setActiveHotspot(null)}>×</button>{slug === 'excavator' && <figure className="viewer-info-photo"><img src={excavatorPhoto.url} alt={excavatorPhoto.caption} loading="lazy"/><a href={excavatorPhoto.sourceUrl} target="_blank" rel="noreferrer">{excavatorPhoto.credit}<span> ↗</span></a></figure>}<small>{item.category}</small><b>{item.name}</b><p>{item.details}</p><a href={item.source} target="_blank" rel="noreferrer">↗ Source</a></aside>; })()}
+      {(slug === 'excavator' || slug === 'porsche-992-gt3r') && activeHotspot && (() => { const item = humanScale ? manifest?.humanScale?.hotspots.find(point => point.id === activeHotspot) : manifest?.rotate.hotspots?.find(point => point.id === activeHotspot) as ExcavatorHotspot | undefined; if (!item) return null; return <aside className="part-info-card" role="dialog" aria-label={`${item.name} details`}><button type="button" className="camp-info-close" aria-label="Close part details" onClick={() => setActiveHotspot(null)}>×</button>{(item.image || slug === 'excavator') && (() => { const photo = item.image ?? excavatorPhoto; return <figure className="viewer-info-photo"><img src={photo.url} alt={photo.caption} loading="lazy"/><a href={photo.sourceUrl} target="_blank" rel="noreferrer">{photo.credit}<span> ↗</span></a></figure>; })()}<small>{item.category}</small><b>{item.name}</b><p>{item.details}</p><a href={item.source} target="_blank" rel="noreferrer">↗ Source</a></aside>; })()}
       {activeHotspot && partDetails.length > 0 && (() => {
         const part = partDetails.find(item => item.id === activeHotspot);
         if (!part) return null;
