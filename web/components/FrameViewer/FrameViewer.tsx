@@ -1,12 +1,16 @@
 'use client';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { frameIndex, hotspotVisible } from './math';
+import photoGalleries from '../../data/photo-galleries.json';
 
 type Props = { slug: string; mode?: 'drag' | 'scroll' };
 type Hotspot = { id: string; name: string; group?: string; frame?: number; x: number; y: number; color?: string; details?: string; source?: string };
 type ExplodeHotspot = { id: string; name: string; group?: string; category?: string; color?: string; points: ([number, number] | null)[] };
 type Sequence = { count: number; pattern: string; loop?: boolean; startFrame?: number };
 type HotspotPhoto = { url: string; sourceUrl: string; credit: string; caption: string };
+type GalleryPhoto = { url: string; title: string; author: string; license: string; licenseUrl: string; sourceUrl: string };
+type PhotoGalleryMap = Record<string, Record<string, GalleryPhoto[]>>;
+const photoGalleryMap = photoGalleries as PhotoGalleryMap;
 type CampHotspot = { id: string; name: string; category?: string; details?: string; approx: boolean; offModel?: boolean; image?: HotspotPhoto; points: ([number, number] | null)[] };
 type ExcavatorHotspot = { id: string; name: string; category: string; details: string; source: string; image?: HotspotPhoto; points: (string | [number, number] | null)[] };
 type HumanHotspot = { id: string; name: string; category: string; details: string; source: string; image?: HotspotPhoto; point: [number, number] };
@@ -42,6 +46,26 @@ const excavatorPhoto: HotspotPhoto = {
   credit: 'Pappnaas666 · CC BY-SA 3.0',
   caption: 'Bagger 288 at the Garzweiler open-cast mine, Germany',
 };
+
+function PhotoCarousel({ photos, id }: { photos: GalleryPhoto[]; id: string }) {
+  const [index, setIndex] = useState(0);
+  if (!photos.length) return null;
+  const photo = photos[index % photos.length];
+  return <figure className="viewer-info-photo" aria-label={`${id} photo gallery`}>
+    <img src={photo.url} alt={photo.title} loading="lazy" />
+    <figcaption title={photo.title}>{photo.title}</figcaption>
+    <div className="viewer-photo-attribution"><a href={photo.sourceUrl} target="_blank" rel="noreferrer" title={`Photo source: ${photo.title}`} aria-label={`Photo source: ${photo.title}, by ${photo.author}`}>{photo.author}<span> ↗</span></a><a href={photo.licenseUrl} target="_blank" rel="noreferrer" title={`Image licence: ${photo.license}`}>{photo.license}<span> ↗</span></a></div>
+    {photos.length > 1 && <div className="viewer-photo-controls" aria-label="Photo gallery controls">
+      <button type="button" aria-label="Previous photo" onClick={() => setIndex(value => (value - 1 + photos.length) % photos.length)}>‹</button>
+      <span aria-live="polite">{index + 1} / {photos.length}</span>
+      <button type="button" aria-label="Next photo" onClick={() => setIndex(value => (value + 1) % photos.length)}>›</button>
+    </div>}
+  </figure>;
+}
+
+const asGalleryPhoto = (photo: HotspotPhoto): GalleryPhoto => ({
+  url: photo.url, title: photo.caption, author: photo.credit, license: 'Photo credit', licenseUrl: photo.sourceUrl, sourceUrl: photo.sourceUrl,
+});
 
 export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -316,6 +340,9 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const activeCampPin = [...visibleCampPins, ...visibleValleyPins].find(pin => pin.id === activeCamp);
   const activeCampDetails = campDetails?.find(camp => camp.id === activeCamp);
   const activeCampImage = activeCampPin?.image ?? activeCampDetails?.image;
+  const activeCampPhotos = activeCampPin
+    ? photoGalleryMap[slug]?.[activeCampPin.id] ?? (activeCampImage ? [asGalleryPhoto(activeCampImage)] : [])
+    : [];
   useLayoutEffect(() => {
     const card = campCardRef.current;
     const viewer = stage.current;
@@ -399,7 +426,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
       })}
       {activeCampPin && <aside ref={campCardRef} className="camp-info-card viewer-place-card" role="dialog" aria-label={`${activeCampPin.name} details`} style={{ left: 0, top: 0, visibility: 'hidden' }}>
         <button type="button" className="camp-info-close" aria-label="Close place details" onClick={() => setActiveCamp(null)}>×</button>
-        {activeCampImage && <figure className="viewer-info-photo"><img src={activeCampImage.url} alt={activeCampImage.caption} loading="lazy"/><a href={activeCampImage.sourceUrl} target="_blank" rel="noreferrer" aria-label={`Photo source: ${activeCampImage.credit}`}>{activeCampImage.credit}<span> ↗</span></a></figure>}
+        <PhotoCarousel key={`${slug}-${activeCampPin.id}`} id={activeCampPin.id} photos={activeCampPhotos} />
         <small>{activeCampPin.category ?? 'MOUNTAIN ROUTE'}</small>
         <b>{activeCampDetails?.name ?? activeCampPin.name}</b>
         {activeCampDetails?.altitudeM && <strong>{activeCampDetails.altitudeM.toLocaleString()} m <small>ALTITUDE</small></strong>}
@@ -415,7 +442,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
         const selected = activeHotspot === h.id, hovered = hoveredHotspot === h.id;
         return <button key={h.id} type="button" className={'hotspot ' + (slug === 'excavator' ? 'excavator-hotspot ' : '') + alignment} style={hotspotStyle(h.x, h.y)} onPointerEnter={() => setHoveredHotspot(h.id)} onPointerLeave={() => setHoveredHotspot(null)} onFocus={() => setHoveredHotspot(h.id)} onBlur={() => setHoveredHotspot(null)} onClick={() => { if (selected) { setActiveHotspot(null); setHoveredHotspot(null); } else setActiveHotspot(h.id); }} aria-label={h.name} aria-pressed={selected}>{(slug === 'excavator' || slug === 'porsche-992-gt3r' || slug === 'audi-f1-r26') && <span className="camp-pin-icon" aria-hidden="true"/>}{(selected || hovered) && <span className="hotspot-label" role="tooltip">{h.group && <small>{h.group}</small>}{h.name}</span>}</button>;
       })}
-      {(slug === 'excavator' || slug === 'porsche-992-gt3r' || slug === 'audi-f1-r26') && activeHotspot && (() => { const item = humanScale ? manifest?.humanScale?.hotspots.find(point => point.id === activeHotspot) : manifest?.rotate.hotspots?.find(point => point.id === activeHotspot) as ExcavatorHotspot | undefined; if (!item) return null; return <aside className="part-info-card" role="dialog" aria-label={`${item.name} details`}><button type="button" className="camp-info-close" aria-label="Close part details" onClick={() => setActiveHotspot(null)}>×</button>{(item.image || slug === 'excavator') && (() => { const photo = item.image ?? excavatorPhoto; return <figure className="viewer-info-photo"><img src={photo.url} alt={photo.caption} loading="lazy"/><a href={photo.sourceUrl} target="_blank" rel="noreferrer">{photo.credit}<span> ↗</span></a></figure>; })()}<small>{item.category}</small><b>{item.name}</b><p>{item.details}</p><a href={item.source} target="_blank" rel="noreferrer">↗ Source</a></aside>; })()}
+      {(slug === 'excavator' || slug === 'porsche-992-gt3r' || slug === 'audi-f1-r26') && activeHotspot && (() => { const item = humanScale ? manifest?.humanScale?.hotspots.find(point => point.id === activeHotspot) : manifest?.rotate.hotspots?.find(point => point.id === activeHotspot) as ExcavatorHotspot | undefined; if (!item) return null; const photo = item.image ?? (slug === 'excavator' ? excavatorPhoto : undefined); const photos = photoGalleryMap[slug]?.[item.id] ?? (photo ? [asGalleryPhoto(photo)] : []); return <aside className="part-info-card" role="dialog" aria-label={`${item.name} details`}><button type="button" className="camp-info-close" aria-label="Close part details" onClick={() => setActiveHotspot(null)}>×</button><PhotoCarousel key={`${slug}-${item.id}`} id={item.id} photos={photos} /><small>{item.category}</small><b>{item.name}</b><p>{item.details}</p><a href={item.source} target="_blank" rel="noreferrer">↗ Source</a></aside>; })()}
       {activeHotspot && partDetails.length > 0 && (() => {
         const part = partDetails.find(item => item.id === activeHotspot);
         if (!part) return null;
