@@ -394,3 +394,5 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{ou
 @media(prefers-reduced-motion:reduce){.hero-glow{animation:none!important}}
 .viewer-tag{display:flex;align-items:center;gap:8px;min-height:36px;padding:0 12px;border:1px solid #ffffff38;border-radius:9px;background:#111c;color:#f4f2f6;font:700 10px/1 'DM Mono',monospace;letter-spacing:.08em;box-shadow:0 5px 20px #0002;z-index:5}.viewer-tag>svg,.rotate-prompt-icon{width:17px;height:17px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.viewer-tag>small{margin-left:4px;color:#d0cbd3;font:500 8px 'DM Mono',monospace;letter-spacing:.06em}.float-note.note-one{display:flex;align-items:center;gap:9px;padding:11px 14px;color:#3c3241;font-weight:700;letter-spacing:.08em}.rotate-prompt-icon{width:18px;height:18px;color:#7d50a1}
 @media(max-width:600px){.viewer-tag{top:auto;bottom:12px;left:10px;min-height:34px;max-width:calc(100% - 20px);padding:0 9px;font-size:8px}.viewer-tag>svg{width:15px;height:15px}.viewer-tag>small{font-size:7px}}
+
+.viewer-disclaimer{margin:8px 0 0;color:#7c7880;font-size:10px;line-height:1.5}

@@ -1,0 +1,149 @@
+{
+  "slug": "audi-f1-r26",
+  "name": {
+    "en": "Audi R26",
+    "hi": "ऑडी R26"
+  },
+  "category": "cars-bikes",
+  "tagline": {
+    "en": "Audi’s first works Formula 1 car, shaped for the 2026 rules.",
+    "hi": "2026 के नियमों के लिए बनी ऑडी की पहली फ़ैक्टरी फ़ॉर्मूला 1 कार।"
+  },
+  "summary": {
+    "en": "In 2026, the former Sauber team became the Audi Revolut F1 Team, based in Hinwil, Switzerland. Its first chassis is called the R26. The 2026 rules introduce smaller, lighter cars, active aerodynamics and a revised 1.6-litre V6 turbo-hybrid power unit. This interactive 3D view uses an illustrative user-provided model in Audi-inspired livery; it is not an official team asset.",
+    "hi": "2026 में पूर्व Sauber टीम, स्विट्ज़रलैंड के हिनविल में स्थित Audi Revolut F1 Team बनी। इसकी पहली चेसिस का नाम R26 है। 2026 के नियमों में छोटी और हल्की कारें, सक्रिय एयरोडायनामिक्स और संशोधित 1.6-लीटर V6 टर्बो-हाइब्रिड पावर यूनिट शामिल हैं। यह इंटरैक्टिव 3D दृश्य ऑडी से प्रेरित रंगों वाले एक उदाहरणात्मक, उपयोगकर्ता द्वारा दिए गए मॉडल का उपयोग करता है; यह टीम का आधिकारिक मॉडल नहीं है।"
+  },
+  "specs": [
+    {
+      "label": {
+        "en": "Team",
+        "hi": "टीम"
+      },
+      "value": "Audi Revolut F1 Team",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Season",
+        "hi": "सीज़न"
+      },
+      "value": "2026",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Chassis",
+        "hi": "चेसिस"
+      },
+      "value": "R26",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Power unit",
+        "hi": "पावर यूनिट"
+      },
+      "value": "Audi 1.6 L V6 turbo hybrid · 400 kW ICE + up to 350 kW MGU-K",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Drivers (2026)",
+        "hi": "ड्राइवर (2026)"
+      },
+      "value": "Nico Hülkenberg (#27) · Gabriel Bortoleto (#5)",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Base",
+        "hi": "मुख्यालय"
+      },
+      "value": "Hinwil, Switzerland",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Maximum wheelbase (2026 rules)",
+        "hi": "अधिकतम व्हीलबेस (2026 नियम)"
+      },
+      "value": "3,400",
+      "unit": "mm"
+    },
+    {
+      "label": {
+        "en": "Maximum width (2026 rules)",
+        "hi": "अधिकतम चौड़ाई (2026 नियम)"
+      },
+      "value": "1,900",
+      "unit": "mm"
+    },
+    {
+      "label": {
+        "en": "Minimum weight (2026 rules)",
+        "hi": "न्यूनतम वज़न (2026 नियम)"
+      },
+      "value": "768",
+      "unit": "kg"
+    },
+    {
+      "label": {
+        "en": "Wheels",
+        "hi": "पहिए"
+      },
+      "value": "18-inch Pirelli · front tyres 25 mm narrower, rears 30 mm narrower",
+      "unit": ""
+    }
+  ],
+  "funFacts": [
+    {
+      "text": {
+        "en": "The number 27 on this illustrative livery is Nico Hülkenberg’s Formula 1 race number.",
+        "hi": "इस उदाहरणात्मक लिवरी पर नंबर 27, निको हुल्केनबर्ग का फ़ॉर्मूला 1 रेस नंबर है।"
+      },
+      "sourceUrl": "https://www.formula1.com/en/latest/article/all-the-2026-f1-driver-numbers-confirmed-in-full.5rh7o9mPntG7NerzVk9onc"
+    },
+    {
+      "text": {
+        "en": "The 2026 cars use active aerodynamics: Z-mode for cornering and X-mode for lower drag on designated straights.",
+        "hi": "2026 की कारों में सक्रिय एयरोडायनामिक्स है: मोड़ों पर Z-mode और निर्धारित स्ट्रेट पर कम ड्रैग के लिए X-mode।"
+      },
+      "sourceUrl": "https://www.formula1.com/en/latest/article/explained-2026-aerodynamic-regulations-fia-x-mode-z-mode-.26c1CtOzCmN3GfLMywrgb2"
+    },
+    {
+      "text": {
+        "en": "Under the 2026 power-unit rules, the MGU-K can deliver up to 350 kW, with deployment managed by the latest regulations.",
+        "hi": "2026 के पावर-यूनिट नियमों के तहत MGU-K 350 kW तक दे सकता है; इसकी तैनाती नवीनतम नियमों से नियंत्रित होती है।"
+      },
+      "sourceUrl": "https://www.formula1.com/en/latest/article/refinements-to-2026-f1-regulations-agreed-by-all-stakeholders.1xA0TRau0DvyId6R7oZjFv"
+    }
+  ],
+  "celebrityLinks": [
+    {
+      "person": "Nico Hülkenberg",
+      "relation": {
+        "en": "2026 Audi Revolut F1 Team driver · race number 27",
+        "hi": "2026 Audi Revolut F1 Team के ड्राइवर · रेस नंबर 27"
+      },
+      "sourceUrl": "https://www.audif1.com/en/team/drivers/nico-hulkenberg"
+    },
+    {
+      "person": "Gabriel Bortoleto",
+      "relation": {
+        "en": "2026 Audi Revolut F1 Team driver · race number 5",
+        "hi": "2026 Audi Revolut F1 Team के ड्राइवर · रेस नंबर 5"
+      },
+      "sourceUrl": "https://www.formula1.com/en/teams/audi"
+    }
+  ],
+  "rarity": "Audi’s first works F1 chassis (2026)",
+  "hasFramePack": true,
+  "tags": [
+    "formula-1",
+    "audi",
+    "r26",
+    "2026",
+    "f1",
+    "sauber"
+  ]
+}
