@@ -104,6 +104,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const count = humanScale ? 1 : exploded ? manifest?.explode?.count ?? 0 : manifest?.rotate.count ?? 1;
   const maxZoom = slug === 'porsche-992-gt3r' && humanScale ? 6 : 3;
   const explodeStart = Math.max(0, Math.min(count - 1, (manifest?.explode?.startFrame ?? 1) - 1));
+  const hasExplodeLabels = ['toyota-gr-supra-a90', 'bmw-s1000rr', 'sa342m-gazelle'].includes(slug) && Boolean(manifest?.explode?.hotspots?.length);
 
   const draw = useCallback(() => {
     const c = canvas.current, ctx = c?.getContext('2d');
@@ -307,7 +308,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     : exploded
     ? (manifest?.explode?.hotspots ?? []).flatMap(part => {
         const point = part.points[current];
-        if (current + 1 < (manifest?.explode?.labelsFrom ?? 1) || !point) return [];
+        if ((hasExplodeLabels && !showLabels) || current + 1 < (manifest?.explode?.labelsFrom ?? 1) || !point) return [];
         return [{ id: part.id, name: part.name, group: part.category ?? part.group, x: point[0], y: point[1], color: part.color }];
       })
     : (manifest?.hotspots ?? []).filter(h => h.frame === undefined || hotspotVisible(current, h.frame, count));
@@ -388,12 +389,12 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     setPanOffset(offset);
     draw();
   };
-  const toggleExplode = () => {
+  const toggleExplode = (showLabelFrame = false) => {
     if (!manifest?.explode || humanScale) return;
     setActiveHotspot(null);
     setHoveredHotspot(null);
-    if (exploded) setExplodeDirection(-1);
-    else { position.current = explodeStart; setViewFrame(explodeStart); setExploded(true); setAllFramesLoaded(false); setExplodeDirection(1); }
+    if (exploded) { if (hasExplodeLabels) setShowLabels(false); setExplodeDirection(-1); }
+    else { const startFrame = showLabelFrame && hasExplodeLabels ? Math.max(explodeStart, (manifest?.explode?.labelsFrom ?? 1) - 1) : explodeStart; position.current = startFrame; setViewFrame(startFrame); setExploded(true); setAllFramesLoaded(false); setExplodeDirection(1); }
   };
 
   return <div ref={stage} className={`viewer ${mode === 'scroll' ? 'viewer-scroll' : ''}`} aria-label={`${slug} 3D viewer`}>
@@ -469,7 +470,23 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     </>}
     <div className="viewer-controls">
       {(slug === 'excavator' || slug === 'porsche-992-gt3r' || slug === 'audi-f1-r26' || slug === 'mexico-city-metropolitan-cathedral') && <button type="button" className={`viewer-action excavator-label-toggle ${showLabels ? 'viewer-action-active' : ''}`} disabled={humanScale} aria-pressed={showLabels} onClick={() => { setShowLabels(value => !value); setActiveHotspot(null); setHoveredHotspot(null); }}>Labels</button>}{(slug === 'excavator' || slug === 'porsche-992-gt3r') && <button type="button" className={`viewer-action excavator-human-toggle ${humanScale ? 'viewer-action-active' : ''}`} aria-pressed={humanScale} onClick={() => { setHumanScale(value => !value); setActiveHotspot(null); setHoveredHotspot(null); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); }}>Human 5'10"</button>}
-      {slug === 'mount-everest' ? <button type="button" className={`viewer-action ${campsRoute ? 'viewer-action-active' : ''}`} aria-pressed={campsRoute} title="Toggle camps and climbing route" onClick={() => { setCampsRoute(value => !value); setActiveCamp(null); setHoveredCamp(null); }}>Camps &amp; Route</button> : slug === 'valley-of-flowers' ? <button type="button" className={`viewer-action ${showLabels ? 'viewer-action-active' : ''}`} aria-pressed={showLabels} title="Toggle place markers" onClick={() => { setShowLabels(value => !value); setActiveCamp(null); setHoveredCamp(null); }}>Labels</button> : slug === 'porsche-992-gt3r' ? null : manifest?.explode ? <button type="button" className="viewer-action" title={exploded ? 'Assemble parts' : 'Explode view'} onClick={toggleExplode}>{exploded ? (explodeDirection === -1 ? 'Assembling…' : 'Assemble parts') : 'Explode view'}</button> : null}
+      {slug === 'mount-everest' ? <button type="button" className={`viewer-action ${campsRoute ? 'viewer-action-active' : ''}`} aria-pressed={campsRoute} title="Toggle camps and climbing route" onClick={() => { setCampsRoute(value => !value); setActiveCamp(null); setHoveredCamp(null); }}>Camps &amp; Route</button> : slug === 'valley-of-flowers' ? <button type="button" className={`viewer-action ${showLabels ? 'viewer-action-active' : ''}`} aria-pressed={showLabels} title="Toggle place markers" onClick={() => { setShowLabels(value => !value); setActiveCamp(null); setHoveredCamp(null); }}>Labels</button> : slug === 'porsche-992-gt3r' ? null : manifest?.explode ? <button type="button" className="viewer-action" title={exploded ? 'Assemble parts' : 'Explode view'} onClick={() => toggleExplode()}>{exploded ? (explodeDirection === -1 ? 'Assembling…' : 'Assemble parts') : 'Explode view'}</button> : null}
+      {hasExplodeLabels && <button type="button" className={'viewer-action excavator-label-toggle '+(showLabels ? 'viewer-action-active' : '')} aria-pressed={showLabels} title={showLabels ? 'Hide part labels' : 'Show part labels; opens exploded view'} onClick={() => {
+        const next = !showLabels;
+        setShowLabels(next);
+        setActiveHotspot(null);
+        setHoveredHotspot(null);
+        if (next && !exploded) {
+          toggleExplode(true);
+        } else if (next) {
+          const firstLabelFrame = Math.max(explodeStart, (manifest?.explode?.labelsFrom ?? 1) - 1);
+          if (position.current < firstLabelFrame) {
+            position.current = firstLabelFrame;
+            setViewFrame(firstLabelFrame);
+            requestFrame.current(firstLabelFrame);
+          }
+        }
+      }}>{showLabels ? 'Hide labels' : 'Labels'}</button>}
       <div className="viewer-zoom-group" role="group" aria-label="Zoom controls">
         <button type="button" aria-label="Zoom out" title="Zoom out" disabled={zoom <= 1} onClick={() => adjustZoom(-0.25)}>−</button>
         <span aria-live="polite">{Math.round(zoom * 100)}%</span>
