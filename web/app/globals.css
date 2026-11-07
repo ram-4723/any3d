@@ -459,3 +459,16 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{ou
 }
 /* Let touch and pointer events pass through marker wrappers to the actual pin buttons. */
 .camp-marker{pointer-events:none}.camp-pin-button{pointer-events:auto}
+
+/* A soft, Codex-inspired halo follows the native desktop pointer. */
+.cursor-aura{position:fixed;inset:0;z-index:24;pointer-events:none;opacity:0;transition:opacity .16s ease}
+.cursor-aura::before{position:absolute;left:0;top:0;width:148px;height:148px;border-radius:50%;content:"";transform:translate3d(var(--cursor-x,50vw),var(--cursor-y,50vh),0) translate(-50%,-50%);background:radial-gradient(circle,rgba(100,184,255,.28) 0,rgba(110,190,255,.19) 23%,rgba(120,198,255,.09) 48%,rgba(125,202,255,0) 73%);filter:blur(1px);transition:opacity .16s ease}
+html[data-cursor-active="true"] .cursor-aura{opacity:1}
+html[data-cursor-pressed="true"] .cursor-aura::before{background:radial-gradient(circle,rgba(100,184,255,.34) 0,rgba(110,190,255,.21) 25%,rgba(120,198,255,.08) 52%,rgba(125,202,255,0) 75%)}
+@media(hover:hover) and (pointer:fine){.cursor-aura{display:block}}
+@media(hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){.cursor-aura{display:none!important}}
+/* Keep the close glyph visually compact while preserving a generous mobile hit area. */
+.brand-mark{border-radius:0}
+.camp-info-close{width:30px;height:30px;flex-basis:30px;margin-bottom:-30px;font-size:20px;background:radial-gradient(circle 15px,#101112f5 97%,transparent 100%);border-color:transparent;box-shadow:none}
+.camp-info-close:hover{background:radial-gradient(circle 15px,#fff 97%,transparent 100%);color:#17171b;border-color:transparent;transform:none}
+@media(max-width:600px){.camp-info-close{width:44px;height:44px;flex-basis:44px;margin-bottom:-44px;font-size:21px;background:radial-gradient(circle 15px,#101112f5 97%,transparent 100%);border-color:transparent}.camp-info-close:hover{background:radial-gradient(circle 15px,#101112f5 97%,transparent 100%);color:#fff;transform:none}}

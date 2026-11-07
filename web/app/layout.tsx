@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { getObjects } from '@/lib/objects';
-import { Header } from '@/components/Site';
+import { CursorGlow, Header } from '@/components/Site';
 const productionOrigin = process.env.NEXT_PUBLIC_SITE_URL ?? (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : undefined);
 export const metadata: Metadata = { metadataBase: productionOrigin ? new URL(productionOrigin) : undefined, title: { default: '3D Anything — The world, in every dimension.', template: '%s' }, description: 'Explore interactive 360° objects. Spin, zoom, and discover the details behind extraordinary machines, vehicles, and landscapes.', applicationName: '3D Anything', openGraph: { type: 'website', siteName: '3D Anything', title: '3D Anything — The world, in every dimension.', description: 'Explore interactive 360° objects. Spin, zoom, and discover the details behind extraordinary machines, vehicles, and landscapes.' }, twitter: { card: 'summary_large_image', title: '3D Anything — The world, in every dimension.', description: 'Explore interactive 360° objects. Spin, zoom, and discover the details behind extraordinary machines, vehicles, and landscapes.' } };
-export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { const objects = await getObjects(); return <html lang="en"><body><Header objects={objects}/>{children}</body></html>; }
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { const objects = await getObjects(); return <html lang="en"><body><Header objects={objects}/><CursorGlow/>{children}</body></html>; }

@@ -43,6 +43,46 @@ export function Header({objects=[]}:{objects?:ObjectEntry[]}) {
     {open&&<div className="search-overlay" onClick={()=>{setOpen(false);searchButton.current?.focus()}}><div className="search-box" role="dialog" aria-modal="true" aria-label={t.search} onClick={e=>e.stopPropagation()}><input autoFocus value={query} onChange={e=>setQuery(e.target.value)} placeholder={t.search} aria-label={t.search}/><button aria-label="Close search" onClick={()=>{setOpen(false);setQuery('');searchButton.current?.focus()}}>ESC</button>{query&&<div className="search-results" aria-live="polite">{results.map(o=><Link href={`/objects/${o.slug}`} key={o.slug} onClick={()=>setOpen(false)}><span>{o.name[lang]}</span><small>{o.category}</small></Link>)}{!results.length&&<p>No matching objects. Try a category, model, or feature.</p>}</div>}</div></div>}
   </>;
 }
+export function CursorGlow(){
+  useEffect(()=>{
+    const root=document.documentElement;
+    if(!window.matchMedia('(hover: hover) and (pointer: fine)').matches)return;
+    let frame=0,x=0,y=0;
+    const move=(event:PointerEvent)=>{
+      if(event.pointerType==='touch')return;
+      x=event.clientX;y=event.clientY;
+      if(frame)return;
+      frame=window.requestAnimationFrame(()=>{
+        frame=0;
+        root.style.setProperty('--cursor-x',`${x}px`);
+        root.style.setProperty('--cursor-y',`${y}px`);
+        root.dataset.cursorActive='true';
+      });
+    };
+    const leave=(event:PointerEvent)=>{if(!event.relatedTarget)root.dataset.cursorActive='false'};
+    const hide=()=>{root.dataset.cursorActive='false';delete root.dataset.cursorPressed};
+    const down=()=>{root.dataset.cursorPressed='true'};
+    const up=()=>{delete root.dataset.cursorPressed};
+    window.addEventListener('pointermove',move,{passive:true});
+    window.addEventListener('pointerout',leave,{passive:true});
+    window.addEventListener('pointerdown',down,{passive:true});
+    window.addEventListener('pointerup',up,{passive:true});
+    window.addEventListener('blur',hide);
+    return()=>{
+      if(frame)window.cancelAnimationFrame(frame);
+      window.removeEventListener('pointermove',move);
+      window.removeEventListener('pointerout',leave);
+      window.removeEventListener('pointerdown',down);
+      window.removeEventListener('pointerup',up);
+      window.removeEventListener('blur',hide);
+      delete root.dataset.cursorActive;
+      delete root.dataset.cursorPressed;
+      root.style.removeProperty('--cursor-x');
+      root.style.removeProperty('--cursor-y');
+    };
+  },[]);
+  return <div className="cursor-aura" aria-hidden="true"/>;
+}
 function cardBadge(item:ObjectEntry){const rarity=typeof item.rarity==='string'?item.rarity.trim():'';if(rarity&&rarity.length<=28)return rarity;const spec=item.specs[0];return spec?`${spec.value}${spec.unit?` ${spec.unit}`:''}`:'Explore in 360°';}
 export function ObjectCard({item}:{item:ObjectEntry}){const {lang}=useLanguage();return <motion.div initial={{opacity:0,y:12}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.15}} whileHover={{y:-4}} transition={{duration:.24}}><Link href={`/objects/${item.slug}`} className={`object-card category-${item.category} ${item.hasFramePack?"object-card-framepack":""} ${item.slug==="toyota-gr-supra-a90"?"object-card-truecolor":""}`}><div className="card-art"><div className="card-orb"/><img src={`/objects/${item.slug}/poster.webp`} alt={item.name[lang]} onError={e=>{e.currentTarget.style.display='none'}}/><span className="card-category">{item.category.replace('-',' & ')}</span><span className="card-arrow" aria-hidden="true">↗</span></div><div className="card-copy"><div><h3>{item.name[lang]}</h3><p>{item.tagline[lang]}</p></div><span className="rarity" title={typeof item.rarity==='string'?item.rarity:undefined}>✦ {cardBadge(item)}</span></div></Link></motion.div>}
 export function Home({objects}:{objects:ObjectEntry[]}){const {lang,t}=useLanguage();const liveObjects=useRemoteObjects(objects).filter(item=>!item.sample);return <><motion.section className="hero" initial="hidden" animate="visible" variants={heroSequence}><motion.div className="hero-glow" initial={{opacity:0,scale:.8}} animate={{opacity:1,scale:1}} transition={{duration:1.2,ease:"easeOut"}}/><motion.div className="hero-copy" variants={heroRise}><span className="eyebrow"><i/> {t.explore}</span><h1>{t.hero}<br/><em>{t.line}</em></h1><p>{t.sub}</p><div className="hero-actions"><Link className="button-primary" href="/objects">{t.objects}<span>↗</span></Link><span className="hero-count"><b>{liveObjects.length.toString().padStart(2,'0')}</b> / OBJECTS LIVE</span></div><div className="hero-stats"><div><strong>360°</strong><span>INTERACTIVE VIEWS</span></div><div><strong>∞</strong><span>THINGS TO DISCOVER</span></div><div><strong>02</strong><span>LANGUAGES</span></div></div></motion.div><motion.div className="hero-visual" variants={heroRise}><div className="hero-orbit orbit-a"/><div className="hero-orbit orbit-b"/><div className="hero-object"><FrameViewer slug="porsche-992-gt3r"/></div><div className="hero-object-label"><span>{t.featured}</span><b>{lang==='en'?'PORSCHE 911 GT3 R':'पोर्श 911 जीटी3 आर'}</b><small>144 FRAMES&nbsp;&nbsp; · &nbsp;&nbsp;360° VIEW</small></div><div className="float-note note-one"><svg className="rotate-prompt-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.7 9A7 7 0 0 1 18 6.5L20 8M4 16l2 1.5A7 7 0 0 0 18.3 15"/></svg><span>ROTATE TO EXPLORE</span></div><div className="float-note note-two">01 / OBJECT</div></motion.div><motion.span className="hero-index" initial={{opacity:0}} animate={{opacity:1}} transition={{delay:.9,duration:.7}}>EST. 2025&nbsp; · &nbsp;CURIOUS BY DESIGN</motion.span></motion.section><section id="universes" className="section-wrap"><div className="section-heading"><div><span className="eyebrow">01 — {t.trending}</span><h2>{t.categories}<span className="pink-dot">.</span></h2></div><Link href="/objects" className="text-link">{t.browse} ↗</Link></div><div className="category-row">{[['cars-bikes','01',t.cars,'#ff624d','↗'],['machines','02',t.machines,'#f3c543','⌁'],['nature','03',t.nature,'#61c994','✿'],['aircraft','04',t.aircraft,'#79a7dc','✈']].map(([slug,n,name,color,icon])=><Link href={`/objects?category=${slug}`} className="category-tile" key={slug} style={{'--tile':color} as React.CSSProperties}><span>{n} / CATEGORY</span><b>{name}</b><i>{icon}</i></Link>)}</div></section><section className="section-wrap objects-section"><div className="section-heading"><div><span className="eyebrow">02 — {t.popular}</span><h2>{t.explore}<span className="pink-dot">.</span></h2></div><Link href="/objects" className="text-link">VIEW ALL ↗</Link></div><div className="object-grid">{liveObjects.map(item=><ObjectCard item={item} key={item.slug}/>)}</div></section><footer className="footer"><Link href="/" className="brand"><img className="brand-mark" src="/any3d-mark.svg" alt=""/><span>ANYTHING<span className="brand-dot">.</span></span></Link><span>MADE FOR THE CURIOUS&nbsp; ✳ &nbsp;2026</span><Link href="/objects">EXPLORE ALL OBJECTS ↗</Link></footer></>}
