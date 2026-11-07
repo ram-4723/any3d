@@ -1,0 +1,136 @@
+{
+  "slug": "janaki-mandir",
+  "name": {
+    "en": "Janaki Mandir",
+    "hi": "जानकी मन्दिर"
+  },
+  "category": "landmarks",
+  "tagline": {
+    "en": "A storied shrine at the heart of Janakpur",
+    "hi": "जनकपुर के हृदय में बसा आस्था और इतिहास का प्रसिद्ध मंदिर।"
+  },
+  "summary": {
+    "en": "Janaki Mandir is a landmark shrine in Janakpurdham, Nepal, dedicated to Sita and also known as Nau Lakha Mandir. The Nepal Tourism Board describes it as completed in 1910 under Queen Vrisha Bhanu; another published account gives the broader construction period 1894–1911. Its design brings together Koiri-Hindu, Mughal and Rajput traditions. This interactive model is an illustrative render: its dome accents, flags and presentation are artistic additions, not a measured restoration.",
+    "hi": "जानकी मन्दिर नेपाल के जनकपुरधाम का प्रसिद्ध मंदिर है और सीता को समर्पित है। इसे नौलखा मंदिर भी कहा जाता है। नेपाल पर्यटन बोर्ड इसके निर्माण को रानी वृषभानु के संरक्षण में 1910 में पूर्ण बताता है, जबकि एक अन्य प्रकाशित स्रोत 1894–1911 की अवधि देता है। इसकी वास्तुकला में कोइरी-हिंदू, मुगल और राजपूत परंपराओं का मेल है। यह इंटरैक्टिव मॉडल एक कलात्मक रूपांतरण है; गुंबदों के रंग, ध्वज और प्रस्तुति माप-आधारित पुनर्निर्माण नहीं हैं।"
+  },
+  "specs": [
+    {
+      "label": {
+        "en": "Location",
+        "hi": "स्थान"
+      },
+      "value": "Janakpurdham, Nepal",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Dedicated to",
+        "hi": "समर्पित"
+      },
+      "value": "Sita / Janaki",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Reported completion",
+        "hi": "निर्माण पूर्ण"
+      },
+      "value": "1910",
+      "unit": "Nepal Tourism Board"
+    },
+    {
+      "label": {
+        "en": "Alternate construction dates",
+        "hi": "अन्य स्रोत की निर्माण अवधि"
+      },
+      "value": "1894–1911",
+      "unit": "Nepal Views"
+    },
+    {
+      "label": {
+        "en": "Reported rooms",
+        "hi": "स्रोत में बताए गए कक्ष"
+      },
+      "value": 60,
+      "unit": "rooms"
+    },
+    {
+      "label": {
+        "en": "Architectural traditions",
+        "hi": "वास्तु परंपराएँ"
+      },
+      "value": "Koiri-Hindu · Mughal · Rajput",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Festival",
+        "hi": "प्रमुख उत्सव"
+      },
+      "value": "Vivah Panchami",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Local name",
+        "hi": "लोकप्रिय नाम"
+      },
+      "value": "Nau Lakha Mandir",
+      "unit": ""
+    }
+  ],
+  "funFacts": [
+    {
+      "text": {
+        "en": "The name “Nau Lakha” is traditionally linked to a nine-lakh rupee construction-cost story. Historical accounts of the name and cost vary.",
+        "hi": "“नौलखा” नाम को परंपरागत रूप से नौ लाख रुपये की निर्माण-लागत की कथा से जोड़ा जाता है। नाम और लागत के ऐतिहासिक विवरण अलग-अलग मिलते हैं।"
+      },
+      "sourceUrl": "https://ntb.gov.np/en/janakpur-and-vivah-panchami"
+    },
+    {
+      "text": {
+        "en": "Janakpur celebrates Vivah Panchami in memory of the traditional wedding of Rama and Sita.",
+        "hi": "जनकपुर में विवाह पंचमी राम और सीता के पारंपरिक विवाह की स्मृति में मनाई जाती है।"
+      },
+      "sourceUrl": "https://ntb.gov.np/en/janakpur-and-vivah-panchami"
+    },
+    {
+      "text": {
+        "en": "Published sources use different construction chronologies: the Nepal Tourism Board gives 1910 as the completion year, while Nepal Views reports 1894–1911.",
+        "hi": "प्रकाशित स्रोत निर्माण की अलग-अलग समय-सीमाएँ देते हैं: नेपाल पर्यटन बोर्ड 1910 को पूर्णता-वर्ष बताता है, जबकि नेपाल व्यूज़ 1894–1911 की अवधि देता है।"
+      },
+      "sourceUrl": "https://english.nepalviews.com/2025/02/19/janaki-temple/"
+    }
+  ],
+  "celebrityLinks": [
+    {
+      "person": "Queen Vrisha Bhanu",
+      "relation": {
+        "en": "Traditionally credited as the patron who commissioned the temple",
+        "hi": "परंपरागत रूप से मंदिर की संरक्षक और निर्माण की प्रेरक मानी जाती हैं।"
+      },
+      "sourceUrl": "https://ntb.gov.np/en/janakpur-and-vivah-panchami"
+    },
+    {
+      "person": "Sita (Janaki)",
+      "relation": {
+        "en": "The temple is dedicated to Sita, whose name gives Janaki Mandir its identity",
+        "hi": "मंदिर सीता को समर्पित है; जनकी उनका एक प्रसिद्ध नाम है।"
+      },
+      "sourceUrl": "https://ntb.gov.np/en/janakpur-and-vivah-panchami"
+    }
+  ],
+  "rarity": "Janakpur landmark · Nau Lakha Mandir",
+  "hasFramePack": true,
+  "tags": [
+    "janaki-mandir",
+    "janakpur",
+    "nepal",
+    "mithila",
+    "sita",
+    "temple",
+    "architecture",
+    "vivah-panchami",
+    "landmark"
+  ]
+}

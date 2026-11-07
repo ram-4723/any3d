@@ -1,0 +1,670 @@
+{
+ "overview": {
+  "name": "Overall views",
+  "photos": [
+   {
+    "file": "overview_1.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (17).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(17).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "overview_2.jpg",
+    "commons_title": "File:Janaki.mandir.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki.mandir.jpg",
+    "author": "Kushalpoudel392",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The beautiful Janaki Mandir is a Hindu temple at the heart of Janakpur. Fully built in bright white, the temple is an example of perfect artistry. Constructed in an area of 4,860 sq. feet in a mixed style of Islamic and Rajput domes, the temple is 50 meters high. It is a three storied structure made"
+   },
+   {
+    "file": "overview_3.jpg",
+    "commons_title": "File:Janaki Mandir, Janakpur Nepal 01.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Mandir,_Janakpur_Nepal_01.jpg",
+    "author": "Suyash.dwivedi",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Janaki Mandir, Janakpur Nepal"
+   },
+   {
+    "file": "overview_4.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (26).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(26).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "overview_5.jpg",
+    "commons_title": "File:Janaki Mandir, long exposure at night.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Mandir,_long_exposure_at_night.jpg",
+    "author": "Aditya Pal",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Janaki Mandir, Hindu temple in Janakpur in the Mithila region of Nepal. Birth place of Hindu goddess Sita."
+   }
+  ]
+ },
+ "sita_dedication": {
+  "name": "Dedicated to Sita",
+  "photos": [
+   {
+    "file": "sita_dedication_1.jpg",
+    "commons_title": "File:Janakpur Dham.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janakpur_Dham.jpg",
+    "author": "Quteboy4",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Deep bow of respect from the priest in janakpur temple."
+   },
+   {
+    "file": "sita_dedication_2.jpg",
+    "commons_title": "File:Janaki Temple, Janakpur-September 22, 2016-IMG 7439.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple,_Janakpur-September_22,_2016-IMG_7439.jpg",
+    "author": "Bijay chaurasia",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "This is a photo of a monument in Nepal identified by the ID"
+   },
+   {
+    "file": "sita_dedication_3.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (11).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(11).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "sita_dedication_4.jpg",
+    "commons_title": "File:Inside view of the Janki Mandir of Janakpur, Nepal..JPG",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Inside_view_of_the_Janki_Mandir_of_Janakpur,_Nepal..JPG",
+    "author": "Manohar Mahara (per file description)",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "description": "The actual temple of Ram and Sita is inside this building. This photograph was captured by Manohar Mahara I was born in Shahidnagar Nagar Palika and love to the Mithila this historical temple whenever I visit Janakpur."
+   },
+   {
+    "file": "sita_dedication_5.jpg",
+    "commons_title": "File:Inside Janaki Temple.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Inside_Janaki_Temple.jpg",
+    "author": "Rashikafle",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Main temple inside Janaki temole."
+   }
+  ]
+ },
+ "royal_patron": {
+  "name": "Queen Vrisha Bhanu",
+  "photos": [
+   {
+    "file": "royal_patron_1.jpg",
+    "commons_title": "File:Ram Janaki Temple-Janakpur030315 MG 36640031.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Ram_Janaki_Temple-Janakpur030315_MG_36640031.jpg",
+    "author": "Bijaya2043",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The temple is popularly known as the Nau Lakha Mandir (meaning Nine Lakhs). The cost for the construction of the temple was about the same amount of money: Rupees Nine Lakhs or Nine Hundred Thousands and hence the name. Queen Vrisha Bhanu – of Tikamgarh, India built the temple in 1910 AD. In 1657, a"
+   },
+   {
+    "file": "royal_patron_2.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (20).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(20).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "royal_patron_3.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (21).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(21).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "royal_patron_4.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (19).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(19).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   }
+  ]
+ },
+ "architecture": {
+  "name": "Hindu, Mughal and Rajput traditions",
+  "photos": [
+   {
+    "file": "architecture_1.jpg",
+    "commons_title": "File:Janaki Mandir, Janakpurdham, Nepal, backside 4.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Mandir,_Janakpurdham,_Nepal,_backside_4.jpg",
+    "author": "Suyash.dwivedi",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Janaki Mandir, Janakpurdham, Nepal, backside"
+   },
+   {
+    "file": "architecture_2.jpg",
+    "commons_title": "File:Janaki Mandir, Janakpurdham, Nepal, front 6.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Mandir,_Janakpurdham,_Nepal,_front_6.jpg",
+    "author": "Suyash.dwivedi",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Janaki Mandir, Janakpurdham, Nepal, front"
+   },
+   {
+    "file": "architecture_3.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (6).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(6).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "architecture_4.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (13).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(13).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "architecture_5.jpg",
+    "commons_title": "File:Janaki Temple, Janakpur-September 22, 2016-IMG 7474.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple,_Janakpur-September_22,_2016-IMG_7474.jpg",
+    "author": "Bijay chaurasia",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "This is a photo of a monument in Nepal identified by the ID"
+   }
+  ]
+ },
+ "domes": {
+  "name": "Mughal-influenced domes",
+  "photos": [
+   {
+    "file": "domes_1.jpg",
+    "commons_title": "File:Janaki Temple, Janakpur-September 22, 2016-IMG 7469.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple,_Janakpur-September_22,_2016-IMG_7469.jpg",
+    "author": "Bijay chaurasia",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "This is a photo of a monument in Nepal identified by the ID"
+   },
+   {
+    "file": "domes_2.jpg",
+    "commons_title": "File:Janaki Mandir, Janakpurdham, Nepal, backside 5.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Mandir,_Janakpurdham,_Nepal,_backside_5.jpg",
+    "author": "Suyash.dwivedi",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Janaki Mandir, Janakpurdham, Nepal, backside"
+   },
+   {
+    "file": "domes_3.jpg",
+    "commons_title": "File:Janaki Mandir, Janakpurdham, Nepal, front 7.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Mandir,_Janakpurdham,_Nepal,_front_7.jpg",
+    "author": "Suyash.dwivedi",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Janaki Mandir, Janakpurdham, Nepal, front"
+   },
+   {
+    "file": "domes_4.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (10).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(10).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "domes_5.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (5).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(5).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "domes_6.jpg",
+    "commons_title": "File:Janaki Temple, Janakpur-September 22, 2016-IMG 7496.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple,_Janakpur-September_22,_2016-IMG_7496.jpg",
+    "author": "Bijay chaurasia",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "This is a photo of a monument in Nepal identified by the ID"
+   }
+  ]
+ },
+ "jharokhas": {
+  "name": "Rajasthani jharokhas",
+  "photos": [
+   {
+    "file": "jharokhas_1.jpg",
+    "commons_title": "File:Janaki Temple, Janakpur-September 22, 2016-IMG 7472.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple,_Janakpur-September_22,_2016-IMG_7472.jpg",
+    "author": "Bijay chaurasia",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "This is a photo of a monument in Nepal identified by the ID"
+   },
+   {
+    "file": "jharokhas_2.jpg",
+    "commons_title": "File:Interior View of Janaki Temple, Janakpur-September 22, 2016-IMG 7466.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Interior_View_of_Janaki_Temple,_Janakpur-September_22,_2016-IMG_7466.jpg",
+    "author": "Bijay chaurasia",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "This is a photo of a monument in Nepal identified by the ID"
+   },
+   {
+    "file": "jharokhas_3.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (28).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(28).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "jharokhas_4.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (22).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(22).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "jharokhas_5.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (23).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(23).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   }
+  ]
+ },
+ "pillars": {
+  "name": "Carved pillars",
+  "photos": [
+   {
+    "file": "pillars_1.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (31).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(31).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "pillars_2.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (33).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(33).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "pillars_3.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (32).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(32).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "pillars_4.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (14).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(14).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   }
+  ]
+ },
+ "stone_marble": {
+  "name": "Stone and marble",
+  "photos": [
+   {
+    "file": "stone_marble_1.jpg",
+    "commons_title": "File:Inside Janaki temple.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Inside_Janaki_temple.jpg",
+    "author": "Rashikafle",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "जानकी मन्दिर परिसर"
+   },
+   {
+    "file": "stone_marble_2.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (9).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(9).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "stone_marble_3.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (8).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(8).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "stone_marble_4.jpg",
+    "commons_title": "File:Interior View of Janaki Temple, Janakpur-September 22, 2016-IMG 7455.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Interior_View_of_Janaki_Temple,_Janakpur-September_22,_2016-IMG_7455.jpg",
+    "author": "Bijay chaurasia",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "This is a photo of a monument in Nepal identified by the ID"
+   },
+   {
+    "file": "stone_marble_5.jpg",
+    "commons_title": "File:Janaki Mandir, Janakpurdham, Nepal, backside.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Mandir,_Janakpurdham,_Nepal,_backside.jpg",
+    "author": "Suyash.dwivedi",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Janaki Mandir, Janakpurdham, Nepal, backside"
+   }
+  ]
+ },
+ "rooms": {
+  "name": "Sixty main rooms",
+  "photos": [
+   {
+    "file": "rooms_1.jpg",
+    "commons_title": "File:Janaki Temple Historical Museum DSC02110.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Historical_Museum_DSC02110.jpg",
+    "author": "Ricky Partel",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Janaki Temple Historical Museum"
+   },
+   {
+    "file": "rooms_2.jpg",
+    "commons_title": "File:Interior View of Janaki Temple, Janakpur-September 22, 2016-IMG 7453-Pano.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Interior_View_of_Janaki_Temple,_Janakpur-September_22,_2016-IMG_7453-Pano.jpg",
+    "author": "Bijay chaurasia",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "This is a photo of a monument in Nepal identified by the ID"
+   },
+   {
+    "file": "rooms_3.jpg",
+    "commons_title": "File:Interior View of Janaki Temple, Janakpur-September 22, 2016-IMG 7462.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Interior_View_of_Janaki_Temple,_Janakpur-September_22,_2016-IMG_7462.jpg",
+    "author": "Bijay chaurasia",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "This is a photo of a monument in Nepal identified by the ID"
+   },
+   {
+    "file": "rooms_4.jpg",
+    "commons_title": "File:Interior View of Janaki Temple, Janakpur-September 22, 2016-IMG 7459.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Interior_View_of_Janaki_Temple,_Janakpur-September_22,_2016-IMG_7459.jpg",
+    "author": "Bijay chaurasia",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "This is a photo of a monument in Nepal identified by the ID"
+   },
+   {
+    "file": "rooms_5.jpg",
+    "commons_title": "File:Interior View of Janaki Temple, Janakpur-September 22, 2016-IMG 7450.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Interior_View_of_Janaki_Temple,_Janakpur-September_22,_2016-IMG_7450.jpg",
+    "author": "Bijay chaurasia",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "This is a photo of a monument in Nepal identified by the ID"
+   }
+  ]
+ },
+ "janakpur": {
+  "name": "Janakpurdham, Mithila",
+  "photos": [
+   {
+    "file": "janakpur_1.jpg",
+    "commons_title": "File:Janaki Temple Historical Museum DSC02075.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Historical_Museum_DSC02075.jpg",
+    "author": "Ricky Partel",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Janaki Temple Historical Museum"
+   },
+   {
+    "file": "janakpur_2.jpg",
+    "commons_title": "File:Janaki Temple, Janakpur-September 22, 2016-IMG 7492.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple,_Janakpur-September_22,_2016-IMG_7492.jpg",
+    "author": "Bijay chaurasia",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "This is a photo of a monument in Nepal identified by the ID"
+   },
+   {
+    "file": "janakpur_3.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (4).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(4).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "janakpur_4.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (16).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(16).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "janakpur_5.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (15).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(15).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "janakpur_6.jpg",
+    "commons_title": "File:Janaki Temple, Janakpur-September 22, 2016-IMG 7479.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple,_Janakpur-September_22,_2016-IMG_7479.jpg",
+    "author": "Bijay chaurasia",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "This is a photo of a monument in Nepal identified by the ID"
+   }
+  ]
+ },
+ "nau_lakha": {
+  "name": "Nau Lakha Mandir",
+  "photos": [
+   {
+    "file": "nau_lakha_1.jpg",
+    "commons_title": "File:Janaki Temple--IMG 7555-Pano.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple--IMG_7555-Pano.jpg",
+    "author": "Bijay chaurasia",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The temple is popularly known as the Nau Lakha Mandir (meaning Nine Lakhs). The cost for the construction of the temple was about the same amount of money: Rupees Nine Lakhs or Nine Hundred Thousands and hence the name. Queen Vrisha Bhanu – of Tikamgarh, India built the temple in 1910 AD. In 1657, a"
+   },
+   {
+    "file": "nau_lakha_2.jpg",
+    "commons_title": "File:Janaki Temple Janakpur Dhanusha Nepal Rajesh Dhungana (18).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_Janakpur_Dhanusha_Nepal_Rajesh_Dhungana_(18).jpg",
+    "author": "Rajesh Dhungana",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The famous Janaki temple of Nepal is located in Janakpurdham, the district headquarters of Dhanusha district. This temple is located in the center of Janakpur sub-metropolitan ward no. 10, i.e. Janakpur Bazaar. Saint Surdas saw in his dream that this place was the palace of Sitaji in the Ramayana pe"
+   },
+   {
+    "file": "nau_lakha_3.jpg",
+    "commons_title": "File:Janaki Temple, Janakpur-September 22, 2016-IMG 7502.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple,_Janakpur-September_22,_2016-IMG_7502.jpg",
+    "author": "Bijay chaurasia",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "This is a photo of a monument in Nepal identified by the ID"
+   },
+   {
+    "file": "nau_lakha_4.jpg",
+    "commons_title": "File:Janaki Temple, Janakpur-September 22, 2016-IMG 7504-Pano.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple,_Janakpur-September_22,_2016-IMG_7504-Pano.jpg",
+    "author": "Bijay chaurasia",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "This is a photo of a monument in Nepal identified by the ID"
+   },
+   {
+    "file": "nau_lakha_5.jpg",
+    "commons_title": "File:Sacred Beauty of Janakpur- The Janaki Temple.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Sacred_Beauty_of_Janakpur-_The_Janaki_Temple.jpg",
+    "author": "Gaurav Bhandari",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "The photo portrays the majestic Janaki Temple, standing tall in the heart of Janakpur, Nepal. This grand architectural marvel is beautifully adorned with intricate carvings, demonstrating the artistic grandeur of Nepalese culture. The temple's pristine white facade gleams under the clear blue sky, m"
+   }
+  ]
+ },
+ "vivah_panchami": {
+  "name": "Vivah Panchami",
+  "photos": [
+   {
+    "file": "vivah_panchami_1.jpg",
+    "commons_title": "File:Vivah Mandap, Janakpur-September 22, 2016-7323.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Vivah_Mandap,_Janakpur-September_22,_2016-7323.jpg",
+    "author": "Biplab Anand",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": ""
+   },
+   {
+    "file": "vivah_panchami_2.jpg",
+    "commons_title": "File:Vivah Mandap, Janakpur-September 22, 2016-7321.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Vivah_Mandap,_Janakpur-September_22,_2016-7321.jpg",
+    "author": "Biplab Anand",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": ""
+   },
+   {
+    "file": "vivah_panchami_3.jpg",
+    "commons_title": "File:Ram Janaki Biwaha Mandap.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Ram_Janaki_Biwaha_Mandap.jpg",
+    "author": "076BCT.SUMIT",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Front view of Biwaha Mandap."
+   },
+   {
+    "file": "vivah_panchami_4.jpg",
+    "commons_title": "File:Janaki Mandir from Vivaha Mandap.JPG",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Mandir_from_Vivaha_Mandap.JPG",
+    "author": "Nirmal Dulal",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "description": "Janaki Mandir from Vivaha Mandap."
+   },
+   {
+    "file": "vivah_panchami_5.jpg",
+    "commons_title": "File:\"Biwaha Mandap\" Ram-Janaki Marriage Hall DSC02159.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:%22Biwaha_Mandap%22_Ram-Janaki_Marriage_Hall_DSC02159.jpg",
+    "author": "Ricky Partel",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "\"Biwaha Mandap\" Ram-Janaki Marriage Hall"
+   },
+   {
+    "file": "vivah_panchami_6.jpg",
+    "commons_title": "File:\"Biwaha Mandap\" Ram-Janaki Marriage Hall DSC02160.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:%22Biwaha_Mandap%22_Ram-Janaki_Marriage_Hall_DSC02160.jpg",
+    "author": "Ricky Partel",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "\"Biwaha Mandap\" Ram-Janaki Marriage Hall"
+   }
+  ]
+ },
+ "sacred_tradition": {
+  "name": "Rama and Sita tradition",
+  "photos": [
+   {
+    "file": "sacred_tradition_1.jpg",
+    "commons_title": "File:Historical Museum (Janakpur).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Historical_Museum_(Janakpur).jpg",
+    "author": "Tulsi Bhagat",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Image from historical museum of Janaki Mandir situated at Janakpurdham"
+   },
+   {
+    "file": "sacred_tradition_2.jpg",
+    "commons_title": "File:Janaki Mandir, Cultural Museum.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Mandir,_Cultural_Museum.jpg",
+    "author": "Rocky Prasad Sah",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Image from Janaki Mandir, Cultural Museum."
+   },
+   {
+    "file": "sacred_tradition_3.jpg",
+    "commons_title": "File:Historical Museum 3 (Janakpur).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Historical_Museum_3_(Janakpur).jpg",
+    "author": "Tulsi Bhagat",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Image from historical museum of Janaki Mandir situated at Janakpurdham."
+   },
+   {
+    "file": "sacred_tradition_4.jpg",
+    "commons_title": "File:Historical Museum 2 (Janakpur).jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Historical_Museum_2_(Janakpur).jpg",
+    "author": "Tulsi Bhagat",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Image from historical museum of Janaki Mandir situated at Janakpurdham."
+   },
+   {
+    "file": "sacred_tradition_5.jpg",
+    "commons_title": "File:Janaki Teemple Interior.jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Teemple_Interior.jpg",
+    "author": "Bharatadhikarimb",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": ""
+   },
+   {
+    "file": "sacred_tradition_6.jpg",
+    "commons_title": "File:Janaki Temple on 2021 Ram Navami Festival..jpg",
+    "commons_url": "https://commons.wikimedia.org/wiki/File:Janaki_Temple_on_2021_Ram_Navami_Festival..jpg",
+    "author": "076BCT.SUMIT",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Janaki Mandir. This photo is captured on the occasion of Ram Navami festival 2021."
+   }
+  ]
+ }
+}

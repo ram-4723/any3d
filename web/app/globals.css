@@ -523,3 +523,6 @@ html[data-cursor-pressed="true"] .cursor-aura::before{background:radial-gradient
 .camp-info-close{width:25px;height:25px;flex-basis:25px;margin-bottom:-25px;font-size:18px;background:radial-gradient(circle 12.5px,#101112f5 97%,transparent 100%);border-color:transparent;box-shadow:none}
 .camp-info-close:hover{background:radial-gradient(circle 12.5px,#fff 97%,transparent 100%);color:#17171b;border-color:transparent;transform:none}
 @media(max-width:600px){.camp-info-close{width:44px;height:44px;flex-basis:44px;margin-bottom:-44px;font-size:18px;background:radial-gradient(circle 12.5px,#101112f5 97%,transparent 100%);border-color:transparent}.camp-info-close:hover{background:radial-gradient(circle 12.5px,#101112f5 97%,transparent 100%);color:#fff;transform:none}}
+/* Keep the Janaki Mandir photo and label controls inside narrow viewers. */
+.viewer-controls-photos{width:max-content;max-width:calc(100% - 28px);flex-wrap:wrap;justify-content:flex-end}
+@media(max-width:600px){.viewer-controls-photos{top:10px;right:10px;max-width:calc(100% - 20px);gap:5px}}
