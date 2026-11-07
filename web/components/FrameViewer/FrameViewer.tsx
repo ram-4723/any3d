@@ -8,7 +8,7 @@ type Hotspot = { id: string; name: string; group?: string; frame?: number; x: nu
 type ExplodeHotspot = { id: string; name: string; group?: string; category?: string; color?: string; points: ([number, number] | null)[] };
 type Sequence = { count: number; pattern: string; loop?: boolean; startFrame?: number };
 type HotspotPhoto = { url: string; sourceUrl: string; credit: string; caption: string };
-type GalleryPhoto = { url: string; title: string; author: string; license: string; licenseUrl: string; sourceUrl: string };
+type GalleryPhoto = { url: string; title: string; author: string; license: string; licenseUrl: string; sourceUrl: string; scopeNote?: string };
 type PhotoGalleryMap = Record<string, Record<string, GalleryPhoto[]>>;
 const photoGalleryMap = photoGalleries as PhotoGalleryMap;
 type CampHotspot = { id: string; name: string; category?: string; details?: string; approx: boolean; offModel?: boolean; image?: HotspotPhoto; points: ([number, number] | null)[] };
@@ -51,16 +51,19 @@ function PhotoCarousel({ photos, id }: { photos: GalleryPhoto[]; id: string }) {
   const [index, setIndex] = useState(0);
   if (!photos.length) return null;
   const photo = photos[index % photos.length];
-  return <figure className="viewer-info-photo" aria-label={`${id} photo gallery`}>
-    <img src={photo.url} alt={photo.title} loading="lazy" />
-    <figcaption title={photo.title}>{photo.title}</figcaption>
-    <div className="viewer-photo-attribution"><a href={photo.sourceUrl} target="_blank" rel="noreferrer" title={`Photo source: ${photo.title}`} aria-label={`Photo source: ${photo.title}, by ${photo.author}`}>{photo.author}<span> ↗</span></a><a href={photo.licenseUrl} target="_blank" rel="noreferrer" title={`Image licence: ${photo.license}`}>{photo.license}<span> ↗</span></a></div>
-    {photos.length > 1 && <div className="viewer-photo-controls" aria-label="Photo gallery controls">
-      <button type="button" aria-label="Previous photo" onClick={() => setIndex(value => (value - 1 + photos.length) % photos.length)}>‹</button>
-      <span aria-live="polite">{index + 1} / {photos.length}</span>
-      <button type="button" aria-label="Next photo" onClick={() => setIndex(value => (value + 1) % photos.length)}>›</button>
-    </div>}
-  </figure>;
+  return <div className="viewer-photo-gallery">
+    <figure className="viewer-info-photo" aria-label={`${id} photo gallery`}>
+      <img src={photo.url} alt={photo.title} loading="lazy" />
+      <figcaption title={photo.title}>{photo.title}</figcaption>
+      <div className="viewer-photo-attribution"><a href={photo.sourceUrl} target="_blank" rel="noreferrer" title={`Photo source: ${photo.title}`} aria-label={`Photo source: ${photo.title}, by ${photo.author}`}>{photo.author}<span> ↗</span></a><a href={photo.licenseUrl} target="_blank" rel="noreferrer" title={`Image licence: ${photo.license}`}>{photo.license}<span> ↗</span></a></div>
+      {photos.length > 1 && <div className="viewer-photo-controls" aria-label="Photo gallery controls">
+        <button type="button" aria-label="Previous photo" onClick={() => setIndex(value => (value - 1 + photos.length) % photos.length)}>‹</button>
+        <span aria-live="polite">{index + 1} / {photos.length}</span>
+        <button type="button" aria-label="Next photo" onClick={() => setIndex(value => (value + 1) % photos.length)}>›</button>
+      </div>}
+    </figure>
+    {photo.scopeNote && <p className="viewer-photo-note">{photo.scopeNote}</p>}
+  </div>;
 }
 
 const asGalleryPhoto = (photo: HotspotPhoto): GalleryPhoto => ({
@@ -443,11 +446,21 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
         return <button key={h.id} type="button" className={'hotspot ' + (slug === 'excavator' ? 'excavator-hotspot ' : '') + alignment} style={hotspotStyle(h.x, h.y)} onPointerEnter={() => setHoveredHotspot(h.id)} onPointerLeave={() => setHoveredHotspot(null)} onFocus={() => setHoveredHotspot(h.id)} onBlur={() => setHoveredHotspot(null)} onClick={() => { if (selected) { setActiveHotspot(null); setHoveredHotspot(null); } else setActiveHotspot(h.id); }} aria-label={h.name} aria-pressed={selected}>{(slug === 'excavator' || slug === 'porsche-992-gt3r' || slug === 'audi-f1-r26' || slug === 'mexico-city-metropolitan-cathedral') && <span className="camp-pin-icon" aria-hidden="true"/>}{(selected || hovered) && <span className="hotspot-label" role="tooltip">{h.group && <small>{h.group}</small>}{h.name}</span>}</button>;
       })}
       {(slug === 'excavator' || slug === 'porsche-992-gt3r' || slug === 'audi-f1-r26' || slug === 'mexico-city-metropolitan-cathedral') && activeHotspot && (() => { const item = humanScale ? manifest?.humanScale?.hotspots.find(point => point.id === activeHotspot) : manifest?.rotate.hotspots?.find(point => point.id === activeHotspot) as ExcavatorHotspot | undefined; if (!item) return null; const photo = item.image ?? (slug === 'excavator' ? excavatorPhoto : undefined); const photos = photoGalleryMap[slug]?.[item.id] ?? (photo ? [asGalleryPhoto(photo)] : []); return <aside className="part-info-card" role="dialog" aria-label={`${item.name} details`}><button type="button" className="camp-info-close" aria-label="Close part details" onClick={() => setActiveHotspot(null)}>×</button><PhotoCarousel key={`${slug}-${item.id}`} id={item.id} photos={photos} /><small>{item.category}</small><b>{item.name}</b><p>{item.details}</p><a href={item.source} target="_blank" rel="noreferrer">↗ Source</a></aside>; })()}
+      {slug === 'toyota-gr-supra-a90' && exploded && activeHotspot && (() => {
+        const part = manifest?.explode?.hotspots?.find(item => item.id === activeHotspot);
+        if (!part) return null;
+        return <aside className="part-info-card" role="dialog" aria-label={`${part.name} details`}>
+          <button type="button" className="camp-info-close" aria-label="Close part details" onClick={() => setActiveHotspot(null)}>×</button>
+          <PhotoCarousel key={`${slug}-${part.id}`} id={part.id} photos={photoGalleryMap[slug]?.[part.id] ?? []} />
+          <small>{part.category ?? part.group ?? 'EXPLODED COMPONENT'}</small><b>{part.name}</b>
+        </aside>;
+      })()}
       {activeHotspot && partDetails.length > 0 && (() => {
         const part = partDetails.find(item => item.id === activeHotspot);
         if (!part) return null;
         return <aside className="part-info-card" role="dialog" aria-label={`${part.name.en} details`}>
           <button type="button" className="camp-info-close" aria-label="Close part details" onClick={() => setActiveHotspot(null)}>×</button>
+          <PhotoCarousel key={`${slug}-${part.id}`} id={part.id} photos={photoGalleryMap[slug]?.[part.id] ?? []} />
           <small>{part.category}</small><b>{part.name.en}</b><p>{part.desc.en}</p>
         </aside>;
       })()}

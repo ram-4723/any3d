@@ -1287,5 +1287,542 @@
         "license": "CC BY-SA 4.0"
       }
     ]
+  },
+  "sa342m-gazelle": {
+    "rotor_blades": [
+      {
+        "url": "/objects/sa342m-gazelle/photos/rotor_blades_1.jpg",
+        "scopeNote": "SA342M Viviane static display, including the main rotor.",
+        "author": "Photo: Przemyslaw \" Blueshade \" Idzkiewicz.",
+        "title": "Main rotor blades",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aerospatiale_Gazelle_of_French_Armee_de_Terre,_static_display,_Radom_AirShow_2005,_Poland.jpg",
+        "license": "CC BY-SA 2.5"
+      }
+    ],
+    "rotor_head": [
+      {
+        "url": "/objects/sa342m-gazelle/photos/rotor_head_1.jpg",
+        "scopeNote": "Rotor hub and mast on French Army SA342M 4091/GBK.",
+        "author": "Alexandre Prévot from Nancy, France",
+        "title": "Rotor head & mast",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aerospatiale_SA-342M_Gazelle_(3893718468).jpg",
+        "license": "CC BY-SA 2.0"
+      }
+    ],
+    "engine": [
+      {
+        "url": "/objects/sa342m-gazelle/photos/engine_1.jpg",
+        "scopeNote": "SA342M1/Viviane exterior engine housing and exhaust only; not an internal engine view.",
+        "author": "Mztourist",
+        "title": "Turbomeca Astazou XIV M engine",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:SA_342M_Gazelle_at_RIAT_1998.jpg",
+        "license": "CC BY-SA 4.0"
+      },
+      {
+        "url": "/objects/sa342m-gazelle/photos/engine_2.jpg",
+        "scopeNote": "Exposed Turbomeca Astazou on a French-service Gazelle; family reference only, exact XIV M variant unverified.",
+        "author": "bomberpilot",
+        "title": "Turbomeca Astazou XIV M engine",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flugplatzfest_Rechlin-L%C3%A4rz_2007_(8738798829).jpg",
+        "license": "CC BY-SA 2.0"
+      }
+    ],
+    "roof_sight": [
+      {
+        "url": "/objects/sa342m-gazelle/photos/roof_sight_1.jpg",
+        "scopeNote": "SA342M1/Viviane roof-mounted optical sight; variant may differ from the rendered SA342M sight.",
+        "author": "Mztourist",
+        "title": "Roof-mounted sight",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:SA_342M_Gazelle_at_RIAT_1998.jpg",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "canopy": [
+      {
+        "url": "/objects/sa342m-gazelle/photos/canopy_1.jpg",
+        "scopeNote": "Glazed canopy of French SA342M 3863/ATL.",
+        "author": "André Gerwing",
+        "title": "Glazed canopy",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sud-Aviation_SA342M_(c-n_1863,_s-n_3863,_ATL)_1992-06-19_Andre_Gerwing_Collection_ID_022674.jpg",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "fuselage": [
+      {
+        "url": "/objects/sa342m-gazelle/photos/fuselage_1.jpg",
+        "scopeNote": "French Army SA342M 4142/BOH.",
+        "author": "Jerry Gunner from Lincoln, UK",
+        "title": "Cabin & fuselage",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:4142_BOH_an_Aerospatiale_SA.342M_Gazelle_of_the_French_Armys_5_RHC_EHLR_1_based_at_Pau_(3218406618).jpg",
+        "license": "CC BY 2.0"
+      }
+    ],
+    "weapons": [
+      {
+        "url": "/objects/sa342m-gazelle/photos/weapons_1.jpg",
+        "scopeNote": "SA342M1/Viviane HOT missile tubes and outrigger installation.",
+        "author": "Mztourist",
+        "title": "Weapon outriggers",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:SA_342M_Gazelle_at_RIAT_1998.jpg",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "tail_boom": [
+      {
+        "url": "/objects/sa342m-gazelle/photos/tail_boom_1.jpg",
+        "scopeNote": "Tail boom of French Army SA342M F-MABW.",
+        "author": "Eric Gaba ( Sting - fr:Sting )",
+        "title": "Tail boom",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gazelle_SA342M.jpg",
+        "license": "CC BY-SA 2.5"
+      }
+    ],
+    "tail_fins": [
+      {
+        "url": "/objects/sa342m-gazelle/photos/tail_fins_1.jpg",
+        "scopeNote": "Horizontal stabilizer and endplate with Fenestron context; not all opposite-side surfaces are visible.",
+        "author": "Alan Wilson",
+        "title": "Horizontal stabiliser & endplates",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:SA.342M_Gazelle_4059_GBF_(9407813767).jpg",
+        "license": "CC BY-SA 2.0"
+      }
+    ],
+    "fenestron": [
+      {
+        "url": "/objects/sa342m-gazelle/photos/fenestron_1.jpg",
+        "scopeNote": "Fenestron on French Army SA342M GBJ.",
+        "author": "Alexandre Prévot from Nancy, France",
+        "title": "Fenestron tail rotor",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aerospatiale_SA-342M_Gazelle_(4589344632).jpg",
+        "license": "CC BY-SA 2.0"
+      }
+    ],
+    "skids": [
+      {
+        "url": "/objects/sa342m-gazelle/photos/skids_1.jpg",
+        "scopeNote": "Landing-skid assembly of SA342M GBK.",
+        "author": "Alexandre Prévot from Nancy, France",
+        "title": "Landing skids",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aerospatiale_SA-342M_Gazelle_(3893718468).jpg",
+        "license": "CC BY-SA 2.0"
+      }
+    ]
+  },
+  "toyota-gr-supra-a90": {
+    "cover": [
+      {
+        "url": "/objects/toyota-gr-supra-a90/photos/cover_1.jpg",
+        "scopeNote": "USDM 2020 Supra B58B30M0 engine cover.",
+        "author": "Pixelatedfacealex",
+        "title": "Engine cover",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:B58Supra.jpg",
+        "license": "CC BY-SA 4.0"
+      },
+      {
+        "url": "/objects/toyota-gr-supra-a90/photos/cover_2.jpg",
+        "scopeNote": "Toyota GR Supra RZ B58 engine bay and engine cover.",
+        "author": "Tokumeigakarinoaoshima",
+        "title": "Engine cover",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_engineroom_of_Toyota_GR_Supra_RZ_(3BA-DB42-ZRRW).jpg",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "intake": [
+      {
+        "url": "/objects/toyota-gr-supra-a90/photos/intake_1.jpg",
+        "scopeNote": "Intake-manifold/charge-air-cooler area on a tuned Supra B58; aftermarket air filter/charge plumbing visible. Not proof of a fully stock installation.",
+        "author": "Thomas Vogt from Paderborn, Deutschland",
+        "title": "Intake manifold with water-to-air intercooler",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Toyota_Supra_Engine_(53422232033).jpg",
+        "license": "CC BY 2.0"
+      }
+    ],
+    "turbo": [
+      {
+        "url": "/objects/toyota-gr-supra-a90/photos/turbo_1.jpg",
+        "scopeNote": "BMW B58 turbocharger museum reference. Exact Supra fitment/subvariant is not verified.",
+        "author": "Tiia Monto",
+        "title": "Twin-scroll turbocharger",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turbocharger_3.jpg",
+        "license": "CC BY 4.0"
+      }
+    ],
+    "rsub": [
+      {
+        "url": "/objects/toyota-gr-supra-a90/photos/rsub_1.jpg",
+        "scopeNote": "Detached Toyota Supra A90 multi-link rear subframe/suspension display.",
+        "author": "TTTNIS",
+        "title": "Rear subframe",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Toyota_Supra_A90_multi-link_rear_suspension.jpg",
+        "license": "CC0"
+      }
+    ],
+    "diff": [
+      {
+        "url": "/objects/toyota-gr-supra-a90/photos/diff_1.jpg",
+        "scopeNote": "Rear differential housing and input flange in the A90 rear suspension display; the propeller shaft is not installed.",
+        "author": "TTTNIS",
+        "title": "Rear differential",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Toyota_Supra_A90_multi-link_rear_suspension.jpg",
+        "license": "CC0"
+      }
+    ],
+    "exhaust": [
+      {
+        "url": "/objects/toyota-gr-supra-a90/photos/exhaust_1.jpg",
+        "scopeNote": "Stock-style rear exhaust outlets only; mufflers are hidden behind bodywork.",
+        "author": "Dietmar Rabich",
+        "title": "Exhaust & twin mufflers",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:D%C3%BClmen,_Auto_Bertels,_Toyota_GR_Supra_--_2021_--_9547.jpg",
+        "license": "CC BY-SA 4.0"
+      },
+      {
+        "url": "/objects/toyota-gr-supra-a90/photos/exhaust_2.jpg",
+        "scopeNote": "Fi EXHAUST aftermarket outlet installation on GR Supra Track Concept; not stock twin mufflers.",
+        "author": "JoeTsneg",
+        "title": "Exhaust & twin mufflers",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:GR_Supra_Track_Concept_on_The_International_Canadian_AutoShow.jpg",
+        "license": "CC BY-SA 4.0"
+      }
+    ]
+  },
+  "audi-f1-r26": {
+    "front_wing": [
+      {
+        "url": "/objects/audi-f1-r26/photos/front_wing_1.jpg",
+        "scopeNote": "Audi R26 front wing, Chinese GP 2026.",
+        "author": "Liauzh",
+        "title": "Front wing",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2026_Chinese_GP_-_Audi_-_Nico_Hulkenberg_-_Qualifying.jpg",
+        "license": "CC BY 4.0"
+      }
+    ],
+    "nose": [
+      {
+        "url": "/objects/audi-f1-r26/photos/nose_1.jpg",
+        "scopeNote": "Audi R26 nose cone.",
+        "author": "Liauzh",
+        "title": "Nose cone",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2026_Chinese_GP_-_Audi_-_Nico_Hulkenberg_-_FP1.jpg",
+        "license": "CC BY 4.0"
+      }
+    ],
+    "halo": [
+      {
+        "url": "/objects/audi-f1-r26/photos/halo_1.jpg",
+        "scopeNote": "Audi R26 halo during pit-stop practice with crew member seated in cockpit.",
+        "author": "Steffen Prößdorf",
+        "title": "Halo",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2026-08-21_Motorsport,_Formel_1,_Gro%C3%9Fer_Preis_der_Niederlande_2026_STP_2066.jpg",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "cockpit": [
+      {
+        "url": "/objects/audi-f1-r26/photos/cockpit_1.jpg",
+        "scopeNote": "Crew member seated in the Audi R26 during practice, not Hülkenberg himself.",
+        "author": "Steffen Prößdorf",
+        "title": "Cockpit",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2026-08-21_Motorsport,_Formel_1,_Gro%C3%9Fer_Preis_der_Niederlande_2026_STP_2066.jpg",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "mirrors": [
+      {
+        "url": "/objects/audi-f1-r26/photos/mirrors_1.jpg",
+        "scopeNote": "Outboard mirrors and cockpit.",
+        "author": "Eustace Bagge",
+        "title": "Rear-view mirrors",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nico_Hulkenberg_2026_Italian_Grand_Prix_qualifying.jpg",
+        "license": "CC BY 4.0"
+      }
+    ],
+    "airbox": [
+      {
+        "url": "/objects/audi-f1-r26/photos/airbox_1.jpg",
+        "scopeNote": "Engine air intake above the driver.",
+        "author": "Liauzh",
+        "title": "Engine airbox",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2026_Chinese_GP_-_Audi_-_Nico_Hulkenberg_-_FP1.jpg",
+        "license": "CC BY 4.0"
+      }
+    ],
+    "sidepod": [
+      {
+        "url": "/objects/audi-f1-r26/photos/sidepod_1.jpg",
+        "scopeNote": "Sidepod in a side/three-quarter on-track view.",
+        "author": "Liauzh",
+        "title": "Sidepod",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Audi_-_Nico_Hulkenberg_-_FP1.jpg",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "front_wheel": [
+      {
+        "url": "/objects/audi-f1-r26/photos/front_wheel_1.jpg",
+        "scopeNote": "2026 R26 front wheel and tyre.",
+        "author": "Liauzh",
+        "title": "Front wheel (18-inch)",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2026_Chinese_GP_-_Audi_-_Nico_Hulkenberg_-_FP1.jpg",
+        "license": "CC BY 4.0"
+      }
+    ],
+    "rear_wheel": [
+      {
+        "url": "/objects/audi-f1-r26/photos/rear_wheel_1.jpg",
+        "scopeNote": "2026 R26 rear wheel and tyre.",
+        "author": "Liauzh",
+        "title": "Rear wheel (18-inch)",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2026_Chinese_GP_-_Audi_-_Gabriel_Bortoleto_-_Qualifying.jpg",
+        "license": "CC BY 4.0"
+      }
+    ],
+    "rear_wing": [
+      {
+        "url": "/objects/audi-f1-r26/photos/rear_wing_1.jpg",
+        "scopeNote": "Rear wing with active elements; static photo does not demonstrate operation.",
+        "author": "Yu Chu Chin",
+        "title": "Rear wing",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Audi_R26_of_Gabriel_Bortoleto_(028A8492).jpg",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "rain_light": [
+      {
+        "url": "/objects/audi-f1-r26/photos/rain_light_1.jpg",
+        "scopeNote": "Illuminated central rear light, with rear-wing endplate lights in context.",
+        "author": "Yu Chu Chin",
+        "title": "Rear rain light",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Audi_R26_of_Gabriel_Bortoleto_(028A8492).jpg",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "number_27": [
+      {
+        "url": "/objects/audi-f1-r26/photos/number_27_1.jpg",
+        "scopeNote": "Number 27 visible on Hülkenberg’s engine-cover/cockpit-side area; 2026 Italian GP.",
+        "author": "Eustace Bagge",
+        "title": "Number 27",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nico_Hulkenberg_2026_Italian_Grand_Prix_qualifying.jpg",
+        "license": "CC BY 4.0"
+      }
+    ]
+  },
+  "bmw-s1000rr": {
+    "engine": [
+      {
+        "url": "/objects/bmw-s1000rr/photos/engine_1.jpg",
+        "scopeNote": "S1000RR engine cutaway in BMW Museum.",
+        "author": "Wikisympathisant",
+        "title": "999 cc inline-four engine",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_Motor_S1000RR.jpg",
+        "license": "CC BY-SA 4.0"
+      },
+      {
+        "url": "/objects/bmw-s1000rr/photos/engine_2.jpg",
+        "scopeNote": "External engine casing and surrounding frame, not an exposed engine.",
+        "author": "Ajamal",
+        "title": "999 cc inline-four engine",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(9).JPG",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(9).JPG",
+        "license": "Public domain"
+      }
+    ],
+    "exhaust": [
+      {
+        "url": "/objects/bmw-s1000rr/photos/exhaust_1.jpg",
+        "scopeNote": "Aftermarket Akrapovič exhaust on an S1000RR.",
+        "author": "Akrapovič_exahust_closeup.jpg : Ian Sherlock from Puriton, UK derivative work: Dbratland ( talk )",
+        "title": "Exhaust system",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Akrapovi%C4%8D_exhaust_closeup.jpg",
+        "license": "CC BY-SA 2.0"
+      }
+    ],
+    "fuel_tank": [
+      {
+        "url": "/objects/bmw-s1000rr/photos/fuel_tank_1.jpg",
+        "scopeNote": "",
+        "author": "Ajamal",
+        "title": "Fuel tank",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(3).JPG",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(3).JPG",
+        "license": "Public domain"
+      }
+    ],
+    "seat_tail": [
+      {
+        "url": "/objects/bmw-s1000rr/photos/seat_tail_1.jpg",
+        "scopeNote": "",
+        "author": "Ajamal",
+        "title": "Seat & tail section",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(7).JPG",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(7).JPG",
+        "license": "Public domain"
+      }
+    ],
+    "front_fairing": [
+      {
+        "url": "/objects/bmw-s1000rr/photos/front_fairing_1.jpg",
+        "scopeNote": "",
+        "author": "Ajamal",
+        "title": "Front fairing & headlights",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(4).JPG",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(4).JPG",
+        "license": "Public domain"
+      },
+      {
+        "url": "/objects/bmw-s1000rr/photos/front_fairing_2.jpg",
+        "scopeNote": "",
+        "author": "steve lyon",
+        "title": "Front fairing & headlights",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_front_closeup.jpg",
+        "license": "CC BY-SA 2.0"
+      }
+    ],
+    "windscreen": [
+      {
+        "url": "/objects/bmw-s1000rr/photos/windscreen_1.jpg",
+        "scopeNote": "Front windscreen, cropped from the frontal detail.",
+        "author": "Ajamal",
+        "title": "Windscreen",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(4).JPG",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(4).JPG",
+        "license": "Public domain"
+      }
+    ],
+    "cockpit": [
+      {
+        "url": "/objects/bmw-s1000rr/photos/cockpit_1.jpg",
+        "scopeNote": "Original photographer watermark retained.",
+        "author": "Davi Sanchez",
+        "title": "Cockpit & clip-on bars",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_S_1000RR_-_Detalhe_painel_(8159385731).jpg",
+        "license": "CC BY 2.0"
+      }
+    ],
+    "side_fairings": [
+      {
+        "url": "/objects/bmw-s1000rr/photos/side_fairings_1.jpg",
+        "scopeNote": "",
+        "author": "Ajamal",
+        "title": "Side fairings",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(6).JPG",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(6).JPG",
+        "license": "Public domain"
+      }
+    ],
+    "front_fork": [
+      {
+        "url": "/objects/bmw-s1000rr/photos/front_fork_1.jpg",
+        "scopeNote": "",
+        "author": "Ajamal",
+        "title": "45 mm upside-down fork",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(5).JPG",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(5).JPG",
+        "license": "Public domain"
+      }
+    ],
+    "front_wheel": [
+      {
+        "url": "/objects/bmw-s1000rr/photos/front_wheel_1.jpg",
+        "scopeNote": "One side of the front wheel/brake assembly; both discs are not simultaneously visible.",
+        "author": "Ajamal",
+        "title": "Front wheel & twin brakes",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(1).JPG",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(1).JPG",
+        "license": "Public domain"
+      }
+    ],
+    "rear_wheel": [
+      {
+        "url": "/objects/bmw-s1000rr/photos/rear_wheel_1.jpg",
+        "scopeNote": "Rear wheel from the exhaust/brake side.",
+        "author": "Ajamal",
+        "title": "Rear wheel & brake",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(2).JPG",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(2).JPG",
+        "license": "Public domain"
+      }
+    ],
+    "swingarm": [
+      {
+        "url": "/objects/bmw-s1000rr/photos/swingarm_1.jpg",
+        "scopeNote": "Swingarm and rear shock in upper-left background.",
+        "author": "Ajamal",
+        "title": "Swingarm & rear shock",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(8).JPG",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(8).JPG",
+        "license": "Public domain"
+      }
+    ],
+    "chain_drive": [
+      {
+        "url": "/objects/bmw-s1000rr/photos/chain_drive_1.jpg",
+        "scopeNote": "Drive chain and rear sprocket.",
+        "author": "Ajamal",
+        "title": "Chain drive",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(8).JPG",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(8).JPG",
+        "license": "Public domain"
+      }
+    ],
+    "frame": [
+      {
+        "url": "/objects/bmw-s1000rr/photos/frame_1.jpg",
+        "scopeNote": "Exposed bridge-frame side member.",
+        "author": "Ajamal",
+        "title": "Aluminium bridge frame",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(9).JPG",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(9).JPG",
+        "license": "Public domain"
+      }
+    ],
+    "radiator": [
+      {
+        "url": "/objects/bmw-s1000rr/photos/radiator_1.jpg",
+        "scopeNote": "Radiator core behind the fork; oil cooler is not separately shown.",
+        "author": "Ajamal",
+        "title": "Radiator & oil cooler",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(5).JPG",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_S1000RR_NEC_Birmingham_2009_(5).JPG",
+        "license": "Public domain"
+      }
+    ]
   }
 }
