@@ -15,6 +15,7 @@ type CampHotspot = { id: string; name: string; category?: string; details?: stri
 type ExcavatorHotspot = { id: string; name: string; category: string; details: string; source: string; image?: HotspotPhoto; points: (string | [number, number] | null)[] };
 type HumanHotspot = { id: string; name: string; category: string; details: string; source: string; image?: HotspotPhoto; point: [number, number] };
 type Point = [number, number] | null;
+const defaultViewerZoom = (slug: string) => slug === 'janaki-mandir' && typeof window !== 'undefined' && window.matchMedia('(max-width: 740px)').matches ? 1.25 : 1;
 const parsePoint = (point: string | [number, number] | null | undefined): Point => { if (Array.isArray(point)) return point; if (typeof point !== 'string') return null; const values = point.trim().split(/[\s,]+/).map(Number); return values.length === 2 && values.every(Number.isFinite) ? [values[0], values[1]] : null; };
 const estimatedHotspotPoint = (slug: string, id: string, frame: number): Point => {
   const angle = ((frame - 18) * Math.PI) / 72;
@@ -142,7 +143,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   useEffect(() => {
     if (!inView) return;
     let cancelled = false;
-    setManifest(null); setMissing(false); setReady(false); setAllFramesLoaded(false); setProgress(0); setExploded(false); setExplodeDirection(0); setShowLabels(false); setHumanScale(false); setActiveHotspot(null); setHoveredHotspot(null); setViewFrame(0); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); lastDrawnImage.current = null;
+    setManifest(null); setMissing(false); setReady(false); setAllFramesLoaded(false); setProgress(0); setExploded(false); setExplodeDirection(0); setShowLabels(false); setHumanScale(false); setActiveHotspot(null); setHoveredHotspot(null); setViewFrame(0); zoomFactor.current = defaultViewerZoom(slug); setZoom(zoomFactor.current); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); lastDrawnImage.current = null;
     position.current = 0; images.current = [];
     const poster = new Image();
     poster.onload = () => { if (!cancelled) { images.current[0] = poster; drawRef.current(); } };
@@ -287,7 +288,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     if (!drag.current) return;
     const dx = x - drag.current.x;
     const dy = y - drag.current.y;
-    if (zoomFactor.current > 1) {
+    if (zoomFactor.current > defaultViewerZoom(slug)) {
       const offset = constrainPan({ x: panPosition.current.x + dx, y: panPosition.current.y + dy });
       panPosition.current = offset;
       drag.current = { x, y };
@@ -380,7 +381,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     observer.observe(card);
     return () => observer.disconnect();
   }, [activeCampPin?.id, activeCampPin?.x, activeCampPin?.y, activeCamp, current, zoom, panOffset, manifest]);
-  const reset = () => { position.current = 0; setViewFrame(0); setExploded(false); setHumanScale(false); setActiveCamp(null); setShowLabels(false); setShowObjectPhotos(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); draw(); };
+  const reset = () => { position.current = 0; setViewFrame(0); setExploded(false); setHumanScale(false); setActiveCamp(null); setShowLabels(false); setShowObjectPhotos(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); zoomFactor.current = defaultViewerZoom(slug); setZoom(zoomFactor.current); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); draw(); };
   const adjustZoom = (amount: number) => {
     const next = Math.max(1, Math.min(maxZoom, Math.round((zoomFactor.current + amount) * 100) / 100));
     if (next === zoomFactor.current) return;
