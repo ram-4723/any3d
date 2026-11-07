@@ -1126,5 +1126,166 @@
         "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AGarzweiler_Night.jpg"
       }
     ]
+  },
+  "mexico-city-metropolitan-cathedral": {
+    "west_bell_tower": [
+      {
+        "title": "west bell tower",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mexico_City_Metropolitan_Cathedral_west_bell_tower_night.jpg",
+        "url": "/objects/mexico-city-metropolitan-cathedral/photos/west_bell_tower_1.jpg",
+        "author": "Lazjak",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "license": "CC BY-SA 4.0"
+      },
+      {
+        "title": "west bell tower",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Catedral_Metropolitana_de_la_Ciudad_de_M%C3%A9xico_6.jpg",
+        "url": "/objects/mexico-city-metropolitan-cathedral/photos/west_bell_tower_2.jpg",
+        "author": "ProtoplasmaKid",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "east_bell_tower": [
+      {
+        "title": "east bell tower",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:CatedralDeM%C3%A9xico-TorreOriente.jpg",
+        "url": "/objects/mexico-city-metropolitan-cathedral/photos/east_bell_tower_1.jpg",
+        "author": "Covadongino",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license": "CC0"
+      }
+    ],
+    "clock": [
+      {
+        "title": "clock",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fe,_Esperanza,_Caridad.jpg",
+        "url": "/objects/mexico-city-metropolitan-cathedral/photos/clock_1.jpg",
+        "author": "NKdeSB",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "main_facade": [
+      {
+        "title": "main facade",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vista_a%C3%A9rea_de_la_Catedral_Metropolitana_de_la_Ciudad_de_M%C3%A9xico_17.jpg",
+        "url": "/objects/mexico-city-metropolitan-cathedral/photos/main_facade_1.jpg",
+        "author": "ProtoplasmaKid",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "license": "CC BY-SA 4.0"
+      },
+      {
+        "title": "overall",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Catedral_Metropolitana_de_la_Ciudad_de_M%C3%A9xico_8.jpg",
+        "url": "/objects/mexico-city-metropolitan-cathedral/photos/overall_1.jpg",
+        "author": "ProtoplasmaKid",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "license": "CC BY-SA 4.0"
+      },
+      {
+        "title": "overall",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mexico_City,_Metropolitan_Cathedral_(20693413381).jpg",
+        "url": "/objects/mexico-city-metropolitan-cathedral/photos/overall_2.jpg",
+        "author": "Arian Zwegers from Brussels, Belgium",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+        "license": "CC BY 2.0"
+      },
+      {
+        "title": "overall",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vista_a%C3%A9rea_de_la_Catedral_Metropolitana_de_la_Ciudad_de_M%C3%A9xico.jpg",
+        "url": "/objects/mexico-city-metropolitan-cathedral/photos/overall_3.jpg",
+        "author": "ProtoplasmaKid",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "central_portal": [
+      {
+        "title": "central portal",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:MainPortalCathedralDF.JPG",
+        "url": "/objects/mexico-city-metropolitan-cathedral/photos/central_portal_1.jpg",
+        "author": "Thelmadatter",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "license": "Public domain"
+      }
+    ],
+    "side_portal": [
+      {
+        "title": "side portal",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:LeftPortalCathedralDF.JPG",
+        "url": "/objects/mexico-city-metropolitan-cathedral/photos/side_portal_1.jpg",
+        "author": "Thelmadatter",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "license": "Public domain"
+      },
+      {
+        "title": "side portal",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:RightPortalCathedralDF.JPG",
+        "url": "/objects/mexico-city-metropolitan-cathedral/photos/side_portal_2.jpg",
+        "author": "Thelmadatter",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "license": "Public domain"
+      }
+    ],
+    "dome": [
+      {
+        "title": "dome",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:C%C3%BApula_catedral_ciudad_de_M%C3%A9xico.jpg",
+        "url": "/objects/mexico-city-metropolitan-cathedral/photos/dome_1.jpg",
+        "author": "Aalizul",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "nave": [
+      {
+        "title": "nave",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nave_and_Altar_of_Kings_-_Metropolitan_Cathedral_of_Mexico_City_-_Mexico_2024.jpg",
+        "url": "/objects/mexico-city-metropolitan-cathedral/photos/nave_1.jpg",
+        "author": "José Luiz",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "apse": [
+      {
+        "title": "apse",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:North_facade_(rear)_-_Metropolitan_Cathedral_of_Mexico_-_Mexico_2024.jpg",
+        "url": "/objects/mexico-city-metropolitan-cathedral/photos/apse_1.jpg",
+        "author": "José Luiz",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "sagrario": [
+      {
+        "title": "sagrario",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:East_Facade_-_Sagrario_Metropolitano_-_Mexico_2024.jpg",
+        "url": "/objects/mexico-city-metropolitan-cathedral/photos/sagrario_1.jpg",
+        "author": "José Luiz",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "license": "CC BY-SA 4.0"
+      },
+      {
+        "title": "sagrario",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Catedral_Metropolitana_de_la_Ciudad_de_M%C3%A9xico_1.jpg",
+        "url": "/objects/mexico-city-metropolitan-cathedral/photos/sagrario_2.jpg",
+        "author": "ProtoplasmaKid",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "buttresses": [],
+    "balustrade": [
+      {
+        "title": "balustrade",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Catedral_-_c%C3%BApula,_Ciudad_de_M%C3%A9xico_MEX.jpg",
+        "url": "/objects/mexico-city-metropolitan-cathedral/photos/balustrade_1.jpg",
+        "author": "Stefano Vigorelli",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "license": "CC BY-SA 4.0"
+      }
+    ]
   }
 }

@@ -1,0 +1,145 @@
+{
+  "slug": "mexico-city-metropolitan-cathedral",
+  "name": {
+    "en": "Mexico City Metropolitan Cathedral",
+    "hi": "मेक्सिको सिटी का महानगरीय गिरजाघर"
+  },
+  "fullName": {
+    "en": "Catedral Metropolitana de la Asunción de la Santísima Virgen María a los Cielos"
+  },
+  "category": "landmarks",
+  "tagline": {
+    "en": "The largest cathedral in Latin America, facing Mexico City's Zócalo",
+    "hi": "मेक्सिको सिटी के ज़ोकालो के सामने, लैटिन अमेरिका का सबसे बड़ा गिरजाघर।"
+  },
+  "summary": {
+    "en": "The Metropolitan Cathedral of the Assumption of the Most Blessed Virgin Mary into Heaven stands on the north side of the Zócalo in Mexico City. Building began in 1573 to plans by Claudio de Arciniega and the exterior was finished in 1813 by Manuel Tolsá, so the church mixes Renaissance, Baroque and Neoclassical work. It has five naves, two bell towers, a crossing dome and, on the east side, the Sagrario Metropolitano. This pack shows a photogrammetry scan of the building from an elevated three-quarter view.",
+    "hi": "मेक्सिको सिटी का महानगरीय गिरजाघर ज़ोकालो के उत्तर की ओर स्थित है। इसका निर्माण 1573 में क्लाउडियो दे आर्सिनिएगा की योजना के अनुसार शुरू हुआ और बाहरी भाग 1813 में मैनुएल तोल्सा के समय पूरा हुआ। इसमें पुनर्जागरण, बारोक और नवशास्त्रीय स्थापत्य का संगम है। गिरजाघर में पांच नैव, दो घंटाघर और बीच में एक गुंबद है; इसके पूर्व में सग्रारियो मेट्रोपोलिटानो जुड़ा हुआ है। यह पैक इमारत का ऊंचे तीन-चौथाई कोण से लिया गया फोटोग्रामेट्री स्कैन दिखाता है।"
+  },
+  "specs": [
+    {
+      "label": {
+        "en": "Location",
+        "hi": "स्थान"
+      },
+      "value": "प्लाज़ा दे ला कॉन्स्टिट्यूसीओन (ज़ोकालो), मेक्सिको सिटी",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Built",
+        "hi": "निर्माण अवधि"
+      },
+      "value": "1573–1813",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Original plan",
+        "hi": "मूल योजना"
+      },
+      "value": "क्लाउडियो दे आर्सिनिएगा",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Towers",
+        "hi": "घंटाघर"
+      },
+      "value": "होसे दामियान ऑर्तिस दे कास्त्रो (घंटी के आकार की छतें)",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Exterior completed by",
+        "hi": "बाहरी भाग का समापन"
+      },
+      "value": "मैनुएल तोल्सा (गुंबद का लालटेन, घड़ी, आस्था, आशा और दान)",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Plan",
+        "hi": "योजना"
+      },
+      "value": "पांच नैव (पहले सात का प्रस्ताव था)",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Size (commonly cited)",
+        "hi": "आकार (प्रचलित संदर्भ)"
+      },
+      "value": "लगभग 59 मीटर चौड़ा, 128 मीटर लंबा, टावरों की नोक तक 67 मीटर",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Attached parish church",
+        "hi": "संबद्ध पैरिश चर्च"
+      },
+      "value": "सग्रारियो मेट्रोपोलिटानो (लोरेंजो रोड्रिगेज़, 1749–1768)",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "UNESCO",
+        "hi": "यूनेस्को"
+      },
+      "value": "मेक्सिको सिटी के ऐतिहासिक केंद्र का हिस्सा (1987 में सूचीबद्ध)",
+      "unit": ""
+    }
+  ],
+  "funFacts": [
+    {
+      "text": {
+        "en": "The cathedral faces south onto the Zócalo, so its liturgical head — including the Altar of the Kings — is at the north end rather than the east.",
+        "hi": "गिरजाघर का मुख्य मुख दक्षिण की ओर ज़ोकालो पर है; इसलिए अल्टर ऑफ द किंग्स सहित पूजा-स्थल का मुख्य सिरा पूर्व के बजाय उत्तर में है।"
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mexico_City_Metropolitan_Cathedral"
+    },
+    {
+      "text": {
+        "en": "The two organs in the choir are among the largest 18th-century organs in the Americas.",
+        "hi": "गायक-मंडप के दो पाइप ऑर्गन अमेरिका के सबसे बड़े 18वीं सदी के ऑर्गनों में गिने जाते हैं।"
+      },
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mexico_City_Metropolitan_Cathedral"
+    },
+    {
+      "text": {
+        "en": "A 1791 time capsule was removed from the east tower in 2008 and replaced with a new one.",
+        "hi": "2008 में पूर्वी घंटाघर से 1791 का टाइम कैप्सूल निकाला गया और उसकी जगह नया कैप्सूल रखा गया।"
+      },
+      "sourceUrl": "https://mexicocity.cdmx.gob.mx/venues/metropolitan-cathedral/"
+    }
+  ],
+  "celebrityLinks": [
+    {
+      "person": "Manuel Tolsá",
+      "relation": {
+        "en": "Valencian architect and sculptor who finished the exterior in 1813",
+        "hi": "वालेंसिया के वास्तुकार और मूर्तिकार, जिन्होंने 1813 में बाहरी काम पूरा किया।"
+      },
+      "sourceUrl": "https://sitiosymonumentos.cultura.gob.mx/monumentos-inmuebles-de-propiedad-federal/catedral-metropolitana-y-sagrario-metropolitano/"
+    },
+    {
+      "person": "Claudio de Arciniega",
+      "relation": {
+        "en": "Spanish architect who laid out the cathedral's plan",
+        "hi": "स्पेनिश वास्तुकार, जिन्होंने गिरजाघर की मूल योजना बनाई।"
+      },
+      "sourceUrl": "https://sitiosymonumentos.cultura.gob.mx/monumentos-inmuebles-de-propiedad-federal/catedral-metropolitana-y-sagrario-metropolitano/"
+    }
+  ],
+  "rarity": "Largest cathedral in Latin America",
+  "hasFramePack": true,
+  "tags": [
+    "cathedral",
+    "mexico-city",
+    "zocalo",
+    "baroque",
+    "colonial",
+    "architecture",
+    "unesco"
+  ]
+}
