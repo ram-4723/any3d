@@ -1,0 +1,147 @@
+{
+  "slug": "james-webb-space-telescope",
+  "name": {
+    "en": "James Webb Space Telescope",
+    "hi": "जेम्स वेब स्पेस टेलीस्कोप"
+  },
+  "fullName": {
+    "en": "James Webb Space Telescope (JWST)",
+    "hi": "जेम्स वेब स्पेस टेलीस्कोप (JWST)"
+  },
+  "category": "spacecraft",
+  "tagline": {
+    "en": "NASA's flagship infrared observatory, with a 6.5-metre gold primary mirror",
+    "hi": "NASA की प्रमुख अवरक्त वेधशाला, जिसमें 6.5 मीटर का सोने की परत वाला प्राथमिक दर्पण है"
+  },
+  "summary": {
+    "en": "The James Webb Space Telescope is a large space observatory optimized for infrared light. It has a 6.5-metre primary mirror made of 18 gold-coated beryllium segments, a five-layer sunshield about the size of a tennis court, and four science instruments (NIRCam, NIRSpec, MIRI and FGS/NIRISS) in the Integrated Science Instrument Module. Webb launched on 25 December 2021 on an Ariane 5 and operates near the Sun–Earth L2 point, about 1.5 million kilometres from Earth. This pack shows NASA's official public 3D model from an elevated three-quarter view.",
+    "hi": "जेम्स वेब स्पेस टेलीस्कोप अवरक्त प्रकाश का अध्ययन करने के लिए बनाया गया एक विशाल अंतरिक्ष वेधशाला है। इसके 18 सोने की परत वाले बेरिलियम खंडों से बना 6.5 मीटर का प्राथमिक दर्पण, टेनिस कोर्ट के आकार की पाँच-परत वाली सनशील्ड और चार विज्ञान उपकरण (NIRCam, NIRSpec, MIRI और FGS/NIRISS) हैं। वेब 25 दिसंबर 2021 को एरियान 5 रॉकेट से प्रक्षेपित हुआ और पृथ्वी से लगभग 15 लाख किलोमीटर दूर सूर्य-पृथ्वी L2 बिंदु के पास काम करता है। यह पैक NASA के आधिकारिक सार्वजनिक 3D मॉडल का ऊँचे तीन-चौथाई कोण से दृश्य दिखाता है।"
+  },
+  "specs": [
+    {
+      "label": {
+        "en": "Primary mirror",
+        "hi": "प्राथमिक दर्पण"
+      },
+      "value": "6.5 m, 18 hexagonal gold-coated beryllium segments",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Sunshield",
+        "hi": "सनशील्ड"
+      },
+      "value": "Five layers, about the size of a tennis court",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Mass (approx.)",
+        "hi": "द्रव्यमान (लगभग)"
+      },
+      "value": "6,500",
+      "unit": "kg"
+    },
+    {
+      "label": {
+        "en": "Wavelength range",
+        "hi": "तरंगदैर्ध्य सीमा"
+      },
+      "value": "0.6 to 28 micrometres (orange visible through mid-infrared)",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Launch",
+        "hi": "प्रक्षेपण"
+      },
+      "value": "25 December 2021, Ariane 5, Kourou, French Guiana",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Orbit",
+        "hi": "कक्षा"
+      },
+      "value": "Halo orbit around Sun–Earth L2, about 1.5 million km from Earth",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Instruments",
+        "hi": "उपकरण"
+      },
+      "value": "NIRCam, NIRSpec, MIRI, FGS/NIRISS",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Partners",
+        "hi": "साझेदार"
+      },
+      "value": "NASA (lead), ESA and CSA",
+      "unit": ""
+    },
+    {
+      "label": {
+        "en": "Operating temperature (telescope)",
+        "hi": "संचालन तापमान (दूरबीन)"
+      },
+      "value": "Below 50 K (about −223 °C / −370 °F)",
+      "unit": ""
+    }
+  ],
+  "funFacts": [
+    {
+      "text": {
+        "en": "The gold coating on Webb's mirrors uses about a golf ball's mass of gold (about 48 g) and is protected by a thin layer of glass-like silica.",
+        "hi": "वेब के दर्पणों पर सोने की परत में लगभग एक गोल्फ बॉल जितना सोना (करीब 48 ग्राम) लगा है। इस परत को काँच जैसी सिलिका की पतली परत से सुरक्षित किया गया है।"
+      },
+      "sourceUrl": "https://science.nasa.gov/mission/webb/faqs-full/"
+    },
+    {
+      "text": {
+        "en": "Webb launched on 25 December 2021 at 12:20 UTC. After a successful launch, the team estimated enough propellant for more than a 20-year science lifetime.",
+        "hi": "वेब 25 दिसंबर 2021 को 12:20 UTC पर प्रक्षेपित हुआ। सफल प्रक्षेपण के बाद, टीम ने अनुमान लगाया कि इसमें विज्ञान संचालन के 20 से अधिक वर्षों के लिए पर्याप्त ईंधन होगा।"
+      },
+      "sourceUrl": "https://science.nasa.gov/mission/webb/faqs-full/"
+    },
+    {
+      "text": {
+        "en": "The primary mirror is about 2.75 times Hubble's diameter, or about 6 times the collecting area, but the 18 beryllium segments plus backing frame total about 625 kg — less massive than Hubble's 1,000 kg glass mirror.",
+        "hi": "वेब का प्राथमिक दर्पण हबल के दर्पण से लगभग 2.75 गुना चौड़ा और इसका प्रकाश-संग्रह क्षेत्र लगभग 6 गुना है। फिर भी, वेब के 18 बेरिलियम खंड और सहायक ढाँचे का कुल भार करीब 625 किलोग्राम है—हबल के 1,000 किलोग्राम के काँच के दर्पण से कम।"
+      },
+      "sourceUrl": "https://science.nasa.gov/mission/webb/faqs-full/"
+    }
+  ],
+  "celebrityLinks": [
+    {
+      "person": "James E. Webb",
+      "relation": {
+        "en": "NASA's second administrator (1961–1968), after whom the observatory was named in 2002",
+        "hi": "NASA के दूसरे प्रशासक (1961–1968); वेधशाला का नाम 2002 में उनके सम्मान में रखा गया।"
+      },
+      "sourceUrl": "https://science.nasa.gov/mission/webb/faqs-full/"
+    },
+    {
+      "person": "European Space Agency",
+      "relation": {
+        "en": "Provided the Ariane 5 launch and the NIRSpec instrument, and contributed to MIRI",
+        "hi": "इसने एरियान 5 प्रक्षेपण और NIRSpec उपकरण उपलब्ध कराया तथा MIRI में योगदान दिया।"
+      },
+      "sourceUrl": "https://science.nasa.gov/mission/webb/faqs-full/"
+    }
+  ],
+  "rarity": "NASA's flagship infrared space observatory",
+  "hasFramePack": true,
+  "tags": [
+    "jwst",
+    "webb",
+    "telescope",
+    "nasa",
+    "infrared",
+    "space",
+    "l2",
+    "observatory"
+  ]
+}
