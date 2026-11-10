@@ -526,3 +526,74 @@ html[data-cursor-pressed="true"] .cursor-aura::before{background:radial-gradient
 /* Keep the Janaki Mandir photo and label controls inside narrow viewers. */
 .viewer-controls-photos{width:max-content;max-width:calc(100% - 28px);flex-wrap:wrap;justify-content:flex-end}
 @media(max-width:600px){.viewer-controls-photos{top:10px;right:10px;max-width:calc(100% - 20px);gap:5px}}
+
+/* Compact spacing and clearer reading sizes across the site. */
+.hero{min-height:clamp(500px,70svh,590px);padding-top:54px;padding-bottom:28px}
+.hero-stats{margin-top:34px}
+.hero-copy>p{font-size:16px;line-height:1.65}
+.section-wrap{padding-top:58px;padding-bottom:58px}
+.objects-section{padding-top:24px}
+.card-category{font-size:9px}
+.card-copy p{font-size:12px;line-height:1.45}
+.rarity{font-size:9px}
+.listing-page,.detail-page{min-height:0;padding-top:30px;padding-bottom:56px}
+.filter-row button{font-size:12px}
+.detail-page .back-link{margin-bottom:12px;font-size:11px}
+.detail-heading{margin-bottom:18px}
+.detail-heading p{font-size:15px;line-height:1.5}
+.detail-layout{gap:18px}
+.detail-panel{height:auto;min-height:0;max-height:none;padding-bottom:18px;overflow:visible}
+.tab-list{gap:22px}
+.tab-list button{font-size:12px;padding-top:14px;padding-bottom:12px}
+.tab-content,.panel-scroll{padding-top:20px;padding-bottom:18px}
+.tab-content h2{font-size:27px}
+.tab-content>p,.facts-list article p,.overview-quote{font-size:14px;line-height:1.65}
+.spec-tile>span{font-size:12px}
+.facts-list article>span{font-size:9px}
+.facts-list article>a{font-size:10px}
+.viewer-tag{font-size:11px}
+.viewer-tag>small{font-size:9px}
+.viewer-controls button{font-size:10px}
+.viewer-place-card,.part-info-card{width:min(380px,calc(100% - 16px));padding:13px 15px}
+.viewer-info-photo{aspect-ratio:4/3;min-height:180px;max-height:250px}
+.viewer-info-photo figcaption{top:8px;left:8px;padding:6px 8px;font-size:10px}
+.viewer-photo-attribution{padding:7px 9px}
+.viewer-photo-attribution a{font-size:9px}
+.viewer-photo-controls{left:8px;bottom:37px;gap:6px}
+.viewer-photo-controls button{width:34px;height:34px;font-size:22px}
+.viewer-photo-controls span{min-width:46px;font-size:9px}
+.viewer-place-card>small,.part-info-card>small{font-size:10px}
+.viewer-place-card>p,.part-info-card>p{font-size:13px;line-height:1.6}
+@media(min-width:1101px){
+  .detail-page{padding-left:5%;padding-right:5%}
+  .detail-layout{grid-template-columns:minmax(0,1.58fr) minmax(380px,.82fr)}
+  .detail-viewer{height:clamp(560px,66vh,740px);min-height:560px}
+}
+@media(max-width:1100px) and (min-width:741px){
+  .detail-viewer{height:min(58vh,560px);min-height:430px}
+}
+@media(max-width:740px){
+  .hero{min-height:0;padding-top:38px;padding-bottom:24px;gap:6px}
+  .hero-stats{margin-top:25px}
+  .section-wrap{padding-top:42px;padding-bottom:42px}
+  .objects-section{padding-top:8px}
+  .listing-page,.detail-page{padding-top:24px;padding-bottom:38px}
+  .detail-heading{margin-bottom:14px}
+  .detail-heading p{font-size:14px}
+  .detail-layout{gap:14px}
+  .detail-panel{padding-left:14px;padding-right:14px}
+  .tab-list{gap:16px}
+  .tab-list button{font-size:13px}
+  .tab-content,.panel-scroll{padding-top:16px;padding-bottom:14px}
+  .tab-content>p,.facts-list article p{font-size:14px}
+  .viewer-place-card,.part-info-card{width:min(380px,calc(100% - 16px))}
+  .viewer-info-photo{min-height:150px;max-height:230px}
+}
+@media(max-width:600px){
+  .hero{padding-top:32px}
+  .hero-visual{height:330px;margin-top:0}
+  .hero-object{height:260px}
+  .hero-copy>p{font-size:15px}
+  .section-wrap{padding-top:36px;padding-bottom:36px}
+  .detail-viewer{aspect-ratio:4/3;min-height:280px;max-height:480px}
+}

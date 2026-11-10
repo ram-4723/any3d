@@ -3,7 +3,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import { frameIndex, hotspotVisible } from './math';
 import photoGalleries from '../../data/photo-galleries.json';
 
-type Props = { slug: string; mode?: 'drag' | 'scroll' };
+type Props = { slug: string; mode?: 'drag' | 'scroll'; autoRotate?: boolean };
 type Hotspot = { id: string; name: string; group?: string; frame?: number; x: number; y: number; color?: string; details?: string; source?: string };
 type ExplodeHotspot = { id: string; name: string; group?: string; category?: string; color?: string; points: ([number, number] | null)[] };
 type Sequence = { count: number; pattern: string; loop?: boolean; startFrame?: number };
@@ -71,7 +71,7 @@ const asGalleryPhoto = (photo: HotspotPhoto): GalleryPhoto => ({
   url: photo.url, title: photo.caption, author: photo.credit, license: 'Photo credit', licenseUrl: photo.sourceUrl, sourceUrl: photo.sourceUrl,
 });
 
-export default function FrameViewer({ slug, mode = 'drag' }: Props) {
+export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }: Props) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const campCardRef = useRef<HTMLElement>(null);
@@ -82,6 +82,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const zoomFactor = useRef(1);
   const panPosition = useRef({ x: 0, y: 0 });
   const drag = useRef<{ x: number; y: number } | null>(null);
+  const autoRotateDisabled = useRef(false);
   const [manifest, setManifest] = useState<Manifest | null>(null);
   const [progress, setProgress] = useState(0);
   const [ready, setReady] = useState(false);
@@ -102,6 +103,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   const [zoom, setZoom] = useState(1);
   const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
   const [inView, setInView] = useState(false);
+  const [autoRotateEnabled, setAutoRotateEnabled] = useState(false);
   const [viewFrame, setViewFrame] = useState(0);
   const count = humanScale ? 1 : exploded ? manifest?.explode?.count ?? 0 : manifest?.rotate.count ?? 1;
   const maxZoom = slug === 'porsche-992-gt3r' && humanScale ? 6 : 3;
@@ -139,6 +141,53 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (!autoRotate) {
+      setAutoRotateEnabled(false);
+      return;
+    }
+    let disabled = false;
+    try { disabled = window.localStorage.getItem(`any3d-manual-rotation:${slug}`) === 'true'; } catch { /* Keep the preference for this visit if storage is unavailable. */ }
+    autoRotateDisabled.current = disabled;
+    setAutoRotateEnabled(!disabled);
+  }, [autoRotate, slug]);
+
+  const stopAutoRotate = () => {
+    if (!autoRotate || autoRotateDisabled.current) return;
+    autoRotateDisabled.current = true;
+    setAutoRotateEnabled(false);
+    try { window.localStorage.setItem(`any3d-manual-rotation:${slug}`, 'true'); } catch { /* The current viewer still remains in manual mode. */ }
+  };
+
+  useEffect(() => {
+    if (!autoRotate || !autoRotateEnabled || !ready || !inView || exploded || humanScale || mode !== 'drag') return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+    let raf = 0;
+    let previousTime = 0;
+    let remainder = 0;
+    let lastFrame = frameIndex(position.current, count);
+    const step = (now: number) => {
+      if (previousTime) remainder += now - previousTime;
+      previousTime = now;
+      const advance = Math.floor(remainder / 220);
+      if (advance > 0) {
+        remainder %= 220;
+        position.current = (position.current + advance) % count;
+        const nextFrame = frameIndex(position.current, count);
+        if (nextFrame !== lastFrame) {
+          lastFrame = nextFrame;
+          setViewFrame(nextFrame);
+          requestFrame.current(nextFrame);
+          draw();
+        }
+      }
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [autoRotate, autoRotateEnabled, ready, inView, exploded, humanScale, mode, count, draw]);
 
   useEffect(() => {
     if (!inView) return;
@@ -401,7 +450,7 @@ export default function FrameViewer({ slug, mode = 'drag' }: Props) {
   };
 
   return <div ref={stage} className={`viewer ${mode === 'scroll' ? 'viewer-scroll' : ''}`} aria-label={`${slug} 3D viewer`}>
-    <canvas ref={canvas} className={`viewer-canvas ${zoom > 1 ? 'viewer-canvas-zoomed' : ''}`} role="img" aria-label={`Interactive 3D view of ${slug}`} onPointerDown={e => { if (mode === 'drag') { setExplodeDirection(0); e.currentTarget.setPointerCapture(e.pointerId); drag.current = { x: e.clientX, y: e.clientY }; } }} onPointerMove={e => move(e.clientX, e.clientY)} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} onKeyDown={e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); setExplodeDirection(0); const next = position.current + (e.key === 'ArrowLeft' ? -1 : 1); position.current = exploded ? Math.max(explodeStart, Math.min(count - 1, next)) : (next + count) % count; setViewFrame(frameIndex(position.current, count)); requestFrame.current(frameIndex(position.current, count)); draw(); } }} tabIndex={0} />
+    <canvas ref={canvas} className={`viewer-canvas ${zoom > 1 ? 'viewer-canvas-zoomed' : ''}`} role="img" aria-label={`Interactive 3D view of ${slug}`} onPointerDown={e => { if (mode === 'drag') { stopAutoRotate(); setExplodeDirection(0); e.currentTarget.setPointerCapture(e.pointerId); drag.current = { x: e.clientX, y: e.clientY }; } }} onPointerMove={e => move(e.clientX, e.clientY)} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} onKeyDown={e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); stopAutoRotate(); setExplodeDirection(0); const next = position.current + (e.key === 'ArrowLeft' ? -1 : 1); position.current = exploded ? Math.max(explodeStart, Math.min(count - 1, next)) : (next + count) % count; setViewFrame(frameIndex(position.current, count)); requestFrame.current(frameIndex(position.current, count)); draw(); } }} tabIndex={0} />
     {missing && <div className="viewer-empty"><span>✦</span><b>3D coming soon</b><small>Frame pack not added yet</small></div>}
     {!missing && <>
       <div className="viewer-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.7 9A7 7 0 0 1 18 6.5L20 8M4 16l2 1.5A7 7 0 0 0 18.3 15"/></svg><span>{humanScale ? "HUMAN SCALE · 5'10\" (1.78 M)" : exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'ROTATE TO EXPLORE'}</span><small>{humanScale ? 'SCALE REFERENCE' : exploded ? count - explodeStart : count} {humanScale ? '' : 'VIEWS'}</small></div>
