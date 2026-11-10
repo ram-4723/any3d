@@ -161,7 +161,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
   };
 
   useEffect(() => {
-    if (!autoRotate || !autoRotateEnabled || !ready || !inView || exploded || humanScale || mode !== 'drag') return;
+    if (!autoRotate || !autoRotateEnabled || !ready || !allFramesLoaded || !inView || exploded || humanScale || mode !== 'drag') return;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) return;
     let raf = 0;
@@ -171,9 +171,9 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
     const step = (now: number) => {
       if (previousTime) remainder += now - previousTime;
       previousTime = now;
-      const advance = Math.floor(remainder / 220);
+      const advance = Math.floor(remainder / 60);
       if (advance > 0) {
-        remainder %= 220;
+        remainder %= 60;
         position.current = (position.current + advance) % count;
         const nextFrame = frameIndex(position.current, count);
         if (nextFrame !== lastFrame) {
@@ -187,7 +187,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
     };
     raf = requestAnimationFrame(step);
     return () => cancelAnimationFrame(raf);
-  }, [autoRotate, autoRotateEnabled, ready, inView, exploded, humanScale, mode, count, draw]);
+  }, [autoRotate, autoRotateEnabled, ready, allFramesLoaded, inView, exploded, humanScale, mode, count, draw]);
 
   useEffect(() => {
     if (!inView) return;
