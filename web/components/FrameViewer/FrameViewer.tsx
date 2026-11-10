@@ -143,21 +143,14 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
   }, []);
 
   useEffect(() => {
-    if (!autoRotate) {
-      setAutoRotateEnabled(false);
-      return;
-    }
-    let disabled = false;
-    try { disabled = window.localStorage.getItem(`any3d-manual-rotation:${slug}`) === 'true'; } catch { /* Keep the preference for this visit if storage is unavailable. */ }
-    autoRotateDisabled.current = disabled;
-    setAutoRotateEnabled(!disabled);
+    autoRotateDisabled.current = false;
+    setAutoRotateEnabled(autoRotate);
   }, [autoRotate, slug]);
 
   const stopAutoRotate = () => {
     if (!autoRotate || autoRotateDisabled.current) return;
     autoRotateDisabled.current = true;
     setAutoRotateEnabled(false);
-    try { window.localStorage.setItem(`any3d-manual-rotation:${slug}`, 'true'); } catch { /* The current viewer still remains in manual mode. */ }
   };
 
   useEffect(() => {
