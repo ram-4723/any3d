@@ -164,9 +164,9 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
     const step = (now: number) => {
       if (previousTime) remainder += now - previousTime;
       previousTime = now;
-      const advance = Math.floor(remainder / 50);
+      const advance = Math.floor(remainder / 45);
       if (advance > 0) {
-        remainder %= 50;
+        remainder %= 45;
         position.current = (position.current + advance) % count;
         const nextFrame = frameIndex(position.current, count);
         if (nextFrame !== lastFrame) {
