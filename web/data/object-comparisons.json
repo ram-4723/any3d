@@ -1,0 +1,133 @@
+{
+  "audi-f1-r26": {
+    "visual": "blueprint",
+    "peer": "Mercedes-AMG F1 W13 (2022)",
+    "caption": { "en": "Two generations of Formula 1 design", "hi": "फ़ॉर्मूला 1 डिज़ाइन की दो पीढ़ियां" },
+    "metrics": [
+      { "label": "Maximum wheelbase", "unit": "m", "current": 3.4, "peer": 3.6, "currentText": "3.40 m", "peerText": "3.60 m" },
+      { "label": "Minimum mass", "unit": "kg", "current": 768, "peer": 798, "currentText": "768 kg", "peerText": "798 kg" }
+    ],
+    "source": "https://api.fia.com/news/new-era-competition-fia-showcases-future-focused-formula-1-regulations-2026-and-beyond",
+    "peerSource": "https://www.fia.com/sites/default/files/fia_2022_formula_1_technical_regulations_-_issue_12_-_2022-06-29.pdf"
+  },
+  "bmw-s1000rr": {
+    "visual": "engine",
+    "peer": "Ducati Panigale V4",
+    "caption": { "en": "Two superbikes, tuned for the top end", "hi": "दो सुपरबाइक, उच्च प्रदर्शन के लिए बनीं" },
+    "metrics": [
+      { "label": "Peak power", "unit": "hp", "current": 210, "peer": 216, "currentText": "210 hp", "peerText": "216 hp" },
+      { "label": "Torque", "unit": "Nm", "current": 113, "peer": 120.9, "currentText": "113 Nm", "peerText": "120.9 Nm" },
+      { "label": "Weight", "unit": "kg", "current": 198, "peer": 191, "currentText": "198 kg", "peerText": "191 kg" }
+    ],
+    "source": "https://support.bmw-motorrad.com/s/article/S-1000-RR-2023-updates-drive-zXpHw?language=en_GB",
+    "peerSource": "https://www.ducati.com/gb/en/bikes/panigale/panigale-v4/performance"
+  },
+  "excavator": {
+    "visual": "blueprint",
+    "peer": "Bagger 293 bucket-wheel excavator",
+    "caption": { "en": "Two giants built to move a landscape", "hi": "भू-दृश्य बदलने वाले दो विशाल यंत्र" },
+    "metrics": [
+      { "label": "Length", "unit": "m", "current": 220, "peer": 220, "currentText": "220 m", "peerText": "220 m" },
+      { "label": "Height", "unit": "m", "current": 96, "peer": 94.5, "currentText": "96 m", "peerText": "94.5 m" },
+      { "label": "Operating mass", "unit": "t", "current": 13500, "peer": 14196, "currentText": "13,500 t", "peerText": "14,196 t" }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Bagger_288",
+    "peerSource": "https://www.guinnessworldrecords.com/world-records/107390-largest-mobile-industrial-machine"
+  },
+  "james-webb-space-telescope": {
+    "visual": "orbit",
+    "peer": "Hubble Space Telescope",
+    "caption": { "en": "Mirror size changes how much light a telescope gathers", "hi": "दर्पण का आकार दूरबीन द्वारा जुटाई जाने वाली रोशनी को बदलता है" },
+    "metrics": [
+      { "label": "Primary mirror diameter", "unit": "m", "current": 6.6, "peer": 2.4, "currentText": "6.6 m", "peerText": "2.4 m" },
+      { "label": "Light-collecting area", "unit": "m²", "current": 25.37, "peer": 4.55, "currentText": "25.37 m²", "peerText": "4.55 m²" }
+    ],
+    "source": "https://science.nasa.gov/mission/webb/science-overview/science-explainers/telescope-overview/",
+    "peerSource": "https://science.nasa.gov/asset/webb/hubble-webb-mirror-comparison/"
+  },
+  "janaki-mandir": {
+    "visual": "timeline",
+    "peer": "Swaminarayan Akshardham Mandir, Delhi",
+    "caption": { "en": "Two Hindu mandirs from different eras", "hi": "अलग-अलग युगों के दो हिंदू मंदिर" },
+    "metrics": [
+      { "label": "Reported completion", "unit": "year", "current": 1910, "peer": 2005, "currentText": "1910", "peerText": "2005" }
+    ],
+    "source": "https://ntb.gov.np/en/janakpur-and-vivah-panchami",
+    "peerSource": "https://akshardham.com/explore/Mandir/"
+  },
+  "mexico-city-metropolitan-cathedral": {
+    "visual": "timeline",
+    "peer": "St Peter’s Basilica, Vatican City",
+    "caption": { "en": "Sacred architecture built across generations", "hi": "पीढ़ियों में बनी धार्मिक वास्तुकला" },
+    "metrics": [
+      { "label": "Building began", "unit": "year", "current": 1573, "peer": 1506, "currentText": "1573", "peerText": "1506" },
+      { "label": "Main building completed", "unit": "year", "current": 1813, "peer": 1626, "currentText": "1813", "peerText": "1626" }
+    ],
+    "source": "https://mexicocity.cdmx.gob.mx/venues/metropolitan-cathedral/",
+    "peerSource": "https://www.visitvaticancity.org/monuments/saint-peters-basilica/the-basilica/"
+  },
+  "mount-everest": {
+    "visual": "peaks",
+    "peer": "K2",
+    "caption": { "en": "The two highest summits above sea level", "hi": "समुद्र तल से ऊपर दुनिया की दो सबसे ऊंची चोटियां" },
+    "metrics": [
+      { "label": "Elevation", "unit": "m", "current": 8848.86, "peer": 8611, "currentText": "8,848.86 m", "peerText": "8,611 m" }
+    ],
+    "source": "https://www.bbc.com/news/world-asia-55218443",
+    "peerSource": "https://dtsgb.gog.pk/mountaineering/historical-summits"
+  },
+  "porsche-992-gt3r": {
+    "visual": "engine",
+    "peer": "Ferrari 296 GT3",
+    "caption": { "en": "Two mid-engine and rear-engine GT racers", "hi": "मिड-इंजन और रियर-इंजन वाली दो GT रेस कारें" },
+    "metrics": [
+      { "label": "Engine displacement", "unit": "L", "current": 4.194, "peer": 2.992, "currentText": "4.2 L", "peerText": "3.0 L" },
+      { "label": "Engine layout", "unit": "", "current": 6, "peer": 6, "currentText": "Flat-six", "peerText": "120° V6" }
+    ],
+    "source": "https://newsroom.porsche.com/en_US/2022/motorsport/porsche-911-gt3-r-generation-992-customer-racing-car-premiere-29222.html",
+    "peerSource": "https://www.ferrari.com/en-EN/competizioni-gt/296-gt3"
+  },
+  "sa342m-gazelle": {
+    "visual": "runway",
+    "peer": "Airbus H125M",
+    "caption": { "en": "Light helicopters made for different missions", "hi": "अलग-अलग अभियानों के लिए बने हल्के हेलीकॉप्टर" },
+    "metrics": [
+      { "label": "Fast cruise speed", "unit": "km/h", "current": 240, "peer": 247, "currentText": "240 km/h", "peerText": "247 km/h" },
+      { "label": "Main rotor diameter", "unit": "m", "current": 10.5, "peer": 10.69, "currentText": "10.50 m", "peerText": "10.69 m" }
+    ],
+    "source": "https://www.airvectors.net/avgazel.html",
+    "peerSource": "https://mediaassets.airbus.com/pm_38_379_379477-atewgmdurt.pdf?dl=true"
+  },
+  "tesla-roadster": {
+    "visual": "runway",
+    "peer": "Rimac Nevera R",
+    "caption": { "en": "Electric performance: announced target vs. manufacturer-listed top speed", "hi": "इलेक्ट्रिक प्रदर्शन: घोषित लक्ष्य और निर्माता द्वारा बताई गई अधिकतम गति" },
+    "metrics": [
+      { "label": "Top speed", "unit": "km/h", "current": 402, "peer": 430, "currentText": "402 km/h*", "peerText": "430 km/h" }
+    ],
+    "note": { "en": "*Tesla’s Roadster figure is a published target, not a verified production-car result.", "hi": "*Tesla Roadster का आंकड़ा प्रकाशित लक्ष्य है, उत्पादन कार का सत्यापित परिणाम नहीं।" },
+    "source": "https://www.tesla.com/roadster?lang=en",
+    "peerSource": "https://www.rimac-automobili.com/NeveraR/"
+  },
+  "toyota-gr-supra-a90": {
+    "visual": "pair-bars",
+    "peer": "Nissan Z Performance",
+    "caption": { "en": "Two front-engine, rear-wheel-drive sports coupes", "hi": "फ्रंट-इंजन और रियर-व्हील-ड्राइव वाली दो स्पोर्ट्स कूपे" },
+    "metrics": [
+      { "label": "Engine power", "unit": "hp", "current": 382, "peer": 400, "currentText": "382 hp", "peerText": "400 hp" },
+      { "label": "Overall length", "unit": "m", "current": 4.38, "peer": 4.379, "currentText": "4.380 m", "peerText": "4.379 m" }
+    ],
+    "source": "https://www.toyota.com/content/dam/toyota/brochures/pdf/2025/grsupra_ebrochure.pdf",
+    "peerSource": "https://www.nissanusa.com/content/dam/Nissan/us/vehicle-brochures/2025/2025-nissan-z-brochure-en.pdf"
+  },
+  "valley-of-flowers": {
+    "visual": "area",
+    "peer": "Great Himalayan National Park",
+    "caption": { "en": "Two UNESCO-listed Himalayan landscapes", "hi": "यूनेस्को-सूचीबद्ध हिमालयी भू-दृश्य" },
+    "metrics": [
+      { "label": "Protected area", "unit": "km²", "current": 87.5, "peer": 754.4, "currentText": "87.5 km²", "peerText": "754.4 km²" }
+    ],
+    "source": "https://whc.unesco.org/en/list/335/",
+    "peerSource": "https://greathimalayannationalpark.org/about-us/park-introduction-ghnp/"
+  }
+}
