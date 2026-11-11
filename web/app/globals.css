@@ -106,6 +106,24 @@
 .asset-credits{margin-top:20px;padding:17px 19px;border:1px solid #ebe8e2;border-radius:12px;background:#fff;color:#6f6a72;font-size:10px;line-height:1.7}.asset-credits h2{margin:0 0 8px;color:#29272e;font:600 11px 'DM Mono',monospace;letter-spacing:.04em;text-transform:uppercase}.asset-credits p{margin:6px 0}.asset-credits a{color:#8a5874;text-decoration:underline;text-underline-offset:2px}
 @media(max-width:600px){.viewer-controls:has(.excavator-label-toggle){left:8px;right:8px;gap:4px;flex-wrap:wrap}.viewer-controls .excavator-label-toggle,.viewer-controls .excavator-human-toggle{padding:0 7px;font-size:8px}}
 
+/* Larger, clearer type for navigation and labeled object details */
+.topbar nav{font-size:16px;font-family:Verdana,Arial,sans-serif}
+.brand{font-size:16px}
+.search-trigger,.lang-switch{font-size:14px;font-family:Verdana,Arial,sans-serif}
+.search-trigger kbd{font-size:11px}
+.hotspot-label{max-width:260px;padding:11px 13px;font:600 16px/1.45 Verdana,Arial,sans-serif}
+.hotspot-label small{font:700 11px Verdana,Arial,sans-serif}
+.part-info-card>small{font:700 11px Verdana,Arial,sans-serif;letter-spacing:.06em}
+.part-info-card>b{font:700 21px/1.3 Verdana,Arial,sans-serif}
+.part-info-card>p{font:15px/1.65 Verdana,Arial,sans-serif}
+.guided-tour-prompt>span,.guided-tour-card>span{font:700 11px Verdana,Arial,sans-serif}
+.guided-tour-prompt>b,.guided-tour-card>b{font:700 21px/1.35 Verdana,Arial,sans-serif}
+.guided-tour-prompt>p{font:14px/1.6 Verdana,Arial,sans-serif}
+.guided-tour-select-label{font:700 11px Verdana,Arial,sans-serif}
+.guided-tour-select-label select{font:14px Verdana,Arial,sans-serif}
+.guided-tour-prompt button,.guided-tour-card button{font:600 13px Verdana,Arial,sans-serif}
+@media(max-width:740px){.topbar nav{font-size:14px}.brand{font-size:15px}.search-trigger,.lang-switch{font-size:13px}.part-info-card>b{font-size:19px}.part-info-card>p{font-size:14px}.guided-tour-prompt>b,.guided-tour-card>b{font-size:19px}.guided-tour-prompt button,.guided-tour-card button{font-size:12px}}
+
 /* Guided hotspot tour and restrained interaction motion */
 .guided-tour-prompt,.guided-tour-card{position:absolute;z-index:11;width:min(280px,calc(100% - 24px));padding:14px 16px;border:1px solid #ffffff38;border-radius:12px;background:#121416f2;color:#f5f3ee;box-shadow:0 14px 38px #0008;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);animation:guided-tour-enter .28s cubic-bezier(.2,.8,.2,1) both}
 .guided-tour-prompt{left:12px;top:58px}.guided-tour-card{right:12px;top:58px}
