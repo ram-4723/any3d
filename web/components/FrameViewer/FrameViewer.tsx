@@ -15,7 +15,7 @@ type CampHotspot = { id: string; name: string; category?: string; details?: stri
 type ExcavatorHotspot = { id: string; name: string; category: string; details: string; source: string; image?: HotspotPhoto; points: (string | [number, number] | null)[] };
 type HumanHotspot = { id: string; name: string; category: string; details: string; source: string; image?: HotspotPhoto; point: [number, number] };
 type Point = [number, number] | null;
-const defaultViewerZoom = (slug: string) => slug === 'janaki-mandir' && typeof window !== 'undefined' && window.matchMedia('(max-width: 740px)').matches ? 1.25 : 1;
+const defaultViewerZoom = (slug: string) => slug === 'a10c' ? 1.5 : slug === 'janaki-mandir' && typeof window !== 'undefined' && window.matchMedia('(max-width: 740px)').matches ? 1.25 : 1;
 const parsePoint = (point: string | [number, number] | null | undefined): Point => { if (Array.isArray(point)) return point; if (typeof point !== 'string') return null; const values = point.trim().split(/[\s,]+/).map(Number); return values.length === 2 && values.every(Number.isFinite) ? [values[0], values[1]] : null; };
 const estimatedHotspotPoint = (slug: string, id: string, frame: number): Point => {
   const angle = ((frame - 18) * Math.PI) / 72;

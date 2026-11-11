@@ -29,3 +29,13 @@ test('guided tour moves through real object hotspots', async ({ page }) => {
   await page.mouse.up();
   await expect(page.locator('.guided-tour-card')).toHaveCount(0);
 });
+
+test('A-10 viewer starts zoomed to fill more of the frame and reset keeps its fitted view', async ({ page }) => {
+  await page.goto('/objects/a10c');
+  await expect(page.locator('canvas')).toBeVisible();
+  await expect(page.locator('.viewer-zoom-group > span')).toHaveText('150%');
+  await page.getByRole('button', { name: 'Zoom in' }).click();
+  await expect(page.locator('.viewer-zoom-group > span')).toHaveText('175%');
+  await page.getByRole('button', { name: 'Reset' }).click();
+  await expect(page.locator('.viewer-zoom-group > span')).toHaveText('150%');
+});
