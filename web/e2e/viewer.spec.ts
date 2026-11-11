@@ -1,10 +1,31 @@
 import { test, expect } from '@playwright/test';
 test('dragging the frame viewer changes its displayed frame', async ({ page }) => {
-  await page.goto('/objects/tesla-roadster');
+  await page.goto('/objects/porsche-992-gt3r');
   const canvas = page.locator('canvas'); await expect(canvas).toBeVisible();
   await expect(page.locator('.viewer-loading')).toHaveCount(0, { timeout: 30000 });
   const before = await canvas.evaluate(c => (c as HTMLCanvasElement).toDataURL());
   const box = await canvas.boundingBox(); if (!box) throw new Error('Viewer canvas has no bounding box');
   await page.mouse.move(box.x+box.width*.7,box.y+box.height*.5); await page.mouse.down(); await page.mouse.move(box.x+box.width*.25,box.y+box.height*.5,{steps:8}); await page.mouse.up();
   await expect.poll(()=>canvas.evaluate(c=>(c as HTMLCanvasElement).toDataURL())).not.toBe(before);
+});
+
+test('guided tour moves through real object hotspots', async ({ page }) => {
+  await page.goto('/objects/porsche-992-gt3r');
+  await expect(page.getByRole('button', { name: 'Guided tour' })).toBeVisible();
+  await page.getByRole('button', { name: 'Start tour' }).click();
+  await expect(page.locator('.guided-tour-card')).toContainText('GUIDED TOUR · 1 /');
+  await expect(page.locator('.part-info-card')).toBeVisible();
+  await page.getByRole('button', { name: 'Next part' }).click();
+  await expect(page.locator('.guided-tour-card')).toContainText('GUIDED TOUR · 2 /');
+  await page.getByRole('button', { name: 'End tour' }).click();
+  await expect(page.locator('.guided-tour-card')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Guided tour' }).click();
+  const canvas = page.locator('canvas');
+  const box = await canvas.boundingBox();
+  if (!box) throw new Error('Viewer canvas has no bounding box');
+  await page.mouse.move(box.x + box.width * .7, box.y + box.height * .5);
+  await page.mouse.down();
+  await page.mouse.move(box.x + box.width * .3, box.y + box.height * .5, { steps: 4 });
+  await page.mouse.up();
+  await expect(page.locator('.guided-tour-card')).toHaveCount(0);
 });
