@@ -1,0 +1,36 @@
+{
+  "slug": "a10c",
+  "name": { "en": "A-10C Thunderbolt II", "hi": "A-10C थंडरबोल्ट II" },
+  "category": "aircraft",
+  "tagline": {
+    "en": "The close-air-support jet built around a 30 mm cannon",
+    "hi": "30 मिमी तोप के इर्द-गिर्द बना क्लोज़-एयर-सपोर्ट जेट"
+  },
+  "summary": {
+    "en": "The A-10C Thunderbolt II is a U.S. Air Force aircraft designed for close air support. Explore this 144-frame turntable and tap Labels to inspect its cannon, engines, armour and the model's six GBU-10s and Litening II pod. The supplied game-style 3D model is not an engineering replica; its original author and licence are unknown. The pack is marked for personal use only.",
+    "hi": "A-10C थंडरबोल्ट II अमेरिकी वायु सेना का क्लोज़-एयर-सपोर्ट विमान है। इसके 144-फ़्रेम दृश्य को घुमाएं और तोप, इंजन, कवच तथा मॉडल में लगे छह GBU-10 और Litening II पॉड के लेबल देखें। दिया गया गेम-शैली का 3D मॉडल इंजीनियरिंग प्रतिकृति नहीं है; इसके मूल निर्माता और लाइसेंस की जानकारी नहीं है। पैक को केवल निजी उपयोग के लिए चिह्नित किया गया है।"
+  },
+  "specs": [
+    { "label": { "en": "Primary function", "hi": "मुख्य भूमिका" }, "value": "Close air support; airborne forward air control; combat search and rescue", "unit": "" },
+    { "label": { "en": "Manufacturer", "hi": "निर्माता" }, "value": "Fairchild Republic Co.", "unit": "" },
+    { "label": { "en": "Power plant", "hi": "इंजन" }, "value": "Two General Electric TF34-GE-100 turbofans", "unit": "" },
+    { "label": { "en": "Thrust", "hi": "थ्रस्ट" }, "value": "9,065", "unit": "lb per engine" },
+    { "label": { "en": "Length", "hi": "लंबाई" }, "value": "53 ft 4 in (16.16 m)", "unit": "" },
+    { "label": { "en": "Wingspan", "hi": "पंखों का फैलाव" }, "value": "57 ft 6 in (17.42 m)", "unit": "" },
+    { "label": { "en": "Height", "hi": "ऊंचाई" }, "value": "14 ft 8 in (4.42 m), gear down", "unit": "" },
+    { "label": { "en": "Speed", "hi": "गति" }, "value": "420 mph (Mach 0.56)", "unit": "" },
+    { "label": { "en": "Service ceiling", "hi": "सेवा सीमा" }, "value": "45,000", "unit": "ft" },
+    { "label": { "en": "Cannon", "hi": "तोप" }, "value": "GAU-8/A, 30 mm, seven-barrel Gatling gun", "unit": "" },
+    { "label": { "en": "Model loadout", "hi": "मॉडल का हथियार विन्यास" }, "value": "6 × GBU-10 Paveway II; 1 × AN/AAQ-28 Litening II pod; landing gear retracted", "unit": "" }
+  ],
+  "funFacts": [
+    { "text": { "en": "The A-10 is built around a seven-barrel 30 mm GAU-8/A cannon rated at up to 3,900 rounds per minute.", "hi": "A-10 के केंद्र में सात-बैरल वाली 30 मिमी GAU-8/A तोप है, जिसकी दर 3,900 राउंड प्रति मिनट तक है।" }, "sourceUrl": "https://www.af.mil/About-Us/Fact-Sheets/Display/Article/104490/a-10c-thunderbolt-ii/" },
+    { "text": { "en": "Its two high-mounted TF34 engines are rated at 9,065 pounds of thrust each and can be exchanged left to right.", "hi": "इसके ऊंचाई पर लगे दो TF34 इंजनों में हर एक 9,065 पाउंड थ्रस्ट देता है; इन्हें बाएं-दाएं बदला जा सकता है।" }, "sourceUrl": "https://www.af.mil/About-Us/Fact-Sheets/Display/Article/104490/a-10c-thunderbolt-ii/" },
+    { "text": { "en": "The titanium cockpit armour also protects parts of the flight-control system. The Air Force says the aircraft is designed to survive hits from projectiles up to 23 mm.", "hi": "टाइटेनियम कॉकपिट कवच उड़ान-नियंत्रण प्रणाली के कुछ हिस्सों की भी रक्षा करता है। वायु सेना के अनुसार विमान 23 मिमी तक के प्रोजेक्टाइल के प्रहार झेलने के लिए बनाया गया है।" }, "sourceUrl": "https://www.af.mil/About-Us/Fact-Sheets/Display/Article/104490/a-10c-thunderbolt-ii/" },
+    { "text": { "en": "This model shows six 2,000-pound GBU-10 Paveway II laser-guided bombs and a Litening II targeting pod.", "hi": "इस मॉडल में छह 2,000-पाउंड GBU-10 Paveway II लेज़र-निर्देशित बम और एक Litening II लक्ष्य-निर्धारण पॉड दिखाया गया है।" }, "sourceUrl": "https://www.af.mil/News/Art/igtag/bombs/" }
+  ],
+  "celebrityLinks": [],
+  "rarity": "A-10C · 30 mm GAU-8/A",
+  "hasFramePack": true,
+  "tags": ["a-10", "a-10c", "thunderbolt", "warthog", "aircraft", "close-air-support", "usaf"]
+}

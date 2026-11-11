@@ -109,7 +109,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
   const maxZoom = slug === 'porsche-992-gt3r' && humanScale ? 6 : 3;
   const explodeStart = Math.max(0, Math.min(count - 1, (manifest?.explode?.startFrame ?? 1) - 1));
   const hasExplodeLabels = ['toyota-gr-supra-a90', 'bmw-s1000rr', 'sa342m-gazelle'].includes(slug) && Boolean(manifest?.explode?.hotspots?.length);
-  const hasRotateHotspotLabels = ['excavator', 'porsche-992-gt3r', 'audi-f1-r26', 'mexico-city-metropolitan-cathedral', 'janaki-mandir', 'james-webb-space-telescope'].includes(slug) && Boolean(manifest?.rotate.hotspots?.length);
+  const hasRotateHotspotLabels = ['excavator', 'porsche-992-gt3r', 'audi-f1-r26', 'a10c', 'ford-f150-raptor', 'mexico-city-metropolitan-cathedral', 'janaki-mandir', 'james-webb-space-telescope'].includes(slug) && Boolean(manifest?.rotate.hotspots?.length);
 
   const draw = useCallback(() => {
     const c = canvas.current, ctx = c?.getContext('2d');
@@ -511,7 +511,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
           <small>{part.category}</small><b>{part.name.en}</b><p>{part.desc.en}</p>
         </aside>;
       })()}
-      {(manifest?.credit || (slug === 'valley-of-flowers' && manifest?.credits) || slug === 'audi-f1-r26' || slug === 'mexico-city-metropolitan-cathedral') && <a className="viewer-credit" href={slug === 'valley-of-flowers' || slug === 'excavator' || slug === 'porsche-992-gt3r' || slug === 'audi-f1-r26' || slug === 'mexico-city-metropolitan-cathedral' || slug === 'janaki-mandir' || slug === 'james-webb-space-telescope' ? `/objects/${slug}/CREDITS.md` : slug === 'sa342m-gazelle' ? 'https://sketchfab.com/3d-models/sa342m-gazelle-2eb65cec2060459085ea4f06db44d668' : 'https://sketchfab.com/3d-models/bmw-s1000-rr-1873aed292d6465694119bd81860a0c2'} target="_blank" rel="noreferrer">{manifest?.credit ?? manifest?.credits ?? 'MODEL CREDITS'}</a>}
+      {(manifest?.credit || (slug === 'valley-of-flowers' && manifest?.credits) || slug === 'audi-f1-r26' || slug === 'a10c' || slug === 'ford-f150-raptor' || slug === 'mexico-city-metropolitan-cathedral') && <a className="viewer-credit" href={slug === 'valley-of-flowers' || slug === 'excavator' || slug === 'porsche-992-gt3r' || slug === 'audi-f1-r26' || slug === 'a10c' || slug === 'ford-f150-raptor' || slug === 'mexico-city-metropolitan-cathedral' || slug === 'janaki-mandir' || slug === 'james-webb-space-telescope' ? `/objects/${slug}/CREDITS.md` : slug === 'sa342m-gazelle' ? 'https://sketchfab.com/3d-models/sa342m-gazelle-2eb65cec2060459085ea4f06db44d668' : 'https://sketchfab.com/3d-models/bmw-s1000-rr-1873aed292d6465694119bd81860a0c2'} target="_blank" rel="noreferrer">{manifest?.credit ?? manifest?.credits ?? 'MODEL CREDITS'}</a>}
       {(!ready || (exploded && explodeDirection !== 0 && !allFramesLoaded)) && <div className="viewer-loading"><span>{exploded && explodeDirection !== 0 ? 'PREPARING EXPLODED VIEW' : 'LOADING OBJECT'}</span><i><b style={{ width: `${progress}%` }} /></i></div>}
     </>}
     <div className={`viewer-controls ${slug === 'janaki-mandir' ? 'viewer-controls-photos' : ''}`}>

@@ -1,0 +1,124 @@
+{
+  "labels": [
+    {
+      "id": "engine",
+      "category": "Powertrain",
+      "name": "3.5L EcoBoost High Output V6",
+      "anchor": [
+        0.0086,
+        1.76,
+        1.5255
+      ],
+      "fact": "Under the hood of the second-generation Raptor sits Ford's twin-turbocharged, intercooled 3.5-litre EcoBoost High Output V6. Ford rates the 2019 Raptor at 450 hp at 5,000 rpm and 510 lb-ft at 3,500 rpm, driving through a 10-speed SelectShift automatic and Torque-On-Demand 4x4.",
+      "source": "https://media.ford.com/content/dam/fordmedia/North%20America/US/product/2019/f-150/2019-ford-raptor-tech-specs.pdf"
+    },
+    {
+      "id": "shocks",
+      "category": "Suspension",
+      "name": "FOX Racing Shox with Live Valve",
+      "anchor": [
+        -0.7914,
+        1.76,
+        0.9888
+      ],
+      "fact": "The Raptor uses high-output, gas-pressurised FOX Racing Shox front and rear. From 2019 they have Live Valve technology: electronically controlled, continuously variable compression damping that adjusts to the terrain in real time. The front suspension is an independent double-wishbone coil-over set-up.",
+      "source": "https://media.ford.com/content/dam/fordmedia/North%20America/US/product/2019/f-150/2019-F-150-Order-Guide.pdf"
+    },
+    {
+      "id": "tyres",
+      "category": "Wheels & tyres",
+      "name": "BFGoodrich All-Terrain T/A KO2 tyres",
+      "anchor": [
+        -1.1331,
+        -1.92,
+        0.1188
+      ],
+      "fact": "Ford fits 315/70 R17 BFGoodrich All-Terrain T/A KO2 tyres as standard, on 17-inch cast aluminium wheels with a machined face. Forged bead-lock-capable 17-inch wheels were optional.",
+      "source": "https://media.ford.com/content/dam/fordmedia/North%20America/US/product/2019/f-150/2019-ford-raptor-tech-specs.pdf"
+    },
+    {
+      "id": "grille",
+      "category": "Exterior",
+      "name": "FORD heritage grille",
+      "anchor": [
+        0.0133,
+        2.7728,
+        1.0784
+      ],
+      "fact": "Instead of the blue oval, the Raptor wears large block FORD letters across a black grille, a design that recalls older Ford trucks. In this model the letters are finished in bright silver.",
+      "source": "https://media.ford.com/content/dam/fordmedia/North%20America/US/product/2019/f-150/2019-ford-raptor-tech-specs.pdf"
+    },
+    {
+      "id": "headlamps",
+      "category": "Lighting",
+      "name": "Quad-beam LED headlamps",
+      "anchor": [
+        -0.8214,
+        2.4788,
+        1.0855
+      ],
+      "fact": "Ford lists quad-beam LED headlamps with daytime running lamps on the Raptor, plus LED tail lamps, integrated marker lights and a tailgate LED.",
+      "source": "https://media.ford.com/content/dam/fordmedia/North%20America/US/product/2019/f-150/2019-ford-raptor-tech-specs.pdf"
+    },
+    {
+      "id": "body",
+      "category": "Construction",
+      "name": "High-strength aluminium body",
+      "anchor": [
+        -1.0305,
+        0.11,
+        1.1488
+      ],
+      "fact": "The Raptor's cab and bed are made of aluminium alloy, mounted on a high-strength steel frame. This kept the weight down compared with an all-steel body.",
+      "source": "https://media.ford.com/content/dam/fordmedia/North%20America/US/product/2019/f-150/2019-ford-raptor-tech-specs.pdf"
+    },
+    {
+      "id": "fenders",
+      "category": "Exterior",
+      "name": "Wide flared fenders",
+      "anchor": [
+        -1.1089,
+        1.83,
+        1.1188
+      ],
+      "fact": "Flared fenders cover the Raptor's wider track and long-travel suspension. Ford quotes an overall width of 96.8 inches including mirrors, much wider than a standard F-150.",
+      "source": "https://media.ford.com/content/dam/fordmedia/North%20America/US/product/2019/f-150/2019-ford-raptor-tech-specs.pdf"
+    },
+    {
+      "id": "skid",
+      "category": "Protection",
+      "name": "Front skid plate with tow hooks",
+      "anchor": [
+        0.0086,
+        2.7459,
+        0.4688
+      ],
+      "fact": "A skid plate under the front bumper protects the underbody when driving off-road, with recovery tow hooks set into the bumper. On this model it is shown in dark satin.",
+      "source": "https://media.ford.com/content/dam/fordmedia/North%20America/US/product/2019/f-150/2019-ford-raptor-tech-specs.pdf"
+    },
+    {
+      "id": "cab",
+      "category": "Cab",
+      "name": "SuperCrew four-door cab",
+      "anchor": [
+        0.0086,
+        -0.24,
+        2.0449
+      ],
+      "fact": "The Raptor was offered as a SuperCab or a SuperCrew. This model is the four-door SuperCrew, which Ford quotes with a 146-inch wheelbase, a 231.9-inch overall length and a 36-gallon fuel tank.",
+      "source": "https://media.ford.com/content/dam/fordmedia/North%20America/US/product/2019/f-150/2019-ford-raptor-tech-specs.pdf"
+    },
+    {
+      "id": "bed",
+      "category": "Bed",
+      "name": "Aluminium cargo bed",
+      "anchor": [
+        -0.9414,
+        -2.14,
+        1.4525
+      ],
+      "fact": "Like the cab, the cargo bed is aluminium alloy. The SuperCrew Raptor pairs the four-door cab with a 5.5-foot bed.",
+      "source": "https://media.ford.com/content/dam/fordmedia/North%20America/US/product/2019/f-150/2019-ford-raptor-tech-specs.pdf"
+    }
+  ]
+}

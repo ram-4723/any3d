@@ -1,0 +1,112 @@
+{
+  "labels": [
+    {
+      "id": "gau8",
+      "category": "Armament",
+      "name": "GAU-8/A Avenger 30 mm cannon",
+      "anchor": [
+        0.0,
+        -8.15,
+        -1.3
+      ],
+      "fact": "The A-10 is built around this 30 mm seven-barrel Gatling gun in the nose. The U.S. Air Force rates it at 3,900 rounds a minute and notes that it can defeat a range of ground targets, including tanks.",
+      "source": "https://www.af.mil/About-Us/Fact-Sheets/Display/Article/104490/a-10c-thunderbolt-ii/"
+    },
+    {
+      "id": "engines",
+      "category": "Propulsion",
+      "name": "General Electric TF34-GE-100 turbofan engines",
+      "anchor": [
+        -1.4,
+        2.41,
+        0.95
+      ],
+      "fact": "Two General Electric TF34-GE-100 turbofans, mounted high on the rear fuselage between the wings and the tails. The U.S. Air Force rates each engine at 9,065 pounds of thrust. The engines are interchangeable left and right.",
+      "source": "https://www.af.mil/About-Us/Fact-Sheets/Display/Article/104490/a-10c-thunderbolt-ii/"
+    },
+    {
+      "id": "bathtub",
+      "category": "Protection",
+      "name": "Titanium armoured cockpit 'bathtub'",
+      "anchor": [
+        -0.55,
+        -4.81,
+        0.05
+      ],
+      "fact": "The pilot sits in a titanium armour 'bathtub' that also protects parts of the flight-control system. The U.S. Air Force states the aircraft can survive direct hits from armour-piercing and high-explosive projectiles up to 23 mm.",
+      "source": "https://www.af.mil/About-Us/Fact-Sheets/Display/Article/104490/a-10c-thunderbolt-ii/"
+    },
+    {
+      "id": "canopy",
+      "category": "Cockpit",
+      "name": "Bubble canopy",
+      "anchor": [
+        0.0,
+        -4.73,
+        0.85
+      ],
+      "fact": "A large bubble canopy over a single-seat cockpit forward of the wings. The U.S. Air Force describes it as giving the pilot all-around vision; the A-10C cockpit is night-vision compatible.",
+      "source": "https://www.af.mil/About-Us/Fact-Sheets/Display/Article/104490/a-10c-thunderbolt-ii/"
+    },
+    {
+      "id": "gbu10",
+      "category": "Armament",
+      "name": "GBU-10 Paveway II laser-guided bombs (6)",
+      "anchor": [
+        -4.05,
+        0.2,
+        -1.8
+      ],
+      "fact": "This model carries six GBU-10 Paveway II bombs under the wings and fuselage. The GBU-10 is a 2,000-pound laser-guided weapon: a Mk 84 general-purpose bomb fitted with a Paveway II seeker and tail kit.",
+      "source": "https://www.af.mil/News/Art/igtag/bombs/"
+    },
+    {
+      "id": "litening",
+      "category": "Sensors",
+      "name": "AN/AAQ-28 Litening II targeting pod",
+      "anchor": [
+        -4.73,
+        -1.1,
+        -1.55
+      ],
+      "fact": "An AN/AAQ-28 Litening targeting pod on a port-wing station. Litening II, fielded with U.S. forces in 1999, is part of this family. The pod has a laser designator for laser-guided munitions and infrared and electro-optical sensors, and is used on the A-10C.",
+      "source": "https://www.af.mil/About-Us/Fact-Sheets/Display/Article/104571/litening-advance-targeting/"
+    },
+    {
+      "id": "tails",
+      "category": "Airframe",
+      "name": "Twin vertical tails",
+      "anchor": [
+        -2.9,
+        6.94,
+        1.35
+      ],
+      "fact": "The A-10 has twin vertical stabilizers. The U.S. Air Force notes that many of the aircraft's parts are interchangeable left and right, including the vertical stabilizers, engines, and main landing gear.",
+      "source": "https://www.af.mil/About-Us/Fact-Sheets/Display/Article/104490/a-10c-thunderbolt-ii/"
+    },
+    {
+      "id": "decelerons",
+      "category": "Airframe",
+      "name": "Straight wing with split-aileron 'decelerons'",
+      "anchor": [
+        -7.5,
+        1.65,
+        -0.52
+      ],
+      "fact": "A large, unswept straight wing. The outboard ailerons are split 'decelerons': they can move together for roll control, or open as speed brakes. The A-10's ailerons make up a large share of the wing trailing edge, which helps it roll and manoeuvre at low speed.",
+      "source": "https://en.wikipedia.org/wiki/Deceleron"
+    },
+    {
+      "id": "gear_pods",
+      "category": "Landing gear",
+      "name": "Retracted landing gear in pods",
+      "anchor": [
+        -2.62,
+        -1.2,
+        -1.95
+      ],
+      "fact": "The main landing gear retracts forward into pods under the wings. The wheels remain partly exposed when retracted, which reduces damage in a gear-up landing. This model is shown with the gear up; there is no deploy animation in the source file.",
+      "source": "https://www.airmanmagazine.af.mil/Features/Display/Article/2594213/airframe-the-a-10-thunderbolt-ii/"
+    }
+  ]
+}

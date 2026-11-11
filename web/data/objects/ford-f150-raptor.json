@@ -1,0 +1,36 @@
+{
+  "slug": "ford-f150-raptor",
+  "name": { "en": "Ford F-150 Raptor", "hi": "Ford F-150 Raptor" },
+  "category": "cars-bikes",
+  "tagline": {
+    "en": "A high-performance pickup built for fast off-road driving",
+    "hi": "तेज़ ऑफ़-रोड ड्राइविंग के लिए बनी हाई-परफ़ॉर्मेंस पिकअप"
+  },
+  "summary": {
+    "en": "This second-generation Ford F-150 Raptor SuperCrew pairs a twin-turbo 3.5-litre EcoBoost V6 with long-travel FOX suspension and Torque-On-Demand four-wheel drive. Spin the 144-frame view and tap Labels to explore the engine, suspension, tyres and body. The supplied game-style 3D model is not an exact replica; its original author and licence are unknown. The pack is marked for personal use only.",
+    "hi": "दूसरी पीढ़ी की Ford F-150 Raptor SuperCrew में ट्विन-टर्बो 3.5-लीटर EcoBoost V6, लंबी यात्रा वाला FOX सस्पेंशन और Torque-On-Demand फ़ोर-व्हील ड्राइव है। 144-फ़्रेम दृश्य घुमाएं और इंजन, सस्पेंशन, टायर तथा बॉडी के लेबल देखें। दिया गया गेम-शैली का 3D मॉडल सटीक प्रतिकृति नहीं है; इसके मूल निर्माता और लाइसेंस की जानकारी नहीं है। पैक को केवल निजी उपयोग के लिए चिह्नित किया गया है।"
+  },
+  "specs": [
+    { "label": { "en": "Engine", "hi": "इंजन" }, "value": "3.5L EcoBoost High Output V6, twin-turbo", "unit": "" },
+    { "label": { "en": "Output (2019)", "hi": "पावर (2019)" }, "value": "450 hp @ 5,000 rpm; 510 lb-ft @ 3,500 rpm", "unit": "" },
+    { "label": { "en": "Transmission", "hi": "ट्रांसमिशन" }, "value": "10-speed SelectShift automatic", "unit": "" },
+    { "label": { "en": "Drive", "hi": "ड्राइव" }, "value": "Torque-On-Demand 4×4", "unit": "" },
+    { "label": { "en": "Suspension", "hi": "सस्पेंशन" }, "value": "FOX Racing Shox with Live Valve (2019)", "unit": "" },
+    { "label": { "en": "Tyres", "hi": "टायर" }, "value": "315/70 R17 BFGoodrich All-Terrain T/A KO2", "unit": "" },
+    { "label": { "en": "Body and frame", "hi": "बॉडी और फ्रेम" }, "value": "Aluminium cab and bed on a high-strength steel frame", "unit": "" },
+    { "label": { "en": "Wheelbase (SuperCrew)", "hi": "व्हीलबेस (SuperCrew)" }, "value": "146", "unit": "in" },
+    { "label": { "en": "Length (SuperCrew)", "hi": "लंबाई (SuperCrew)" }, "value": "231.9", "unit": "in" },
+    { "label": { "en": "Width including mirrors", "hi": "मिरर सहित चौड़ाई" }, "value": "96.8", "unit": "in" },
+    { "label": { "en": "Model configuration", "hi": "मॉडल का रूप" }, "value": "SuperCrew, dark red paint, silver wheels, roof light bars", "unit": "" }
+  ],
+  "funFacts": [
+    { "text": { "en": "Ford rated the 2019 Raptor's high-output 3.5-litre EcoBoost V6 at 450 hp and 510 lb-ft of torque.", "hi": "Ford ने 2019 Raptor के हाई-आउटपुट 3.5-लीटर EcoBoost V6 को 450 hp और 510 lb-ft टॉर्क पर रेट किया था।" }, "sourceUrl": "https://media.ford.com/content/dam/fordmedia/North%20America/US/product/2019/f-150/2019-ford-raptor-tech-specs.pdf" },
+    { "text": { "en": "The 2019 Raptor used FOX shocks with Live Valve electronic damping that can adjust compression as the terrain changes.", "hi": "2019 Raptor में Live Valve इलेक्ट्रॉनिक डैम्पिंग वाले FOX शॉक्स थे, जो रास्ते के अनुसार कंप्रेशन समायोजित कर सकते हैं।" }, "sourceUrl": "https://media.ford.com/content/dam/fordmedia/North%20America/US/product/2019/f-150/2019-F-150-Order-Guide.pdf" },
+    { "text": { "en": "The factory tyre specification was 315/70 R17 BFGoodrich All-Terrain T/A KO2, mounted on 17-inch aluminium wheels.", "hi": "फ़ैक्टरी टायर विनिर्देश 315/70 R17 BFGoodrich All-Terrain T/A KO2 था, जो 17-इंच एल्यूमिनियम पहियों पर लगा था।" }, "sourceUrl": "https://media.ford.com/content/dam/fordmedia/North%20America/US/product/2019/f-150/2019-ford-raptor-tech-specs.pdf" },
+    { "text": { "en": "This user-supplied turntable depicts a game-style second-generation Raptor; the mesh is not an exact engineering model.", "hi": "यह उपयोगकर्ता द्वारा दिया गया टर्नटेबल गेम-शैली की दूसरी पीढ़ी की Raptor दिखाता है; इसका मेश सटीक इंजीनियरिंग मॉडल नहीं है।" }, "sourceUrl": "https://www.ford.com/trucks/f150/models/f150-raptor/" }
+  ],
+  "celebrityLinks": [],
+  "rarity": "F-150 Raptor · 450 hp",
+  "hasFramePack": true,
+  "tags": ["ford", "f-150", "raptor", "pickup", "truck", "off-road", "4x4", "cars-bikes"]
+}

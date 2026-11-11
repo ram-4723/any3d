@@ -10,6 +10,18 @@
     "source": "https://api.fia.com/news/new-era-competition-fia-showcases-future-focused-formula-1-regulations-2026-and-beyond",
     "peerSource": "https://www.fia.com/sites/default/files/fia_2022_formula_1_technical_regulations_-_issue_12_-_2022-06-29.pdf"
   },
+  "a10c": {
+    "visual": "runway",
+    "peer": "Sukhoi Su-25 Frogfoot",
+    "caption": { "en": "Two twin-engine close-air-support aircraft", "hi": "दो ट्विन-इंजन क्लोज़-एयर-सपोर्ट विमान" },
+    "metrics": [
+      { "label": "Published maximum speed", "unit": "km/h", "current": 676, "peer": 1000, "currentText": "420 mph · 676 km/h", "peerText": "540 kn · 1,000 km/h" },
+      { "label": "Wingspan", "unit": "m", "current": 17.42, "peer": 14.3, "currentText": "17.42 m", "peerText": "14.3 m" }
+    ],
+    "note": { "en": "Published figures vary by version, altitude and loadout.", "hi": "प्रकाशित आंकड़े संस्करण, ऊंचाई और हथियार विन्यास के अनुसार बदल सकते हैं।" },
+    "source": "https://www.af.mil/About-Us/Fact-Sheets/Display/Article/104490/a-10c-thunderbolt-ii/",
+    "peerSource": "https://www.govinfo.gov/content/pkg/GOVPUB-D201-PURL-LPS106117/pdf/GOVPUB-D201-PURL-LPS106117.pdf"
+  },
   "bmw-s1000rr": {
     "visual": "engine",
     "peer": "Ducati Panigale V4",
@@ -129,5 +141,18 @@
     ],
     "source": "https://whc.unesco.org/en/list/335/",
     "peerSource": "https://greathimalayannationalpark.org/about-us/park-introduction-ghnp/"
+  },
+  "ford-f150-raptor": {
+    "visual": "engine",
+    "peer": "Ram 1500 TRX Final Edition (2024)",
+    "caption": { "en": "Two factory-built off-road performance pickups", "hi": "ऑफ़-रोड प्रदर्शन के लिए बनी दो फ़ैक्टरी पिकअप" },
+    "metrics": [
+      { "label": "Engine power", "unit": "hp", "current": 450, "peer": 702, "currentText": "450 hp", "peerText": "702 hp" },
+      { "label": "Torque", "unit": "lb-ft", "current": 510, "peer": 650, "currentText": "510 lb-ft", "peerText": "650 lb-ft" },
+      { "label": "Engine displacement", "unit": "L", "current": 3.5, "peer": 6.2, "currentText": "3.5 L twin-turbo V6", "peerText": "6.2 L supercharged V8" }
+    ],
+    "note": { "en": "Figures shown are for the 2019 Raptor and 2024 TRX Final Edition.", "hi": "दिए गए आंकड़े 2019 Raptor और 2024 TRX Final Edition के हैं।" },
+    "source": "https://media.ford.com/content/dam/fordmedia/North%20America/US/product/2019/f-150/2019-ford-raptor-tech-specs.pdf",
+    "peerSource": "https://blog.stellantisnorthamerica.com/2023/08/30/last-call-2024-ram-1500-trx-6-2l-supercharged-v8-final-edition-salutes-unprecedented-run-of-the-apex-predator-of-the-truck-world/"
   }
 }
