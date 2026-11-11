@@ -742,9 +742,9 @@ html[data-cursor-pressed="true"] .cursor-aura::before{background:radial-gradient
 }
 
 /* Compact object detail heading on every model page */
-.detail-page{padding-top:18px;padding-bottom:42px}
+.detail-page{padding-top:8px;padding-bottom:42px}
 .detail-heading{margin-bottom:12px}
-.detail-heading h1{font-size:clamp(34px,3.3vw,50px);line-height:1.05;letter-spacing:-.06em}
+.detail-heading h1{margin:0;font-size:clamp(34px,3.3vw,50px);line-height:1.05;letter-spacing:-.06em}
 .detail-heading p{margin-top:5px;font-size:14px;line-height:1.45}
 .detail-layout{gap:12px}
-@media(max-width:600px){.detail-page{padding-top:16px;padding-bottom:32px}.detail-heading{margin-bottom:10px}.detail-heading h1{font-size:clamp(32px,8vw,40px)}.detail-heading p{font-size:13px}.detail-layout{gap:10px}}
+@media(max-width:600px){.detail-page{padding-top:6px;padding-bottom:32px}.detail-heading{margin-bottom:10px}.detail-heading h1{font-size:clamp(32px,8vw,40px)}.detail-heading p{font-size:13px}.detail-layout{gap:10px}}
