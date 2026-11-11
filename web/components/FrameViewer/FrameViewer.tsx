@@ -69,6 +69,10 @@ function PhotoCarousel({ photos, id }: { photos: GalleryPhoto[]; id: string }) {
   </div>;
 }
 
+function TourKicker({ step, total }: { step: number | null; total: number }) {
+  return step === null ? null : <span className="guided-tour-kicker">GUIDED TOUR · {step + 1} / {total}</span>;
+}
+
 const asGalleryPhoto = (photo: HotspotPhoto): GalleryPhoto => ({
   url: photo.url, title: photo.caption, author: photo.credit, license: 'Photo credit', licenseUrl: photo.sourceUrl, sourceUrl: photo.sourceUrl,
 });
@@ -793,6 +797,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
       })}
       {activeCampPin && <aside ref={campCardRef} className="camp-info-card viewer-place-card" role="dialog" aria-label={`${activeCampPin.name} details`} style={{ left: 0, top: 0, visibility: 'hidden' }}>
         <button type="button" className="camp-info-close" aria-label="Close label details" title="Close label card" onClick={() => setActiveCamp(null)}>×</button>
+        <TourKicker step={tourStep} total={guidedStops.length}/>
         <PhotoCarousel key={`${slug}-${activeCampPin.id}`} id={activeCampPin.id} photos={activeCampPhotos} />
         <small>{activeCampPin.category ?? 'MOUNTAIN ROUTE'}</small>
         <b>{activeCampDetails?.name ?? activeCampPin.name}</b>
@@ -811,12 +816,13 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
         return <button key={h.id} type="button" className={'hotspot ' + (tourFocus ? 'hotspot-tour-focus ' : '') + (slug === 'excavator' ? 'excavator-hotspot ' : '') + alignment} style={hotspotStyle(h.x, h.y)} onPointerEnter={() => setHoveredHotspot(h.id)} onPointerLeave={() => setHoveredHotspot(null)} onFocus={() => setHoveredHotspot(h.id)} onBlur={() => setHoveredHotspot(null)} onClick={() => { endGuidedTour(); if (selected) { setActiveHotspot(null); setHoveredHotspot(null); } else { setShowObjectPhotos(false); setActiveHotspot(h.id); } }} aria-label={tourFocus ? `Current tour stop: ${h.name}` : h.name} aria-current={tourFocus ? 'step' : undefined} aria-pressed={selected}>{hasRotateHotspotLabels && <span className="camp-pin-icon" aria-hidden="true"/>}{tourStep === null && (selected || hovered) && <span className="hotspot-label" role="tooltip">{h.group && <small>{h.group}</small>}{h.name}</span>}</button>;
       })}
       {slug === 'janaki-mandir' && showObjectPhotos && <aside className="part-info-card" role="dialog" aria-label="Janaki Mandir photo gallery"><button type="button" className="camp-info-close" aria-label="Close photo gallery" title="Close photo gallery" onClick={() => setShowObjectPhotos(false)}>×</button><PhotoCarousel key={`${slug}-overview`} id="overall views" photos={photoGalleryMap[slug]?.overview ?? []} /><small>REAL PHOTOS · WIKIMEDIA COMMONS</small><b>Janaki Mandir · Overall views</b><p>Photo attribution and licence are linked on each image.</p></aside>}
-      {hasRotateHotspotLabels && activeHotspot && !tourAnimating && (() => { const item = humanScale ? manifest?.humanScale?.hotspots.find(point => point.id === activeHotspot) : manifest?.rotate.hotspots?.find(point => point.id === activeHotspot) as ExcavatorHotspot | undefined; if (!item) return null; const photo = item.image ?? (slug === 'excavator' ? excavatorPhoto : undefined); const photos = photoGalleryMap[slug]?.[item.id] ?? (photo ? [asGalleryPhoto(photo)] : []); return <aside className="part-info-card" role="dialog" aria-label={`${item.name} details`}><button type="button" className="camp-info-close" aria-label="Close label details" title="Close label card" onClick={() => { endGuidedTour(); setActiveHotspot(null); }}>×</button><PhotoCarousel key={`${slug}-${item.id}`} id={item.id} photos={photos} /><small>{item.category ?? 'MODEL DETAIL'}</small><b>{item.name}</b>{item.details && <p>{item.details}</p>}{item.source && <a href={item.source} target="_blank" rel="noreferrer">↗ Source</a>}</aside>; })()}
+      {hasRotateHotspotLabels && activeHotspot && !tourAnimating && (() => { const item = humanScale ? manifest?.humanScale?.hotspots.find(point => point.id === activeHotspot) : manifest?.rotate.hotspots?.find(point => point.id === activeHotspot) as ExcavatorHotspot | undefined; if (!item) return null; const photo = item.image ?? (slug === 'excavator' ? excavatorPhoto : undefined); const photos = photoGalleryMap[slug]?.[item.id] ?? (photo ? [asGalleryPhoto(photo)] : []); return <aside className="part-info-card" role="dialog" aria-label={`${item.name} details`}><button type="button" className="camp-info-close" aria-label="Close label details" title="Close label card" onClick={() => { endGuidedTour(); setActiveHotspot(null); }}>×</button><TourKicker step={tourStep} total={guidedStops.length}/><PhotoCarousel key={`${slug}-${item.id}`} id={item.id} photos={photos} /><small>{item.category ?? 'MODEL DETAIL'}</small><b>{item.name}</b>{item.details && <p>{item.details}</p>}{item.source && <a href={item.source} target="_blank" rel="noreferrer">↗ Source</a>}</aside>; })()}
       {slug === 'toyota-gr-supra-a90' && exploded && activeHotspot && !tourAnimating && pendingExplodeTourStep === null && (() => {
         const part = manifest?.explode?.hotspots?.find(item => item.id === activeHotspot);
         if (!part) return null;
         return <aside className="part-info-card" role="dialog" aria-label={`${part.name} details`}>
           <button type="button" className="camp-info-close" aria-label="Close label details" title="Close label card" onClick={() => setActiveHotspot(null)}>×</button>
+          <TourKicker step={tourStep} total={guidedStops.length}/>
           <PhotoCarousel key={`${slug}-${part.id}`} id={part.id} photos={photoGalleryMap[slug]?.[part.id] ?? []} />
           <small>{part.category ?? part.group ?? 'EXPLODED COMPONENT'}</small><b>{part.name}</b>
         </aside>;
@@ -826,6 +832,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
         if (!part) return null;
         return <aside className="part-info-card" role="dialog" aria-label={`${part.name.en} details`}>
           <button type="button" className="camp-info-close" aria-label="Close label details" title="Close label card" onClick={() => setActiveHotspot(null)}>×</button>
+          <TourKicker step={tourStep} total={guidedStops.length}/>
           <PhotoCarousel key={`${slug}-${part.id}`} id={part.id} photos={photoGalleryMap[slug]?.[part.id] ?? []} />
           <small>{part.category}</small><b>{part.name.en}</b><p>{part.desc.en}</p>
         </aside>;
