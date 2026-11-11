@@ -748,3 +748,7 @@ html[data-cursor-pressed="true"] .cursor-aura::before{background:radial-gradient
 .detail-heading p{margin-top:5px;font-size:14px;line-height:1.45}
 .detail-layout{gap:12px}
 @media(max-width:600px){.detail-page{padding-top:6px;padding-bottom:32px}.detail-heading{margin-bottom:10px}.detail-heading h1{font-size:clamp(32px,8vw,40px)}.detail-heading p{font-size:13px}.detail-layout{gap:10px}}
+
+/* Enlarge the topbar brand lockup by about 40%. */
+.topbar .brand{font-size:21px}
+.topbar .brand-mark{width:48px;height:48px}
