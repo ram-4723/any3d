@@ -313,20 +313,20 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
   }, []);
 
   useEffect(() => {
-    if (!hasRotateHotspotLabels || !allFramesLoaded || !guidedStops.length) {
+    if (!hasRotateHotspotLabels || !guidedStops.length) {
       setShowTourPrompt(false);
       return;
     }
     try {
-      setShowTourPrompt(localStorage.getItem(`any3d-tour-seen:${slug}`) !== '1');
+      setShowTourPrompt(localStorage.getItem('any3d-tour-intro-seen') !== '1');
     } catch {
       setShowTourPrompt(false);
     }
-  }, [slug, hasRotateHotspotLabels, allFramesLoaded, guidedStops.length]);
+  }, [slug, hasRotateHotspotLabels, guidedStops.length]);
 
   const dismissTourPrompt = () => {
     setShowTourPrompt(false);
-    try { localStorage.setItem(`any3d-tour-seen:${slug}`, '1'); } catch { /* Tour remains available from the viewer controls. */ }
+    try { localStorage.setItem('any3d-tour-intro-seen', '1'); } catch { /* Tour remains available from the viewer controls. */ }
   };
 
   useEffect(() => {
@@ -629,7 +629,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
     {missing && <div className="viewer-empty"><span>✦</span><b>3D coming soon</b><small>Frame pack not added yet</small></div>}
     {!missing && <>
       <div className="viewer-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.7 9A7 7 0 0 1 18 6.5L20 8M4 16l2 1.5A7 7 0 0 0 18.3 15"/></svg><span>{humanScale ? "HUMAN SCALE · 5'10\" (1.78 M)" : exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'ROTATE TO EXPLORE'}</span><small>{humanScale ? 'SCALE REFERENCE' : exploded ? count - explodeStart : count} {humanScale ? '' : 'VIEWS'}</small></div>
-      {showTourPrompt && !exploded && !humanScale && <aside className="guided-tour-prompt" aria-label="Guided object tour"><span>✦ QUICK TOUR</span><b>Meet the details</b><p>Explore a few key parts of this object.</p><div><button type="button" onClick={() => { dismissTourPrompt(); goToTourStep(0); }}>Start tour</button><button type="button" onClick={dismissTourPrompt}>Later</button></div></aside>}
+      {showTourPrompt && !exploded && !humanScale && <aside className="guided-tour-prompt" aria-label="Guided object tour"><span>✦ YOUR FIRST LOOK</span><b>Explore this model</b><p>Take a quick tour of its standout details.</p><div><button type="button" disabled={!allFramesLoaded} onClick={() => { dismissTourPrompt(); goToTourStep(0); }}>{allFramesLoaded ? 'Start tour' : 'Loading tour…'}</button><button type="button" onClick={dismissTourPrompt}>Later</button></div></aside>}
       {tourStep !== null && guidedStops[tourStep] && <aside className="guided-tour-card" aria-label="Guided tour controls" data-tour-animating={tourAnimating}><span aria-live="polite">GUIDED TOUR · {tourStep + 1} / {guidedStops.length}</span><b>{guidedStops[tourStep].name}</b><label className="guided-tour-select-label">JUMP TO A PART<select aria-label="Jump to a labeled part" value={tourStep} onChange={event => goToTourStep(Number(event.target.value))}>{guidedStops.map((stop, index) => <option value={index} key={stop.id}>{stop.name}</option>)}</select></label><div><button type="button" onClick={() => goToTourStep((tourStep - 1 + guidedStops.length) % guidedStops.length)} disabled={guidedStops.length < 2}>Previous</button><button type="button" onClick={() => goToTourStep((tourStep + 1) % guidedStops.length)} disabled={guidedStops.length < 2}>Next part</button><button type="button" onClick={endGuidedTour}>End tour</button></div></aside>}
       {campsRoute && slug === 'mount-everest' && !exploded && <>
         <svg className="camp-route-line" aria-label={manifest?.rotate.route?.name ?? 'Everest climbing route'} style={imageBounds} viewBox={`0 0 ${manifest?.width ?? 1600} ${manifest?.height ?? 900}`} preserveAspectRatio="none">
