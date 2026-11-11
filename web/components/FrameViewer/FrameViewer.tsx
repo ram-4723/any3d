@@ -236,8 +236,10 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
     const distance = stop.sequence === 'explode' ? stop.frame - position.current : ((stop.frame - position.current + count / 2) % count + count) % count - count / 2;
     const startFrame = position.current;
     const startZoom = zoomFactor.current;
-    const isSmallDetail = /headlight|tail ?light|lamp|sensor|camera|antenna|probe|nozzle|brake|wheel|cannon|gun|lens|optic|gauge|instrument|port|exhaust|intake|bolt|rivet|switch/i.test(stop.name);
-    const targetZoom = Math.min(maxZoom, defaultViewerZoom(slug) + (isSmallDetail ? 0.65 : 0.3));
+    const isTinyDetail = /\b(bolt|rivet|switch|sensor|camera|lens|optic|gauge|dial|probe|nozzle|valve|bearing|injector|spark plug|antenna|port|badge|decal|marking|insignia|number \d+)\b/i.test(stop.name);
+    const isSmallDetail = isTinyDetail || /headlight|tail ?light|lamp|brake|wheel|cannon|gun|exhaust|intake|mirror|rotor head|antenna|pod/i.test(stop.name);
+    const zoomBoost = isTinyDetail ? 1.45 : isSmallDetail ? 1.15 : 0.35;
+    const targetZoom = Math.min(maxZoom, defaultViewerZoom(slug) + zoomBoost);
     tourDetailZoom.current = targetZoom > defaultViewerZoom(slug);
     const rect = canvas.current?.getBoundingClientRect();
     let targetPan = { x: 0, y: 0 };
