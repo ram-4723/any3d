@@ -140,7 +140,7 @@
 .guided-tour-prompt button:first-child:hover,.guided-tour-card button:nth-child(2):hover:not(:disabled){background:#46513e}
 .guided-tour-card button:disabled{opacity:.45;cursor:default}
 .guided-tour-prompt button:focus-visible,.guided-tour-card button:focus-visible{outline:2px solid #edc878;outline-offset:2px}
-.guided-tour-prompt{width:min(310px,calc(100% - 24px));border-color:#fff1ad;background:linear-gradient(140deg,#ffe994d9,#d9ad3ccf 72%);color:#2e250d;box-shadow:0 16px 46px #d6aa3980,inset 0 1px #fffbe1;overflow:hidden}
+.guided-tour-prompt{width:min(310px,calc(100% - 24px));border-color:#fff1ad;background:linear-gradient(140deg,#ffe994a6,#d9ad3c99 72%);color:#2e250d;box-shadow:0 16px 46px #d6aa3980,inset 0 1px #fffbe1;overflow:hidden}
 .guided-tour-prompt::after{position:absolute;top:12px;right:16px;width:25px;height:25px;content:"";background:linear-gradient(145deg,#49350a,#211801);clip-path:polygon(50% 0,62% 35%,98% 35%,69% 57%,80% 94%,50% 73%,20% 94%,31% 57%,2% 35%,38% 35%);filter:drop-shadow(0 1px 2px #fff1ad);animation:tour-sparkle 2.2s ease-in-out infinite;pointer-events:none}
 .guided-tour-prompt>*{position:relative;z-index:1}
 .guided-tour-prompt>span{color:#72520c;font-size:11px}
