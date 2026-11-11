@@ -3,7 +3,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import { frameIndex, hotspotVisible } from './math';
 import photoGalleries from '../../data/photo-galleries.json';
 
-type Props = { slug: string; mode?: 'drag' | 'scroll'; autoRotate?: boolean };
+type Props = { slug: string; mode?: 'drag' | 'scroll'; autoRotate?: boolean; showGuidedTour?: boolean };
 type Hotspot = { id: string; name: string; group?: string; frame?: number; x: number; y: number; color?: string; details?: string; source?: string };
 type ExplodeHotspot = { id: string; name: string; group?: string; category?: string; color?: string; points: ([number, number] | null)[] };
 type Sequence = { count: number; pattern: string; loop?: boolean; startFrame?: number };
@@ -72,7 +72,7 @@ const asGalleryPhoto = (photo: HotspotPhoto): GalleryPhoto => ({
   url: photo.url, title: photo.caption, author: photo.credit, license: 'Photo credit', licenseUrl: photo.sourceUrl, sourceUrl: photo.sourceUrl,
 });
 
-export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }: Props) {
+export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, showGuidedTour = true }: Props) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const campCardRef = useRef<HTMLElement>(null);
@@ -109,6 +109,8 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
   const [autoRotateEnabled, setAutoRotateEnabled] = useState(false);
   const [viewFrame, setViewFrame] = useState(0);
   const [tourStep, setTourStep] = useState<number | null>(null);
+  const [pendingExplodeTourStep, setPendingExplodeTourStep] = useState<number | null>(null);
+  const goToTourStepRef = useRef<(step: number) => void>(() => {});
   const tourPromptChecked = useRef(false);
   const [tourAnimating, setTourAnimating] = useState(false);
   const [showTourPrompt, setShowTourPrompt] = useState(false);
@@ -116,7 +118,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
   const maxZoom = slug === 'porsche-992-gt3r' && humanScale ? 6 : 3;
   const explodeStart = Math.max(0, Math.min(count - 1, (manifest?.explode?.startFrame ?? 1) - 1));
   const hasExplodeLabels = ['toyota-gr-supra-a90', 'bmw-s1000rr', 'sa342m-gazelle'].includes(slug) && Boolean(manifest?.explode?.hotspots?.length);
-  const hasRotateHotspotLabels = ['excavator', 'porsche-992-gt3r', 'audi-f1-r26', 'a10c', 'ford-f150-raptor', 'mexico-city-metropolitan-cathedral', 'janaki-mandir', 'james-webb-space-telescope'].includes(slug) && Boolean(manifest?.rotate.hotspots?.length);
+  const hasRotateHotspotLabels = Boolean(manifest?.rotate.hotspots?.length);
 
   const draw = useCallback(() => {
     const c = canvas.current, ctx = c?.getContext('2d');
@@ -161,8 +163,8 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
   };
 
   const guidedStops = (() => {
-    if (!hasRotateHotspotLabels || !manifest) return [];
-    const stops: { id: string; name: string; frame: number; point: [number, number] }[] = [];
+    if (!manifest) return [];
+    const stops: { id: string; name: string; frame: number; point: [number, number]; sequence: 'rotate' | 'explode' | 'view' }[] = [];
     const score = (point: [number, number]) => Math.hypot(point[0] - 0.5, point[1] - 0.5);
     for (const part of manifest.rotate.hotspots ?? []) {
       const tracked = (part as ExcavatorHotspot).points ?? [];
@@ -176,22 +178,62 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
       }).filter((candidate): candidate is { frame: number; point: [number, number] } => candidate !== null);
       if (!candidates.length) continue;
       const best = candidates.reduce((chosen, candidate) => score(candidate.point) < score(chosen.point) ? candidate : chosen);
-      stops.push({ id: part.id, name: part.name, frame: best.frame, point: best.point });
+      stops.push({ id: part.id, name: part.name, frame: best.frame, point: best.point, sequence: 'rotate' });
     }
-    return stops;
+    if (stops.length) return stops;
+    for (const part of manifest.explode?.hotspots ?? []) {
+      const candidates = part.points.flatMap((value, frame) => {
+        const point = parsePoint(value);
+        return point && frame >= (manifest.explode?.labelsFrom ?? 1) - 1 ? [{ frame, point }] : [];
+      });
+      if (!candidates.length) continue;
+      const best = candidates.reduce((chosen, candidate) => score(candidate.point) < score(chosen.point) ? candidate : chosen);
+      stops.push({ id: part.id, name: part.name, frame: best.frame, point: best.point, sequence: 'explode' });
+    }
+    if (stops.length) return stops;
+    const views = ['Starting view', 'Quarter turn', 'Opposite view', 'Final quarter turn'];
+    return views.map((name, index) => ({ id: `view-${index}`, name, frame: Math.round(index * manifest.rotate.count / views.length) % manifest.rotate.count, point: [0.5, 0.5] as [number, number], sequence: 'view' as const }));
   })();
 
   const goToTourStep = (step: number) => {
     const stop = guidedStops[step];
     if (!stop) return;
+    if (stop.sequence === 'explode' && !exploded) {
+      if (tourAnimationFrame.current !== null) cancelAnimationFrame(tourAnimationFrame.current);
+      tourAnimationFrame.current = null;
+      stopAutoRotate();
+      setShowTourPrompt(false);
+      setShowLabels(true);
+      setShowObjectPhotos(false);
+      setActiveCamp(null);
+      setHoveredCamp(null);
+      setActiveHotspot(stop.id);
+      setHoveredHotspot(null);
+      setTourStep(step);
+      setTourAnimating(true);
+      setPendingExplodeTourStep(step);
+      const labelStart = Math.max(0, (manifest?.explode?.startFrame ?? 1) - 1, (manifest?.explode?.labelsFrom ?? 1) - 1);
+      position.current = labelStart;
+      setViewFrame(labelStart);
+      setExploded(true);
+      setAllFramesLoaded(false);
+      setExplodeDirection(0);
+      zoomFactor.current = 1;
+      setZoom(1);
+      panPosition.current = { x: 0, y: 0 };
+      setPanOffset({ x: 0, y: 0 });
+      return;
+    }
     if (tourAnimationFrame.current !== null) cancelAnimationFrame(tourAnimationFrame.current);
     tourAnimationFrame.current = null;
     stopAutoRotate();
     setShowLabels(true);
     setShowObjectPhotos(false);
+    setActiveCamp(null);
+    setHoveredCamp(null);
     setActiveHotspot(stop.id);
     setTourStep(step);
-    const distance = ((stop.frame - position.current + count / 2) % count + count) % count - count / 2;
+    const distance = stop.sequence === 'explode' ? stop.frame - position.current : ((stop.frame - position.current + count / 2) % count + count) % count - count / 2;
     const startFrame = position.current;
     const startZoom = zoomFactor.current;
     const isSmallDetail = /headlight|tail ?light|lamp|sensor|camera|antenna|probe|nozzle|brake|wheel|cannon|gun|lens|optic|gauge|instrument|port|exhaust|intake|bolt|rivet|switch/i.test(stop.name);
@@ -302,12 +344,21 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
       spinToPart();
     }
   };
+  goToTourStepRef.current = goToTourStep;
+
+  useEffect(() => {
+    if (pendingExplodeTourStep === null || !exploded || !allFramesLoaded || explodeDirection !== 0) return;
+    const step = pendingExplodeTourStep;
+    setPendingExplodeTourStep(null);
+    goToTourStepRef.current(step);
+  }, [pendingExplodeTourStep, exploded, allFramesLoaded, explodeDirection]);
 
   const endGuidedTour = () => {
     if (tourAnimationFrame.current !== null) cancelAnimationFrame(tourAnimationFrame.current);
     tourAnimationFrame.current = null;
     setTourAnimating(false);
     setTourStep(null);
+    setPendingExplodeTourStep(null);
   };
 
   useEffect(() => () => {
@@ -315,7 +366,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
   }, []);
 
   useEffect(() => {
-    if (!hasRotateHotspotLabels || !guidedStops.length) {
+    if (!showGuidedTour || !guidedStops.length) {
       setShowTourPrompt(false);
       return;
     }
@@ -324,7 +375,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
     if (tourIntroShownThisPageLoad) return;
     tourIntroShownThisPageLoad = true;
     setShowTourPrompt(true);
-  }, [slug, hasRotateHotspotLabels, guidedStops.length]);
+  }, [slug, guidedStops.length, showGuidedTour]);
 
   const dismissTourPrompt = () => {
     setShowTourPrompt(false);
@@ -557,13 +608,13 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
     ? ((manifest?.rotate.hotspots ?? []) as CampHotspot[]).flatMap(pin => {
         const point = pin.points[current];
         return point ? [{ ...pin, x: point[0], y: point[1] }] : [];
-      })
+      }).filter(pin => tourStep === null || pin.id === activeHotspot)
     : [];
   const visibleValleyPins = slug === 'valley-of-flowers' && !exploded && showLabels
     ? ((manifest?.rotate.hotspots ?? []) as CampHotspot[]).flatMap(pin => {
         const point = pin.points[current];
-        return point ? [{ ...pin, x: point[0], y: point[1] }] : [];
-      })
+      return point ? [{ ...pin, x: point[0], y: point[1] }] : [];
+    }).filter(pin => tourStep === null || pin.id === activeHotspot)
     : [];
   const visibleRoutePoints = campsRoute && slug === 'mount-everest' && !exploded
     ? (manifest?.rotate.route?.frames[current]?.points ?? []).filter(point => point[2] === 1)
@@ -631,9 +682,9 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
     {missing && <div className="viewer-empty"><span>✦</span><b>3D coming soon</b><small>Frame pack not added yet</small></div>}
     {!missing && <>
       <div className="viewer-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.7 9A7 7 0 0 1 18 6.5L20 8M4 16l2 1.5A7 7 0 0 0 18.3 15"/></svg><span>{humanScale ? "HUMAN SCALE · 5'10\" (1.78 M)" : exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'ROTATE TO EXPLORE'}</span><small>{humanScale ? 'SCALE REFERENCE' : exploded ? count - explodeStart : count} {humanScale ? '' : 'VIEWS'}</small></div>
-      {showTourPrompt && !exploded && !humanScale && <aside className="guided-tour-prompt" aria-label="Guided object tour"><span>✦ YOUR FIRST LOOK</span><b>Explore this model</b><p>Take a quick tour of its standout details.</p><div><button type="button" disabled={!allFramesLoaded} onClick={() => { dismissTourPrompt(); goToTourStep(0); }}>{allFramesLoaded ? 'Start tour' : 'Loading tour…'}</button><button type="button" onClick={dismissTourPrompt}>Later</button></div></aside>}
-      {tourStep !== null && guidedStops[tourStep] && <aside className="guided-tour-card" aria-label="Guided tour controls" data-tour-animating={tourAnimating}><span aria-live="polite">GUIDED TOUR · {tourStep + 1} / {guidedStops.length}</span><b>{guidedStops[tourStep].name}</b><label className="guided-tour-select-label">JUMP TO A PART<select aria-label="Jump to a labeled part" value={tourStep} onChange={event => goToTourStep(Number(event.target.value))}>{guidedStops.map((stop, index) => <option value={index} key={stop.id}>{stop.name}</option>)}</select></label><div><button type="button" onClick={() => goToTourStep((tourStep - 1 + guidedStops.length) % guidedStops.length)} disabled={guidedStops.length < 2}>Previous</button><button type="button" onClick={() => goToTourStep((tourStep + 1) % guidedStops.length)} disabled={guidedStops.length < 2}>Next part</button><button type="button" onClick={endGuidedTour}>End tour</button></div></aside>}
-      {campsRoute && slug === 'mount-everest' && !exploded && <>
+      {showGuidedTour && showTourPrompt && !exploded && !humanScale && <aside className="guided-tour-prompt" aria-label="Guided object tour"><span>✶ YOUR FIRST LOOK</span><b>Explore this model</b><p>Explore the model from every side and discover its details.</p><div><button type="button" disabled={!allFramesLoaded} onClick={() => { dismissTourPrompt(); goToTourStep(0); }}>{allFramesLoaded ? 'Start tour' : 'Loading tour…'}</button><button type="button" onClick={dismissTourPrompt}>Later</button></div></aside>}
+      {tourStep !== null && guidedStops[tourStep] && <aside className="guided-tour-card" aria-label="Guided tour controls" data-tour-animating={tourAnimating}><span aria-live="polite">GUIDED TOUR · {tourStep + 1} / {guidedStops.length}</span><b>{guidedStops[tourStep].name}</b><label className="guided-tour-select-label">JUMP TO A STOP<select aria-label="Jump to a tour stop" value={tourStep} disabled={tourAnimating || pendingExplodeTourStep !== null} onChange={event => goToTourStep(Number(event.target.value))}>{guidedStops.map((stop, index) => <option value={index} key={stop.id}>{stop.name}</option>)}</select></label><div><button type="button" onClick={() => goToTourStep((tourStep - 1 + guidedStops.length) % guidedStops.length)} disabled={tourAnimating || pendingExplodeTourStep !== null || guidedStops.length < 2}>Previous</button><button type="button" onClick={() => goToTourStep((tourStep + 1) % guidedStops.length)} disabled={tourAnimating || pendingExplodeTourStep !== null || guidedStops.length < 2}>Next stop</button><button type="button" onClick={endGuidedTour}>End tour</button></div></aside>}
+      {campsRoute && slug === 'mount-everest' && !exploded && tourStep === null && <>
         <svg className="camp-route-line" aria-label={manifest?.rotate.route?.name ?? 'Everest climbing route'} style={imageBounds} viewBox={`0 0 ${manifest?.width ?? 1600} ${manifest?.height ?? 900}`} preserveAspectRatio="none">
           <polyline points={visibleRoutePoints.map(([x, y]) => `${x * (manifest?.width ?? 1600)},${y * (manifest?.height ?? 900)}`).join(' ')} />
         </svg>
@@ -649,7 +700,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
           </div>;
         })}
       </>}
-      {slug === 'valley-of-flowers' && !exploded && visibleValleyPins.map(pin => {
+      {slug === 'valley-of-flowers' && !exploded && tourStep === null && visibleValleyPins.map(pin => {
         const selected = activeCamp === pin.id;
         const alignment = [pin.y < 0.2 && 'camp-label-below', pin.x < 0.16 && 'camp-label-left', pin.x > 0.84 && 'camp-label-right'].filter(Boolean).join(' ');
         return <div className={`camp-marker ${alignment}`} key={pin.id} style={hotspotStyle(pin.x, pin.y)}>
@@ -672,15 +723,15 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
         {activeCampPin.approx && !activeCampDetails && <small>Approximate position</small>}
         {activeCampPin.offModel && <small>Shown at model edge, true direction</small>}
       </aside>}
-      {hotspots.filter(h => tourStep === null || h.id === activeHotspot).map(h => {
+      {(tourStep !== null && tourAnimating ? [] : hotspots.filter(h => tourStep === null || h.id === activeHotspot)).map(h => {
         const alignment = [h.y < 0.16 && 'hotspot-below', h.x < 0.12 && 'hotspot-align-left', h.x > 0.88 && 'hotspot-align-right'].filter(Boolean).join(' ');
         const selected = activeHotspot === h.id, hovered = hoveredHotspot === h.id;
         const tourFocus = tourStep !== null && selected;
         return <button key={h.id} type="button" className={'hotspot ' + (tourFocus ? 'hotspot-tour-focus ' : '') + (slug === 'excavator' ? 'excavator-hotspot ' : '') + alignment} style={hotspotStyle(h.x, h.y)} onPointerEnter={() => setHoveredHotspot(h.id)} onPointerLeave={() => setHoveredHotspot(null)} onFocus={() => setHoveredHotspot(h.id)} onBlur={() => setHoveredHotspot(null)} onClick={() => { endGuidedTour(); if (selected) { setActiveHotspot(null); setHoveredHotspot(null); } else { setShowObjectPhotos(false); setActiveHotspot(h.id); } }} aria-label={tourFocus ? `Current tour stop: ${h.name}` : h.name} aria-current={tourFocus ? 'step' : undefined} aria-pressed={selected}>{hasRotateHotspotLabels && <span className="camp-pin-icon" aria-hidden="true"/>}{tourStep === null && (selected || hovered) && <span className="hotspot-label" role="tooltip">{h.group && <small>{h.group}</small>}{h.name}</span>}</button>;
       })}
       {slug === 'janaki-mandir' && showObjectPhotos && <aside className="part-info-card" role="dialog" aria-label="Janaki Mandir photo gallery"><button type="button" className="camp-info-close" aria-label="Close photo gallery" title="Close photo gallery" onClick={() => setShowObjectPhotos(false)}>×</button><PhotoCarousel key={`${slug}-overview`} id="overall views" photos={photoGalleryMap[slug]?.overview ?? []} /><small>REAL PHOTOS · WIKIMEDIA COMMONS</small><b>Janaki Mandir · Overall views</b><p>Photo attribution and licence are linked on each image.</p></aside>}
-      {hasRotateHotspotLabels && activeHotspot && !tourAnimating && (() => { const item = humanScale ? manifest?.humanScale?.hotspots.find(point => point.id === activeHotspot) : manifest?.rotate.hotspots?.find(point => point.id === activeHotspot) as ExcavatorHotspot | undefined; if (!item) return null; const photo = item.image ?? (slug === 'excavator' ? excavatorPhoto : undefined); const photos = photoGalleryMap[slug]?.[item.id] ?? (photo ? [asGalleryPhoto(photo)] : []); return <aside className="part-info-card" role="dialog" aria-label={`${item.name} details`}><button type="button" className="camp-info-close" aria-label="Close label details" title="Close label card" onClick={() => { endGuidedTour(); setActiveHotspot(null); }}>×</button><PhotoCarousel key={`${slug}-${item.id}`} id={item.id} photos={photos} /><small>{item.category}</small><b>{item.name}</b><p>{item.details}</p><a href={item.source} target="_blank" rel="noreferrer">↗ Source</a></aside>; })()}
-      {slug === 'toyota-gr-supra-a90' && exploded && activeHotspot && (() => {
+      {hasRotateHotspotLabels && activeHotspot && !tourAnimating && (() => { const item = humanScale ? manifest?.humanScale?.hotspots.find(point => point.id === activeHotspot) : manifest?.rotate.hotspots?.find(point => point.id === activeHotspot) as ExcavatorHotspot | undefined; if (!item) return null; const photo = item.image ?? (slug === 'excavator' ? excavatorPhoto : undefined); const photos = photoGalleryMap[slug]?.[item.id] ?? (photo ? [asGalleryPhoto(photo)] : []); return <aside className="part-info-card" role="dialog" aria-label={`${item.name} details`}><button type="button" className="camp-info-close" aria-label="Close label details" title="Close label card" onClick={() => { endGuidedTour(); setActiveHotspot(null); }}>×</button><PhotoCarousel key={`${slug}-${item.id}`} id={item.id} photos={photos} /><small>{item.category ?? 'MODEL DETAIL'}</small><b>{item.name}</b>{item.details && <p>{item.details}</p>}{item.source && <a href={item.source} target="_blank" rel="noreferrer">↗ Source</a>}</aside>; })()}
+      {slug === 'toyota-gr-supra-a90' && exploded && activeHotspot && !tourAnimating && pendingExplodeTourStep === null && (() => {
         const part = manifest?.explode?.hotspots?.find(item => item.id === activeHotspot);
         if (!part) return null;
         return <aside className="part-info-card" role="dialog" aria-label={`${part.name} details`}>
@@ -689,7 +740,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
           <small>{part.category ?? part.group ?? 'EXPLODED COMPONENT'}</small><b>{part.name}</b>
         </aside>;
       })()}
-      {activeHotspot && partDetails.length > 0 && (() => {
+      {activeHotspot && partDetails.length > 0 && !tourAnimating && pendingExplodeTourStep === null && (() => {
         const part = partDetails.find(item => item.id === activeHotspot);
         if (!part) return null;
         return <aside className="part-info-card" role="dialog" aria-label={`${part.name.en} details`}>
@@ -702,7 +753,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
       {(!ready || (exploded && explodeDirection !== 0 && !allFramesLoaded)) && <div className="viewer-loading"><span>{exploded && explodeDirection !== 0 ? 'PREPARING EXPLODED VIEW' : 'LOADING OBJECT'}</span><i><b style={{ width: `${progress}%` }} /></i></div>}
     </>}
     <div className={`viewer-controls ${slug === 'janaki-mandir' ? 'viewer-controls-photos' : ''}`}>
-      {slug === 'janaki-mandir' && <button type="button" className={`viewer-action ${showObjectPhotos ? 'viewer-action-active' : ''}`} aria-pressed={showObjectPhotos} onClick={() => { setShowObjectPhotos(value => !value); setActiveHotspot(null); setHoveredHotspot(null); }}>Photos</button>}{hasRotateHotspotLabels && <><button type="button" className={`viewer-action excavator-label-toggle ${showLabels ? 'viewer-action-active' : ''}`} disabled={humanScale} aria-pressed={showLabels} onClick={() => { endGuidedTour(); setShowLabels(value => !value); setShowObjectPhotos(false); setActiveHotspot(null); setHoveredHotspot(null); }}>Labels</button><button type="button" className="viewer-action guided-tour-button" disabled={humanScale || exploded || !allFramesLoaded || guidedStops.length === 0} onClick={() => { dismissTourPrompt(); goToTourStep(0); }}>{allFramesLoaded ? 'Guided tour' : 'Loading…'}</button></>}{(slug === 'excavator' || slug === 'porsche-992-gt3r') && <button type="button" className={`viewer-action excavator-human-toggle ${humanScale ? 'viewer-action-active' : ''}`} aria-pressed={humanScale} onClick={() => { endGuidedTour(); tourDetailZoom.current = false; setHumanScale(value => !value); setActiveHotspot(null); setHoveredHotspot(null); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); }}>Human 5'10"</button>}
+      {slug === 'janaki-mandir' && <button type="button" className={`viewer-action ${showObjectPhotos ? 'viewer-action-active' : ''}`} aria-pressed={showObjectPhotos} onClick={() => { setShowObjectPhotos(value => !value); setActiveHotspot(null); setHoveredHotspot(null); }}>Photos</button>}{hasRotateHotspotLabels && <button type="button" className={`viewer-action excavator-label-toggle ${showLabels ? 'viewer-action-active' : ''}`} disabled={humanScale} aria-pressed={showLabels} onClick={() => { endGuidedTour(); setShowLabels(value => !value); setShowObjectPhotos(false); setActiveHotspot(null); setHoveredHotspot(null); }}>Labels</button>}{showGuidedTour && <button type="button" className="viewer-action guided-tour-button" disabled={humanScale || (exploded && guidedStops[0]?.sequence !== 'explode') || !allFramesLoaded || guidedStops.length === 0} onClick={() => { dismissTourPrompt(); goToTourStep(0); }}>{allFramesLoaded ? 'Guided tour' : 'Loading…'}</button>}{(slug === 'excavator' || slug === 'porsche-992-gt3r') && <button type="button" className={`viewer-action excavator-human-toggle ${humanScale ? 'viewer-action-active' : ''}`} aria-pressed={humanScale} onClick={() => { endGuidedTour(); tourDetailZoom.current = false; setHumanScale(value => !value); setActiveHotspot(null); setHoveredHotspot(null); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); }}>Human 5'10"</button>}
       {slug === 'mount-everest' ? <button type="button" className={`viewer-action ${campsRoute ? 'viewer-action-active' : ''}`} aria-pressed={campsRoute} title="Toggle camps and climbing route" onClick={() => { setCampsRoute(value => !value); setActiveCamp(null); setHoveredCamp(null); }}>Camps &amp; Route</button> : slug === 'valley-of-flowers' ? <button type="button" className={`viewer-action ${showLabels ? 'viewer-action-active' : ''}`} aria-pressed={showLabels} title="Toggle place markers" onClick={() => { setShowLabels(value => !value); setActiveCamp(null); setHoveredCamp(null); }}>Labels</button> : slug === 'porsche-992-gt3r' ? null : manifest?.explode ? <button type="button" className="viewer-action" title={exploded ? 'Assemble parts' : 'Explode view'} onClick={() => toggleExplode()}>{exploded ? (explodeDirection === -1 ? 'Assembling…' : 'Assemble parts') : 'Explode view'}</button> : null}
       {hasExplodeLabels && <button type="button" className={'viewer-action excavator-label-toggle '+(showLabels ? 'viewer-action-active' : '')} aria-pressed={showLabels} title={showLabels ? 'Hide part labels' : 'Show part labels; opens exploded view'} onClick={() => {
         const next = !showLabels;

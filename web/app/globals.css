@@ -140,15 +140,16 @@
 .guided-tour-prompt button:first-child:hover,.guided-tour-card button:nth-child(2):hover:not(:disabled){background:#46513e}
 .guided-tour-card button:disabled{opacity:.45;cursor:default}
 .guided-tour-prompt button:focus-visible,.guided-tour-card button:focus-visible{outline:2px solid #edc878;outline-offset:2px}
-.guided-tour-prompt{width:min(310px,calc(100% - 24px));border-color:#ffb653;background:linear-gradient(140deg,#54250df7,#21160ff5 72%);box-shadow:0 16px 46px #d7652860,inset 0 1px #ffd08b55;overflow:hidden}
-.guided-tour-prompt::after{position:absolute;top:11px;right:15px;content:"✦";color:#ffc46a;font-size:25px;text-shadow:0 0 16px #ff9c35;animation:tour-sparkle 1.8s ease-in-out infinite;pointer-events:none}
+.guided-tour-prompt{width:min(310px,calc(100% - 24px));border-color:#fff1ad;background:linear-gradient(140deg,#ffe994f7,#d9ad3cf5 72%);color:#2e250d;box-shadow:0 16px 46px #d6aa3980,inset 0 1px #fffbe1;overflow:hidden}
+.guided-tour-prompt::after{position:absolute;top:12px;right:16px;width:25px;height:25px;content:"";background:linear-gradient(145deg,#fff9d8,#906300);clip-path:polygon(50% 0,61% 38%,100% 50%,61% 62%,50% 100%,39% 62%,0 50%,39% 38%);filter:drop-shadow(0 0 7px #fff4ae);animation:tour-sparkle 2.2s ease-in-out infinite;pointer-events:none}
 .guided-tour-prompt>*{position:relative;z-index:1}
-.guided-tour-prompt>span{color:#ffc46a;font-size:11px}
+.guided-tour-prompt>span{color:#72520c;font-size:11px}
 .guided-tour-prompt>b{font-size:18px}
-.guided-tour-prompt>p{max-width:29ch;color:#f1d7c1;font-size:13px;line-height:1.5}
+.guided-tour-prompt>p{max-width:29ch;color:#46370f;font-size:13px;line-height:1.5}
 .guided-tour-prompt button{min-height:40px;padding:0 13px;font-size:12px}
-.guided-tour-prompt button:first-child{border-color:#ffc46a;background:linear-gradient(135deg,#ffb13b,#f17822);color:#291306;box-shadow:0 4px 15px #f58b344d}
-.guided-tour-prompt button:first-child:hover:not(:disabled){background:linear-gradient(135deg,#ffc25a,#ff8c32)}
+.guided-tour-prompt button{border-color:#80610e66;background:#fff9df;color:#36290d}
+.guided-tour-prompt button:first-child{border-color:#5a430d;background:linear-gradient(135deg,#54400c,#342908);color:#fff0ad;box-shadow:0 4px 15px #684e1680}
+.guided-tour-prompt button:first-child:hover:not(:disabled){background:linear-gradient(135deg,#6a510d,#49380b)}
 .guided-tour-prompt button:disabled{opacity:.58;cursor:wait}
 @keyframes tour-sparkle{0%,100%{transform:scale(.82) rotate(-12deg);opacity:.72}50%{transform:scale(1.12) rotate(12deg);opacity:1}}
 @keyframes guided-tour-enter{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
