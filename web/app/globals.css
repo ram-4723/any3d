@@ -768,17 +768,18 @@ html[data-cursor-pressed="true"] .cursor-aura::before{background:radial-gradient
   .viewer:has(.guided-tour-card) .part-info-card>p{margin-top:5px;font-size:11px;line-height:1.4}
 }
 
-@media(max-width:600px){
-  .viewer:fullscreen,.viewer:-webkit-full-screen,.viewer-fullscreen-fallback{position:fixed;inset:0;z-index:1000;width:100vw;height:100vh;height:100dvh;min-height:0;max-height:none;border-radius:0}
-  .viewer:fullscreen .viewer-canvas,.viewer:-webkit-full-screen .viewer-canvas,.viewer-fullscreen-fallback .viewer-canvas{width:100%;height:100%;min-height:0}
-  .viewer:fullscreen .guided-tour-card,.viewer:-webkit-full-screen .guided-tour-card,.viewer-fullscreen-fallback .guided-tour-card{top:max(12px,env(safe-area-inset-top));right:12px;bottom:auto;left:auto;width:min(300px,48vw);max-height:38vh;padding:11px 12px}
-  .viewer:fullscreen .part-info-card,.viewer:-webkit-full-screen .part-info-card,.viewer-fullscreen-fallback .part-info-card{top:auto;right:auto;bottom:max(12px,env(safe-area-inset-bottom));left:12px;width:min(320px,48vw);max-height:38vh;padding:10px 12px}
-  .viewer:fullscreen .part-info-card .viewer-info-photo,.viewer:-webkit-full-screen .part-info-card .viewer-info-photo,.viewer-fullscreen-fallback .part-info-card .viewer-info-photo{min-height:110px;max-height:150px}
-  .viewer:fullscreen .guided-tour-prompt,.viewer:-webkit-full-screen .guided-tour-prompt,.viewer-fullscreen-fallback .guided-tour-prompt{top:max(12px,env(safe-area-inset-top));right:auto;bottom:auto;left:12px;width:min(320px,52vw);max-height:38vh;overflow-y:auto}
-  .viewer:fullscreen .viewer-controls,.viewer:-webkit-full-screen .viewer-controls,.viewer-fullscreen-fallback .viewer-controls{top:auto;right:12px;bottom:max(12px,env(safe-area-inset-bottom));left:auto;flex-wrap:wrap;justify-content:flex-end}
+@media(max-width:600px),(pointer:coarse) and (max-height:500px){
+  .viewer:fullscreen,.viewer:-webkit-full-screen,.viewer-fullscreen-fallback{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;align-items:stretch;gap:8px;overflow-x:hidden;overflow-y:auto;width:100vw;height:100vh;height:100dvh;min-height:0;max-height:none;padding:0;border-radius:0;background:#10101b}
+  .viewer:fullscreen .viewer-tag,.viewer:-webkit-full-screen .viewer-tag,.viewer-fullscreen-fallback .viewer-tag{display:none}
+  .viewer:fullscreen .viewer-canvas,.viewer:-webkit-full-screen .viewer-canvas,.viewer-fullscreen-fallback .viewer-canvas{flex:0 0 42dvh;width:100%;height:42dvh;min-height:160px;max-height:52dvh;border-radius:10px}
+  .viewer:fullscreen .guided-tour-card,.viewer:-webkit-full-screen .guided-tour-card,.viewer-fullscreen-fallback .guided-tour-card{position:relative;inset:auto;flex:0 0 auto;width:auto;max-height:none;overflow:visible;margin:max(8px,env(safe-area-inset-top)) 10px 0;padding:11px 12px}
+  .viewer:fullscreen .part-info-card,.viewer:-webkit-full-screen .part-info-card,.viewer-fullscreen-fallback .part-info-card{position:relative;inset:auto;flex:0 1 auto;width:auto;max-height:min(25dvh,240px);overflow-y:auto;margin:0 10px;padding:10px 12px}
+  .viewer:fullscreen .part-info-card .viewer-info-photo,.viewer:-webkit-full-screen .part-info-card .viewer-info-photo,.viewer-fullscreen-fallback .part-info-card .viewer-info-photo{min-height:88px;max-height:125px}
+  .viewer:fullscreen .guided-tour-prompt,.viewer:-webkit-full-screen .guided-tour-prompt,.viewer-fullscreen-fallback .guided-tour-prompt{position:relative;inset:auto;flex:0 0 auto;width:auto;max-height:none;overflow:visible;margin:max(8px,env(safe-area-inset-top)) 10px 0}
+  .viewer:fullscreen .viewer-controls,.viewer:-webkit-full-screen .viewer-controls,.viewer-fullscreen-fallback .viewer-controls{position:relative;inset:auto;flex:0 0 auto;width:auto;flex-wrap:wrap;justify-content:center;margin:0 10px max(8px,env(safe-area-inset-bottom));padding:8px;border:1px solid #ffffff26;border-radius:10px;background:#10151bea}
+  .viewer:fullscreen .viewer-credit,.viewer:-webkit-full-screen .viewer-credit,.viewer-fullscreen-fallback .viewer-credit{display:none}
 }
 .viewer-fullscreen-fallback{position:fixed;inset:0;z-index:1000;width:100vw;height:100vh;height:100dvh;min-height:0;max-height:none;border-radius:0}
-.viewer-fullscreen-fallback .viewer-canvas{width:100%;height:100%;min-height:0}
 
 /* Enlarge the topbar brand lockup by about 40%. */
 .topbar .brand{font-size:21px}
