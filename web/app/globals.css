@@ -103,6 +103,9 @@
 .guided-tour-prompt>span,.guided-tour-card>span{display:block;margin-bottom:6px;color:#e8c77d;font:9px 'DM Mono',monospace;letter-spacing:.09em}
 .guided-tour-prompt>b,.guided-tour-card>b{display:block;font-size:15px;line-height:1.3}
 .guided-tour-prompt>p{margin:6px 0 12px;color:#d3d0ca;font-size:11px;line-height:1.5}
+.guided-tour-select-label{display:grid;gap:5px;margin-top:11px;color:#c8c3ba;font:8px 'DM Mono',monospace;letter-spacing:.06em}
+.guided-tour-select-label select{width:100%;min-height:36px;padding:0 9px;border:1px solid #ffffff36;border-radius:7px;background:#202326;color:#f4f1e8;font:11px 'DM Sans',sans-serif;letter-spacing:0}
+.guided-tour-select-label select:focus-visible{outline:2px solid #edc878;outline-offset:2px}
 .guided-tour-prompt>div,.guided-tour-card>div{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
 .guided-tour-prompt button,.guided-tour-card button{min-height:34px;padding:0 10px;border:1px solid #ffffff36;border-radius:7px;background:#ffffff0b;color:#f4f1e8;font:600 10px 'DM Sans',sans-serif;cursor:pointer;transition:background-color .16s ease,border-color .16s ease,transform .16s ease}
 .guided-tour-prompt button:first-child,.guided-tour-card button:nth-child(2){border-color:#d8c290;background:#354033;color:#f4dda8}
@@ -114,7 +117,7 @@
 .object-card{transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease}
 .object-card .card-arrow{transition:transform .2s ease,background-color .2s ease}
 .object-card:hover .card-arrow,.object-card:focus-visible .card-arrow{transform:translate(2px,-2px)}
-@media(max-width:600px){.guided-tour-prompt,.guided-tour-card{top:auto;bottom:56px;left:8px;right:8px;width:auto;padding:12px 13px}.guided-tour-prompt>p{margin:5px 0 9px}.viewer:has(.guided-tour-card) .part-info-card{bottom:152px;max-height:calc(100% - 164px)}}
+@media(max-width:600px){.guided-tour-prompt,.guided-tour-card{top:auto;bottom:56px;left:8px;right:8px;width:auto;padding:12px 13px}.guided-tour-prompt>p{margin:5px 0 9px}.viewer:has(.guided-tour-card) .part-info-card{bottom:210px;max-height:calc(100% - 222px)}}
 
 
 /* Mobile usability and layout stability */
