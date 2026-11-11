@@ -768,6 +768,18 @@ html[data-cursor-pressed="true"] .cursor-aura::before{background:radial-gradient
   .viewer:has(.guided-tour-card) .part-info-card>p{margin-top:5px;font-size:11px;line-height:1.4}
 }
 
+@media(max-width:600px){
+  .viewer:fullscreen,.viewer:-webkit-full-screen,.viewer-fullscreen-fallback{position:fixed;inset:0;z-index:1000;width:100vw;height:100vh;height:100dvh;min-height:0;max-height:none;border-radius:0}
+  .viewer:fullscreen .viewer-canvas,.viewer:-webkit-full-screen .viewer-canvas,.viewer-fullscreen-fallback .viewer-canvas{width:100%;height:100%;min-height:0}
+  .viewer:fullscreen .guided-tour-card,.viewer:-webkit-full-screen .guided-tour-card,.viewer-fullscreen-fallback .guided-tour-card{top:max(12px,env(safe-area-inset-top));right:12px;bottom:auto;left:auto;width:min(300px,48vw);max-height:38vh;padding:11px 12px}
+  .viewer:fullscreen .part-info-card,.viewer:-webkit-full-screen .part-info-card,.viewer-fullscreen-fallback .part-info-card{top:auto;right:auto;bottom:max(12px,env(safe-area-inset-bottom));left:12px;width:min(320px,48vw);max-height:38vh;padding:10px 12px}
+  .viewer:fullscreen .part-info-card .viewer-info-photo,.viewer:-webkit-full-screen .part-info-card .viewer-info-photo,.viewer-fullscreen-fallback .part-info-card .viewer-info-photo{min-height:110px;max-height:150px}
+  .viewer:fullscreen .guided-tour-prompt,.viewer:-webkit-full-screen .guided-tour-prompt,.viewer-fullscreen-fallback .guided-tour-prompt{top:max(12px,env(safe-area-inset-top));right:auto;bottom:auto;left:12px;width:min(320px,52vw);max-height:38vh;overflow-y:auto}
+  .viewer:fullscreen .viewer-controls,.viewer:-webkit-full-screen .viewer-controls,.viewer-fullscreen-fallback .viewer-controls{top:auto;right:12px;bottom:max(12px,env(safe-area-inset-bottom));left:auto;flex-wrap:wrap;justify-content:flex-end}
+}
+.viewer-fullscreen-fallback{position:fixed;inset:0;z-index:1000;width:100vw;height:100vh;height:100dvh;min-height:0;max-height:none;border-radius:0}
+.viewer-fullscreen-fallback .viewer-canvas{width:100%;height:100%;min-height:0}
+
 /* Enlarge the topbar brand lockup by about 40%. */
 .topbar .brand{font-size:21px}
 .topbar .brand-mark{width:48px;height:48px}

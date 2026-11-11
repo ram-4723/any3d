@@ -110,6 +110,9 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
   const [viewFrame, setViewFrame] = useState(0);
   const [tourStep, setTourStep] = useState<number | null>(null);
   const [pendingExplodeTourStep, setPendingExplodeTourStep] = useState<number | null>(null);
+  const [isViewerFullscreen, setIsViewerFullscreen] = useState(false);
+  const [usesFullscreenFallback, setUsesFullscreenFallback] = useState(false);
+  const tourFullscreenAttempted = useRef(false);
   const goToTourStepRef = useRef<(step: number) => void>(() => {});
   const tourPromptChecked = useRef(false);
   const [tourAnimating, setTourAnimating] = useState(false);
@@ -162,6 +165,57 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
     setAutoRotateEnabled(false);
   };
 
+  const requestViewerFullscreen = () => {
+    const viewer = stage.current;
+    if (!viewer || document.fullscreenElement === viewer) return;
+    if (viewer.requestFullscreen) {
+      try {
+        viewer.requestFullscreen().catch(() => setUsesFullscreenFallback(true));
+      } catch {
+        setUsesFullscreenFallback(true);
+      }
+    } else {
+      setUsesFullscreenFallback(true);
+    }
+  };
+
+  const toggleViewerFullscreen = () => {
+    if (usesFullscreenFallback) {
+      setUsesFullscreenFallback(false);
+      setIsViewerFullscreen(false);
+      return;
+    }
+    if (document.fullscreenElement === stage.current) {
+      document.exitFullscreen().catch(() => {});
+      return;
+    }
+    requestViewerFullscreen();
+  };
+
+  useEffect(() => {
+    const syncFullscreen = () => setIsViewerFullscreen(document.fullscreenElement === stage.current);
+    document.addEventListener('fullscreenchange', syncFullscreen);
+    return () => document.removeEventListener('fullscreenchange', syncFullscreen);
+  }, []);
+
+  useEffect(() => {
+    if (!usesFullscreenFallback) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    setIsViewerFullscreen(true);
+    const exitWithEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setUsesFullscreenFallback(false);
+        setIsViewerFullscreen(false);
+      }
+    };
+    window.addEventListener('keydown', exitWithEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', exitWithEscape);
+    };
+  }, [usesFullscreenFallback]);
+
   const guidedStops = (() => {
     if (!manifest) return [];
     const stops: { id: string; name: string; frame: number; point: [number, number]; sequence: 'rotate' | 'explode' | 'view' }[] = [];
@@ -198,6 +252,10 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
   const goToTourStep = (step: number) => {
     const stop = guidedStops[step];
     if (!stop) return;
+    if (step === 0 && !tourFullscreenAttempted.current && window.matchMedia('(max-width: 600px), (pointer: coarse)').matches) {
+      tourFullscreenAttempted.current = true;
+      requestViewerFullscreen();
+    }
     if (stop.sequence === 'explode' && !exploded) {
       if (tourAnimationFrame.current !== null) cancelAnimationFrame(tourAnimationFrame.current);
       tourAnimationFrame.current = null;
@@ -361,6 +419,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
     setTourAnimating(false);
     setTourStep(null);
     setPendingExplodeTourStep(null);
+    tourFullscreenAttempted.current = false;
   };
 
   useEffect(() => () => {
@@ -679,13 +738,23 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
     else { const startFrame = showLabelFrame && hasExplodeLabels ? Math.max(explodeStart, (manifest?.explode?.labelsFrom ?? 1) - 1) : explodeStart; position.current = startFrame; setViewFrame(startFrame); setExploded(true); setAllFramesLoaded(false); setExplodeDirection(1); }
   };
 
-  return <div ref={stage} className={`viewer ${mode === 'scroll' ? 'viewer-scroll' : ''}`} aria-label={`${slug} 3D viewer`}>
+  return <div ref={stage} className={`viewer ${mode === 'scroll' ? 'viewer-scroll' : ''} ${usesFullscreenFallback ? 'viewer-fullscreen-fallback' : ''}`} aria-label={`${slug} 3D viewer`}>
     <canvas ref={canvas} className={`viewer-canvas ${zoom > 1 ? 'viewer-canvas-zoomed' : ''}`} role="img" aria-label={`Interactive 3D view of ${slug}`} onPointerDown={e => { if (mode === 'drag') { endGuidedTour(); stopAutoRotate(); setExplodeDirection(0); e.currentTarget.setPointerCapture(e.pointerId); drag.current = { x: e.clientX, y: e.clientY }; } }} onPointerMove={e => move(e.clientX, e.clientY)} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} onKeyDown={e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); endGuidedTour(); stopAutoRotate(); setExplodeDirection(0); const next = position.current + (e.key === 'ArrowLeft' ? -1 : 1); position.current = exploded ? Math.max(explodeStart, Math.min(count - 1, next)) : (next + count) % count; setViewFrame(frameIndex(position.current, count)); requestFrame.current(frameIndex(position.current, count)); draw(); } }} tabIndex={0} />
     {missing && <div className="viewer-empty"><span>✦</span><b>3D coming soon</b><small>Frame pack not added yet</small></div>}
     {!missing && <>
       <div className="viewer-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.7 9A7 7 0 0 1 18 6.5L20 8M4 16l2 1.5A7 7 0 0 0 18.3 15"/></svg><span>{humanScale ? "HUMAN SCALE · 5'10\" (1.78 M)" : exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'ROTATE TO EXPLORE'}</span><small>{humanScale ? 'SCALE REFERENCE' : exploded ? count - explodeStart : count} {humanScale ? '' : 'VIEWS'}</small></div>
       {showGuidedTour && showTourPrompt && !exploded && !humanScale && <aside className="guided-tour-prompt" aria-label="Guided object tour"><span>YOUR FIRST LOOK</span><b>Explore this model</b><p>Explore the model from every side and discover its details.</p><div><button type="button" disabled={!allFramesLoaded} onClick={() => { dismissTourPrompt(); goToTourStep(0); }}>{allFramesLoaded ? 'Start tour' : 'Loading tour…'}</button><button type="button" onClick={dismissTourPrompt}>Later</button></div></aside>}
-      {tourStep !== null && guidedStops[tourStep] && <aside className="guided-tour-card" aria-label="Guided tour controls" data-tour-animating={tourAnimating}><span aria-live="polite">GUIDED TOUR · {tourStep + 1} / {guidedStops.length}</span><b>{guidedStops[tourStep].name}</b><label className="guided-tour-select-label">JUMP TO A STOP<select aria-label="Jump to a tour stop" value={tourStep} disabled={tourAnimating || pendingExplodeTourStep !== null} onChange={event => goToTourStep(Number(event.target.value))}>{guidedStops.map((stop, index) => <option value={index} key={stop.id}>{stop.name}</option>)}</select></label><div><button type="button" onClick={() => goToTourStep((tourStep - 1 + guidedStops.length) % guidedStops.length)} disabled={tourAnimating || pendingExplodeTourStep !== null || guidedStops.length < 2}>Previous</button><button type="button" onClick={() => goToTourStep((tourStep + 1) % guidedStops.length)} disabled={tourAnimating || pendingExplodeTourStep !== null || guidedStops.length < 2}>Next stop</button><button type="button" onClick={endGuidedTour}>End tour</button></div></aside>}
+      {tourStep !== null && guidedStops[tourStep] && <aside className="guided-tour-card" aria-label="Guided tour controls" data-tour-animating={tourAnimating}>
+        <span aria-live="polite">GUIDED TOUR · {tourStep + 1} / {guidedStops.length}</span>
+        <b>{guidedStops[tourStep].name}</b>
+        <label className="guided-tour-select-label">JUMP TO A STOP<select aria-label="Jump to a tour stop" value={tourStep} disabled={tourAnimating || pendingExplodeTourStep !== null} onChange={event => goToTourStep(Number(event.target.value))}>{guidedStops.map((stop, index) => <option value={index} key={stop.id}>{stop.name}</option>)}</select></label>
+        <div>
+          <button type="button" onClick={() => goToTourStep((tourStep - 1 + guidedStops.length) % guidedStops.length)} disabled={tourAnimating || pendingExplodeTourStep !== null || guidedStops.length < 2}>Previous</button>
+          <button type="button" onClick={() => goToTourStep((tourStep + 1) % guidedStops.length)} disabled={tourAnimating || pendingExplodeTourStep !== null || guidedStops.length < 2}>Next stop</button>
+          <button type="button" onClick={endGuidedTour}>End tour</button>
+          <button type="button" className="guided-fullscreen-toggle" onClick={toggleViewerFullscreen}>{isViewerFullscreen ? 'Exit full screen' : 'Full screen'}</button>
+        </div>
+      </aside>}
       {campsRoute && slug === 'mount-everest' && !exploded && tourStep === null && <>
         <svg className="camp-route-line" aria-label={manifest?.rotate.route?.name ?? 'Everest climbing route'} style={imageBounds} viewBox={`0 0 ${manifest?.width ?? 1600} ${manifest?.height ?? 900}`} preserveAspectRatio="none">
           <polyline points={visibleRoutePoints.map(([x, y]) => `${x * (manifest?.width ?? 1600)},${y * (manifest?.height ?? 900)}`).join(' ')} />
