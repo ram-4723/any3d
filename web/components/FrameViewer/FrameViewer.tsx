@@ -109,6 +109,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
   const [inView, setInView] = useState(false);
   const [autoRotateEnabled, setAutoRotateEnabled] = useState(false);
   const [viewFrame, setViewFrame] = useState(0);
+  const [, setCanvasLayoutVersion] = useState(0);
   const [tourStep, setTourStep] = useState<number | null>(null);
   const [pendingExplodeTourStep, setPendingExplodeTourStep] = useState<number | null>(null);
   const [isViewerFullscreen, setIsViewerFullscreen] = useState(false);
@@ -595,7 +596,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
   }, [exploded, explodeDirection, allFramesLoaded, count, draw, explodeStart]);
   useEffect(() => {
     draw();
-    const ro = new ResizeObserver(draw);
+    const ro = new ResizeObserver(() => { draw(); setCanvasLayoutVersion(version => version + 1); });
     if (canvas.current) ro.observe(canvas.current);
     return () => ro.disconnect();
   }, [draw]);
@@ -654,17 +655,21 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
     : (manifest?.hotspots ?? []).filter(h => h.frame === undefined || hotspotVisible(current, h.frame, count));
   const hotspotStyle = (x: number, y: number) => {
     const r = canvas.current?.getBoundingClientRect();
+    const root = stage.current?.getBoundingClientRect();
     if (!r || !manifest) return { left: `${x * 100}%`, top: `${y * 100}%` };
     const scale = Math.min(r.width / manifest.width, r.height / manifest.height) * zoomFactor.current;
     const imageWidth = manifest.width * scale, imageHeight = manifest.height * scale;
-    return { left: `${(r.width - imageWidth) / 2 + panOffset.x + x * imageWidth}px`, top: `${(r.height - imageHeight) / 2 + panOffset.y + y * imageHeight}px` };
+    const canvasLeft = root ? r.left - root.left : 0, canvasTop = root ? r.top - root.top : 0;
+    return { left: `${canvasLeft + (r.width - imageWidth) / 2 + panOffset.x + x * imageWidth}px`, top: `${canvasTop + (r.height - imageHeight) / 2 + panOffset.y + y * imageHeight}px` };
   };
   const imageBounds = (() => {
     const r = canvas.current?.getBoundingClientRect();
     if (!r || !manifest) return { left: 0, top: 0, width: '100%', height: '100%' };
+    const root = stage.current?.getBoundingClientRect();
     const scale = Math.min(r.width / manifest.width, r.height / manifest.height) * zoomFactor.current;
     const width = manifest.width * scale, height = manifest.height * scale;
-    return { left: (r.width - width) / 2 + panOffset.x, top: (r.height - height) / 2 + panOffset.y, width, height };
+    const canvasLeft = root ? r.left - root.left : 0, canvasTop = root ? r.top - root.top : 0;
+    return { left: canvasLeft + (r.width - width) / 2 + panOffset.x, top: canvasTop + (r.height - height) / 2 + panOffset.y, width, height };
   })();
   const visibleCampPins = campsRoute && slug === 'mount-everest' && !exploded
     ? ((manifest?.rotate.hotspots ?? []) as CampHotspot[]).flatMap(pin => {
