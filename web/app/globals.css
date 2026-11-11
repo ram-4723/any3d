@@ -836,6 +836,6 @@ html[data-cursor-pressed="true"] .cursor-aura::before{background:radial-gradient
   .mobile-tour-intro-dock .guided-tour-prompt button{min-height:40px;font-size:13px}
 }
 
-/* Enlarge the topbar brand lockup by about 40%. */
+/* Give the tighter cube mark enough room to read clearly beside the wordmark. */
 .topbar .brand{font-size:21px}
-.topbar .brand-mark{width:48px;height:48px}
+.topbar .brand-mark{width:54px;height:54px}
