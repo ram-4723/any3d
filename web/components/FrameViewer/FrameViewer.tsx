@@ -1,9 +1,10 @@
 'use client';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { frameIndex, hotspotVisible } from './math';
 import photoGalleries from '../../data/photo-galleries.json';
 
-type Props = { slug: string; mode?: 'drag' | 'scroll'; autoRotate?: boolean; showGuidedTour?: boolean };
+type Props = { slug: string; mode?: 'drag' | 'scroll'; autoRotate?: boolean; showGuidedTour?: boolean; tourPromptTarget?: HTMLElement | null };
 type Hotspot = { id: string; name: string; group?: string; frame?: number; x: number; y: number; color?: string; details?: string; source?: string };
 type ExplodeHotspot = { id: string; name: string; group?: string; category?: string; color?: string; points: ([number, number] | null)[] };
 type Sequence = { count: number; pattern: string; loop?: boolean; startFrame?: number };
@@ -72,7 +73,7 @@ const asGalleryPhoto = (photo: HotspotPhoto): GalleryPhoto => ({
   url: photo.url, title: photo.caption, author: photo.credit, license: 'Photo credit', licenseUrl: photo.sourceUrl, sourceUrl: photo.sourceUrl,
 });
 
-export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, showGuidedTour = true }: Props) {
+export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, showGuidedTour = true, tourPromptTarget = null }: Props) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const campCardRef = useRef<HTMLElement>(null);
@@ -738,12 +739,14 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
     else { const startFrame = showLabelFrame && hasExplodeLabels ? Math.max(explodeStart, (manifest?.explode?.labelsFrom ?? 1) - 1) : explodeStart; position.current = startFrame; setViewFrame(startFrame); setExploded(true); setAllFramesLoaded(false); setExplodeDirection(1); }
   };
 
+  const tourPrompt = showGuidedTour && showTourPrompt && !exploded && !humanScale ? <aside className="guided-tour-prompt" aria-label="Guided object tour"><span>YOUR FIRST LOOK</span><b>Explore this model</b><p>Explore the model from every side and discover its details.</p><div><button type="button" disabled={!allFramesLoaded} onClick={() => { dismissTourPrompt(); goToTourStep(0); }}>{allFramesLoaded ? 'Start tour' : 'Loading tour…'}</button><button type="button" onClick={dismissTourPrompt}>Later</button></div></aside> : null;
   return <div ref={stage} className={`viewer ${mode === 'scroll' ? 'viewer-scroll' : ''} ${usesFullscreenFallback ? 'viewer-fullscreen-fallback' : ''}`} aria-label={`${slug} 3D viewer`}>
+    {tourPrompt && tourPromptTarget && createPortal(tourPrompt, tourPromptTarget)}
     <canvas ref={canvas} className={`viewer-canvas ${zoom > 1 ? 'viewer-canvas-zoomed' : ''}`} role="img" aria-label={`Interactive 3D view of ${slug}`} onPointerDown={e => { if (mode === 'drag') { endGuidedTour(); stopAutoRotate(); setExplodeDirection(0); e.currentTarget.setPointerCapture(e.pointerId); drag.current = { x: e.clientX, y: e.clientY }; } }} onPointerMove={e => move(e.clientX, e.clientY)} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} onKeyDown={e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); endGuidedTour(); stopAutoRotate(); setExplodeDirection(0); const next = position.current + (e.key === 'ArrowLeft' ? -1 : 1); position.current = exploded ? Math.max(explodeStart, Math.min(count - 1, next)) : (next + count) % count; setViewFrame(frameIndex(position.current, count)); requestFrame.current(frameIndex(position.current, count)); draw(); } }} tabIndex={0} />
     {missing && <div className="viewer-empty"><span>✦</span><b>3D coming soon</b><small>Frame pack not added yet</small></div>}
     {!missing && <>
       <div className="viewer-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.7 9A7 7 0 0 1 18 6.5L20 8M4 16l2 1.5A7 7 0 0 0 18.3 15"/></svg><span>{humanScale ? "HUMAN SCALE · 5'10\" (1.78 M)" : exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'ROTATE TO EXPLORE'}</span><small>{humanScale ? 'SCALE REFERENCE' : exploded ? count - explodeStart : count} {humanScale ? '' : 'VIEWS'}</small></div>
-      {showGuidedTour && showTourPrompt && !exploded && !humanScale && <aside className="guided-tour-prompt" aria-label="Guided object tour"><span>YOUR FIRST LOOK</span><b>Explore this model</b><p>Explore the model from every side and discover its details.</p><div><button type="button" disabled={!allFramesLoaded} onClick={() => { dismissTourPrompt(); goToTourStep(0); }}>{allFramesLoaded ? 'Start tour' : 'Loading tour…'}</button><button type="button" onClick={dismissTourPrompt}>Later</button></div></aside>}
+      {tourPrompt && !tourPromptTarget && tourPrompt}
       {tourStep !== null && guidedStops[tourStep] && <aside className="guided-tour-card" aria-label="Guided tour controls" data-tour-animating={tourAnimating}>
         <span aria-live="polite">GUIDED TOUR · {tourStep + 1} / {guidedStops.length}</span>
         <b>{guidedStops[tourStep].name}</b>
