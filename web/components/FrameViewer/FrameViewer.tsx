@@ -11,6 +11,7 @@ type HotspotPhoto = { url: string; sourceUrl: string; credit: string; caption: s
 type GalleryPhoto = { url: string; title: string; author: string; license: string; licenseUrl: string; sourceUrl: string; scopeNote?: string };
 type PhotoGalleryMap = Record<string, Record<string, GalleryPhoto[]>>;
 const photoGalleryMap = photoGalleries as PhotoGalleryMap;
+let tourIntroShownThisPageLoad = false;
 type CampHotspot = { id: string; name: string; category?: string; details?: string; approx: boolean; offModel?: boolean; image?: HotspotPhoto; points: ([number, number] | null)[] };
 type ExcavatorHotspot = { id: string; name: string; category: string; details: string; source: string; image?: HotspotPhoto; points: (string | [number, number] | null)[] };
 type HumanHotspot = { id: string; name: string; category: string; details: string; source: string; image?: HotspotPhoto; point: [number, number] };
@@ -108,6 +109,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
   const [autoRotateEnabled, setAutoRotateEnabled] = useState(false);
   const [viewFrame, setViewFrame] = useState(0);
   const [tourStep, setTourStep] = useState<number | null>(null);
+  const tourPromptChecked = useRef(false);
   const [tourAnimating, setTourAnimating] = useState(false);
   const [showTourPrompt, setShowTourPrompt] = useState(false);
   const count = humanScale ? 1 : exploded ? manifest?.explode?.count ?? 0 : manifest?.rotate.count ?? 1;
@@ -317,16 +319,16 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
       setShowTourPrompt(false);
       return;
     }
-    try {
-      setShowTourPrompt(localStorage.getItem('any3d-tour-intro-seen') !== '1');
-    } catch {
-      setShowTourPrompt(false);
-    }
+    if (tourPromptChecked.current) return;
+    tourPromptChecked.current = true;
+    if (tourIntroShownThisPageLoad) return;
+    tourIntroShownThisPageLoad = true;
+    setShowTourPrompt(true);
   }, [slug, hasRotateHotspotLabels, guidedStops.length]);
 
   const dismissTourPrompt = () => {
     setShowTourPrompt(false);
-    try { localStorage.setItem('any3d-tour-intro-seen', '1'); } catch { /* Tour remains available from the viewer controls. */ }
+    tourIntroShownThisPageLoad = true;
   };
 
   useEffect(() => {
