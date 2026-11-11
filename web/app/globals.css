@@ -17,6 +17,15 @@
 .camp-pin-button{position:relative;display:block;width:12px;height:12px;padding:0;border:0;border-radius:50%;background:transparent;cursor:pointer}
 .camp-pin-button:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .camp-pin-icon{display:block;width:7px;height:7px;margin:auto;border:1px solid #fff;border-radius:50%;background:#f0444e;box-shadow:0 0 0 2px #f0444e44,0 1px 4px #000b;transition:transform .14s ease,box-shadow .14s ease}
+.hotspot.hotspot-tour-focus{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;isolation:isolate;z-index:6}
+.hotspot-tour-focus::before,.hotspot-tour-focus::after{position:absolute;inset:5px;border:1px solid #ffd27a;border-radius:50%;content:"";pointer-events:none}
+.hotspot-tour-focus::before{inset:0;border-color:#ffd27a88;animation:tour-hotspot-pulse 1.8s ease-out infinite;z-index:0}
+.hotspot-tour-focus::after{inset:9px;background:#ffb84a22;box-shadow:0 0 18px #ffb84a77;z-index:0}
+.hotspot.hotspot-tour-focus .camp-pin-icon{position:relative;z-index:1;width:13px;height:13px;border:2px solid #fff8df;background:#ffad36;box-shadow:0 0 0 3px #ffad3680,0 0 18px 7px #ffae4680,0 2px 7px #000b;transition:transform .16s ease}
+.hotspot-tour-focus:hover .camp-pin-icon,.hotspot-tour-focus:focus-visible .camp-pin-icon{transform:scale(1.18)}
+.hotspot-tour-focus:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px #171717b8}
+@keyframes tour-hotspot-pulse{0%{transform:scale(.55);opacity:.9}75%,100%{transform:scale(1.45);opacity:0}}
+@media(prefers-reduced-motion:reduce){.hotspot-tour-focus::before{animation:none;opacity:.45;transform:scale(1.2)}}
 .camp-pin-button:hover .camp-pin-icon,.camp-pin-button:focus-visible .camp-pin-icon{transform:scale(1.2);box-shadow:0 0 0 3px #f0444e55,0 1px 5px #000b}
 .camp-pin-label{position:absolute;left:50%;bottom:calc(100% + 7px);display:flex;align-items:center;gap:4px;width:max-content;max-width:190px;transform:translateX(-50%);padding:5px 8px;border:1px solid #ffffff55;border-radius:6px;background:#151914ed;color:#fff8e7;box-shadow:0 3px 12px #0009;white-space:nowrap;font:600 10px/1.2 'DM Sans',sans-serif;pointer-events:none}
 .camp-pin-label small{color:#f1d69e;font:8px 'DM Mono',monospace}
