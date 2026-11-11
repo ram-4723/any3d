@@ -193,7 +193,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
     const startFrame = position.current;
     const startZoom = zoomFactor.current;
     const isSmallDetail = /headlight|tail ?light|lamp|sensor|camera|antenna|probe|nozzle|brake|wheel|cannon|gun|lens|optic|gauge|instrument|port|exhaust|intake|bolt|rivet|switch/i.test(stop.name);
-    const targetZoom = isSmallDetail ? Math.min(maxZoom, Math.max(defaultViewerZoom(slug) + 0.5, defaultViewerZoom(slug) * 1.3)) : defaultViewerZoom(slug);
+    const targetZoom = Math.min(maxZoom, defaultViewerZoom(slug) + (isSmallDetail ? 0.65 : 0.3));
     tourDetailZoom.current = targetZoom > defaultViewerZoom(slug);
     const rect = canvas.current?.getBoundingClientRect();
     let targetPan = { x: 0, y: 0 };
@@ -205,53 +205,100 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
       }, targetZoom);
     }
     const startPan = panPosition.current;
-    const panDistance = Math.hypot(targetPan.x - startPan.x, targetPan.y - startPan.y);
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion || (Math.abs(distance) < 0.5 && Math.abs(targetZoom - startZoom) < 0.01 && panDistance < 1)) {
+    if (!reduceMotion && Math.abs(distance) < 0.5 && Math.abs(targetZoom - startZoom) < 0.01 && Math.hypot(targetPan.x - startPan.x, targetPan.y - startPan.y) < 1) {
       setTourAnimating(false);
-      position.current = stop.frame;
-      setViewFrame(stop.frame);
-      requestFrame.current(stop.frame);
-      zoomFactor.current = targetZoom;
-      setZoom(targetZoom);
-      panPosition.current = targetPan;
-      setPanOffset(targetPan);
+      return;
+    }
+    const setTourView = (frame: number, scale: number, offset: { x: number; y: number }) => {
+      position.current = frame;
+      setViewFrame(frameIndex(frame, count));
+      requestFrame.current(frameIndex(frame, count));
+      zoomFactor.current = scale;
+      setZoom(Math.round(scale * 100) / 100);
+      panPosition.current = offset;
+      setPanOffset(offset);
       draw();
+    };
+    if (reduceMotion) {
+      setTourAnimating(false);
+      setTourView(stop.frame, targetZoom, targetPan);
       return;
     }
     setTourAnimating(true);
-    const duration = 320 + Math.min(Math.abs(distance) * 8, 600);
-    const began = performance.now();
-    let lastFrame = frameIndex(startFrame, count);
-    const animate = (now: number) => {
-      const progress = Math.min(1, (now - began) / duration);
-      const eased = progress < 0.5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-      position.current = (startFrame + distance * eased + count) % count;
-      const nextFrame = frameIndex(position.current, count);
-      zoomFactor.current = startZoom + (targetZoom - startZoom) * eased;
-      panPosition.current = {
-        x: startPan.x + (targetPan.x - startPan.x) * eased,
-        y: startPan.y + (targetPan.y - startPan.y) * eased,
+    const runSegment = (duration: number, update: (eased: number) => void, finish: () => void) => {
+      const began = performance.now();
+      const animate = (now: number) => {
+        const progress = Math.min(1, (now - began) / duration);
+        const eased = progress < 0.5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+        update(eased);
+        draw();
+        if (progress < 1) tourAnimationFrame.current = requestAnimationFrame(animate);
+        else { tourAnimationFrame.current = null; finish(); }
       };
-      setZoom(Math.round(zoomFactor.current * 100) / 100);
-      setPanOffset(panPosition.current);
-      if (nextFrame !== lastFrame) {
-        lastFrame = nextFrame;
-        setViewFrame(nextFrame);
-        requestFrame.current(nextFrame);
-      }
-      draw();
-      if (progress < 1) {
-        tourAnimationFrame.current = requestAnimationFrame(animate);
-      } else {
-        position.current = stop.frame;
-        setViewFrame(stop.frame);
-        requestFrame.current(stop.frame);
-        tourAnimationFrame.current = null;
-        setTourAnimating(false);
-      }
+      tourAnimationFrame.current = requestAnimationFrame(animate);
     };
-    tourAnimationFrame.current = requestAnimationFrame(animate);
+    const zoomToPart = () => {
+      const fromZoom = zoomFactor.current, fromPan = panPosition.current;
+      const amount = Math.abs(targetZoom - fromZoom) + Math.hypot(targetPan.x - fromPan.x, targetPan.y - fromPan.y) / 500;
+      if (amount < 0.01) { setTourAnimating(false); return; }
+      const duration = 260 + Math.min(amount * 170, 360);
+      runSegment(duration, eased => {
+        const scale = fromZoom + (targetZoom - fromZoom) * eased;
+        const offset = { x: fromPan.x + (targetPan.x - fromPan.x) * eased, y: fromPan.y + (targetPan.y - fromPan.y) * eased };
+        zoomFactor.current = scale;
+        setZoom(Math.round(scale * 100) / 100);
+        panPosition.current = offset;
+        setPanOffset(offset);
+      }, () => {
+        setTourView(stop.frame, targetZoom, targetPan);
+        setTourAnimating(false);
+      });
+    };
+    const spinToPart = () => {
+      if (Math.abs(distance) < 0.5) {
+        setTourView(stop.frame, 1, { x: 0, y: 0 });
+        zoomToPart();
+        return;
+      }
+      const duration = 260 + Math.min(Math.abs(distance) * 7, 650);
+      let lastFrame = frameIndex(startFrame, count);
+      runSegment(duration, eased => {
+        position.current = (startFrame + distance * eased + count) % count;
+        const nextFrame = frameIndex(position.current, count);
+        zoomFactor.current = 1;
+        setZoom(1);
+        panPosition.current = { x: 0, y: 0 };
+        setPanOffset({ x: 0, y: 0 });
+        if (nextFrame !== lastFrame) {
+          lastFrame = nextFrame;
+          setViewFrame(nextFrame);
+          requestFrame.current(nextFrame);
+        }
+      }, () => {
+        setTourView(stop.frame, 1, { x: 0, y: 0 });
+        zoomToPart();
+      });
+    };
+    const fitZoom = 1;
+    const panDistance = Math.hypot(startPan.x, startPan.y);
+    if (startZoom > fitZoom + 0.01 || panDistance > 1) {
+      const amount = Math.abs(startZoom - fitZoom) + panDistance / 500;
+      runSegment(220 + Math.min(amount * 180, 360), eased => {
+        const scale = startZoom + (fitZoom - startZoom) * eased;
+        const offset = { x: startPan.x * (1 - eased), y: startPan.y * (1 - eased) };
+        zoomFactor.current = scale;
+        setZoom(Math.round(scale * 100) / 100);
+        panPosition.current = offset;
+        setPanOffset(offset);
+      }, () => {
+        setTourView(startFrame, fitZoom, { x: 0, y: 0 });
+        spinToPart();
+      });
+    } else {
+      setTourView(startFrame, fitZoom, { x: 0, y: 0 });
+      spinToPart();
+    }
   };
 
   const endGuidedTour = () => {
@@ -629,7 +676,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false }:
         return <button key={h.id} type="button" className={'hotspot ' + (slug === 'excavator' ? 'excavator-hotspot ' : '') + alignment} style={hotspotStyle(h.x, h.y)} onPointerEnter={() => setHoveredHotspot(h.id)} onPointerLeave={() => setHoveredHotspot(null)} onFocus={() => setHoveredHotspot(h.id)} onBlur={() => setHoveredHotspot(null)} onClick={() => { endGuidedTour(); if (selected) { setActiveHotspot(null); setHoveredHotspot(null); } else { setShowObjectPhotos(false); setActiveHotspot(h.id); } }} aria-label={h.name} aria-pressed={selected}>{hasRotateHotspotLabels && <span className="camp-pin-icon" aria-hidden="true"/>}{(selected || hovered) && <span className="hotspot-label" role="tooltip">{h.group && <small>{h.group}</small>}{h.name}</span>}</button>;
       })}
       {slug === 'janaki-mandir' && showObjectPhotos && <aside className="part-info-card" role="dialog" aria-label="Janaki Mandir photo gallery"><button type="button" className="camp-info-close" aria-label="Close photo gallery" title="Close photo gallery" onClick={() => setShowObjectPhotos(false)}>×</button><PhotoCarousel key={`${slug}-overview`} id="overall views" photos={photoGalleryMap[slug]?.overview ?? []} /><small>REAL PHOTOS · WIKIMEDIA COMMONS</small><b>Janaki Mandir · Overall views</b><p>Photo attribution and licence are linked on each image.</p></aside>}
-      {hasRotateHotspotLabels && activeHotspot && (() => { const item = humanScale ? manifest?.humanScale?.hotspots.find(point => point.id === activeHotspot) : manifest?.rotate.hotspots?.find(point => point.id === activeHotspot) as ExcavatorHotspot | undefined; if (!item) return null; const photo = item.image ?? (slug === 'excavator' ? excavatorPhoto : undefined); const photos = photoGalleryMap[slug]?.[item.id] ?? (photo ? [asGalleryPhoto(photo)] : []); return <aside className="part-info-card" role="dialog" aria-label={`${item.name} details`}><button type="button" className="camp-info-close" aria-label="Close label details" title="Close label card" onClick={() => { endGuidedTour(); setActiveHotspot(null); }}>×</button>{!tourAnimating && <PhotoCarousel key={`${slug}-${item.id}`} id={item.id} photos={photos} />}<small>{item.category}</small><b>{item.name}</b><p>{item.details}</p><a href={item.source} target="_blank" rel="noreferrer">↗ Source</a></aside>; })()}
+      {hasRotateHotspotLabels && activeHotspot && !tourAnimating && (() => { const item = humanScale ? manifest?.humanScale?.hotspots.find(point => point.id === activeHotspot) : manifest?.rotate.hotspots?.find(point => point.id === activeHotspot) as ExcavatorHotspot | undefined; if (!item) return null; const photo = item.image ?? (slug === 'excavator' ? excavatorPhoto : undefined); const photos = photoGalleryMap[slug]?.[item.id] ?? (photo ? [asGalleryPhoto(photo)] : []); return <aside className="part-info-card" role="dialog" aria-label={`${item.name} details`}><button type="button" className="camp-info-close" aria-label="Close label details" title="Close label card" onClick={() => { endGuidedTour(); setActiveHotspot(null); }}>×</button><PhotoCarousel key={`${slug}-${item.id}`} id={item.id} photos={photos} /><small>{item.category}</small><b>{item.name}</b><p>{item.details}</p><a href={item.source} target="_blank" rel="noreferrer">↗ Source</a></aside>; })()}
       {slug === 'toyota-gr-supra-a90' && exploded && activeHotspot && (() => {
         const part = manifest?.explode?.hotspots?.find(item => item.id === activeHotspot);
         if (!part) return null;
