@@ -2388,5 +2388,1018 @@
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
       }
     ]
+  },
+  "ford-f150-raptor": {
+    "engine": [
+      {
+        "url": "/objects/ford-f150-raptor/photos/engine/01.jpg",
+        "title": "3.5ecoboostfront",
+        "author": "Dana60Cummins",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A3.5ecoboostfront.jpg",
+        "scopeNote": "A Ford 3.5-litre EcoBoost V6 on the stand, even labelled ‘F-Series 3.5 Ti-VCT EcoBoost’. The Raptor uses the High Output version of this twin-turbo engine."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/engine/02.jpg",
+        "title": "Frontendcutright",
+        "author": "Dana60Cummins",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFrontendcutright.jpg",
+        "scopeNote": "The same 3.5 EcoBoost with covers off. In High Output form on the 2019 Raptor, Ford rated it at 450 hp and 510 lb-ft."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/engine/03.jpg",
+        "title": "3.5Ecoboostrear",
+        "author": "Dana60Cummins",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A3.5Ecoboostrear.jpg",
+        "scopeNote": "Cutaway of the 3.5 EcoBoost: pistons, ports and the compact V6 layout that sits under a Raptor’s hood."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/engine/04.jpg",
+        "title": "3.5EcoboostPiston",
+        "author": "Dana60Cummins",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A3.5EcoboostPiston.jpg",
+        "scopeNote": "A 3.5 EcoBoost piston in the bore. The Raptor’s High Output tune of this engine is twin-turbocharged and intercooled."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/engine/05.jpg",
+        "title": "3.5EcoboostCombustion",
+        "author": "Dana60Cummins",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A3.5EcoboostCombustion.jpg",
+        "scopeNote": "Combustion chamber of the 3.5 EcoBoost demo engine — the architecture behind the Raptor’s High Output V6."
+      }
+    ],
+    "shocks": [
+      {
+        "url": "/objects/ford-f150-raptor/photos/shocks/01.jpg",
+        "title": "Ford F-150 Raptor Pickup Truck Underside Skid Plate (48661117252)",
+        "author": "Tony Webster from Minneapolis, Minnesota, United States",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_Pickup_Truck_Underside_Skid_Plate_%2848661117252%29.jpg",
+        "scopeNote": "From underneath a Raptor: FOX coilovers stand in the front wheel wells beside the skid plate. From 2019 these shocks gained Live Valve electronic damping."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/shocks/02.jpg",
+        "title": "Ford F-150 Raptor SVT - Flickr - skinnylawyer",
+        "author": "skinnylawyer from Los Angeles, California, USA",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_SVT_-_Flickr_-_skinnylawyer.jpg",
+        "scopeNote": "A Raptor chassis with the body lifted off. The FOX long-travel coilover is in plain view in the wheel well — the same family of shocks used on later Live Valve trucks."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/shocks/03.jpg",
+        "title": "RaptorFront Underbody",
+        "author": "Dana60Cummins",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ARaptorFront_Underbody.JPG",
+        "scopeNote": "Front underbody of a Raptor on a show stand. The long-travel FOX dampers and control arms sit just inboard of the all-terrain tyres."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/shocks/04.jpg",
+        "title": "Rear Underbody",
+        "author": "Dana60Cummins",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ARear_Underbody.JPG",
+        "scopeNote": "Rear underbody of a Raptor: the axle, links and FOX dampers that give the truck its travel, with BFGoodrich All-Terrain tyres on the wheels."
+      }
+    ],
+    "tyres": [
+      {
+        "url": "/objects/ford-f150-raptor/photos/tyres/01.jpg",
+        "title": "Ford SVT Wheel with BFGoodrich All-Terrain Tire (32627870564)",
+        "author": "Impactbumper",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_SVT_Wheel_with_BFGoodrich_All-Terrain_Tire_%2832627870564%29.jpg",
+        "scopeNote": "A Raptor wheel wearing a BFGoodrich All-Terrain tyre. Ford fits 315/70 R17 BFGoodrich All-Terrain T/A KO2s as standard on the second-generation truck."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/tyres/02.jpg",
+        "title": "Ford F-150 Raptor Pickup Truck Underside Skid Plate (48661117252)",
+        "author": "Tony Webster from Minneapolis, Minnesota, United States",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_Pickup_Truck_Underside_Skid_Plate_%2848661117252%29.jpg",
+        "scopeNote": "Looking up at a pair of muddied all-terrain tyres on a Raptor. The 17-inch wheels and 315-section KO2s are part of the factory off-road package."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/tyres/03.jpg",
+        "title": "'17 Ford F-150 Raptor (MIAS '17)",
+        "author": "Bull-Doser",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A%2717_Ford_F-150_Raptor_%28MIAS_%2717%29.jpg",
+        "scopeNote": "A show-stand 2017 Raptor on its 17-inch wheels and BFGoodrich all-terrains, the tyre sidewall and tread easy to read."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/tyres/04.jpg",
+        "title": "2018 Ford F-150 Raptor Super Crew Cab in Lead Foot, front right",
+        "author": "Mr.choppers",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2018_Ford_F-150_Raptor_Super_Crew_Cab_in_Lead_Foot%2C_front_right.jpg",
+        "scopeNote": "A 2018 Raptor SuperCrew in Lead Foot: the flared arch frames a 17-inch wheel and all-terrain tyre."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/tyres/05.jpg",
+        "title": "Rear Underbody",
+        "author": "Dana60Cummins",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ARear_Underbody.JPG",
+        "scopeNote": "From below, a BFGoodrich All-Terrain T/A sidewall faces the camera — the same family of tyre Ford specifies for the Raptor."
+      }
+    ],
+    "grille": [
+      {
+        "url": "/objects/ford-f150-raptor/photos/grille/01.jpg",
+        "title": "Ford F-150 Raptor 3.5L EcoBoost 4WD P552 Shadow Black (47)",
+        "author": "Damian B Oh",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_3.5L_EcoBoost_4WD_P552_Shadow_Black_%2847%29.jpg",
+        "scopeNote": "FORD in block letters across the grille, with no blue oval. That heritage lettering is the Raptor’s signature face."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/grille/02.jpg",
+        "title": "Ford F-150 Raptor 3.5L EcoBoost 4WD P552 Shadow Black (1)",
+        "author": "Damian B Oh",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_3.5L_EcoBoost_4WD_P552_Shadow_Black_%281%29.jpg",
+        "scopeNote": "Straight on to a second-generation Raptor: the black mesh grille and the FORD letters that replaced the oval on this truck."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/grille/03.jpg",
+        "title": "'17 Ford F-150 Raptor (MIAS '17)",
+        "author": "Bull-Doser",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A%2717_Ford_F-150_Raptor_%28MIAS_%2717%29.jpg",
+        "scopeNote": "A 2017 Raptor at the auto show, headlights on, FORD lettering across the grille and the amber marker lights above it."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/grille/04.jpg",
+        "title": "2019 Ford F-150 Raptor au SIAM 2019",
+        "author": "Bull-Doser",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2019_Ford_F-150_Raptor_au_SIAM_2019.jpg",
+        "scopeNote": "Sun on a Raptor’s FORD grille. The lettering is a deliberate throwback to older Ford trucks."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/grille/05.jpg",
+        "title": "2018 Ford F-150 Raptor Super Crew Cab in Lead Foot, front right",
+        "author": "Mr.choppers",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2018_Ford_F-150_Raptor_Super_Crew_Cab_in_Lead_Foot%2C_front_right.jpg",
+        "scopeNote": "2018 F-150 Raptor SuperCrew in Lead Foot — the heritage grille and quad-beam lamps as Ford sold them that year."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/grille/06.jpg",
+        "title": "Ford F-150 Raptor (52500309363)",
+        "author": "Alexandre Prevot from Nancy, France",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_%2852500309363%29.jpg",
+        "scopeNote": "A white second-generation Raptor, FORD letters centred in the black grille."
+      }
+    ],
+    "headlamps": [
+      {
+        "url": "/objects/ford-f150-raptor/photos/headlamps/01.jpg",
+        "title": "'17 Ford F-150 Raptor (MIAS '17)",
+        "author": "Bull-Doser",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A%2717_Ford_F-150_Raptor_%28MIAS_%2717%29.jpg",
+        "scopeNote": "Quad-beam LED headlamps lit on a 2017 Raptor, with the distinctive C-shaped daytime running lamp. Ford listed these lamps as standard on the Raptor."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/headlamps/02.jpg",
+        "title": "Ford F-150 Raptor 3.5L EcoBoost 4WD P552 Shadow Black (47)",
+        "author": "Damian B Oh",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_3.5L_EcoBoost_4WD_P552_Shadow_Black_%2847%29.jpg",
+        "scopeNote": "LED headlamp and FORD grille in one frame. The second-generation Raptor’s lamps also include daytime running lights."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/headlamps/03.jpg",
+        "title": "Ford F-150 Raptor 3.5L EcoBoost 4WD P552 Shadow Black (14)",
+        "author": "Damian B Oh",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_3.5L_EcoBoost_4WD_P552_Shadow_Black_%2814%29.jpg",
+        "scopeNote": "A Shadow Black Raptor’s LED headlamps and heritage grille, seen straight on in daylight."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/headlamps/04.jpg",
+        "title": "2017 Ford F-150 Raptor 3.5 V6 EcoBoost (47503480642)",
+        "author": "Rutger van der Maar",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2017_Ford_F-150_Raptor_3.5_V6_EcoBoost_%2847503480642%29.jpg",
+        "scopeNote": "Front three-quarter of a 2017 Raptor 3.5 EcoBoost, with the quad-beam LED lamps clearly visible in the wings."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/headlamps/05.jpg",
+        "title": "2018 Ford F-150 Raptor Super Crew Cab in Lead Foot, front right",
+        "author": "Mr.choppers",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2018_Ford_F-150_Raptor_Super_Crew_Cab_in_Lead_Foot%2C_front_right.jpg",
+        "scopeNote": "Lead Foot 2018 Raptor: the quad-beam LED headlamp sits outboard of the FORD grille, just as the order guide described it."
+      }
+    ],
+    "body": [
+      {
+        "url": "/objects/ford-f150-raptor/photos/body/01.jpg",
+        "title": "2018 Ford F-150 Raptor Super Crew Cab in Lead Foot, front right",
+        "author": "Mr.choppers",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2018_Ford_F-150_Raptor_Super_Crew_Cab_in_Lead_Foot%2C_front_right.jpg",
+        "scopeNote": "A 2018 Raptor SuperCrew in Lead Foot. From 2015 the F-150’s cab and bed were aluminium alloy on a high-strength steel frame — including the Raptor."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/body/02.jpg",
+        "title": "Ford F-150 Raptor (52500309363)",
+        "author": "Alexandre Prevot from Nancy, France",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_%2852500309363%29.jpg",
+        "scopeNote": "A white second-generation Raptor in three-quarter view: aluminium bodywork, wide flares and the steel frame underneath."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/body/03.jpg",
+        "title": "19 Ford F-150 Raptor (1)",
+        "author": "HJUdall",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A19_Ford_F-150_Raptor_%281%29.jpg",
+        "scopeNote": "A 2019-spec Raptor outdoors, the aluminium cab and bed sitting on the wider Raptor track."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/body/04.jpg",
+        "title": "Blue Second Gen F-150 Raptor on Dirt Lot",
+        "author": "Noah Wulf",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABlue_Second_Gen_F-150_Raptor_on_Dirt_Lot.jpg",
+        "scopeNote": "A second-generation Raptor on a dirt lot — the aluminium-bodied truck that replaced the all-steel first-generation SVT Raptor."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/body/05.jpg",
+        "title": "20 Ford F-150 Raptor",
+        "author": "HJUdall",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A20_Ford_F-150_Raptor.jpg",
+        "scopeNote": "Side-on to a 2020-era Raptor: aluminium panels, SuperCrew cab and the short 5.5-foot bed."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/body/06.jpg",
+        "title": "Raptor third gen",
+        "author": "Keshka54",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ARaptor_third_gen.jpg",
+        "scopeNote": "A later Raptor in the snow. The aluminium cab and bed kept weight down compared with an all-steel body."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/body/07.jpg",
+        "title": "Ford F-150 Raptor (49522651482)",
+        "author": "crash71100",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_%2849522651482%29.jpg",
+        "scopeNote": "A second-generation Raptor in the street, aluminium body and flared arches in one clean side-rear view."
+      }
+    ],
+    "fenders": [
+      {
+        "url": "/objects/ford-f150-raptor/photos/fenders/01.jpg",
+        "title": "Ford F-150 Raptor 3.5L EcoBoost 4WD P552 Shadow Black (20)",
+        "author": "Damian B Oh",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_3.5L_EcoBoost_4WD_P552_Shadow_Black_%2820%29.jpg",
+        "scopeNote": "The Raptor’s wide flared fenders cover a track much broader than a standard F-150. Ford quoted 96.8 inches overall width including mirrors."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/fenders/02.jpg",
+        "title": "'17 Ford F-150 Raptor (MIAS '17)",
+        "author": "Bull-Doser",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A%2717_Ford_F-150_Raptor_%28MIAS_%2717%29.jpg",
+        "scopeNote": "A 2017 Raptor’s front flare and 17-inch all-terrain tyre. Those arches are there to clear the long-travel suspension."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/fenders/03.jpg",
+        "title": "2018 Ford F-150 Raptor Super Crew Cab in Lead Foot, front right",
+        "author": "Mr.choppers",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2018_Ford_F-150_Raptor_Super_Crew_Cab_in_Lead_Foot%2C_front_right.jpg",
+        "scopeNote": "Lead Foot 2018: the front and rear flares give the Raptor its wide stance, and hide the extra wheel travel."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/fenders/04.jpg",
+        "title": "Ford F-150 Raptor (52500309363)",
+        "author": "Alexandre Prevot from Nancy, France",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_%2852500309363%29.jpg",
+        "scopeNote": "White Raptor, flared front and rear arches in one three-quarter view."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/fenders/05.jpg",
+        "title": "2019 Ford F-150 Raptor au SIAM 2019",
+        "author": "Bull-Doser",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2019_Ford_F-150_Raptor_au_SIAM_2019.jpg",
+        "scopeNote": "Sun on a Raptor’s front fender flare and FORD grille — the wide-body look that sets it apart from a regular F-150."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/fenders/06.jpg",
+        "title": "2017 Ford F-150 Raptor 3.5 V6 EcoBoost (47503480642)",
+        "author": "Rutger van der Maar",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2017_Ford_F-150_Raptor_3.5_V6_EcoBoost_%2847503480642%29.jpg",
+        "scopeNote": "A 2017 Raptor 3.5 EcoBoost, the flared front arch framing the all-terrain tyre."
+      }
+    ],
+    "skid": [
+      {
+        "url": "/objects/ford-f150-raptor/photos/skid/01.jpg",
+        "title": "Ford F-150 Raptor Pickup Truck Underside Skid Plate (48661117252)",
+        "author": "Tony Webster from Minneapolis, Minnesota, United States",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_Pickup_Truck_Underside_Skid_Plate_%2848661117252%29.jpg",
+        "scopeNote": "The front skid plate from below, with recovery tow hooks at the corners of the bumper. This plate is there to protect the underbody off-road."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/skid/02.jpg",
+        "title": "Ford F-150 Raptor 3.5L EcoBoost 4WD P552 Shadow Black (14)",
+        "author": "Damian B Oh",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_3.5L_EcoBoost_4WD_P552_Shadow_Black_%2814%29.jpg",
+        "scopeNote": "Head-on, the satin skid plate hangs below the bumper and a recovery hook sits in the passenger-side opening."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/skid/03.jpg",
+        "title": "Ford F-150 Raptor 3.5L EcoBoost 4WD P552 Shadow Black (1)",
+        "author": "Damian B Oh",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_3.5L_EcoBoost_4WD_P552_Shadow_Black_%281%29.jpg",
+        "scopeNote": "A second-generation Raptor’s front skid plate and tow-hook openings, seen with the FORD grille above."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/skid/04.jpg",
+        "title": "'17 Ford F-150 Raptor (MIAS '17)",
+        "author": "Bull-Doser",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A%2717_Ford_F-150_Raptor_%28MIAS_%2717%29.jpg",
+        "scopeNote": "On the show stand the skid plate and a visible tow hook sit under the bumper of a 2017 Raptor."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/skid/05.jpg",
+        "title": "RaptorFront Underbody",
+        "author": "Dana60Cummins",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ARaptorFront_Underbody.JPG",
+        "scopeNote": "Front underbody of a Raptor on a display stand: the skid plate is marked at the centre, with the tow-hook area just ahead of the tyres."
+      }
+    ],
+    "cab": [
+      {
+        "url": "/objects/ford-f150-raptor/photos/cab/01.jpg",
+        "title": "2018 Ford F-150 Raptor Super Crew Cab in Lead Foot, rear right",
+        "author": "Mr.choppers",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2018_Ford_F-150_Raptor_Super_Crew_Cab_in_Lead_Foot%2C_rear_right.jpg",
+        "scopeNote": "2018 F-150 Raptor SuperCrew in Lead Foot, rear three-quarter: four doors and the 5.5-foot bed that Ford paired with this cab."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/cab/02.jpg",
+        "title": "2018 Ford F-150 Raptor Super Crew Cab in Lead Foot, front right",
+        "author": "Mr.choppers",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2018_Ford_F-150_Raptor_Super_Crew_Cab_in_Lead_Foot%2C_front_right.jpg",
+        "scopeNote": "The same 2018 SuperCrew from the front. Ford quoted a 146-inch wheelbase and 231.9-inch overall length for this four-door Raptor."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/cab/03.jpg",
+        "title": "2019 Ford F-150 Raptor 4x4 SuperCrew 5.5' Box in Ruby Red Metallic Tinted Clearcoat, Front Left, 2024-03-08",
+        "author": "Elise240SX",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2019_Ford_F-150_Raptor_4x4_SuperCrew_5.5%27_Box_in_Ruby_Red_Metallic_Tinted_Clearcoat%2C_Front_Left%2C_2024-03-08.jpg",
+        "scopeNote": "A 2019 Raptor 4x4 SuperCrew in Ruby Red, four doors clearly visible. This is the cab on the model in the 3D viewer."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/cab/04.jpg",
+        "title": "2017 Ford F-150 Raptor Crew Cab",
+        "author": "Bull-Doser",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2017_Ford_F-150_Raptor_Crew_Cab.jpg",
+        "scopeNote": "A 2017 F-150 Raptor Crew Cab — the first year of the aluminium-bodied, EcoBoost SuperCrew Raptor."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/cab/05.jpg",
+        "title": "Ford F-150 Raptor 3.5L EcoBoost 4WD P552 Shadow Black (20)",
+        "author": "Damian B Oh",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_3.5L_EcoBoost_4WD_P552_Shadow_Black_%2820%29.jpg",
+        "scopeNote": "A Shadow Black SuperCrew from the side: four full doors, short bed, and the RAPTOR graphic on the box."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/cab/06.jpg",
+        "title": "Ford F-150 Raptor (52500309363)",
+        "author": "Alexandre Prevot from Nancy, France",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_%2852500309363%29.jpg",
+        "scopeNote": "A white SuperCrew Raptor, four doors and the short bed in one three-quarter view."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/cab/07.jpg",
+        "title": "19 Ford F-150 Raptor (1)",
+        "author": "HJUdall",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A19_Ford_F-150_Raptor_%281%29.jpg",
+        "scopeNote": "Four-door SuperCrew in the open air. The Raptor was also sold as a SuperCab; this is the four-door body."
+      }
+    ],
+    "bed": [
+      {
+        "url": "/objects/ford-f150-raptor/photos/bed/01.jpg",
+        "title": "2018 Ford F-150 Raptor Super Crew Cab in Lead Foot, rear right",
+        "author": "Mr.choppers",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2018_Ford_F-150_Raptor_Super_Crew_Cab_in_Lead_Foot%2C_rear_right.jpg",
+        "scopeNote": "Rear three-quarter of a 2018 SuperCrew Raptor: the 5.5-foot aluminium cargo bed sits behind the four-door cab."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/bed/02.jpg",
+        "title": "2021 Ford F-150 Raptor, rear",
+        "author": "Kevauto",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2021_Ford_F-150_Raptor%2C_rear.jpg",
+        "scopeNote": "Straight on to a 2021 Raptor’s tailgate and aluminium bed. The SuperCrew keeps this shorter 5.5-foot box."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/bed/03.jpg",
+        "title": "Ford F-150 Raptor 3.5L EcoBoost 4WD P552 Shadow Black (24)",
+        "author": "Damian B Oh",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_3.5L_EcoBoost_4WD_P552_Shadow_Black_%2824%29.jpg",
+        "scopeNote": "The aluminium bed and tailgate of a second-generation Raptor, with the unique tail-lamp signature."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/bed/04.jpg",
+        "title": "Ford F-150 Raptor 3.5L EcoBoost 4WD P552 Shadow Black (32)",
+        "author": "Damian B Oh",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFord_F-150_Raptor_3.5L_EcoBoost_4WD_P552_Shadow_Black_%2832%29.jpg",
+        "scopeNote": "A clean rear three-quarter of the Shadow Black Raptor, short aluminium bed and flared rear arches."
+      },
+      {
+        "url": "/objects/ford-f150-raptor/photos/bed/05.jpg",
+        "title": "2021 Ford F-150 Raptor, rear 4.23.22",
+        "author": "Kevauto",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2021_Ford_F-150_Raptor%2C_rear_4.23.22.jpg",
+        "scopeNote": "Rear view of a 2021 Raptor, aluminium tailgate and bed ready for a 5.5-foot load."
+      }
+    ]
+  },
+  "a10c": {
+    "gau8": [
+      {
+        "url": "/objects/a10c/photos/gau8/01.jpg",
+        "title": "A-10 Thunderbolt II Gun Run",
+        "author": "A1C JONATHAN SNYDER",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AA-10_Thunderbolt_II_Gun_Run.JPEG",
+        "scopeNote": "An Alaska Air National Guard A-10 fires the GAU-8/A Avenger, the 30 mm seven-barrel Gatling gun the U.S. Air Force rates at 3,900 rounds a minute."
+      },
+      {
+        "url": "/objects/a10c/photos/gau8/02.jpg",
+        "title": "A-10 Thunderbolt II fires the 30mm gun at a low angle strafe",
+        "author": "SrA Christina D. Ponte",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AA-10_Thunderbolt_II_fires_the_30mm_gun_at_a_low_angle_strafe.jpg",
+        "scopeNote": "Gun-gas rolls off the nose in a low-angle strafe. The A-10 was built around this cannon: the aircraft’s design started with the gun."
+      },
+      {
+        "url": "/objects/a10c/photos/gau8/03.jpg",
+        "title": "A-10 Thunderbolt II (021105-O-9999G-028)",
+        "author": "Staff Sgt. Steve Thurow",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AA-10_Thunderbolt_II_%28021105-O-9999G-028%29.jpg",
+        "scopeNote": "A Weapons School A-10 looses a burst over the desert. The muzzle flash is the Avenger at work — the same gun this model is built around."
+      },
+      {
+        "url": "/objects/a10c/photos/gau8/04.jpg",
+        "title": "GAU-8 meets VW Type 1",
+        "author": "U.S. Air Force photo [1]",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AGAU-8_meets_VW_Type_1.jpg",
+        "scopeNote": "The GAU-8 Avenger, off the aircraft, is longer than a Volkswagen Beetle. That scale is why the A-10’s nose is shaped the way it is."
+      },
+      {
+        "url": "/objects/a10c/photos/gau8/05.jpg",
+        "title": "GAU-8 Avenger Close Up",
+        "author": "Noah Wulf",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AGAU-8_Avenger_Close_Up.jpg",
+        "scopeNote": "Seven barrels stare out of the A-10’s nose. The Avenger can fire armour-piercing and high-explosive rounds in the same burst."
+      },
+      {
+        "url": "/objects/a10c/photos/gau8/06.jpg",
+        "title": "A-10 thunderbolt II GAU-8 Avenger close up, Volk field",
+        "author": "Orionvoigt",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AA-10_thunderbolt_II_GAU-8_Avenger_close_up%2C_Volk_field.jpg",
+        "scopeNote": "Close enough to count the barrels: each is 30 mm, and the gun’s recoil is absorbed by the airframe it was designed into."
+      },
+      {
+        "url": "/objects/a10c/photos/gau8/07.jpg",
+        "title": "Thunderbolt II 061220",
+        "author": "U.S. Air Force photo/Tech. Sgt. Joseph Kapinos",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AThunderbolt_II_061220.jpg",
+        "scopeNote": "On the takeoff roll the Avenger’s barrels sit just off the runway. The ‘Warthog’ snout is there to give the gun a clear field of fire."
+      }
+    ],
+    "engines": [
+      {
+        "url": "/objects/a10c/photos/engines/01.jpg",
+        "title": "Propulsion techs ensure A-10s 'fit to fight' 140228-F-JB386-179",
+        "author": "Siuta Ika",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APropulsion_techs_ensure_A-10s_%27fit_to_fight%27_140228-F-JB386-179.jpg",
+        "scopeNote": "Cowling off a TF34: two of these General Electric turbofans sit high on the A-10’s rear fuselage, each rated at 9,065 pounds of thrust."
+      },
+      {
+        "url": "/objects/a10c/photos/engines/02.jpg",
+        "title": "Oil check (16758728830)",
+        "author": "US Air Force from USA",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOil_check_%2816758728830%29.jpg",
+        "scopeNote": "A technician checks oil above a TF34 intake. The high mounting keeps the engines out of debris when the A-10 operates from rough strips."
+      },
+      {
+        "url": "/objects/a10c/photos/engines/03.jpg",
+        "title": "A-10s take to the skies in Poland 150713-F-VS255-111",
+        "author": "Staff Sgt. Christopher Ruano",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AA-10s_take_to_the_skies_in_Poland_150713-F-VS255-111.jpg",
+        "scopeNote": "Face-on to a TF34 intake. The A-10’s left and right engines are interchangeable — a point the U.S. Air Force still lists in its fact sheet."
+      },
+      {
+        "url": "/objects/a10c/photos/engines/04.jpg",
+        "title": "US Navy 040415-N-5821W-001 Four Air Force A-10 Thunderbolt attack aircraft line up for takeoff aboard NAS Sigonella",
+        "author": "U.S. Navy photo by Journalist 2nd Class Stephen P. Weaver",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AUS_Navy_040415-N-5821W-001_Four_Air_Force_A-10_Thunderbolt_attack_aircraft_line_up_for_takeoff_aboard_NAS_Sigonella.jpg",
+        "scopeNote": "Four A-10s line up to launch, intakes facing the catapult crew. Those high-mounted turbofans are a signature of the type."
+      },
+      {
+        "url": "/objects/a10c/photos/engines/05.jpg",
+        "title": "Defense.gov News Photo 050722-F-8041A-097",
+        "author": "Master Sgt. Dale Atkins, U.S. Air Force",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ADefense.gov_News_Photo_050722-F-8041A-097.jpg",
+        "scopeNote": "Maintainers work on top of an A-10 engine nacelle. The TF34s sit between the wings and the twin tails, clear of the wing wake."
+      },
+      {
+        "url": "/objects/a10c/photos/engines/06.jpg",
+        "title": "A-10s take to the skies in Poland 150709-F-VS255-037",
+        "author": "Staff Sgt. Christopher Ruano",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AA-10s_take_to_the_skies_in_Poland_150709-F-VS255-037.jpg",
+        "scopeNote": "An A-10 gets airborne, both TF34s on the power. The engines’ high position also reduces their infrared signature from the ground."
+      },
+      {
+        "url": "/objects/a10c/photos/engines/07.jpg",
+        "title": "AirExpo 2010 - A-10 Thunderbolt II, a.k.a the A-10 \"Warthog\" (4805692798)",
+        "author": "Pete Markham from Loretto, USA",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAirExpo_2010_-_A-10_Thunderbolt_II%2C_a.k.a_the_A-10_%22Warthog%22_%284805692798%29.jpg",
+        "scopeNote": "A close look at a TF34 intake at an airshow. In service the two engines let the A-10 fly home if one is damaged."
+      }
+    ],
+    "bathtub": [],
+    "canopy": [
+      {
+        "url": "/objects/a10c/photos/canopy/01.jpg",
+        "title": "Ind ANG A-10 130813Red Flag Alaska - Eielson",
+        "author": "U.S. Department of Defense Current Photos",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AInd_ANG_A-10_130813Red_Flag_Alaska_-_Eielson.jpg",
+        "scopeNote": "An open bubble canopy at Red Flag-Alaska. The A-10’s single-seat cockpit is set under a large canopy so the pilot can see all around."
+      },
+      {
+        "url": "/objects/a10c/photos/canopy/02.jpg",
+        "title": "A-10 viewing 120902-A-NI188-112",
+        "author": "Spc. Andrew Baker",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AA-10_viewing_120902-A-NI188-112.jpg",
+        "scopeNote": "Helmet almost in the frame: the canopy opens for crew access and gives the ‘office’ that all-around view the Air Force advertises."
+      },
+      {
+        "url": "/objects/a10c/photos/canopy/03.jpg",
+        "title": "442d Fighter Wing continues CAS training in Defender Europe 23 (7796178)",
+        "author": "U.S. Air Force photo by Master Sgt. Robert Jennings",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A442d_Fighter_Wing_continues_CAS_training_in_Defender_Europe_23_%287796178%29.jpg",
+        "scopeNote": "A maintainer on the boarding ladder under the open canopy. The A-10C cockpit is night-vision compatible."
+      },
+      {
+        "url": "/objects/a10c/photos/canopy/04.jpg",
+        "title": "151031-A-TW035-002 (22736951506)",
+        "author": "U.S. Department of Defense Current Photos Staff Sgt. Marcus Fichtl/24th Press Camp Headquarters",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A151031-A-TW035-002_%2822736951506%29.jpg",
+        "scopeNote": "Canopy up, sky behind — a clear look at the bubble that sits forward of the wings on every A-10."
+      },
+      {
+        "url": "/objects/a10c/photos/canopy/05.jpg",
+        "title": "130822-F-FT438-420 (9622231019)",
+        "author": "U.S. Department of Defense Current Photos",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A130822-F-FT438-420_%289622231019%29.jpg",
+        "scopeNote": "In flight the closed bubble canopy sits high on the nose, giving the pilot the downward view needed for close air support."
+      },
+      {
+        "url": "/objects/a10c/photos/canopy/06.jpg",
+        "title": "090129-F-5924C-218 (4513054545)",
+        "author": "Air Combat Command United States Air Force from Hampton, Va., USA",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A090129-F-5924C-218_%284513054545%29.jpg",
+        "scopeNote": "A side-on pass: the canopy’s curve is part of why the A-10 is such a distinctive silhouette."
+      },
+      {
+        "url": "/objects/a10c/photos/canopy/07.jpg",
+        "title": "442d Fighter Wing continues CAS training in Defender Europe 23 (7796174)",
+        "author": "U.S. Air Force photo by Master Sgt. Robert Jennings",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A442d_Fighter_Wing_continues_CAS_training_in_Defender_Europe_23_%287796174%29.jpg",
+        "scopeNote": "On the ramp with the canopy shut. One look through that glass is why A-10 pilots talk about ‘sitting on’ their targets."
+      }
+    ],
+    "gbu10": [
+      {
+        "url": "/objects/a10c/photos/gbu10/01.jpg",
+        "title": "GBU-10 on 51st TFW F-4E 1982",
+        "author": "SSgt. Glenn B. Lindsey, USAF",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AGBU-10_on_51st_TFW_F-4E_1982.JPEG",
+        "scopeNote": "A GBU-10 Paveway II up close: a 2,000-pound Mk 84 bomb with a laser seeker in the nose and a steering-fin kit at the tail."
+      },
+      {
+        "url": "/objects/a10c/photos/gbu10/02.jpg",
+        "title": "GBU-10 shortly before it impacts a small boat during a training exercise",
+        "author": "Unspecified U.S. government employee",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AGBU-10_shortly_before_it_impacts_a_small_boat_during_a_training_exercise.jpg",
+        "scopeNote": "A GBU-10 in the last seconds before impact on a training boat. Paveway IIs home on a laser spot designated by the aircraft or a teammate."
+      },
+      {
+        "url": "/objects/a10c/photos/gbu10/03.jpg",
+        "title": "F-14D with GBU-10 over Afghanistan 2001",
+        "author": "SSgt. Michael D. Gaddis, USAF",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AF-14D_with_GBU-10_over_Afghanistan_2001.JPEG",
+        "scopeNote": "An F-14 carries a GBU-10 over Afghanistan. The same 2,000-pound Paveway II is the weapon this A-10 model is loaded with — six of them."
+      },
+      {
+        "url": "/objects/a10c/photos/gbu10/04.jpg",
+        "title": "F-111F 493 TFS with Pave Tack and GBU-10s 1982",
+        "author": "SSgt. Jose Lopez, USAF",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AF-111F_493_TFS_with_Pave_Tack_and_GBU-10s_1982.JPEG",
+        "scopeNote": "GBU-10s under an F-111. The bomb is a Mk 84 with a Paveway II kit; the A-10 can hang the same weapon on its wing and fuselage stations."
+      },
+      {
+        "url": "/objects/a10c/photos/gbu10/05.jpg",
+        "title": "McDonnell Douglas F-4D-26-MC 061006-F-1234S-042",
+        "author": "U.S. Air Force photo",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMcDonnell_Douglas_F-4D-26-MC_061006-F-1234S-042.jpg",
+        "scopeNote": "A Phantom carrying a GBU-10. Laser-guided Paveways have been in the U.S. inventory since the Vietnam era and are still used on the A-10C."
+      },
+      {
+        "url": "/objects/a10c/photos/gbu10/06.jpg",
+        "title": "Lockheed F-117A Nighthawk 79-10781 GBU-10A Paveway II Cold War NMUSAF 26Sep09 (14413518150)",
+        "author": "Valder137",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ALockheed_F-117A_Nighthawk_79-10781_GBU-10A_Paveway_II_Cold_War_NMUSAF_26Sep09_%2814413518150%29.jpg",
+        "scopeNote": "A GBU-10A Paveway II under an F-117 at the National Museum of the U.S. Air Force — the same family of 2,000-pound laser-guided bombs."
+      }
+    ],
+    "litening": [
+      {
+        "url": "/objects/a10c/photos/litening/01.jpg",
+        "title": "A-10 Warthog - Litening (Balikatan 2016)",
+        "author": "RoyKabanlit",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AA-10_Warthog_-_Litening_%28Balikatan_2016%29.JPG",
+        "scopeNote": "An AN/AAQ-28 Litening pod on an A-10 at Balikatan. Litening gives the A-10C a laser designator plus infrared and electro-optical sensors."
+      },
+      {
+        "url": "/objects/a10c/photos/litening/02.jpg",
+        "title": "130110-f-oc707-000 Female A-10 Thunderbolt II Pilot Maj. Olivia Elliott examines the LITENING advanced targeting pod",
+        "author": "U.S. Air Force photo / Samuel King Jr.",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A130110-f-oc707-000_Female_A-10_Thunderbolt_II_Pilot_Maj._Olivia_Elliott_examines_the_LITENING_advanced_targeting_pod.jpg",
+        "scopeNote": "An A-10 pilot checks the Litening pod before flight. The rounded nose holds the sensors that find and designate targets."
+      },
+      {
+        "url": "/objects/a10c/photos/litening/03.jpg",
+        "title": "ANAAQ-28 LITENING",
+        "author": "Hunini",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AANAAQ-28_LITENING.JPG",
+        "scopeNote": "AN/AAQ-28 Litening in profile. Litening II reached U.S. forces in 1999 and is the pod carried on this A-10C model."
+      },
+      {
+        "url": "/objects/a10c/photos/litening/04.jpg",
+        "title": "USMC-18198",
+        "author": "http://www.marines.mil/unit/3rdmaw/PublishingImages/2006/avi2.jpg",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AUSMC-18198.jpg",
+        "scopeNote": "Marines pack a Litening pod into its shipping case. The crate is stencilled LITENING — the same targeting system used on the A-10C."
+      },
+      {
+        "url": "/objects/a10c/photos/litening/05.jpg",
+        "title": "A-10 AF80-0258 on final Jagel Air Defender 23",
+        "author": "Boevaya mashina",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AA-10_AF80-0258_on_final_Jagel_Air_Defender_23.jpg",
+        "scopeNote": "An A-10C on final, targeting pod on a starboard wing station — the usual home for Litening on the Thunderbolt II."
+      },
+      {
+        "url": "/objects/a10c/photos/litening/06.jpg",
+        "title": "Litening Pod on FA-18",
+        "author": "US Govermen",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ALitening_Pod_on_FA-18.jpg",
+        "scopeNote": "A Litening pod under an F/A-18. The AN/AAQ-28 is used across U.S. types; on the A-10C it designates for laser-guided bombs such as the GBU-10."
+      },
+      {
+        "url": "/objects/a10c/photos/litening/07.jpg",
+        "title": "Northrop+Grumman AN-AAQ 28 LITENING AT mounted on F-16 at NATO Days 2023",
+        "author": "Boevaya mashina",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ANorthrop%2BGrumman_AN-AAQ_28_LITENING_AT_mounted_on_F-16_at_NATO_Days_2023.jpg",
+        "scopeNote": "A Northrop Grumman AN/AAQ-28 Litening AT at close range. The pod’s laser can mark a target for the A-10’s Paveway weapons."
+      }
+    ],
+    "tails": [
+      {
+        "url": "/objects/a10c/photos/tails/01.jpg",
+        "title": "A10 chaff and flares",
+        "author": "The original uploader was EH101 at Italian Wikipedia. U.S. Air Force Photo by Tech. Sgt. Kevin J. Gruenwald",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AA10_chaff_and_flares.jpg",
+        "scopeNote": "Twin tails from dead astern, with flares already away. The A-10’s vertical stabilizers are interchangeable left and right."
+      },
+      {
+        "url": "/objects/a10c/photos/tails/02.jpg",
+        "title": "Thunderbolts set off flares (14998869902)",
+        "author": "US Air Force from USA",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AThunderbolts_set_off_flares_%2814998869902%29.jpg",
+        "scopeNote": "A pair of A-10s pop flares over a sea of cloud. The twin tails and high engines are the type’s unmistakable rear view."
+      },
+      {
+        "url": "/objects/a10c/photos/tails/03.jpg",
+        "title": "U.S. Air Force A-10 Thunderbolt IIs fire flares 190815-F-ZD147-0088",
+        "author": "U.S. Department of Defense Current Photos",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AU.S._Air_Force_A-10_Thunderbolt_IIs_fire_flares_190815-F-ZD147-0088.jpg",
+        "scopeNote": "A-10s fire flares in a trailing formation. Those two fins also shield the engines from some incoming missiles’ view."
+      },
+      {
+        "url": "/objects/a10c/photos/tails/04.jpg",
+        "title": "A-10 serial 79-147 rear view",
+        "author": "Extrapolaris",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AA-10_serial_79-147_rear_view.jpg",
+        "scopeNote": "Both vertical tails of 79-147 up close on the ramp — the same interchangeable left-and-right design the Air Force still highlights."
+      },
+      {
+        "url": "/objects/a10c/photos/tails/05.jpg",
+        "title": "A-10 Thunderbolt rear at Dubai Airshow 2019",
+        "author": "Mztourist",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AA-10_Thunderbolt_rear_at_Dubai_Airshow_2019.jpg",
+        "scopeNote": "Straight on to the empennage at the Dubai Airshow: two tails, two engines, one A-10."
+      },
+      {
+        "url": "/objects/a10c/photos/tails/06.jpg",
+        "title": "A-10 Thunderbolt II drops flares - 081112-F-7823A-484",
+        "author": "Staff Sgt. Aaron Allmon",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AA-10_Thunderbolt_II_drops_flares_-_081112-F-7823A-484.JPG",
+        "scopeNote": "Flares drop away behind an A-10. The twin tails stay in the shot — a layout chosen so the jet can keep flying after heavy damage."
+      },
+      {
+        "url": "/objects/a10c/photos/tails/07.jpg",
+        "title": "422d TES A-10C Flares - Aviation Nation 2019",
+        "author": "Noah Wulf",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A422d_TES_A-10C_Flares_-_Aviation_Nation_2019.jpg",
+        "scopeNote": "An A-10C of the 422nd Test and Evaluation Squadron dumps flares at Aviation Nation. The twin tails bookend the high-mounted TF34s."
+      }
+    ],
+    "decelerons": [
+      {
+        "url": "/objects/a10c/photos/decelerons/01.jpg",
+        "title": "An A-10 Thunderbolt II from Selfridge Air National Guard Base, Michigan, prepares to land on a public highway in Alpena, Michigan, August 5, 2021",
+        "author": "Master Sgt. Scott Thompson",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAn_A-10_Thunderbolt_II_from_Selfridge_Air_National_Guard_Base%2C_Michigan%2C_prepares_to_land_on_a_public_highway_in_Alpena%2C_Michigan%2C_August_5%2C_2021.jpg",
+        "scopeNote": "Split-aileron ‘decelerons’ wide open as a Selfridge A-10 lands on a public highway. The outboard ailerons open like a clamshell to act as speed brakes."
+      },
+      {
+        "url": "/objects/a10c/photos/decelerons/02.jpg",
+        "title": "A-10 Highway US Michigan",
+        "author": "U.S. Air National Guard photo by Master Sgt. Scott Thompson",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AA-10_Highway_US_Michigan.jpg",
+        "scopeNote": "The same highway strip, this time on short final. The A-10’s unswept straight wing and those big ailerons help it land short and slow."
+      },
+      {
+        "url": "/objects/a10c/photos/decelerons/03.jpg",
+        "title": "US Airmen make history with highway landing 160620-F-IM659-138",
+        "author": "Senior Airman Nicole Keim",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AUS_Airmen_make_history_with_highway_landing_160620-F-IM659-138.jpg",
+        "scopeNote": "Touching down on an austere strip, smoke at the mains. The A-10’s straight wing and split ailerons were designed for this kind of landing."
+      },
+      {
+        "url": "/objects/a10c/photos/decelerons/04.jpg",
+        "title": "Sand land 141203-F-NI493-120",
+        "author": "Airman 1st Class Ryan Callaghan",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASand_land_141203-F-NI493-120.jpg",
+        "scopeNote": "An A-10 settles onto a dry lake. Head-on you can read the unswept wing that fills most of the trailing edge with aileron."
+      },
+      {
+        "url": "/objects/a10c/photos/decelerons/05.jpg",
+        "title": "107th Fighter Squadron conducts austere landings (4466476)",
+        "author": "U.S. Air Force photo by Master Sgt. David Kujawa",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A107th_Fighter_Squadron_conducts_austere_landings_%284466476%29.jpg",
+        "scopeNote": "On approach with the gear down: a clear look at the A-10’s long, straight wing — the platform those split-aileron decelerons are built into."
+      },
+      {
+        "url": "/objects/a10c/photos/decelerons/06.jpg",
+        "title": "107th Fighter Squadron conducts austere landings (4466470)",
+        "author": "U.S. Air Force photo by Master Sgt. David Kujawa",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A107th_Fighter_Squadron_conducts_austere_landings_%284466470%29.jpg",
+        "scopeNote": "A heritage-painted A-10 of the 107th Fighter Squadron on short final. The straight wing is doing what it was meant to do: fly slowly and still roll."
+      }
+    ],
+    "gear_pods": [
+      {
+        "url": "/objects/a10c/photos/gear_pods/01.jpg",
+        "title": "80-0244 OS an OA-10A of 51 FW 25 FS (3224633529)",
+        "author": "Jerry Gunner from Lincoln, UK",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A80-0244_OS_an_OA-10A_of_51_FW_25_FS_%283224633529%29.jpg",
+        "scopeNote": "In flight, gear up: the main-wheel fairing hangs under the wing, and the tyre is still partly visible. That is the A-10’s famous gear pod."
+      },
+      {
+        "url": "/objects/a10c/photos/gear_pods/02.jpg",
+        "title": "An air-to-air left side view of an OA-10 Thunderbolt II aircraft of the 23rd Tactical Air Support Squadron in-flight over the desert Southwest DF-ST-88-07164",
+        "author": "Tech. Sgt. Michael Haggerty",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAn_air-to-air_left_side_view_of_an_OA-10_Thunderbolt_II_aircraft_of_the_23rd_Tactical_Air_Support_Squadron_in-flight_over_the_desert_Southwest_DF-ST-88-07164.jpg",
+        "scopeNote": "A classic side-on portrait over the desert. Under each wing the retracted main gear sits in a pod, wheel peeking out — built to survive a gear-up landing."
+      },
+      {
+        "url": "/objects/a10c/photos/gear_pods/03.jpg",
+        "title": "An air-to-air left side view of an OA-10 Thunderbolt II aircraft of the 23rd Tactical Air Support Squadron firing it's GAU-8-A Avenger 30mm cannon at a target on the East Tactical Range in Southern Arizona DF-ST-88-07165",
+        "author": "Tech. Sgt. Michael Haggerty",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAn_air-to-air_left_side_view_of_an_OA-10_Thunderbolt_II_aircraft_of_the_23rd_Tactical_Air_Support_Squadron_firing_it%27s_GAU-8-A_Avenger_30mm_cannon_at_a_target_on_the_East_Tactical_Range_in_Southern_Arizona_DF-ST-88-07165.jpg",
+        "scopeNote": "Banking over the desert with the mains tucked into their pods. The wheels stay partly exposed even when the gear is up."
+      },
+      {
+        "url": "/objects/a10c/photos/gear_pods/04.jpg",
+        "title": "80-0244 OS an OA-10A of 51 FW 25 FS (3225488810)",
+        "author": "Jerry Gunner from Lincoln, UK",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A80-0244_OS_an_OA-10A_of_51_FW_25_FS_%283225488810%29.jpg",
+        "scopeNote": "Another pass on the same jet: the rounded main-gear pod is visible just forward of the wing stores."
+      },
+      {
+        "url": "/objects/a10c/photos/gear_pods/05.jpg",
+        "title": "355th Fighter Squadron A-OA-10 Thunderbolt II, Exercise Northern Edge '99 on March 9, 1999",
+        "author": "Tech. Sgt. David W. Richards, U.S. Air Force",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A355th_Fighter_Squadron_A-OA-10_Thunderbolt_II%2C_Exercise_Northern_Edge_%2799_on_March_9%2C_1999.jpg",
+        "scopeNote": "Two A-10s over snow. From this angle the under-wing gear pods — and the partly exposed wheels — are easy to pick out."
+      },
+      {
+        "url": "/objects/a10c/photos/gear_pods/06.jpg",
+        "title": "184th Fighter Squadron A-10 Flaredrop",
+        "author": "United States Air Force",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A184th_Fighter_Squadron_A-10_Flaredrop.jpg",
+        "scopeNote": "From below, a flare already away: the wing pods that house the retracted mains sit mid-span, a hallmark of the A-10 in flight."
+      }
+    ]
   }
 }
