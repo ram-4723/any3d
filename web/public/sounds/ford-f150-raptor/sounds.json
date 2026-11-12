@@ -1,0 +1,200 @@
+{
+  "slug": "ford-f150-raptor",
+  "version": 1,
+  "basePath": "/sounds/ford-f150-raptor",
+  "masterVolume": 1,
+  "storageKey": "any3d-sound-muted",
+  "labels": [
+    {
+      "label": "engine",
+      "file": "engine",
+      "volume": 0.86,
+      "trigger": "label-open",
+      "caption": "A full-size American truck-based V8 starts and revs — used as a stand-in for the Raptor's 3.5-litre EcoBoost V6."
+    },
+    {
+      "label": "shocks",
+      "file": "shocks",
+      "volume": 0.8,
+      "trigger": "label-open",
+      "caption": "A heavy landing thump, for the FOX long-travel suspension."
+    },
+    {
+      "label": "tyres",
+      "file": "tyres",
+      "volume": 0.76,
+      "trigger": "label-open",
+      "caption": "Gravel, rock and stones being raked — a close stand-in for all-terrain tyres on dirt (not a drive-by recording)."
+    },
+    {
+      "label": "grille",
+      "file": "grille",
+      "volume": 0.72,
+      "trigger": "label-open",
+      "caption": "A turbo blow-off / wastegate whoosh, for air slamming through the big Raptor grille and the EcoBoost turbos."
+    },
+    {
+      "label": "headlamps",
+      "file": "headlamps",
+      "volume": 0.7,
+      "trigger": "label-open",
+      "caption": "A light-switch click, for the quad-beam LED headlamps."
+    },
+    {
+      "label": "body",
+      "file": "body",
+      "volume": 0.55,
+      "trigger": "label-open",
+      "caption": "A vehicle rushing past, for wind over the aluminium body."
+    },
+    {
+      "label": "fenders",
+      "file": "fenders",
+      "volume": 0.64,
+      "trigger": "label-open",
+      "caption": "An air whoosh around the flared fenders."
+    },
+    {
+      "label": "skid",
+      "file": "skid",
+      "volume": 0.78,
+      "trigger": "label-open",
+      "caption": "A hard scrape across rough stone, for the front skid plate hitting rock."
+    },
+    {
+      "label": "cab",
+      "file": "cab",
+      "volume": 0.82,
+      "trigger": "label-open",
+      "caption": "A car door closing on the SuperCrew cab."
+    },
+    {
+      "label": "bed",
+      "file": "bed",
+      "volume": 0.8,
+      "trigger": "label-open",
+      "caption": "A metal drop / slam, for the aluminium tailgate and cargo bed."
+    }
+  ],
+  "ambient": {
+    "file": "ambient",
+    "volume": 0.28,
+    "loop": true,
+    "trigger": "page-open",
+    "caption": "A low desert-style wind loop under the object page, once sound is enabled."
+  },
+  "ui": {
+    "file": "ui-tick",
+    "volume": 0.42,
+    "trigger": "hover",
+    "caption": "A short UI tick for hovering a label. Optional — hook only if it feels right, and debounce it."
+  },
+  "credits": [
+    {
+      "usedFor": "engine",
+      "title": "Chevrolet Tahoe - engine and exhaust sound (YouTube FuORsRUyW30)",
+      "author": "Ultravihlop (YouTube)",
+      "licence": "CC BY 3.0",
+      "licence_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Chevrolet_Tahoe_-_engine_and_exhaust_sound_(YouTube_FuORsRUyW30).opus",
+      "note": "Trimmed and loudness-normalised to a 6-second start-and-rev. This is a Chevrolet Tahoe V8, not a Ford EcoBoost V6."
+    },
+    {
+      "usedFor": "grille",
+      "title": "Peugeot 406 Turbo (turbocharged, HKS blow-off valve) - engine and exhaust sound (YouTube kx0Tvu4 K04)",
+      "author": "nick7100 (YouTube)",
+      "licence": "CC BY 3.0",
+      "licence_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Peugeot_406_Turbo_(turbocharged,_HKS_blow-off_valve)_-_engine_and_exhaust_sound_(YouTube_kx0Tvu4_K04).opus",
+      "note": "A short blow-off / turbo whoosh was cut from the CC BY recording (around 9.2–11.0 s)."
+    },
+    {
+      "usedFor": "shocks",
+      "title": "Jump Landing (Jump 3)",
+      "author": "Dan Knoflicek",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/jump-landing",
+      "note": "Uploaded to OpenGameArt by user macro. Attribution requested by the author."
+    },
+    {
+      "usedFor": "tyres",
+      "title": "Assorted gravel rock and stones",
+      "author": "stephan",
+      "licence": "Public domain",
+      "licence_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Assorted_gravel_rock_and_stones.ogg",
+      "note": "A 3.4-second window of the densest gravel texture (about 40.6–44.0 s). This is stones being raked, not tyres rolling on a gravel road. Freesound has better tyre-on-gravel recordings (CC0) but original-file download required a login."
+    },
+    {
+      "usedFor": "headlamps",
+      "title": "switch_02 (from 100 CC0 SFX)",
+      "author": "rubberduck",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/100-cc0-sfx",
+      "note": "Credit is appreciated by the author."
+    },
+    {
+      "usedFor": "cab",
+      "title": "Car_door_SFX (door_closing.wav)",
+      "author": "looneybits",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/cardoorsfx"
+    },
+    {
+      "usedFor": "bed",
+      "title": "metal_falling_01 (from 100 CC0 metal and wood SFX)",
+      "author": "rubberduck",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+      "note": "Credit is appreciated by the author."
+    },
+    {
+      "usedFor": "skid",
+      "title": "Scrapes (scrape-2)",
+      "author": "antumdeluge",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/scrapes",
+      "note": "Recorded by dragging an object across a cinder block. Originally created for Stendhal."
+    },
+    {
+      "usedFor": "body",
+      "title": "Highway from bridge right side",
+      "author": "stephan",
+      "licence": "Public domain",
+      "licence_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Highway_from_bridge_right_side.ogg",
+      "note": "A 3.2-second vehicle pass (about 4.2–7.4 s) used as wind rush over the body."
+    },
+    {
+      "usedFor": "fenders",
+      "title": "Air whoosh",
+      "author": "pyranostudios",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/air-whoosh",
+      "note": "A 2.2-second slice of the looping whoosh."
+    },
+    {
+      "usedFor": "ambient",
+      "title": "wind whoosh loop",
+      "author": "sketchman3",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/wind-whoosh-loop",
+      "note": "The uploader describes this as a looped, EQ'd section of wind from 'Loopable Dungeon Ambience', released as CC0 on OpenGameArt."
+    },
+    {
+      "usedFor": "ui-tick",
+      "title": "click_001 (Interface Sounds 1.0)",
+      "author": "Kenney (www.kenney.nl)",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://kenney.nl/assets/interface-sounds"
+    }
+  ]
+}

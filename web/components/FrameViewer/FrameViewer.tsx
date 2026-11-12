@@ -3,8 +3,12 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import { createPortal } from 'react-dom';
 import { frameIndex, hotspotVisible } from './math';
 import photoGalleries from '../../data/photo-galleries.json';
+import { getSoundManager } from '../sound/SoundManager';
+import { SoundToggle } from '../sound/SoundToggle';
+import { CinematicIntro } from '../intro/CinematicIntro';
+import { computeFrameProgressFromIndices } from '../intro/frameProgress';
 
-type Props = { slug: string; mode?: 'drag' | 'scroll'; autoRotate?: boolean; showGuidedTour?: boolean; tourPromptTarget?: HTMLElement | null };
+type Props = { slug: string; title?: string; tagline?: string; mode?: 'drag' | 'scroll'; autoRotate?: boolean; showGuidedTour?: boolean; tourPromptTarget?: HTMLElement | null };
 type Hotspot = { id: string; name: string; group?: string; frame?: number; x: number; y: number; color?: string; details?: string; source?: string };
 type ExplodeHotspot = { id: string; name: string; group?: string; category?: string; color?: string; points: ([number, number] | null)[] };
 type Sequence = { count: number; pattern: string; loop?: boolean; startFrame?: number };
@@ -41,7 +45,7 @@ const estimatedHotspotPoint = (slug: string, id: string, frame: number): Point =
 type RouteFrame = { frame: number; points: [number, number, number][] };
 type CampDetail = { id: string; name: string; altitudeM?: number; altitudeNote?: string; lat?: number; lon?: number; coordsApprox?: boolean; coordsSource?: string; description: string; image?: HotspotPhoto };
 type PartDetail = { id: string; category: string; name: { en: string }; desc: { en: string } };
-type Manifest = { width: number; height: number; rotate: Sequence & { hotspots?: (CampHotspot | ExcavatorHotspot)[]; route?: { id: string; name: string; frames: RouteFrame[] } }; explode?: Sequence & { labelsFrom?: number; hotspots?: ExplodeHotspot[] }; humanScale?: { image: string; hotspots: HumanHotspot[] }; hotspots?: Hotspot[]; background?: string; credit?: string; credits?: string };
+type Manifest = { name?: string; width: number; height: number; rotate: Sequence & { hotspots?: (CampHotspot | ExcavatorHotspot)[]; route?: { id: string; name: string; frames: RouteFrame[] } }; explode?: Sequence & { labelsFrom?: number; hotspots?: ExplodeHotspot[] }; humanScale?: { image: string; hotspots: HumanHotspot[] }; hotspots?: Hotspot[]; background?: string; credit?: string; credits?: string };
 
 const excavatorPhoto: HotspotPhoto = {
   url: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Bagger_288_2012.jpg/960px-Bagger_288_2012.jpg',
@@ -52,18 +56,22 @@ const excavatorPhoto: HotspotPhoto = {
 
 function PhotoCarousel({ photos, id }: { photos: GalleryPhoto[]; id: string }) {
   const [index, setIndex] = useState(0);
+  const swipeStart = useRef<number | null>(null);
   if (!photos.length) return null;
   const photo = photos[index % photos.length];
+  const stepPhoto = (delta: number) => setIndex(value => (value + delta + photos.length) % photos.length);
   return <div className="viewer-photo-gallery">
     <figure className="viewer-info-photo" aria-label={`${id} photo gallery`}>
-      <img src={photo.url} alt={photo.title} loading="lazy" />
+      <div className="viewer-photo-frame" onTouchStart={e => { swipeStart.current = e.touches[0]?.clientX ?? null; }} onTouchEnd={e => { if (swipeStart.current === null || photos.length < 2) return; const endX = e.changedTouches[0]?.clientX ?? swipeStart.current; const delta = endX - swipeStart.current; swipeStart.current = null; if (Math.abs(delta) > 36) stepPhoto(delta < 0 ? 1 : -1); }}>
+        <img src={photo.url} alt={photo.title} loading="lazy" />
+        {photos.length > 1 && <div className="viewer-photo-controls" aria-label="Photo gallery controls">
+          <button type="button" aria-label="Previous photo" onClick={() => stepPhoto(-1)}>‹</button>
+          <span aria-live="polite">{index + 1} / {photos.length}</span>
+          <button type="button" aria-label="Next photo" onClick={() => stepPhoto(1)}>›</button>
+        </div>}
+      </div>
       <figcaption title={photo.title}>{photo.title}</figcaption>
       <div className="viewer-photo-attribution"><a href={photo.sourceUrl} target="_blank" rel="noreferrer" title={`Photo source: ${photo.title}`} aria-label={`Photo source: ${photo.title}, by ${photo.author}`}>{photo.author}<span> ↗</span></a><a href={photo.licenseUrl} target="_blank" rel="noreferrer" title={`Image licence: ${photo.license}`}>{photo.license}<span> ↗</span></a></div>
-      {photos.length > 1 && <div className="viewer-photo-controls" aria-label="Photo gallery controls">
-        <button type="button" aria-label="Previous photo" onClick={() => setIndex(value => (value - 1 + photos.length) % photos.length)}>‹</button>
-        <span aria-live="polite">{index + 1} / {photos.length}</span>
-        <button type="button" aria-label="Next photo" onClick={() => setIndex(value => (value + 1) % photos.length)}>›</button>
-      </div>}
     </figure>
     {photo.scopeNote && <p className="viewer-photo-note">{photo.scopeNote}</p>}
   </div>;
@@ -77,7 +85,7 @@ const asGalleryPhoto = (photo: HotspotPhoto): GalleryPhoto => ({
   url: photo.url, title: photo.caption, author: photo.credit, license: 'Photo credit', licenseUrl: photo.sourceUrl, sourceUrl: photo.sourceUrl,
 });
 
-export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, showGuidedTour = true, tourPromptTarget = null }: Props) {
+export default function FrameViewer({ slug, title, tagline, mode = 'drag', autoRotate = false, showGuidedTour = true, tourPromptTarget = null }: Props) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const campCardRef = useRef<HTMLElement>(null);
@@ -119,15 +127,35 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
   const [isViewerFullscreen, setIsViewerFullscreen] = useState(false);
   const [usesFullscreenFallback, setUsesFullscreenFallback] = useState(false);
   const tourFullscreenAttempted = useRef(false);
+  const tourAutoFullscreenRef = useRef(false);
+  const tourTargetRef = useRef<{ point: [number, number]; zoom: number } | null>(null);
+  const tourAnimatingRef = useRef(false);
   const goToTourStepRef = useRef<(step: number) => void>(() => {});
   const tourPromptChecked = useRef(false);
   const [tourAnimating, setTourAnimating] = useState(false);
   const [showTourPrompt, setShowTourPrompt] = useState(false);
+  const [loadedFrames, setLoadedFrames] = useState<number[]>([]);
+  const [posterLoaded, setPosterLoaded] = useState(false);
+  const [introFinished, setIntroFinished] = useState(() => slug !== 'ford-f150-raptor');
   const count = humanScale ? 1 : exploded ? manifest?.explode?.count ?? 0 : manifest?.rotate.count ?? 1;
   const maxZoom = slug === 'porsche-992-gt3r' && humanScale ? 6 : 3;
   const explodeStart = Math.max(0, Math.min(count - 1, (manifest?.explode?.startFrame ?? 1) - 1));
   const hasExplodeLabels = ['toyota-gr-supra-a90', 'bmw-s1000rr', 'sa342m-gazelle'].includes(slug) && Boolean(manifest?.explode?.hotspots?.length);
   const hasRotateHotspotLabels = Boolean(manifest?.rotate.hotspots?.length);
+  const frameProgress = computeFrameProgressFromIndices(loadedFrames, manifest?.rotate?.count ?? 144, { posterLoaded, stride: 8, oneBased: false });
+
+  useEffect(() => {
+    if (slug !== 'ford-f150-raptor') return;
+    const sm = getSoundManager();
+    sm.attachGestureUnlock();
+    void sm.load('ford-f150-raptor');
+    return () => sm.dispose();
+  }, [slug]);
+
+  useEffect(() => {
+    if (slug !== 'ford-f150-raptor' || !activeHotspot || tourAnimating) return;
+    getSoundManager().playLabel(activeHotspot);
+  }, [slug, activeHotspot, tourAnimating]);
 
   const draw = useCallback(() => {
     const c = canvas.current, ctx = c?.getContext('2d');
@@ -173,7 +201,11 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
 
   const requestViewerFullscreen = () => {
     const viewer = stage.current;
-    if (!viewer || document.fullscreenElement === viewer) return;
+    if (!viewer || document.fullscreenElement === viewer || usesFullscreenFallback) return;
+    if (window.matchMedia('(max-width: 740px), (pointer: coarse)').matches) {
+      setUsesFullscreenFallback(true);
+      return;
+    }
     if (viewer.requestFullscreen) {
       try {
         viewer.requestFullscreen().catch(() => setUsesFullscreenFallback(true));
@@ -185,7 +217,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
     }
   };
 
-  const toggleViewerFullscreen = () => {
+  const exitViewerFullscreen = () => {
     if (usesFullscreenFallback) {
       setUsesFullscreenFallback(false);
       setIsViewerFullscreen(false);
@@ -193,6 +225,13 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
     }
     if (document.fullscreenElement === stage.current) {
       document.exitFullscreen().catch(() => {});
+    }
+  };
+
+  const toggleViewerFullscreen = () => {
+    if (usesFullscreenFallback || document.fullscreenElement === stage.current) {
+      tourAutoFullscreenRef.current = false;
+      exitViewerFullscreen();
       return;
     }
     requestViewerFullscreen();
@@ -255,12 +294,26 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
     return views.map((name, index) => ({ id: `view-${index}`, name, frame: Math.round(index * manifest.rotate.count / views.length) % manifest.rotate.count, point: [0.5, 0.5] as [number, number], sequence: 'view' as const }));
   })();
 
+  const computeTourPan = (point: [number, number], targetZoom: number) => {
+    const rect = canvas.current?.getBoundingClientRect();
+    if (!rect || !manifest || targetZoom <= 1) return { x: 0, y: 0 };
+    const fit = Math.min(rect.width / manifest.width, rect.height / manifest.height);
+    const maxX = Math.max(0, (manifest.width * fit * targetZoom - rect.width) / 2);
+    const maxY = Math.max(0, (manifest.height * fit * targetZoom - rect.height) / 2);
+    const rawX = (0.5 - point[0]) * manifest.width * fit * targetZoom;
+    const rawY = (0.5 - point[1]) * manifest.height * fit * targetZoom;
+    return { x: Math.max(-maxX, Math.min(maxX, rawX)), y: Math.max(-maxY, Math.min(maxY, rawY)) };
+  };
+
   const goToTourStep = (step: number) => {
     const stop = guidedStops[step];
     if (!stop) return;
-    if (step === 0 && !tourFullscreenAttempted.current && window.matchMedia('(max-width: 600px), (pointer: coarse)').matches) {
+    if (step === 0 && !tourFullscreenAttempted.current && window.matchMedia('(max-width: 740px), (pointer: coarse)').matches) {
       tourFullscreenAttempted.current = true;
-      requestViewerFullscreen();
+      if (!isViewerFullscreen && !usesFullscreenFallback) {
+        tourAutoFullscreenRef.current = true;
+        requestViewerFullscreen();
+      }
     }
     if (stop.sequence === 'explode' && !exploded) {
       if (tourAnimationFrame.current !== null) cancelAnimationFrame(tourAnimationFrame.current);
@@ -274,8 +327,10 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
       setActiveHotspot(stop.id);
       setHoveredHotspot(null);
       setTourStep(step);
+      tourAnimatingRef.current = true;
       setTourAnimating(true);
       setPendingExplodeTourStep(step);
+      tourTargetRef.current = null;
       const labelStart = Math.max(0, (manifest?.explode?.startFrame ?? 1) - 1, (manifest?.explode?.labelsFrom ?? 1) - 1);
       position.current = labelStart;
       setViewFrame(labelStart);
@@ -305,18 +360,12 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
     const zoomBoost = isTinyDetail ? 1.45 : isSmallDetail ? 1.15 : 0.35;
     const targetZoom = Math.min(maxZoom, defaultViewerZoom(slug) + zoomBoost);
     tourDetailZoom.current = targetZoom > defaultViewerZoom(slug);
-    const rect = canvas.current?.getBoundingClientRect();
-    let targetPan = { x: 0, y: 0 };
-    if (rect && manifest && targetZoom > 1) {
-      const fit = Math.min(rect.width / manifest.width, rect.height / manifest.height);
-      targetPan = constrainPan({
-        x: (0.5 - stop.point[0]) * manifest.width * fit * targetZoom,
-        y: (0.5 - stop.point[1]) * manifest.height * fit * targetZoom,
-      }, targetZoom);
-    }
+    tourTargetRef.current = { point: stop.point, zoom: targetZoom };
+    const initialTargetPan = computeTourPan(stop.point, targetZoom);
     const startPan = panPosition.current;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!reduceMotion && Math.abs(distance) < 0.5 && Math.abs(targetZoom - startZoom) < 0.01 && Math.hypot(targetPan.x - startPan.x, targetPan.y - startPan.y) < 1) {
+    if (!reduceMotion && Math.abs(distance) < 0.5 && Math.abs(targetZoom - startZoom) < 0.01 && Math.hypot(initialTargetPan.x - startPan.x, initialTargetPan.y - startPan.y) < 1) {
+      tourAnimatingRef.current = false;
       setTourAnimating(false);
       return;
     }
@@ -331,10 +380,12 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
       draw();
     };
     if (reduceMotion) {
+      tourAnimatingRef.current = false;
       setTourAnimating(false);
-      setTourView(stop.frame, targetZoom, targetPan);
+      setTourView(stop.frame, targetZoom, initialTargetPan);
       return;
     }
+    tourAnimatingRef.current = true;
     setTourAnimating(true);
     const runSegment = (duration: number, update: (eased: number) => void, finish: () => void) => {
       const began = performance.now();
@@ -350,18 +401,21 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
     };
     const zoomToPart = () => {
       const fromZoom = zoomFactor.current, fromPan = panPosition.current;
-      const amount = Math.abs(targetZoom - fromZoom) + Math.hypot(targetPan.x - fromPan.x, targetPan.y - fromPan.y) / 500;
-      if (amount < 0.01) { setTourAnimating(false); return; }
+      const latestTargetPan = computeTourPan(stop.point, targetZoom);
+      const amount = Math.abs(targetZoom - fromZoom) + Math.hypot(latestTargetPan.x - fromPan.x, latestTargetPan.y - fromPan.y) / 500;
+      if (amount < 0.01) { tourAnimatingRef.current = false; setTourAnimating(false); return; }
       const duration = 260 + Math.min(amount * 170, 360);
       runSegment(duration, eased => {
+        const currentTargetPan = computeTourPan(stop.point, targetZoom);
         const scale = fromZoom + (targetZoom - fromZoom) * eased;
-        const offset = { x: fromPan.x + (targetPan.x - fromPan.x) * eased, y: fromPan.y + (targetPan.y - fromPan.y) * eased };
+        const offset = { x: fromPan.x + (currentTargetPan.x - fromPan.x) * eased, y: fromPan.y + (currentTargetPan.y - fromPan.y) * eased };
         zoomFactor.current = scale;
         setZoom(Math.round(scale * 100) / 100);
         panPosition.current = offset;
         setPanOffset(offset);
       }, () => {
-        setTourView(stop.frame, targetZoom, targetPan);
+        setTourView(stop.frame, targetZoom, computeTourPan(stop.point, targetZoom));
+        tourAnimatingRef.current = false;
         setTourAnimating(false);
       });
     };
@@ -419,13 +473,23 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
     goToTourStepRef.current(step);
   }, [pendingExplodeTourStep, exploded, allFramesLoaded, explodeDirection]);
 
-  const endGuidedTour = () => {
+  const endGuidedTour = (exitAutoFullscreen = false) => {
     if (tourAnimationFrame.current !== null) cancelAnimationFrame(tourAnimationFrame.current);
     tourAnimationFrame.current = null;
+    tourAnimatingRef.current = false;
     setTourAnimating(false);
     setTourStep(null);
     setPendingExplodeTourStep(null);
+    tourTargetRef.current = null;
     tourFullscreenAttempted.current = false;
+    if (exitAutoFullscreen) {
+      setActiveHotspot(null);
+      setActiveCamp(null);
+      if (tourAutoFullscreenRef.current) {
+        tourAutoFullscreenRef.current = false;
+        exitViewerFullscreen();
+      }
+    }
   };
 
   useEffect(() => () => {
@@ -479,12 +543,16 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
   }, [autoRotate, autoRotateEnabled, ready, allFramesLoaded, inView, exploded, humanScale, mode, count, draw]);
 
   useEffect(() => {
+    setIntroFinished(slug !== 'ford-f150-raptor');
+  }, [slug]);
+
+  useEffect(() => {
     if (!inView) return;
     let cancelled = false;
-    setManifest(null); setMissing(false); setReady(false); setAllFramesLoaded(false); setProgress(0); setExploded(false); setExplodeDirection(0); setShowLabels(false); setHumanScale(false); setActiveHotspot(null); setHoveredHotspot(null); setViewFrame(0); zoomFactor.current = defaultViewerZoom(slug); setZoom(zoomFactor.current); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); lastDrawnImage.current = null;
+    setManifest(null); setMissing(false); setReady(false); setAllFramesLoaded(false); setProgress(0); setPosterLoaded(false); setLoadedFrames([]); setExploded(false); setExplodeDirection(0); setShowLabels(false); setHumanScale(false); setActiveHotspot(null); setHoveredHotspot(null); setViewFrame(0); zoomFactor.current = defaultViewerZoom(slug); setZoom(zoomFactor.current); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); lastDrawnImage.current = null;
     position.current = 0; images.current = [];
     const poster = new Image();
-    poster.onload = () => { if (!cancelled) { images.current[0] = poster; drawRef.current(); } };
+    poster.onload = () => { if (!cancelled) { images.current[0] = poster; setPosterLoaded(true); drawRef.current(); } };
     poster.src = `/objects/${slug}/poster.webp`;
     fetch(`/objects/${slug}/manifest.json`).then(r => {
       if (!r.ok) throw new Error();
@@ -531,7 +599,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
     tourDetailZoom.current = false;
     setTourAnimating(false);
     requestFrame.current = () => {};
-    setReady(false); setAllFramesLoaded(false); setProgress(0); setTourStep(null);
+    setReady(false); setAllFramesLoaded(false); setProgress(0); setLoadedFrames([]); setTourStep(null);
     const sequence = humanScale && manifest.humanScale ? { count: 1, pattern: manifest.humanScale.image } : exploded ? manifest.explode : manifest.rotate;
     if (!sequence) { setExploded(false); return; }
     const total = sequence.count, arr: (HTMLImageElement | undefined)[] = new Array(total);
@@ -546,6 +614,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
         im.onload = () => {
           if (cancelled) { resolve(); return; }
           arr[i] = im;
+          setLoadedFrames(prev => prev.includes(i) ? prev : [...prev, i]);
           if (frameIndex(position.current, total) === i) drawRef.current();
           resolve();
         };
@@ -600,7 +669,21 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
   }, [exploded, explodeDirection, allFramesLoaded, count, draw, explodeStart]);
   useEffect(() => {
     draw();
-    const ro = new ResizeObserver(() => { draw(); setCanvasLayoutVersion(version => version + 1); });
+    const ro = new ResizeObserver(() => {
+      if (tourTargetRef.current && !tourAnimatingRef.current && tourDetailZoom.current) {
+        const nextPan = computeTourPan(tourTargetRef.current.point, tourTargetRef.current.zoom);
+        panPosition.current = nextPan;
+        setPanOffset(nextPan);
+      } else if (!tourAnimatingRef.current) {
+        const clamped = constrainPan(panPosition.current, zoomFactor.current);
+        if (clamped.x !== panPosition.current.x || clamped.y !== panPosition.current.y) {
+          panPosition.current = clamped;
+          setPanOffset(clamped);
+        }
+      }
+      draw();
+      setCanvasLayoutVersion(version => version + 1);
+    });
     if (canvas.current) ro.observe(canvas.current);
     return () => ro.disconnect();
   }, [draw]);
@@ -703,6 +786,12 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
     if (!card || !viewer || !pin) return;
 
     const placeCard = () => {
+      if (isViewerFullscreen || usesFullscreenFallback || window.matchMedia('(max-width: 740px)').matches) {
+        card.style.left = '';
+        card.style.top = '';
+        card.style.visibility = 'visible';
+        return;
+      }
       const bounds = viewer.getBoundingClientRect();
       const anchor = hotspotStyle(pin.x, pin.y);
       const toPixels = (value: string | number, size: number) => typeof value === 'number'
@@ -726,10 +815,11 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
     observer.observe(viewer);
     observer.observe(card);
     return () => observer.disconnect();
-  }, [activeCampPin?.id, activeCampPin?.x, activeCampPin?.y, activeCamp, current, zoom, panOffset, manifest]);
-  const reset = () => { endGuidedTour(); tourDetailZoom.current = false; setShowTourPrompt(false); position.current = 0; setViewFrame(0); setExploded(false); setHumanScale(false); setActiveCamp(null); setShowLabels(false); setShowObjectPhotos(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); zoomFactor.current = defaultViewerZoom(slug); setZoom(zoomFactor.current); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); draw(); };
+  }, [activeCampPin?.id, activeCampPin?.x, activeCampPin?.y, activeCamp, current, zoom, panOffset, manifest, isViewerFullscreen, usesFullscreenFallback]);
+  const reset = () => { endGuidedTour(); tourDetailZoom.current = false; tourTargetRef.current = null; setShowTourPrompt(false); position.current = 0; setViewFrame(0); setExploded(false); setHumanScale(false); setActiveCamp(null); setShowLabels(false); setShowObjectPhotos(false); setExplodeDirection(0); setActiveHotspot(null); setHoveredHotspot(null); zoomFactor.current = defaultViewerZoom(slug); setZoom(zoomFactor.current); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); draw(); };
   const adjustZoom = (amount: number) => {
     tourDetailZoom.current = false;
+    tourTargetRef.current = null;
     const next = Math.max(1, Math.min(maxZoom, Math.round((zoomFactor.current + amount) * 100) / 100));
     if (next === zoomFactor.current) return;
     zoomFactor.current = next;
@@ -748,11 +838,32 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
     else { const startFrame = showLabelFrame && hasExplodeLabels ? Math.max(explodeStart, (manifest?.explode?.labelsFrom ?? 1) - 1) : explodeStart; position.current = startFrame; setViewFrame(startFrame); setExploded(true); setAllFramesLoaded(false); setExplodeDirection(1); }
   };
 
-  const tourPrompt = showGuidedTour && showTourPrompt && !exploded && !humanScale ? <aside className="guided-tour-prompt" aria-label="Guided object tour"><span>YOUR FIRST LOOK</span><b>Explore this model</b><p>Explore the model from every side and discover its details.</p><div><button type="button" disabled={!allFramesLoaded} onClick={() => { dismissTourPrompt(); goToTourStep(0); }}>{allFramesLoaded ? 'Start tour' : 'Loading tour…'}</button><button type="button" onClick={dismissTourPrompt}>Later</button></div></aside> : null;
-  return <div ref={stage} className={`viewer ${mode === 'scroll' ? 'viewer-scroll' : ''} ${usesFullscreenFallback ? 'viewer-fullscreen-fallback' : ''} ${isViewerFullscreen ? 'viewer-fullscreen-active' : ''}`} aria-label={`${slug} 3D viewer`}>
+  const hasSplitDetail = tourStep !== null || activeHotspot !== null || Boolean(activeCampPin) || showObjectPhotos;
+  const tourPrompt = showGuidedTour && showTourPrompt && introFinished && !exploded && !humanScale ? <aside className="guided-tour-prompt" aria-label="Guided object tour"><span>YOUR FIRST LOOK</span><b>Explore this model</b><p>Explore the model from every side and discover its details.</p><div><button type="button" disabled={!allFramesLoaded} onClick={() => { dismissTourPrompt(); goToTourStep(0); }}>{allFramesLoaded ? 'Start tour' : 'Loading tour…'}</button><button type="button" onClick={dismissTourPrompt}>Later</button></div></aside> : null;
+  return <div ref={stage} className={`viewer ${mode === 'scroll' ? 'viewer-scroll' : ''} ${usesFullscreenFallback ? 'viewer-fullscreen-fallback' : ''} ${isViewerFullscreen ? 'viewer-fullscreen-active' : ''} ${isViewerFullscreen && hasSplitDetail ? 'viewer-fullscreen-split' : ''} ${tourStep !== null ? 'viewer-tour-active' : ''}`} aria-label={`${slug} 3D viewer`}>
     {tourPrompt && tourPromptTarget && createPortal(tourPrompt, tourPromptTarget)}
-    <div className="viewer-fullscreen-header"><span><img src="/any3d-mark.svg" alt=""/> ANYTHING<span className="viewer-fullscreen-dot">.</span></span><button type="button" onClick={toggleViewerFullscreen}>⛶ <span>Exit fullscreen</span></button></div>
-    <canvas ref={canvas} className={`viewer-canvas ${zoom > 1 ? 'viewer-canvas-zoomed' : ''}`} role="img" aria-label={`Interactive 3D view of ${slug}`} onPointerDown={e => { if (mode === 'drag') { endGuidedTour(); stopAutoRotate(); setExplodeDirection(0); e.currentTarget.setPointerCapture(e.pointerId); drag.current = { x: e.clientX, y: e.clientY }; } }} onPointerMove={e => move(e.clientX, e.clientY)} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} onKeyDown={e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); endGuidedTour(); stopAutoRotate(); setExplodeDirection(0); const next = position.current + (e.key === 'ArrowLeft' ? -1 : 1); position.current = exploded ? Math.max(explodeStart, Math.min(count - 1, next)) : (next + count) % count; setViewFrame(frameIndex(position.current, count)); requestFrame.current(frameIndex(position.current, count)); draw(); } }} tabIndex={0} />
+    <div className="viewer-fullscreen-header">
+      <span><img src="/any3d-mark.svg" alt=""/> ANYTHING<span className="viewer-fullscreen-dot">.</span></span>
+      <div className="viewer-fullscreen-actions">
+        {tourStep !== null && <button type="button" className="viewer-fullscreen-end" onClick={() => endGuidedTour(true)}>End tour</button>}
+        <button type="button" onClick={toggleViewerFullscreen}>✕ <span>Exit</span></button>
+      </div>
+    </div>
+    {slug === 'ford-f150-raptor' && !introFinished && (
+      <CinematicIntro
+        slug="ford-f150-raptor"
+        title={title ?? manifest?.name ?? 'Ford F-150 Raptor'}
+        tagline={tagline ?? 'A high-performance pickup built for fast off-road driving'}
+        kicker="01  /  OBJECT"
+        posterSrc="/objects/ford-f150-raptor/poster.webp"
+        progress={frameProgress.fraction}
+        ready={frameProgress.coarseReady}
+        grainSrc="/intro/film-grain.png"
+        playRevealSound
+        onFinished={() => setIntroFinished(true)}
+      />
+    )}
+    <canvas ref={canvas} className={`viewer-canvas ${zoom > defaultViewerZoom(slug) || isViewerFullscreen ? 'viewer-canvas-zoomed' : ''}`} role="img" aria-label={`Interactive 3D view of ${slug}`} onPointerDown={e => { if (mode === 'drag') { endGuidedTour(); stopAutoRotate(); setExplodeDirection(0); e.currentTarget.setPointerCapture(e.pointerId); drag.current = { x: e.clientX, y: e.clientY }; } }} onPointerMove={e => move(e.clientX, e.clientY)} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} onKeyDown={e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); endGuidedTour(); stopAutoRotate(); setExplodeDirection(0); const next = position.current + (e.key === 'ArrowLeft' ? -1 : 1); position.current = exploded ? Math.max(explodeStart, Math.min(count - 1, next)) : (next + count) % count; setViewFrame(frameIndex(position.current, count)); requestFrame.current(frameIndex(position.current, count)); draw(); } }} tabIndex={0} />
     {missing && <div className="viewer-empty"><span>✦</span><b>3D coming soon</b><small>Frame pack not added yet</small></div>}
     {!missing && <>
       <div className="viewer-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.7 9A7 7 0 0 1 18 6.5L20 8M4 16l2 1.5A7 7 0 0 0 18.3 15"/></svg><span>{humanScale ? "HUMAN SCALE · 5'10\" (1.78 M)" : exploded ? 'DRAG THROUGH EXPLODED VIEW' : 'ROTATE TO EXPLORE'}</span><small>{humanScale ? 'SCALE REFERENCE' : exploded ? count - explodeStart : count} {humanScale ? '' : 'VIEWS'}</small></div>
@@ -765,9 +876,14 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
           <button type="button" onClick={() => goToTourStep((tourStep - 1 + guidedStops.length) % guidedStops.length)} disabled={tourAnimating || pendingExplodeTourStep !== null || guidedStops.length < 2}>Previous</button>
           <div className="guided-tour-dots" aria-label="Tour progress">{guidedStops.map((stop,index)=><button key={stop.id} type="button" aria-label={`Go to stop ${index+1}: ${stop.name}`} aria-current={index===tourStep?'step':undefined} onClick={()=>goToTourStep(index)} disabled={tourAnimating || pendingExplodeTourStep !== null}/>)}</div>
           <button type="button" onClick={() => goToTourStep((tourStep + 1) % guidedStops.length)} disabled={tourAnimating || pendingExplodeTourStep !== null || guidedStops.length < 2}>Next stop</button>
-          <button type="button" onClick={endGuidedTour}>End tour</button>
+          <button type="button" onClick={() => endGuidedTour(true)}>End tour</button>
           <button type="button" className="guided-fullscreen-toggle" onClick={toggleViewerFullscreen}>{isViewerFullscreen ? 'Exit full screen' : 'Full screen'}</button>
         </div>
+      </aside>}
+      {tourStep !== null && tourAnimating && guidedStops[tourStep] && <aside className="tour-transition-card" aria-live="polite">
+        <span>GUIDED TOUR · {tourStep + 1} / {guidedStops.length}</span>
+        <b>{guidedStops[tourStep].name}</b>
+        <p>Rotating &amp; zooming to this detail…</p>
       </aside>}
       {campsRoute && slug === 'mount-everest' && !exploded && tourStep === null && <>
         <svg className="camp-route-line" aria-label={manifest?.rotate.route?.name ?? 'Everest climbing route'} style={imageBounds} viewBox={`0 0 ${manifest?.width ?? 1600} ${manifest?.height ?? 900}`} preserveAspectRatio="none">
@@ -841,6 +957,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
       {(!ready || (exploded && explodeDirection !== 0 && !allFramesLoaded)) && <div className="viewer-loading"><span>{exploded && explodeDirection !== 0 ? 'PREPARING EXPLODED VIEW' : 'LOADING OBJECT'}</span><i><b style={{ width: `${progress}%` }} /></i></div>}
     </>}
     <div className={`viewer-controls ${slug === 'janaki-mandir' ? 'viewer-controls-photos' : ''}`}>
+      {slug === 'ford-f150-raptor' && <SoundToggle />}
       {slug === 'janaki-mandir' && <button type="button" className={`viewer-action ${showObjectPhotos ? 'viewer-action-active' : ''}`} aria-pressed={showObjectPhotos} onClick={() => { setShowObjectPhotos(value => !value); setActiveHotspot(null); setHoveredHotspot(null); }}>Photos</button>}{hasRotateHotspotLabels && <button type="button" className={`viewer-action excavator-label-toggle ${showLabels ? 'viewer-action-active' : ''}`} disabled={humanScale} aria-pressed={showLabels} onClick={() => { endGuidedTour(); setShowLabels(value => !value); setShowObjectPhotos(false); setActiveHotspot(null); setHoveredHotspot(null); }}>Labels</button>}{showGuidedTour && <button type="button" className="viewer-action guided-tour-button" disabled={humanScale || (exploded && guidedStops[0]?.sequence !== 'explode') || !allFramesLoaded || guidedStops.length === 0} onClick={() => { dismissTourPrompt(); goToTourStep(0); }}>{allFramesLoaded ? 'Guided tour' : 'Loading…'}</button>}{(slug === 'excavator' || slug === 'porsche-992-gt3r') && <button type="button" className={`viewer-action excavator-human-toggle ${humanScale ? 'viewer-action-active' : ''}`} aria-pressed={humanScale} onClick={() => { endGuidedTour(); tourDetailZoom.current = false; setHumanScale(value => !value); setActiveHotspot(null); setHoveredHotspot(null); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); }}>Human 5'10"</button>}
       {slug === 'mount-everest' ? <button type="button" className={`viewer-action ${campsRoute ? 'viewer-action-active' : ''}`} aria-pressed={campsRoute} title="Toggle camps and climbing route" onClick={() => { setCampsRoute(value => !value); setActiveCamp(null); setHoveredCamp(null); }}>Camps &amp; Route</button> : slug === 'valley-of-flowers' ? <button type="button" className={`viewer-action ${showLabels ? 'viewer-action-active' : ''}`} aria-pressed={showLabels} title="Toggle place markers" onClick={() => { setShowLabels(value => !value); setActiveCamp(null); setHoveredCamp(null); }}>Labels</button> : slug === 'porsche-992-gt3r' ? null : manifest?.explode ? <button type="button" className="viewer-action" title={exploded ? 'Assemble parts' : 'Explode view'} onClick={() => toggleExplode()}>{exploded ? (explodeDirection === -1 ? 'Assembling…' : 'Assemble parts') : 'Explode view'}</button> : null}
       {hasExplodeLabels && <button type="button" className={'viewer-action excavator-label-toggle '+(showLabels ? 'viewer-action-active' : '')} aria-pressed={showLabels} title={showLabels ? 'Hide part labels' : 'Show part labels; opens exploded view'} onClick={() => {
@@ -865,7 +982,7 @@ export default function FrameViewer({ slug, mode = 'drag', autoRotate = false, s
         <button type="button" aria-label="Zoom in" title="Zoom in" disabled={zoom >= maxZoom} onClick={() => adjustZoom(0.25)}>+</button>
       </div>
       <button type="button" className="viewer-action" onClick={reset}>Reset</button>
-      <button type="button" className="viewer-icon" aria-label="Fullscreen" title="Fullscreen" onClick={() => stage.current?.requestFullscreen()}>⛶</button>
+      <button type="button" className="viewer-icon" aria-label={isViewerFullscreen ? 'Exit fullscreen' : 'Fullscreen'} title={isViewerFullscreen ? 'Exit fullscreen' : 'Fullscreen'} onClick={toggleViewerFullscreen}>⛶</button>
     </div>
   </div>;
 }

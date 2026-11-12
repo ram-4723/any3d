@@ -8,4 +8,6 @@ Hover-label facts describe the real second-generation Ford F-150 Raptor and are 
 
 Render: Blender 4.2 Cycles (CPU), 1600×900, Balanced quality: 128 samples, adaptive threshold 0.02, OpenImageDenoise, AgX view transform. 144-frame 360° turntable (approved preview_v5 camera and look: matte studio floor, low three-quarter 68 mm camera).
 
+Sound credits: Representative vehicle and terrain recordings under CC0, Public Domain, and CC BY 3.0 (see [SOUND-CREDITS.md](SOUND-CREDITS.md)). CC BY 3.0 recordings include Chevrolet Tahoe V8 start & rev by Ultravihlop and Peugeot 406 turbo blow-off whoosh by nick7100 (licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)). These are illustrative stand-ins, not actual recordings of a Ford F-150 Raptor.
+
 Publishing note: The user who supplied this pack confirms they have permission to publish it as part of this project. The original archive did not include the underlying model licence.

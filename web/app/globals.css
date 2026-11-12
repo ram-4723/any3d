@@ -749,80 +749,141 @@ html[data-cursor-pressed="true"] .cursor-aura::before{background:radial-gradient
 .detail-layout{gap:12px}
 @media(max-width:600px){.detail-page{padding-top:6px;padding-bottom:32px}.detail-heading{margin-bottom:10px}.detail-heading h1{font-size:clamp(32px,8vw,40px)}.detail-heading p{font-size:13px}.detail-layout{gap:10px}}
 
-/* Keep the model visible while guided tours run on phones. */
-@media(max-width:600px){
-  .viewer:has(.guided-tour-card) .guided-tour-card{top:8px;right:8px;bottom:auto;left:auto;width:min(210px,58%);max-height:42%;overflow-y:auto;padding:9px 10px;background:#121416db}
-  .guided-tour-card>span{margin-bottom:3px;font-size:8px}
-  .guided-tour-card>b{font-size:15px;line-height:1.25}
-  .guided-tour-card .guided-tour-select-label{gap:3px;margin-top:7px;font-size:8px}
-  .guided-tour-card select{min-height:30px;padding:0 7px;font-size:11px}
-  .guided-tour-card>div{gap:4px;margin-top:7px}
-  .guided-tour-card button{min-height:29px;padding:0 7px;font-size:10px}
-  .viewer:has(.guided-tour-prompt) .guided-tour-prompt{top:8px;right:auto;bottom:auto;left:8px;width:min(235px,65%);max-height:42%;overflow-y:auto;padding:9px 11px}
-  .viewer:has(.guided-tour-prompt) .guided-tour-prompt>b{font-size:15px}
-  .viewer:has(.guided-tour-prompt) .guided-tour-prompt>p{margin:4px 0 7px;font-size:11px}
-  .viewer:has(.guided-tour-prompt) .guided-tour-prompt button{min-height:32px;padding:0 9px;font-size:10px}
-  .viewer:has(.guided-tour-card) .part-info-card{top:auto;right:auto;bottom:8px;left:8px;width:min(220px,60%);max-height:40%;overflow-y:auto;padding:8px 10px}
-  .viewer:has(.guided-tour-card) .part-info-card .viewer-info-photo{min-height:82px;max-height:104px}
-  .viewer:has(.guided-tour-card) .part-info-card>b{font-size:14px}
-  .viewer:has(.guided-tour-card) .part-info-card>p{margin-top:5px;font-size:11px;line-height:1.4}
-}
-
-@media(max-width:600px),(pointer:coarse) and (max-height:500px){
-  .viewer:fullscreen,.viewer:-webkit-full-screen,.viewer-fullscreen-fallback,.viewer-fullscreen-active{position:fixed;inset:0;z-index:1000;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) minmax(170px,24dvh) auto;align-content:stretch;align-items:stretch;gap:0;overflow:hidden;width:100vw;max-width:100vw;height:100vh;height:100dvh;min-width:0;min-height:0;max-height:none;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);border-radius:0;background:radial-gradient(ellipse at 50% 43%,#242832 0,#151920 68%,#101318 100%)}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active):has(.part-info-card .viewer-info-photo),:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active):has(.part-info-card .viewer-info-photo),.viewer-fullscreen-fallback:has(.part-info-card .viewer-info-photo),:is(.viewer:fullscreen,.viewer-fullscreen-active):has(.viewer-place-card .viewer-info-photo),:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active):has(.viewer-place-card .viewer-info-photo),.viewer-fullscreen-fallback:has(.viewer-place-card .viewer-info-photo){grid-template-rows:auto minmax(0,1fr) minmax(200px,30dvh) auto}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-fullscreen-header,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-fullscreen-header,.viewer-fullscreen-fallback .viewer-fullscreen-header{grid-column:1;grid-row:1;position:relative;z-index:12;display:flex;align-items:center;justify-content:space-between;min-width:0;padding:8px 18px;color:#f7f7f5}
-  .viewer-fullscreen-header>span{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:700;letter-spacing:-.03em}
-  .viewer-fullscreen-header img{width:30px;height:30px;object-fit:contain}
-  .viewer-fullscreen-dot{margin-left:-9px;color:#ffd521}
-  .viewer-fullscreen-header>button{display:flex;align-items:center;gap:8px;min-height:40px;padding:0 12px;border:1px solid #ffffff32;border-radius:22px;background:#ffffff08;color:#fff;font:600 12px 'DM Sans',sans-serif}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-tag,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-tag,.viewer-fullscreen-fallback .viewer-tag{display:none}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-canvas,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-canvas,.viewer-fullscreen-fallback .viewer-canvas{position:relative!important;inset:auto!important;grid-column:1;grid-row:2;width:100%;height:100%;min-width:0;min-height:0;max-height:none;margin:0;border-radius:0}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .guided-tour-card,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .guided-tour-card,.viewer-fullscreen-fallback .guided-tour-card{position:relative!important;inset:auto!important;grid-column:1;grid-row:4;width:auto;max-height:none;overflow:visible;margin:0;padding:4px 18px max(12px,env(safe-area-inset-bottom));border:0;border-radius:0;background:#171b21;color:#f7f7f5;box-shadow:none}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .guided-tour-card>span,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .guided-tour-card>span,.viewer-fullscreen-fallback .guided-tour-card>span{display:none}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .guided-tour-card>b,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .guided-tour-card>b,.viewer-fullscreen-fallback .guided-tour-card>b,:is(.viewer:fullscreen,.viewer-fullscreen-active) .guided-tour-select-label,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .guided-tour-select-label,.viewer-fullscreen-fallback .guided-tour-select-label{display:none}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .guided-tour-card>div,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .guided-tour-card>div,.viewer-fullscreen-fallback .guided-tour-card>div{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:8px;margin:0}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .guided-tour-card button,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .guided-tour-card button,.viewer-fullscreen-fallback .guided-tour-card button{min-height:44px;padding:0 11px;border:1px solid #ffffff22;border-radius:24px;background:#252a31;color:#fff;font:600 14px 'DM Sans',sans-serif;white-space:nowrap}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .guided-tour-card>div>button:first-child,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .guided-tour-card>div>button:first-child,.viewer-fullscreen-fallback .guided-tour-card>div>button:first-child{justify-self:start}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .guided-tour-card>div>button:nth-of-type(2),:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .guided-tour-card>div>button:nth-of-type(2),.viewer-fullscreen-fallback .guided-tour-card>div>button:nth-of-type(2){justify-self:end;border-color:#ffd521;background:#ffd521;color:#171717}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .guided-tour-card>div>button:nth-of-type(n+3),:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .guided-tour-card>div>button:nth-of-type(n+3),.viewer-fullscreen-fallback .guided-tour-card>div>button:nth-of-type(n+3){display:none}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .guided-tour-dots,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .guided-tour-dots,.viewer-fullscreen-fallback .guided-tour-dots{display:flex;justify-content:center;align-items:center;gap:4px;max-width:38vw;overflow-x:auto}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .guided-tour-dots button,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .guided-tour-dots button,.viewer-fullscreen-fallback .guided-tour-dots button{flex:0 0 7px;width:7px;min-height:7px;height:7px;padding:0;border:0;border-radius:50%;background:#747983}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .guided-tour-dots button[aria-current="step"],:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .guided-tour-dots button[aria-current="step"],.viewer-fullscreen-fallback .guided-tour-dots button[aria-current="step"]{background:#ffd521;box-shadow:0 0 12px #ffd52199}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .part-info-card,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .part-info-card,.viewer-fullscreen-fallback .part-info-card,:is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-place-card,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-place-card,.viewer-fullscreen-fallback .viewer-place-card{position:relative!important;inset:auto!important;grid-column:1;grid-row:3;align-self:stretch;width:auto;max-height:100%;min-height:0;overflow-y:auto;margin:0;padding:14px 22px 8px;border:0;border-top:1px solid #ffffff24;border-radius:22px 22px 0 0;background:linear-gradient(180deg,#1c2027f5,#171b21f5);color:#f7f7f5;box-shadow:0 -16px 48px #0003}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .part-info-card>small,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .part-info-card>small,.viewer-fullscreen-fallback .part-info-card>small{color:#ffd521;font-size:11px;letter-spacing:.08em}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .part-info-card>b,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .part-info-card>b,.viewer-fullscreen-fallback .part-info-card>b,:is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-place-card>b,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-place-card>b,.viewer-fullscreen-fallback .viewer-place-card>b{display:block;margin:3px 0 8px;color:#fff;font-size:22px;line-height:1.2}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .part-info-card>p,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .part-info-card>p,.viewer-fullscreen-fallback .part-info-card>p,:is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-place-card>p,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-place-card>p,.viewer-fullscreen-fallback .viewer-place-card>p{margin:0;color:#d4d7dc;font-size:15px;line-height:1.5}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .part-info-card::before,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .part-info-card::before,.viewer-fullscreen-fallback .part-info-card::before,:is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-place-card::before,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-place-card::before,.viewer-fullscreen-fallback .viewer-place-card::before{order:-1;display:block;width:36px;height:4px;margin:0 auto 12px;border-radius:8px;background:#777d86;content:""}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .part-info-card>small,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .part-info-card>small,.viewer-fullscreen-fallback .part-info-card>small,:is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-place-card>small,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-place-card>small,.viewer-fullscreen-fallback .viewer-place-card>small{display:none}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .guided-tour-kicker,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .guided-tour-kicker,.viewer-fullscreen-fallback .guided-tour-kicker{order:0;display:block;margin:0 0 8px;color:#ffd521;font:500 11px 'DM Mono',monospace;letter-spacing:.08em}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-place-card>strong,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-place-card>strong,.viewer-fullscreen-fallback .viewer-place-card>strong{display:none}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .part-info-card>b,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .part-info-card>b,.viewer-fullscreen-fallback .part-info-card>b,:is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-place-card>b,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-place-card>b,.viewer-fullscreen-fallback .viewer-place-card>b{order:1;margin:0 0 8px}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .part-info-card .viewer-photo-gallery,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .part-info-card .viewer-photo-gallery,.viewer-fullscreen-fallback .part-info-card .viewer-photo-gallery,:is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-place-card .viewer-photo-gallery,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-place-card .viewer-photo-gallery,.viewer-fullscreen-fallback .viewer-place-card .viewer-photo-gallery{order:2}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .part-info-card>p,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .part-info-card>p,.viewer-fullscreen-fallback .part-info-card>p,:is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-place-card>p,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-place-card>p,.viewer-fullscreen-fallback .viewer-place-card>p{order:3}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .part-info-card .viewer-info-photo,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .part-info-card .viewer-info-photo,.viewer-fullscreen-fallback .part-info-card .viewer-info-photo,:is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-place-card .viewer-info-photo,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-place-card .viewer-info-photo,.viewer-fullscreen-fallback .viewer-place-card .viewer-info-photo{width:100%;height:70px;min-height:0;max-height:70px;aspect-ratio:16/5;margin:0 0 7px}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .part-info-card .viewer-photo-attribution,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .part-info-card .viewer-photo-attribution,.viewer-fullscreen-fallback .part-info-card .viewer-photo-attribution,:is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-place-card .viewer-photo-attribution,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-place-card .viewer-photo-attribution,.viewer-fullscreen-fallback .viewer-place-card .viewer-photo-attribution{font-size:9px}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-photo-controls,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-photo-controls,.viewer-fullscreen-fallback .viewer-photo-controls{left:6px;bottom:25px;gap:4px}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-photo-controls button,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-photo-controls button,.viewer-fullscreen-fallback .viewer-photo-controls button{width:26px;height:26px;border-radius:6px;font-size:18px}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-photo-controls span,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-photo-controls span,.viewer-fullscreen-fallback .viewer-photo-controls span{min-width:34px;padding:4px;font-size:8px}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-photo-attribution,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-photo-attribution,.viewer-fullscreen-fallback .viewer-photo-attribution{padding:4px 6px}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .camp-info-close,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .camp-info-close,.viewer-fullscreen-fallback .camp-info-close,:is(.viewer:fullscreen,.viewer-fullscreen-active) .part-info-card>a,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .part-info-card>a,.viewer-fullscreen-fallback .part-info-card>a{display:none}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .guided-tour-prompt,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .guided-tour-prompt,.viewer-fullscreen-fallback .guided-tour-prompt{display:none}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-controls,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-controls,.viewer-fullscreen-fallback .viewer-controls,:is(.viewer:fullscreen,.viewer-fullscreen-active) .guided-fullscreen-toggle,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .guided-fullscreen-toggle,.viewer-fullscreen-fallback .guided-fullscreen-toggle{display:none!important}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-fullscreen-header,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-fullscreen-header,.viewer-fullscreen-fallback .viewer-fullscreen-header{display:flex}
-  :is(.viewer:fullscreen,.viewer-fullscreen-active) .viewer-credit,:is(.viewer:-webkit-full-screen,.viewer-fullscreen-active) .viewer-credit,.viewer-fullscreen-fallback .viewer-credit{display:none}
-}
+.viewer-photo-frame{position:absolute;inset:0;overflow:hidden}
+.viewer-photo-frame img{display:block;width:100%;height:100%;object-fit:cover}
+.tour-transition-card{display:none}
 .viewer-fullscreen-header{display:none}
 .guided-tour-dots{display:none}
 .guided-tour-kicker{display:none}
 .viewer-fullscreen-fallback{position:fixed;inset:0;z-index:1000;width:100vw;height:100vh;height:100dvh;min-height:0;max-height:none;border-radius:0}
 
-/* Keep every object viewer inside the phone's content width. */
+/* Mobile viewer: clean unobstructed 3D stage on top, single-row thumb controls & details below. */
 @media(max-width:740px){
   .detail-page,.detail-layout,.detail-viewer{width:100%;max-width:100%;min-width:0}
   .detail-layout{grid-template-columns:minmax(0,1fr)}
-  .detail-viewer>.viewer{width:100%;max-width:100%;min-width:0;overflow:hidden}
-  .detail-viewer>.viewer>.viewer-canvas{width:100%;max-width:100%;min-width:0}
+  .detail-viewer{height:auto;aspect-ratio:auto;min-height:0;max-height:none}
+  .detail-viewer>.viewer{display:flex;flex-direction:column;width:100%;max-width:100%;height:auto;min-width:0;min-height:0;overflow:hidden;border-radius:16px;background:#11141a;border:1px solid #262b36}
+  .detail-viewer>.viewer>.viewer-canvas{position:relative;flex:none;width:100%;max-width:100%;aspect-ratio:16/10;height:auto;min-width:0;min-height:220px;max-height:320px}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .viewer-tag{top:10px;left:10px;bottom:auto;min-height:28px;max-width:calc(100% - 115px);padding:0 9px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(14,17,22,.74);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:9px}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .viewer-tag>svg{width:13px;height:13px}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .viewer-tag>small{font-size:8px}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .viewer-credit{top:10px;right:10px;bottom:auto;max-width:110px;padding:6px 9px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(14,17,22,.72);color:#d7dbe2;font-size:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:none}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .viewer-loading{top:46px;right:12px;bottom:auto;left:12px;padding:7px 10px;border-radius:10px;background:rgba(14,17,22,.78)}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .viewer-controls,
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .viewer-controls.viewer-controls-photos{position:relative;inset:auto;width:100%;max-width:100%;display:flex;align-items:center;flex-wrap:nowrap;justify-content:flex-start;gap:7px;padding:10px 12px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch;background:#0e1116;border-top:1px solid rgba(255,255,255,.1)}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .viewer-controls::-webkit-scrollbar{display:none}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .viewer-controls>*,
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .viewer-controls button{flex:0 0 auto;min-height:40px;border-radius:10px;white-space:nowrap}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .viewer-controls button{padding:0 12px;font-size:11px;background:#191e26;border-color:rgba(255,255,255,.14)}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .viewer-controls .guided-tour-button:not(:disabled){border-color:rgba(255,213,33,.5);background:linear-gradient(135deg,rgba(255,213,33,.2),rgba(255,188,33,.08));color:#ffd521;font-weight:700}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .viewer-controls .viewer-action-active{border-color:#ffd521;background:rgba(255,213,33,.16);color:#ffd521}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .viewer-controls .viewer-icon{width:40px;min-height:40px;padding:0;font-size:17px}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .viewer-controls .viewer-zoom-group{min-height:40px;border-radius:10px;background:#191e26;border-color:rgba(255,255,255,.14)}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .viewer-controls .viewer-zoom-group button{width:36px;min-height:36px;background:transparent;border:0}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback):has(.guided-tour-card) .viewer-controls{display:none}
+
+  /* Inline tapped hotspot / label details dock cleanly below the canvas so the 3D model stays visible. */
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .part-info-card,
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .viewer-place-card{order:2;position:relative!important;inset:auto!important;width:100%;max-width:100%;max-height:360px;overflow-y:auto;overscroll-behavior:contain;margin:0;padding:14px 16px 16px;border:0;border-top:1px solid rgba(255,255,255,.12);border-radius:0;background:#151921;box-shadow:none}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .guided-tour-card{order:3;position:relative!important;inset:auto!important;width:100%;max-width:100%;max-height:none;margin:0;padding:12px 14px;border:0;border-top:1px solid rgba(255,255,255,.12);border-radius:0;background:#0e1116;box-shadow:none}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback) .guided-tour-card>div>button:nth-of-type(2){border-color:#ffd521;background:#ffd521;color:#14161a;font-weight:700}
+
+  /* Keep compare page controls on one clean scrollable bottom bar too. */
+  .compare-viewers .viewer-controls{top:auto;right:8px;bottom:8px;left:8px;max-width:calc(100% - 16px);flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none}
+  .compare-viewers .viewer-controls::-webkit-scrollbar{display:none}
+  .compare-viewers .viewer-controls>*{flex:0 0 auto}
+
+  /* Unobstructed photo card: clean 16:10 image + swipe + tidy caption/attribution bar below. */
+  .viewer-info-photo{display:flex;flex-direction:column;height:auto;min-height:0;max-height:none;aspect-ratio:auto;margin:8px 0 10px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:#0c0f14;overflow:hidden}
+  .viewer-photo-frame{position:relative;inset:auto;width:100%;aspect-ratio:16/10;max-height:220px;background:#090b0f}
+  .viewer-photo-controls{left:auto;right:8px;bottom:8px;gap:5px;padding:3px;border-radius:999px;background:rgba(12,15,20,.78);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  .viewer-photo-controls button{width:34px;height:34px;border:0;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:20px;line-height:1}
+  .viewer-photo-controls span{min-width:40px;padding:0 4px;background:transparent;font-size:10px}
+  .viewer-info-photo figcaption{position:static;max-width:none;padding:9px 12px 3px;border-radius:0;background:transparent;color:#f1f3f6;font:600 12px/1.35 'DM Sans',sans-serif;white-space:normal;overflow:visible;text-overflow:clip}
+  .viewer-photo-attribution{position:static;padding:2px 12px 9px;background:transparent;gap:10px}
+  .viewer-photo-attribution a{font-size:10px;color:#b8c0cc}
+  .viewer-photo-note{margin:0 0 10px;padding:8px 10px;border-left:2px solid #ffd521;border-radius:0 8px 8px 0;background:rgba(255,255,255,.04);color:#d8dde6;font-size:12px;line-height:1.55}
+}
+
+/* Mobile fullscreen studio split: 3D model in upper part, photos + details + prev/next in bottom part. */
+@media(max-width:740px),(pointer:coarse) and (max-height:540px){
+  .viewer.viewer-fullscreen-fallback,
+  .viewer.viewer-fullscreen-active{position:fixed!important;inset:0!important;z-index:1000;display:grid!important;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;align-content:stretch;align-items:stretch;gap:0;overflow:hidden;width:100vw;max-width:100vw;height:100vh;height:100dvh;min-width:0;min-height:0;max-height:none;padding:env(safe-area-inset-top) 0 0;border:0;border-radius:0;background:radial-gradient(ellipse at 50% 42%,#242a36 0,#141820 70%,#0e1116 100%)}
+  .viewer.viewer-fullscreen-fallback.viewer-fullscreen-split,
+  .viewer.viewer-fullscreen-active.viewer-fullscreen-split{grid-template-rows:auto minmax(205px,42dvh) minmax(0,1fr) auto}
+  .viewer.viewer-fullscreen-fallback .viewer-fullscreen-header,
+  .viewer.viewer-fullscreen-active .viewer-fullscreen-header{grid-column:1;grid-row:1;position:relative;z-index:12;display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0;padding:8px 14px;color:#f7f7f5;background:linear-gradient(180deg,rgba(14,17,22,.85),rgba(14,17,22,0))}
+  .viewer-fullscreen-header>span{display:flex;align-items:center;gap:8px;min-width:0;font-size:15px;font-weight:800;letter-spacing:.03em;white-space:nowrap}
+  .viewer-fullscreen-header img{width:26px;height:26px;object-fit:contain;flex:0 0 auto}
+  .viewer-fullscreen-dot{margin-left:-8px;color:#ffd521}
+  .viewer-fullscreen-actions{display:flex;align-items:center;gap:7px;flex:0 0 auto}
+  .viewer-fullscreen-actions button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:36px;padding:0 12px;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font:600 12px 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap}
+  .viewer-fullscreen-actions .viewer-fullscreen-end{border-color:rgba(255,213,33,.38);background:rgba(255,213,33,.12);color:#ffd521}
+  .viewer.viewer-fullscreen-fallback .viewer-tag,
+  .viewer.viewer-fullscreen-active .viewer-tag,
+  .viewer.viewer-fullscreen-fallback .viewer-credit,
+  .viewer.viewer-fullscreen-active .viewer-credit,
+  .viewer.viewer-fullscreen-fallback .guided-tour-prompt,
+  .viewer.viewer-fullscreen-active .guided-tour-prompt{display:none}
+  .viewer.viewer-fullscreen-fallback .guided-fullscreen-toggle,
+  .viewer.viewer-fullscreen-active .guided-fullscreen-toggle{display:none!important}
+  .viewer.viewer-fullscreen-fallback .viewer-canvas,
+  .viewer.viewer-fullscreen-active .viewer-canvas{position:relative!important;inset:auto!important;grid-column:1;grid-row:2;width:100%!important;height:100%!important;min-width:0;min-height:0!important;max-height:none!important;margin:0;border-radius:0}
+  .viewer.viewer-fullscreen-fallback .viewer-loading,
+  .viewer.viewer-fullscreen-active .viewer-loading{top:auto;right:16px;bottom:14px;left:16px;grid-row:2;align-self:end}
+
+  /* Normal fullscreen controls (when not in guided tour) stay accessible as a sleek bottom dock. */
+  .viewer.viewer-fullscreen-fallback .viewer-controls,
+  .viewer.viewer-fullscreen-active .viewer-controls{position:relative!important;inset:auto!important;grid-column:1;grid-row:4;width:100%;max-width:100%;display:flex;align-items:center;flex-wrap:nowrap;justify-content:flex-start;gap:7px;padding:10px 14px max(12px,env(safe-area-inset-bottom));overflow-x:auto;scrollbar-width:none;background:#0e1116;border-top:1px solid rgba(255,255,255,.1)}
+  .viewer.viewer-fullscreen-fallback.viewer-tour-active .viewer-controls,
+  .viewer.viewer-fullscreen-active.viewer-tour-active .viewer-controls{display:none!important}
+
+  /* Bottom half: sleek scrollable sheet for photos + part details. */
+  .viewer.viewer-fullscreen-fallback .part-info-card,
+  .viewer.viewer-fullscreen-fallback .viewer-place-card,
+  .viewer.viewer-fullscreen-fallback .tour-transition-card,
+  .viewer.viewer-fullscreen-active .part-info-card,
+  .viewer.viewer-fullscreen-active .viewer-place-card,
+  .viewer.viewer-fullscreen-active .tour-transition-card{position:relative!important;inset:auto!important;left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;grid-column:1;grid-row:3;align-self:stretch;width:100%;max-width:100%;max-height:100%;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;margin:0;padding:10px 16px 18px;border:0;border-top:1px solid rgba(255,255,255,.16);border-radius:22px 22px 0 0;background:linear-gradient(180deg,#181d26 0,#11141a 100%);color:#f7f7f5;box-shadow:0 -14px 36px rgba(0,0,0,.48);display:flex;flex-direction:column}
+  .viewer.viewer-fullscreen-active .part-info-card::before,
+  .viewer.viewer-fullscreen-active .viewer-place-card::before,
+  .viewer.viewer-fullscreen-active .tour-transition-card::before{order:-1;display:block;width:36px;height:4px;flex:0 0 4px;margin:0 auto 10px;border-radius:999px;background:rgba(255,255,255,.26);content:""}
+  .viewer.viewer-fullscreen-active .guided-tour-kicker{order:0;display:block;margin:0 0 4px;color:#ffd521;font:600 11px 'DM Mono',monospace;letter-spacing:.08em}
+  .viewer.viewer-fullscreen-active .part-info-card>small,
+  .viewer.viewer-fullscreen-active .viewer-place-card>small{order:0;margin:0 0 4px;color:#ffd521;font:600 10px 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+  .viewer.viewer-fullscreen-active.viewer-tour-active .part-info-card>small:first-of-type,
+  .viewer.viewer-fullscreen-active.viewer-tour-active .viewer-place-card>small:first-of-type{display:none}
+  .viewer.viewer-fullscreen-active .part-info-card>b,
+  .viewer.viewer-fullscreen-active .viewer-place-card>b{order:1;margin:0 0 8px;color:#fff;font:700 20px/1.22 'DM Sans',sans-serif;letter-spacing:-.02em}
+  .viewer.viewer-fullscreen-active .viewer-place-card>strong{order:1;margin:0 0 8px;color:#ffd521;font-size:15px}
+  .viewer.viewer-fullscreen-active .part-info-card .viewer-photo-gallery,
+  .viewer.viewer-fullscreen-active .viewer-place-card .viewer-photo-gallery{order:2;margin:0 0 10px}
+  .viewer.viewer-fullscreen-active .part-info-card>p,
+  .viewer.viewer-fullscreen-active .viewer-place-card>p{order:3;margin:0;color:#d6dce5;font:400 14px/1.6 'DM Sans',sans-serif}
+  .viewer.viewer-fullscreen-active .part-info-card>a{order:4;align-self:flex-start;display:inline-flex;align-items:center;gap:5px;margin-top:12px;padding:7px 12px;border:1px solid rgba(255,213,33,.35);border-radius:999px;background:rgba(255,213,33,.08);color:#ffd521;font:600 11px 'DM Mono',monospace;text-decoration:none}
+  .viewer.viewer-fullscreen-active.viewer-tour-active .camp-info-close{display:none}
+
+  /* Smooth transition state in row 3 while spinning/zooming to next stop so upper model never jumps. */
+  .tour-transition-card>span{display:block;margin:2px 0 4px;color:#ffd521;font:600 11px 'DM Mono',monospace;letter-spacing:.08em}
+  .tour-transition-card>b{display:block;margin:0 0 6px;color:#fff;font:700 20px/1.22 'DM Sans',sans-serif}
+  .tour-transition-card>p{margin:0;color:#9ea8b8;font:400 13px/1.5 'DM Sans',sans-serif}
+
+  /* Fixed bottom navigation dock with stop picker, progress dots, Previous & Next buttons. */
+  .viewer.viewer-fullscreen-fallback .guided-tour-card,
+  .viewer.viewer-fullscreen-active .guided-tour-card{position:relative!important;inset:auto!important;left:auto!important;right:auto!important;bottom:auto!important;grid-column:1;grid-row:4;width:100%;max-width:100%;max-height:none;overflow:visible;margin:0;padding:10px 14px max(12px,env(safe-area-inset-bottom));border:0;border-top:1px solid rgba(255,255,255,.12);border-radius:0;background:#0e1116;color:#f7f7f5;box-shadow:none;animation:none}
+  .viewer.viewer-fullscreen-active .guided-tour-card>span,
+  .viewer.viewer-fullscreen-active .guided-tour-card>b{display:none}
+  .viewer.viewer-fullscreen-active .guided-tour-card .guided-tour-select-label{display:block;margin:0 0 9px;font-size:0;line-height:0}
+  .viewer.viewer-fullscreen-active .guided-tour-card .guided-tour-select-label select{width:100%;min-height:38px;padding:0 12px;border:1px solid rgba(255,255,255,.14);border-radius:11px;background:#191f28;color:#eef2f7;font:600 13px 'DM Sans',sans-serif}
+  .viewer.viewer-fullscreen-active .guided-tour-card>div{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:8px;margin:0}
+  .viewer.viewer-fullscreen-active .guided-tour-card>div>button{min-height:46px;padding:0 14px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:#1d232d;color:#f5f7fa;font:600 14px 'DM Sans',sans-serif;white-space:nowrap}
+  .viewer.viewer-fullscreen-active .guided-tour-card>div>button:first-child{justify-self:stretch}
+  .viewer.viewer-fullscreen-active .guided-tour-card>div>button:nth-of-type(2){justify-self:stretch;border-color:#ffd521;background:#ffd521;color:#14161a;font-weight:700;box-shadow:0 4px 16px rgba(255,213,33,.25)}
+  .viewer.viewer-fullscreen-active .guided-tour-card>div>button:nth-of-type(n+3){display:none}
+  .viewer.viewer-fullscreen-active .guided-tour-dots{display:flex;justify-content:center;align-items:center;gap:5px;max-width:34vw;padding:0 2px;overflow-x:auto;scrollbar-width:none}
+  .viewer.viewer-fullscreen-active .guided-tour-dots::-webkit-scrollbar{display:none}
+  .viewer.viewer-fullscreen-active .guided-tour-dots button{flex:0 0 7px;width:7px;min-height:7px;height:7px;padding:0;border:0;border-radius:999px;background:#596170;transition:width .18s ease,background-color .18s ease}
+  .viewer.viewer-fullscreen-active .guided-tour-dots button[aria-current="step"]{flex-basis:18px;width:18px;background:#ffd521;box-shadow:0 0 10px rgba(255,213,33,.6)}
 }
 
 /* On phones, keep the first-look invitation in the page flow above the viewer. */
