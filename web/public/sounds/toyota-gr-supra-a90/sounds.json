@@ -1,0 +1,442 @@
+{
+  "slug": "toyota-gr-supra-a90",
+  "version": 1,
+  "basePath": "/sounds/toyota-gr-supra-a90",
+  "masterVolume": 1,
+  "storageKey": "any3d-sound-muted",
+  "labels": [
+    {
+      "label": "pistons",
+      "file": "engine",
+      "volume": 0.86,
+      "trigger": "label-open",
+      "caption": "A Toyota Supra (A80) 2JZ inline-six starts and revs. Used for the pistons \u2014 this is the earlier 2JZ, not the A90's B58."
+    },
+    {
+      "label": "ac",
+      "file": "tools",
+      "volume": 0.7,
+      "trigger": "label-open",
+      "caption": "A short mechanical/tool sound, as a stand-in for the A/C compressor. Not a recorded compressor."
+    },
+    {
+      "label": "alt",
+      "file": "tools",
+      "volume": 0.7,
+      "trigger": "label-open",
+      "caption": "The same mechanical/tool sound, as a stand-in for the alternator."
+    },
+    {
+      "label": "belt",
+      "file": "tools",
+      "volume": 0.7,
+      "trigger": "label-open",
+      "caption": "The same mechanical/tool sound, as a stand-in for the accessory drive belt. Not a recorded belt."
+    },
+    {
+      "label": "pulley",
+      "file": "tools",
+      "volume": 0.7,
+      "trigger": "label-open",
+      "caption": "The same mechanical/tool sound, as a stand-in for the crank pulley / damper."
+    },
+    {
+      "label": "gearbox",
+      "file": "gearshift",
+      "volume": 0.8,
+      "trigger": "label-open",
+      "caption": "A workshop ratchet, used as a mechanical stand-in for the ZF 8HP automatic. This car is an automatic; the clip is not a recorded 8-speed gearbox."
+    },
+    {
+      "label": "tens",
+      "file": "tools",
+      "volume": 0.7,
+      "trigger": "label-open",
+      "caption": "The same mechanical/tool sound, as a stand-in for the belt tensioners and idler."
+    },
+    {
+      "label": "crank",
+      "file": "engine",
+      "volume": 0.86,
+      "trigger": "label-open",
+      "caption": "The same A80 2JZ start-and-rev, for the crankshaft."
+    },
+    {
+      "label": "caps",
+      "file": "engine",
+      "volume": 0.8,
+      "trigger": "label-open",
+      "caption": "The same A80 2JZ start-and-rev, for the main bearing caps."
+    },
+    {
+      "label": "cat",
+      "file": "exhaust",
+      "volume": 0.8,
+      "trigger": "label-open",
+      "caption": "A later exhaust run from the same A80 2JZ recording, for the catalytic converter."
+    },
+    {
+      "label": "head",
+      "file": "engine",
+      "volume": 0.86,
+      "trigger": "label-open",
+      "caption": "The same A80 2JZ start-and-rev, for the cylinder head."
+    },
+    {
+      "label": "block",
+      "file": "engine",
+      "volume": 0.86,
+      "trigger": "label-open",
+      "caption": "A Toyota Supra (A80) 2JZ inline-six starts and revs \u2014 a stand-in for the A90's B58 3.0-litre straight-six block. Related architecture (turbo I6), but not a B58 recording."
+    },
+    {
+      "label": "exhman",
+      "file": "exhaust",
+      "volume": 0.82,
+      "trigger": "label-open",
+      "caption": "The same A80 2JZ exhaust run, for the exhaust manifold."
+    },
+    {
+      "label": "fan",
+      "file": "fan",
+      "volume": 0.68,
+      "trigger": "label-open",
+      "caption": "An industrial ventilation fan, used as a stand-in for the cooling fan. Not a car cooling fan."
+    },
+    {
+      "label": "cover",
+      "file": "engine",
+      "volume": 0.78,
+      "trigger": "label-open",
+      "caption": "The same A80 2JZ start-and-rev, for the engine cover."
+    },
+    {
+      "label": "radiator",
+      "file": "fan",
+      "volume": 0.68,
+      "trigger": "label-open",
+      "caption": "The same industrial fan, for air through the radiator."
+    },
+    {
+      "label": "intake",
+      "file": "turbo",
+      "volume": 0.78,
+      "trigger": "label-open",
+      "caption": "A turbo blow-off / wastegate whoosh, for the intake and water-to-air intercooler."
+    },
+    {
+      "label": "turbo",
+      "file": "turbo",
+      "volume": 0.8,
+      "trigger": "label-open",
+      "caption": "A turbo blow-off whoosh cut from a Peugeot 406 with an HKS blow-off valve \u2014 a stand-in for the B58's twin-scroll turbo. Not a Supra turbo recording."
+    },
+    {
+      "label": "wp",
+      "file": "fan",
+      "volume": 0.64,
+      "trigger": "label-open",
+      "caption": "The same industrial fan, used loosely for the coolant pump (cooling circuit). Not a recorded water pump."
+    },
+    {
+      "label": "pan",
+      "file": "metal",
+      "volume": 0.74,
+      "trigger": "label-open",
+      "caption": "A short metal hit, as a stand-in for the oil pan. Not a recorded sump."
+    },
+    {
+      "label": "chassis",
+      "file": "spring",
+      "volume": 0.72,
+      "trigger": "label-open",
+      "caption": "A short spring sound, for the chassis / floor pan."
+    },
+    {
+      "label": "fsub",
+      "file": "spring",
+      "volume": 0.72,
+      "trigger": "label-open",
+      "caption": "The same spring sound, for the front subframe."
+    },
+    {
+      "label": "rsub",
+      "file": "spring",
+      "volume": 0.72,
+      "trigger": "label-open",
+      "caption": "The same spring sound, for the rear subframe."
+    },
+    {
+      "label": "susp",
+      "file": "spring",
+      "volume": 0.76,
+      "trigger": "label-open",
+      "caption": "A short spring sound, for the coilover suspension. Not a recorded Supra damper."
+    },
+    {
+      "label": "diff",
+      "file": "metal",
+      "volume": 0.74,
+      "trigger": "label-open",
+      "caption": "A short metal hit, as a stand-in for the rear differential. Not a recorded diff."
+    },
+    {
+      "label": "dshaft",
+      "file": "metal",
+      "volume": 0.74,
+      "trigger": "label-open",
+      "caption": "The same metal hit, as a stand-in for the driveshaft."
+    },
+    {
+      "label": "exhaust",
+      "file": "exhaust",
+      "volume": 0.84,
+      "trigger": "label-open",
+      "caption": "A later exhaust run from the Toyota Supra (A80) 2JZ recording, for the exhaust and twin mufflers. Not the A90 B58 exhaust."
+    },
+    {
+      "label": "tank",
+      "file": "fuel",
+      "volume": 0.76,
+      "trigger": "label-open",
+      "caption": "Water being poured from bottles, as a liquid-fill stand-in for the fuel tank."
+    },
+    {
+      "label": "rack",
+      "file": "spring",
+      "volume": 0.7,
+      "trigger": "label-open",
+      "caption": "The same spring sound, used loosely for the steering rack. Not a recorded rack."
+    }
+  ],
+  "ambient": {
+    "file": "ambient",
+    "volume": 0.26,
+    "loop": true,
+    "trigger": "page-open",
+    "caption": "A quieter cruise/idle stretch from the same A80 2JZ recording, under the object page once sound is enabled."
+  },
+  "ui": {
+    "file": "ui-tick",
+    "volume": 0.42,
+    "trigger": "hover",
+    "caption": "A short UI tick for hovering a label. Optional \u2014 hook only if it feels right, and debounce it. This explode view is dense, so skip hover if it feels noisy."
+  },
+  "credits": [
+    {
+      "usedFor": "engine",
+      "title": "Toyota Supra (A80) - engine and exhaust sound (YouTube YlRjnMnHRO4)",
+      "author": "Fabio Rojas Pichardo (YouTube)",
+      "licence": "CC BY 3.0",
+      "licence_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Toyota_Supra_(A80)_-_engine_and_exhaust_sound_(YouTube_YlRjnMnHRO4).opus",
+      "note": "A 5.75-second start-and-rev from the beginning of the recording (about 0.30\u20136.05 s). This is a Toyota Supra (A80) 2JZ, used as a stand-in for the A90 B58. Shared by pistons, crank, caps, head, block and cover."
+    },
+    {
+      "usedFor": "exhaust",
+      "title": "Toyota Supra (A80) - engine and exhaust sound (YouTube YlRjnMnHRO4)",
+      "author": "Fabio Rojas Pichardo (YouTube)",
+      "licence": "CC BY 3.0",
+      "licence_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Toyota_Supra_(A80)_-_engine_and_exhaust_sound_(YouTube_YlRjnMnHRO4).opus",
+      "note": "A later 5.8-second exhaust run (about 17.0\u201322.8 s) from the same recording. Shared by exhaust, exhman and cat."
+    },
+    {
+      "usedFor": "ambient",
+      "title": "Toyota Supra (A80) - engine and exhaust sound (YouTube YlRjnMnHRO4)",
+      "author": "Fabio Rojas Pichardo (YouTube)",
+      "licence": "CC BY 3.0",
+      "licence_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Toyota_Supra_(A80)_-_engine_and_exhaust_sound_(YouTube_YlRjnMnHRO4).opus",
+      "note": "A quieter 6.4-second stretch after the pull (about 25.0\u201331.4 s), faded and looped at low level."
+    },
+    {
+      "usedFor": "turbo",
+      "title": "Peugeot 406 Turbo (turbocharged, HKS blow-off valve) - engine and exhaust sound (YouTube kx0Tvu4 K04)",
+      "author": "nick7100 (YouTube)",
+      "licence": "CC BY 3.0",
+      "licence_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Peugeot_406_Turbo_(turbocharged,_HKS_blow-off_valve)_-_engine_and_exhaust_sound_(YouTube_kx0Tvu4_K04).opus",
+      "note": "A short blow-off / wastegate whoosh was cut from about 40.7\u201343.5 s. This is a Peugeot 406 with an HKS blow-off valve, not a Supra or B58 turbo. Also used for intake."
+    },
+    {
+      "usedFor": "intake",
+      "title": "Peugeot 406 Turbo (turbocharged, HKS blow-off valve) - engine and exhaust sound (YouTube kx0Tvu4 K04)",
+      "author": "nick7100 (YouTube)",
+      "licence": "CC BY 3.0",
+      "licence_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Peugeot_406_Turbo_(turbocharged,_HKS_blow-off_valve)_-_engine_and_exhaust_sound_(YouTube_kx0Tvu4_K04).opus",
+      "note": "Same clip as turbo."
+    },
+    {
+      "usedFor": "fan",
+      "title": "WWS Ventilationfan",
+      "author": "Work With Sounds / Technical Museum of Slovenia",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:WWS_Ventilationfan.ogg",
+      "note": "A 4.2-second slice of a steady industrial ventilation fan (about 8.0\u201312.2 s). Shared by fan, radiator and (loosely) the coolant pump. Not a car cooling fan."
+    },
+    {
+      "usedFor": "radiator",
+      "title": "WWS Ventilationfan",
+      "author": "Work With Sounds / Technical Museum of Slovenia",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:WWS_Ventilationfan.ogg",
+      "note": "Same clip as fan."
+    },
+    {
+      "usedFor": "wp",
+      "title": "WWS Ventilationfan",
+      "author": "Work With Sounds / Technical Museum of Slovenia",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:WWS_Ventilationfan.ogg",
+      "note": "Same clip as fan \u2014 a loose cooling-circuit stand-in, not a recorded water pump."
+    },
+    {
+      "usedFor": "gearbox",
+      "title": "Tools Ratchet",
+      "author": "CapsLok",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tools_Ratchet.ogg",
+      "note": "A ~1.6-second burst of rapid ratchet clicks. The A90 uses a ZF 8HP automatic; this is not a recorded 8-speed gearbox."
+    },
+    {
+      "usedFor": "ac",
+      "title": "tools_03 (from 100 CC0 SFX)",
+      "author": "rubberduck",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/100-cc0-sfx",
+      "note": "Credit is appreciated by the author. Also used for alt, belt, pulley and tens. Not a recorded accessory-drive part."
+    },
+    {
+      "usedFor": "alt",
+      "title": "tools_03 (from 100 CC0 SFX)",
+      "author": "rubberduck",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/100-cc0-sfx",
+      "note": "Same clip as ac."
+    },
+    {
+      "usedFor": "belt",
+      "title": "tools_03 (from 100 CC0 SFX)",
+      "author": "rubberduck",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/100-cc0-sfx",
+      "note": "Same clip as ac."
+    },
+    {
+      "usedFor": "pulley",
+      "title": "tools_03 (from 100 CC0 SFX)",
+      "author": "rubberduck",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/100-cc0-sfx",
+      "note": "Same clip as ac."
+    },
+    {
+      "usedFor": "tens",
+      "title": "tools_03 (from 100 CC0 SFX)",
+      "author": "rubberduck",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/100-cc0-sfx",
+      "note": "Same clip as ac."
+    },
+    {
+      "usedFor": "susp",
+      "title": "spring_01 (from 100 CC0 SFX)",
+      "author": "rubberduck",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/100-cc0-sfx",
+      "note": "Credit is appreciated by the author. Also used for chassis, fsub, rsub and rack. Not a recorded coilover or steering rack."
+    },
+    {
+      "usedFor": "chassis",
+      "title": "spring_01 (from 100 CC0 SFX)",
+      "author": "rubberduck",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/100-cc0-sfx",
+      "note": "Same clip as susp."
+    },
+    {
+      "usedFor": "fsub",
+      "title": "spring_01 (from 100 CC0 SFX)",
+      "author": "rubberduck",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/100-cc0-sfx",
+      "note": "Same clip as susp."
+    },
+    {
+      "usedFor": "rsub",
+      "title": "spring_01 (from 100 CC0 SFX)",
+      "author": "rubberduck",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/100-cc0-sfx",
+      "note": "Same clip as susp."
+    },
+    {
+      "usedFor": "rack",
+      "title": "spring_01 (from 100 CC0 SFX)",
+      "author": "rubberduck",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/100-cc0-sfx",
+      "note": "Same clip as susp."
+    },
+    {
+      "usedFor": "pan",
+      "title": "metal_hit_02 (from 100 CC0 metal and wood SFX)",
+      "author": "rubberduck",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+      "note": "Credit is appreciated by the author. Also used for diff and dshaft. Not a recorded oil pan, differential or driveshaft."
+    },
+    {
+      "usedFor": "diff",
+      "title": "metal_hit_02 (from 100 CC0 metal and wood SFX)",
+      "author": "rubberduck",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+      "note": "Same clip as pan."
+    },
+    {
+      "usedFor": "dshaft",
+      "title": "metal_hit_02 (from 100 CC0 metal and wood SFX)",
+      "author": "rubberduck",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+      "note": "Same clip as pan."
+    },
+    {
+      "usedFor": "tank",
+      "title": "Pouring water bottles",
+      "author": "stephan",
+      "licence": "Public domain",
+      "licence_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Pouring_water_bottles.ogg",
+      "note": "A 2.5-second pour (about 4.5\u20137.0 s). Water from bottles, not fuel."
+    },
+    {
+      "usedFor": "ui-tick",
+      "title": "click_001 (Interface Sounds 1.0)",
+      "author": "Kenney (www.kenney.nl)",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://kenney.nl/assets/interface-sounds"
+    }
+  ]
+}

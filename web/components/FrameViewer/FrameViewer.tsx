@@ -21,6 +21,23 @@ type CampHotspot = { id: string; name: string; category?: string; details?: stri
 type ExcavatorHotspot = { id: string; name: string; category: string; details: string; source: string; image?: HotspotPhoto; points: (string | [number, number] | null)[] };
 type HumanHotspot = { id: string; name: string; category: string; details: string; source: string; image?: HotspotPhoto; point: [number, number] };
 type Point = [number, number] | null;
+const SLUGS_WITH_INTRO = ['ford-f150-raptor', 'toyota-gr-supra-a90', 'porsche-992-gt3r'];
+const SLUGS_WITH_SOUND = ['ford-f150-raptor', 'toyota-gr-supra-a90', 'porsche-992-gt3r'];
+const defaultIntroTitle = (slug: string, title?: string, manifestName?: string) => {
+  if (title) return title;
+  if (manifestName) return manifestName;
+  if (slug === 'toyota-gr-supra-a90') return 'Toyota GR Supra 3.0';
+  if (slug === 'porsche-992-gt3r') return 'Porsche 911 GT3 R (992)';
+  if (slug === 'ford-f150-raptor') return 'Ford F-150 Raptor';
+  return slug;
+};
+const defaultIntroTagline = (slug: string, tagline?: string) => {
+  if (tagline) return tagline;
+  if (slug === 'toyota-gr-supra-a90') return 'The legend returns: a straight-six, rear-drive pure sports car';
+  if (slug === 'porsche-992-gt3r') return 'A 4.2-litre flat-six built for GT endurance racing.';
+  if (slug === 'ford-f150-raptor') return 'A high-performance pickup built for fast off-road driving';
+  return '';
+};
 const defaultViewerZoom = (slug: string) => slug === 'a10c' ? 1.5 : slug === 'janaki-mandir' && typeof window !== 'undefined' && window.matchMedia('(max-width: 740px)').matches ? 1.25 : 1;
 const parsePoint = (point: string | [number, number] | null | undefined): Point => { if (Array.isArray(point)) return point; if (typeof point !== 'string') return null; const values = point.trim().split(/[\s,]+/).map(Number); return values.length === 2 && values.every(Number.isFinite) ? [values[0], values[1]] : null; };
 const estimatedHotspotPoint = (slug: string, id: string, frame: number): Point => {
@@ -136,7 +153,7 @@ export default function FrameViewer({ slug, title, tagline, mode = 'drag', autoR
   const [showTourPrompt, setShowTourPrompt] = useState(false);
   const [loadedFrames, setLoadedFrames] = useState<number[]>([]);
   const [posterLoaded, setPosterLoaded] = useState(false);
-  const [introFinished, setIntroFinished] = useState(() => slug !== 'ford-f150-raptor');
+  const [introFinished, setIntroFinished] = useState(() => !SLUGS_WITH_INTRO.includes(slug));
   const count = humanScale ? 1 : exploded ? manifest?.explode?.count ?? 0 : manifest?.rotate.count ?? 1;
   const maxZoom = slug === 'porsche-992-gt3r' && humanScale ? 6 : 3;
   const explodeStart = Math.max(0, Math.min(count - 1, (manifest?.explode?.startFrame ?? 1) - 1));
@@ -145,15 +162,15 @@ export default function FrameViewer({ slug, title, tagline, mode = 'drag', autoR
   const frameProgress = computeFrameProgressFromIndices(loadedFrames, manifest?.rotate?.count ?? 144, { posterLoaded, stride: 8, oneBased: false });
 
   useEffect(() => {
-    if (slug !== 'ford-f150-raptor') return;
+    if (!SLUGS_WITH_SOUND.includes(slug)) return;
     const sm = getSoundManager();
     sm.attachGestureUnlock();
-    void sm.load('ford-f150-raptor');
+    void sm.load(slug);
     return () => sm.dispose();
   }, [slug]);
 
   useEffect(() => {
-    if (slug !== 'ford-f150-raptor' || !activeHotspot || tourAnimating) return;
+    if (!SLUGS_WITH_SOUND.includes(slug) || !activeHotspot || tourAnimating) return;
     getSoundManager().playLabel(activeHotspot);
   }, [slug, activeHotspot, tourAnimating]);
 
@@ -560,7 +577,7 @@ export default function FrameViewer({ slug, title, tagline, mode = 'drag', autoR
   }, [autoRotate, autoRotateEnabled, ready, allFramesLoaded, inView, exploded, humanScale, mode, count, draw]);
 
   useEffect(() => {
-    setIntroFinished(slug !== 'ford-f150-raptor');
+    setIntroFinished(!SLUGS_WITH_INTRO.includes(slug));
   }, [slug]);
 
   useEffect(() => {
@@ -870,13 +887,13 @@ export default function FrameViewer({ slug, title, tagline, mode = 'drag', autoR
         <button type="button" onClick={toggleViewerFullscreen}>✕ <span>Exit</span></button>
       </div>
     </div>
-    {slug === 'ford-f150-raptor' && !introFinished && (
+    {SLUGS_WITH_INTRO.includes(slug) && !introFinished && (
       <CinematicIntro
-        slug="ford-f150-raptor"
-        title={title ?? manifest?.name ?? 'Ford F-150 Raptor'}
-        tagline={tagline ?? 'A high-performance pickup built for fast off-road driving'}
+        slug={slug}
+        title={defaultIntroTitle(slug, title, manifest?.name)}
+        tagline={defaultIntroTagline(slug, tagline)}
         kicker="01  /  OBJECT"
-        posterSrc="/objects/ford-f150-raptor/poster.webp"
+        posterSrc={`/objects/${slug}/poster.webp`}
         progress={frameProgress.fraction}
         ready={frameProgress.coarseReady}
         grainSrc="/intro/film-grain.png"
@@ -974,11 +991,11 @@ export default function FrameViewer({ slug, title, tagline, mode = 'drag', autoR
           <small>{part.category}</small><b>{part.name.en}</b><p>{part.desc.en}</p>
         </aside>;
       })()}
-      {(manifest?.credit || (slug === 'valley-of-flowers' && manifest?.credits) || slug === 'audi-f1-r26' || slug === 'a10c' || slug === 'ford-f150-raptor' || slug === 'mexico-city-metropolitan-cathedral') && <a className="viewer-credit" href={slug === 'valley-of-flowers' || slug === 'excavator' || slug === 'porsche-992-gt3r' || slug === 'audi-f1-r26' || slug === 'a10c' || slug === 'ford-f150-raptor' || slug === 'mexico-city-metropolitan-cathedral' || slug === 'janaki-mandir' || slug === 'james-webb-space-telescope' ? `/objects/${slug}/CREDITS.md` : slug === 'sa342m-gazelle' ? 'https://sketchfab.com/3d-models/sa342m-gazelle-2eb65cec2060459085ea4f06db44d668' : 'https://sketchfab.com/3d-models/bmw-s1000-rr-1873aed292d6465694119bd81860a0c2'} target="_blank" rel="noreferrer">{manifest?.credit ?? manifest?.credits ?? 'MODEL CREDITS'}</a>}
+      {(manifest?.credit || (slug === 'valley-of-flowers' && manifest?.credits) || slug === 'audi-f1-r26' || slug === 'a10c' || slug === 'ford-f150-raptor' || slug === 'toyota-gr-supra-a90' || slug === 'mexico-city-metropolitan-cathedral') && <a className="viewer-credit" href={slug === 'valley-of-flowers' || slug === 'excavator' || slug === 'porsche-992-gt3r' || slug === 'audi-f1-r26' || slug === 'a10c' || slug === 'ford-f150-raptor' || slug === 'toyota-gr-supra-a90' || slug === 'mexico-city-metropolitan-cathedral' || slug === 'janaki-mandir' || slug === 'james-webb-space-telescope' ? `/objects/${slug}/CREDITS.md` : slug === 'sa342m-gazelle' ? 'https://sketchfab.com/3d-models/sa342m-gazelle-2eb65cec2060459085ea4f06db44d668' : 'https://sketchfab.com/3d-models/bmw-s1000-rr-1873aed292d6465694119bd81860a0c2'} target="_blank" rel="noreferrer">{manifest?.credit ?? manifest?.credits ?? 'MODEL CREDITS'}</a>}
       {(!ready || (exploded && explodeDirection !== 0 && !allFramesLoaded)) && <div className="viewer-loading"><span>{exploded && explodeDirection !== 0 ? 'PREPARING EXPLODED VIEW' : 'LOADING OBJECT'}</span><i><b style={{ width: `${progress}%` }} /></i></div>}
     </>}
     <div className={`viewer-controls ${slug === 'janaki-mandir' ? 'viewer-controls-photos' : ''}`}>
-      {slug === 'ford-f150-raptor' && <SoundToggle />}
+      {SLUGS_WITH_SOUND.includes(slug) && <SoundToggle />}
       {slug === 'janaki-mandir' && <button type="button" className={`viewer-action ${showObjectPhotos ? 'viewer-action-active' : ''}`} aria-pressed={showObjectPhotos} onClick={() => { setShowObjectPhotos(value => !value); setActiveHotspot(null); setHoveredHotspot(null); }}>Photos</button>}{hasRotateHotspotLabels && <button type="button" className={`viewer-action excavator-label-toggle ${showLabels ? 'viewer-action-active' : ''}`} disabled={humanScale} aria-pressed={showLabels} onClick={() => { endGuidedTour(); setShowLabels(value => !value); setShowObjectPhotos(false); setActiveHotspot(null); setHoveredHotspot(null); }}>Labels</button>}{showGuidedTour && <button type="button" className="viewer-action guided-tour-button" disabled={humanScale || (exploded && guidedStops[0]?.sequence !== 'explode') || !allFramesLoaded || guidedStops.length === 0} onClick={() => { dismissTourPrompt(); goToTourStep(0); }}>{allFramesLoaded ? 'Guided tour' : 'Loading…'}</button>}{(slug === 'excavator' || slug === 'porsche-992-gt3r') && <button type="button" className={`viewer-action excavator-human-toggle ${humanScale ? 'viewer-action-active' : ''}`} aria-pressed={humanScale} onClick={() => { endGuidedTour(); tourDetailZoom.current = false; setHumanScale(value => !value); setActiveHotspot(null); setHoveredHotspot(null); zoomFactor.current = 1; setZoom(1); panPosition.current = { x: 0, y: 0 }; setPanOffset({ x: 0, y: 0 }); }}>Human 5'10"</button>}
       {slug === 'mount-everest' ? <button type="button" className={`viewer-action ${campsRoute ? 'viewer-action-active' : ''}`} aria-pressed={campsRoute} title="Toggle camps and climbing route" onClick={() => { setCampsRoute(value => !value); setActiveCamp(null); setHoveredCamp(null); }}>Camps &amp; Route</button> : slug === 'valley-of-flowers' ? <button type="button" className={`viewer-action ${showLabels ? 'viewer-action-active' : ''}`} aria-pressed={showLabels} title="Toggle place markers" onClick={() => { setShowLabels(value => !value); setActiveCamp(null); setHoveredCamp(null); }}>Labels</button> : slug === 'porsche-992-gt3r' ? null : manifest?.explode ? <button type="button" className="viewer-action" title={exploded ? 'Assemble parts' : 'Explode view'} onClick={() => toggleExplode()}>{exploded ? (explodeDirection === -1 ? 'Assembling…' : 'Assemble parts') : 'Explode view'}</button> : null}
       {hasExplodeLabels && <button type="button" className={'viewer-action excavator-label-toggle '+(showLabels ? 'viewer-action-active' : '')} aria-pressed={showLabels} title={showLabels ? 'Hide part labels' : 'Show part labels; opens exploded view'} onClick={() => {

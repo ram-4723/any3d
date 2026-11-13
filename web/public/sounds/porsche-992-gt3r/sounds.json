@@ -1,0 +1,201 @@
+{
+  "slug": "porsche-992-gt3r",
+  "version": 1,
+  "basePath": "/sounds/porsche-992-gt3r",
+  "masterVolume": 1,
+  "storageKey": "any3d-sound-muted",
+  "labels": [
+    {
+      "label": "engine",
+      "file": "engine",
+      "volume": 0.86,
+      "trigger": "label-open",
+      "caption": "A Porsche 911 GT3 RS (991) flat-six revs and crackles. Same engine family as the 992 GT3 R, but this is not a 4.2-litre 992 GT3 R race-engine recording, and the slice is a mid-session rev, not a cold start."
+    },
+    {
+      "label": "wing",
+      "file": "whoosh",
+      "volume": 0.62,
+      "trigger": "label-open",
+      "caption": "An air whoosh, for airflow over the swan-neck rear wing."
+    },
+    {
+      "label": "wheels",
+      "file": "tyres",
+      "volume": 0.78,
+      "trigger": "label-open",
+      "caption": "A car tyre squeal / skid, for the centre-lock wheels and slicks. A general tyre-squeal loop, not a recorded GT3 R slick."
+    },
+    {
+      "label": "brakes",
+      "file": "brakes",
+      "volume": 0.74,
+      "trigger": "label-open",
+      "caption": "A hard scrape across rough stone, used as a stand-in for race brakes. Not a recorded steel or carbon disc."
+    },
+    {
+      "label": "carbon",
+      "file": "whoosh",
+      "volume": 0.55,
+      "trigger": "label-open",
+      "caption": "The same air whoosh, for air over the carbon-fibre body panels."
+    },
+    {
+      "label": "cockpit",
+      "file": "gearshift",
+      "volume": 0.8,
+      "trigger": "label-open",
+      "caption": "A workshop ratchet, used as a stand-in for a racing sequential gearshift in the cockpit. Not a recorded Porsche sequential gearbox."
+    },
+    {
+      "label": "lights",
+      "file": "switch",
+      "volume": 0.7,
+      "trigger": "label-open",
+      "caption": "A light-switch click, for the LED headlights."
+    },
+    {
+      "label": "radiator",
+      "file": "fan",
+      "volume": 0.68,
+      "trigger": "label-open",
+      "caption": "An industrial ventilation fan, used as a stand-in for air through the central radiator. Not a car radiator fan."
+    },
+    {
+      "label": "fuel",
+      "file": "fuel",
+      "volume": 0.76,
+      "trigger": "label-open",
+      "caption": "Water being poured from bottles, used as a liquid-fill stand-in for the quick-fill fuel cell. Not a racing fuel-hose recording."
+    },
+    {
+      "label": "debut",
+      "file": "debut",
+      "volume": 0.72,
+      "trigger": "label-open",
+      "caption": "A longer mid-level slice of the same 991 GT3 RS exhaust recording, for the Daytona 2023 race debut. This is not pit-lane or Daytona atmosphere."
+    }
+  ],
+  "ambient": {
+    "file": "ambient",
+    "volume": 0.24,
+    "loop": true,
+    "trigger": "page-open",
+    "caption": "A quiet loop taken from the same Porsche 911 GT3 RS (991) exhaust recording, under the object page once sound is enabled. Not a pit-lane atmosphere recording."
+  },
+  "ui": {
+    "file": "ui-tick",
+    "volume": 0.42,
+    "trigger": "hover",
+    "caption": "A short UI tick for hovering a label. Optional \u2014 hook only if it feels right, and debounce it."
+  },
+  "credits": [
+    {
+      "usedFor": "engine",
+      "title": "Porsche 911 GT3 RS (991) - engine and exhaust sound (YouTube otznJ2rBoks)",
+      "author": "Automotion Media (YouTube)",
+      "licence": "CC BY 3.0",
+      "licence_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Porsche_911_GT3_RS_(991)_-_engine_and_exhaust_sound_(YouTube_otznJ2rBoks).opus",
+      "note": "A 5.8-second mid-recording rev (about 10.5\u201316.3 s) with a hard, crackly lift. This is a road-going Porsche 911 GT3 RS (991) naturally aspirated flat-six, not the 4.2-litre 992 GT3 R race engine."
+    },
+    {
+      "usedFor": "debut",
+      "title": "Porsche 911 GT3 RS (991) - engine and exhaust sound (YouTube otznJ2rBoks)",
+      "author": "Automotion Media (YouTube)",
+      "licence": "CC BY 3.0",
+      "licence_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Porsche_911_GT3_RS_(991)_-_engine_and_exhaust_sound_(YouTube_otznJ2rBoks).opus",
+      "note": "A 7.2-second mid-level exhaust slice (about 40.0\u201347.2 s) from the same recording, used for the Daytona debut label. Not pit-lane or Daytona atmosphere."
+    },
+    {
+      "usedFor": "ambient",
+      "title": "Porsche 911 GT3 RS (991) - engine and exhaust sound (YouTube otznJ2rBoks)",
+      "author": "Automotion Media (YouTube)",
+      "licence": "CC BY 3.0",
+      "licence_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Porsche_911_GT3_RS_(991)_-_engine_and_exhaust_sound_(YouTube_otznJ2rBoks).opus",
+      "note": "A 9.5-second quieter stretch (about 80.5\u201390.0 s) from the same recording, faded and looped at low level. Not a pit or grandstand recording."
+    },
+    {
+      "usedFor": "wheels",
+      "title": "Car tire squeal skid loop (tires_squal_loop.wav)",
+      "author": "qubodup",
+      "licence": "CC BY 3.0",
+      "licence_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://opengameart.org/content/car-tire-squeal-skid-loop",
+      "note": "The 3-second loop as published. A general tyre-squeal, not a recorded Porsche slick."
+    },
+    {
+      "usedFor": "wing",
+      "title": "Air whoosh",
+      "author": "pyranostudios",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/air-whoosh",
+      "note": "A 2.2-second slice of the looping whoosh. Also used for the carbon label (same file, different caption)."
+    },
+    {
+      "usedFor": "carbon",
+      "title": "Air whoosh",
+      "author": "pyranostudios",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/air-whoosh",
+      "note": "Same clip as wing."
+    },
+    {
+      "usedFor": "brakes",
+      "title": "Scrapes (scrape-2)",
+      "author": "antumdeluge",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/scrapes",
+      "note": "Recorded by dragging an object across a cinder block. Originally created for Stendhal. Used as a stand-in for race brakes. Not a recorded brake disc."
+    },
+    {
+      "usedFor": "cockpit",
+      "title": "Tools Ratchet",
+      "author": "CapsLok",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tools_Ratchet.ogg",
+      "note": "A ~1.6-second burst of rapid ratchet clicks (about 6.95\u20138.55 s). A close-miked workshop ratchet, not a recorded Porsche sequential gearbox."
+    },
+    {
+      "usedFor": "lights",
+      "title": "switch_02 (from 100 CC0 SFX)",
+      "author": "rubberduck",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://opengameart.org/content/100-cc0-sfx",
+      "note": "Credit is appreciated by the author."
+    },
+    {
+      "usedFor": "radiator",
+      "title": "WWS Ventilationfan",
+      "author": "Work With Sounds / Technical Museum of Slovenia",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:WWS_Ventilationfan.ogg",
+      "note": "A 4.2-second slice of a steady 7.5 kW Tevel industrial ventilation fan (about 8.0\u201312.2 s). Not a car radiator fan."
+    },
+    {
+      "usedFor": "fuel",
+      "title": "Pouring water bottles",
+      "author": "stephan",
+      "licence": "Public domain",
+      "licence_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Pouring_water_bottles.ogg",
+      "note": "A 2.5-second pour (about 4.5\u20137.0 s). Water from bottles, not racing fuel or a quick-fill coupling."
+    },
+    {
+      "usedFor": "ui-tick",
+      "title": "click_001 (Interface Sounds 1.0)",
+      "author": "Kenney (www.kenney.nl)",
+      "licence": "CC0 1.0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://kenney.nl/assets/interface-sounds"
+    }
+  ]
+}
