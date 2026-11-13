@@ -900,3 +900,150 @@ html[data-cursor-pressed="true"] .cursor-aura::before{background:radial-gradient
 /* Give the tighter cube mark enough room to read clearly beside the wordmark. */
 .topbar .brand{font-size:21px}
 .topbar .brand-mark{width:54px;height:54px}
+
+/* ==========================================================================
+   Desktop Widescreen Studio Split Layout (PC Version)
+   Model on Left, Previous & Next button docked underneath, Details on Right
+   ========================================================================== */
+@media(min-width:741px){
+  /* Fullscreen & Studio Fallback */
+  .viewer.viewer-fullscreen-fallback,
+  .viewer.viewer-fullscreen-active{position:fixed!important;inset:0!important;z-index:1000;display:grid!important;grid-template-columns:minmax(0,1fr);grid-template-rows:56px minmax(0,1fr) auto;width:100vw;max-width:100vw;height:100vh;height:100dvh;overflow:hidden;margin:0;border:0;border-radius:0;background:radial-gradient(ellipse at 40% 48%,#1f2532 0%,#12151c 65%,#0a0c10 100%)}
+
+  /* Two-column studio split when details or tour is active */
+  .viewer.viewer-fullscreen-fallback.viewer-fullscreen-split,
+  .viewer.viewer-fullscreen-active.viewer-fullscreen-split{grid-template-columns:minmax(0,1.45fr) minmax(380px,480px)}
+
+  /* Fullscreen studio header spanning top */
+  .viewer.viewer-fullscreen-fallback .viewer-fullscreen-header,
+  .viewer.viewer-fullscreen-active .viewer-fullscreen-header{grid-column:1 / -1;grid-row:1;position:relative;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:rgba(10,12,16,.94);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  .viewer-fullscreen-brand{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:800;letter-spacing:.04em;color:#f7f7f5}
+  .viewer-fullscreen-brand img{width:26px;height:26px;object-fit:contain}
+  .viewer-fullscreen-title{color:#ffd521;font-weight:600;font-size:14px;letter-spacing:normal}
+  .viewer-fullscreen-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+  .viewer-fullscreen-actions button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:36px;padding:0 14px;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font:600 13px 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:all .18s ease}
+  .viewer-fullscreen-actions button:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.3)}
+  .viewer-fullscreen-actions .viewer-fullscreen-end{border-color:rgba(255,213,33,.45);background:rgba(255,213,33,.14);color:#ffd521}
+  .viewer-fullscreen-actions .viewer-fullscreen-end:hover{background:rgba(255,213,33,.24);border-color:rgba(255,213,33,.7)}
+
+  .viewer.viewer-fullscreen-fallback .viewer-tag,
+  .viewer.viewer-fullscreen-active .viewer-tag,
+  .viewer.viewer-fullscreen-fallback .viewer-credit,
+  .viewer.viewer-fullscreen-active .viewer-credit,
+  .viewer.viewer-fullscreen-fallback .guided-tour-prompt,
+  .viewer.viewer-fullscreen-active .guided-tour-prompt,
+  .viewer.viewer-fullscreen-fallback .guided-fullscreen-toggle,
+  .viewer.viewer-fullscreen-active .guided-fullscreen-toggle{display:none!important}
+
+  /* Upper Left Stage: 3D Model Canvas */
+  .viewer.viewer-fullscreen-fallback .viewer-canvas,
+  .viewer.viewer-fullscreen-active .viewer-canvas{grid-column:1;grid-row:2;position:relative!important;inset:auto!important;width:100%!important;height:100%!important;min-width:0;min-height:0!important;max-height:none!important;border-radius:0}
+
+  /* Lower Left: Command Deck directly under the 3D model with Previous & Next buttons */
+  .viewer.viewer-fullscreen-fallback .guided-tour-card,
+  .viewer.viewer-fullscreen-active .guided-tour-card{grid-column:1;grid-row:3;position:relative!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:100%;max-width:100%;margin:0;padding:12px 24px;background:#0d1015;border:0;border-top:1px solid rgba(255,255,255,.1);box-shadow:none;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:16px;animation:none;z-index:25}
+  .viewer.viewer-fullscreen-fallback.viewer-tour-active .viewer-controls,
+  .viewer.viewer-fullscreen-active.viewer-tour-active .viewer-controls{display:none!important}
+  .viewer.viewer-fullscreen-fallback:not(.viewer-tour-active) .viewer-controls,
+  .viewer.viewer-fullscreen-active:not(.viewer-tour-active) .viewer-controls{grid-column:1;grid-row:3;position:relative!important;inset:auto!important;width:100%;max-width:100%;padding:12px 24px;background:#0d1015;border-top:1px solid rgba(255,255,255,.1)}
+
+  .viewer.viewer-fullscreen-fallback .guided-tour-card>span,
+  .viewer.viewer-fullscreen-fallback .guided-tour-card>b,
+  .viewer.viewer-fullscreen-active .guided-tour-card>span,
+  .viewer.viewer-fullscreen-active .guided-tour-card>b{display:none}
+  .viewer.viewer-fullscreen-fallback .guided-tour-card .guided-tour-select-label,
+  .viewer.viewer-fullscreen-active .guided-tour-card .guided-tour-select-label{display:flex;align-items:center;gap:10px;margin:0;color:#ffd521;font:600 11px 'DM Mono',monospace;letter-spacing:.08em;white-space:nowrap}
+  .viewer.viewer-fullscreen-fallback .guided-tour-card .guided-tour-select-label select,
+  .viewer.viewer-fullscreen-active .guided-tour-card .guided-tour-select-label select{min-height:40px;padding:0 14px;border:1px solid rgba(255,255,255,.16);border-radius:10px;background:#181d26;color:#eef2f7;font:600 13px 'DM Sans',sans-serif}
+  .viewer.viewer-fullscreen-fallback .guided-tour-card>div,
+  .viewer.viewer-fullscreen-active .guided-tour-card>div{display:flex;align-items:center;gap:12px;margin:0;flex-wrap:nowrap;white-space:nowrap}
+  .viewer.viewer-fullscreen-fallback .guided-tour-card>div>button,
+  .viewer.viewer-fullscreen-active .guided-tour-card>div>button{min-height:44px;padding:0 20px;border:1px solid rgba(255,255,255,.18);border-radius:12px;background:#1c222c;color:#f5f7fa;font:600 14px 'DM Sans',sans-serif;white-space:nowrap;cursor:pointer;transition:all .18s ease}
+  .viewer.viewer-fullscreen-fallback .guided-tour-card>div>button:hover:not(:disabled),
+  .viewer.viewer-fullscreen-active .guided-tour-card>div>button:hover:not(:disabled){background:#252d3a;border-color:rgba(255,255,255,.3);transform:translateY(-1px)}
+  .viewer.viewer-fullscreen-fallback .guided-tour-card>div>button:nth-of-type(2),
+  .viewer.viewer-fullscreen-active .guided-tour-card>div>button:nth-of-type(2){border-color:#ffd521;background:#ffd521;color:#12151b;font-weight:700;box-shadow:0 4px 16px rgba(255,213,33,.28)}
+  .viewer.viewer-fullscreen-fallback .guided-tour-card>div>button:nth-of-type(2):hover:not(:disabled),
+  .viewer.viewer-fullscreen-active .guided-tour-card>div>button:nth-of-type(2):hover:not(:disabled){background:#ffe047;transform:translateY(-1px)}
+  .viewer.viewer-fullscreen-fallback .guided-tour-card>div>button:nth-of-type(n+3),
+  .viewer.viewer-fullscreen-active .guided-tour-card>div>button:nth-of-type(n+3){display:none}
+  .viewer.viewer-fullscreen-fallback .guided-tour-dots,
+  .viewer.viewer-fullscreen-active .guided-tour-dots{display:flex;align-items:center;gap:6px;padding:0 6px;flex-shrink:0}
+  .viewer.viewer-fullscreen-fallback .guided-tour-dots button,
+  .viewer.viewer-fullscreen-active .guided-tour-dots button{width:8px;height:8px;min-height:8px;padding:0;border:0;border-radius:999px;background:#505868;cursor:pointer;transition:width .18s ease,background-color .18s ease}
+  .viewer.viewer-fullscreen-fallback .guided-tour-dots button[aria-current="step"],
+  .viewer.viewer-fullscreen-active .guided-tour-dots button[aria-current="step"]{width:22px;background:#ffd521;box-shadow:0 0 10px rgba(255,213,33,.6)}
+
+  /* Right Side Inspector: Full-height studio sheet for photos + specs + description */
+  .viewer.viewer-fullscreen-fallback .part-info-card,
+  .viewer.viewer-fullscreen-fallback .viewer-place-card,
+  .viewer.viewer-fullscreen-fallback .tour-transition-card,
+  .viewer.viewer-fullscreen-active .part-info-card,
+  .viewer.viewer-fullscreen-active .viewer-place-card,
+  .viewer.viewer-fullscreen-active .tour-transition-card{grid-column:2;grid-row:2 / span 2;position:relative!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:100%;max-width:100%;height:100%;max-height:100%;overflow-y:auto;overscroll-behavior:contain;padding:24px 28px 36px;margin:0;border:0;border-left:1px solid rgba(255,255,255,.12);border-radius:0;background:linear-gradient(180deg,#171d27 0%,#0e1218 100%);box-shadow:-10px 0 35px rgba(0,0,0,.45);display:flex;flex-direction:column;z-index:28}
+  .viewer.viewer-fullscreen-fallback .guided-tour-kicker,
+  .viewer.viewer-fullscreen-active .guided-tour-kicker{margin:0 0 6px;color:#ffd521;font:600 12px 'DM Mono',monospace;letter-spacing:.08em}
+  .viewer.viewer-fullscreen-fallback .part-info-card>b,
+  .viewer.viewer-fullscreen-fallback .viewer-place-card>b,
+  .viewer.viewer-fullscreen-active .part-info-card>b,
+  .viewer.viewer-fullscreen-active .viewer-place-card>b{margin:0 0 12px;color:#fff;font:700 24px/1.2 'DM Sans',sans-serif;letter-spacing:-.02em}
+  .viewer.viewer-fullscreen-fallback .part-info-card .viewer-photo-gallery,
+  .viewer.viewer-fullscreen-fallback .viewer-place-card .viewer-photo-gallery,
+  .viewer.viewer-fullscreen-active .part-info-card .viewer-photo-gallery,
+  .viewer.viewer-fullscreen-active .viewer-place-card .viewer-photo-gallery{margin:0 0 16px}
+  .viewer.viewer-fullscreen-fallback .part-info-card>p,
+  .viewer.viewer-fullscreen-fallback .viewer-place-card>p,
+  .viewer.viewer-fullscreen-active .part-info-card>p,
+  .viewer.viewer-fullscreen-active .viewer-place-card>p{margin:0 0 16px;color:#d6dce5;font:400 15px/1.65 'DM Sans',sans-serif}
+  .viewer.viewer-fullscreen-fallback .part-info-card>a,
+  .viewer.viewer-fullscreen-active .part-info-card>a{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid rgba(255,213,33,.4);border-radius:999px;background:rgba(255,213,33,.1);color:#ffd521;font:600 12px 'DM Mono',monospace;text-decoration:none;transition:all .18s ease}
+  .viewer.viewer-fullscreen-fallback .part-info-card>a:hover,
+  .viewer.viewer-fullscreen-active .part-info-card>a:hover{background:rgba(255,213,33,.2);transform:translateY(-1px)}
+  .viewer.viewer-fullscreen-fallback .camp-info-close,
+  .viewer.viewer-fullscreen-active .camp-info-close{display:none}
+
+  /* Desktop Inline Mode inside .detail-viewer (when not in fullscreen) */
+  .detail-viewer{height:clamp(520px,64vh,660px)}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback).viewer-split-active{display:grid!important;grid-template-columns:minmax(0,1.35fr) minmax(320px,390px);grid-template-rows:minmax(0,1fr) auto}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback).viewer-split-active .viewer-canvas{grid-column:1;grid-row:1;position:relative!important;inset:auto!important;width:100%!important;height:100%!important;min-height:0!important}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback).viewer-split-active .guided-tour-card{grid-column:1;grid-row:2;position:relative!important;inset:auto!important;width:100%;margin:0;padding:10px 18px;background:#0e1116;border-top:1px solid rgba(255,255,255,.12);box-shadow:none;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:12px}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback).viewer-split-active .guided-tour-card>span,
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback).viewer-split-active .guided-tour-card>b{display:none}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback).viewer-split-active .guided-tour-card .guided-tour-select-label{display:flex;align-items:center;gap:8px;margin:0;color:#ffd521;font:600 11px 'DM Mono',monospace;letter-spacing:.06em;white-space:nowrap}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback).viewer-split-active .guided-tour-card .guided-tour-select-label select{min-height:36px;padding:0 10px;border:1px solid rgba(255,255,255,.16);border-radius:8px;background:#181d26;color:#eef2f7;font:600 12px 'DM Sans',sans-serif}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback).viewer-split-active .guided-tour-card>div{display:flex;align-items:center;gap:8px;margin:0;flex-wrap:nowrap;white-space:nowrap}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback).viewer-split-active .guided-tour-card>div>button{min-height:38px;padding:0 14px;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:#1c222c;color:#f5f7fa;font:600 13px 'DM Sans',sans-serif;white-space:nowrap;cursor:pointer}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback).viewer-split-active .guided-tour-card>div>button:nth-of-type(2){border-color:#ffd521;background:#ffd521;color:#12151b;font-weight:700}
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback).viewer-split-active .part-info-card,
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback).viewer-split-active .viewer-place-card,
+  .detail-viewer>.viewer:not(.viewer-fullscreen-active):not(.viewer-fullscreen-fallback).viewer-split-active .tour-transition-card{grid-column:2;grid-row:1 / span 2;position:relative!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:100%;max-width:100%;height:100%;max-height:100%;overflow-y:auto;margin:0;padding:18px 20px 24px;border:0;border-left:1px solid rgba(255,255,255,.12);border-radius:0;background:#141822;box-shadow:none}
+}
+
+/* ==========================================================================
+   Global Website Enhancements
+   ========================================================================== */
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.topbar{background:rgba(247,246,242,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,.08);transition:background-color .2s ease,border-color .2s ease}
+.topbar nav a{position:relative;transition:color .18s ease}
+.topbar nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--pink);transition:width .22s ease}
+.topbar nav a:hover::after{width:100%}
+.search-trigger{transition:all .2s ease}
+.search-trigger:hover{border-color:#d5d2cc;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.lang-switch{transition:all .2s ease}
+.lang-switch:hover{border-color:#c8c5be;background:#fff}
+
+/* Object Cards: Insane smooth 3D-feeling micro-interactions */
+.object-card{border-radius:14px;transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease}
+.object-card:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(28,25,33,.12)}
+.object-card:hover .card-art img{transform:scale(1.04)}
+.card-art img{transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.category-tile{transition:transform .24s cubic-bezier(.2,.8,.2,1),box-shadow .24s ease,border-color .24s ease}
+.category-tile:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,.08)}
+
+/* Detail Page Tabs & Specs */
+.tab-list button{transition:color .2s ease,border-color .2s ease}
+.tab-list button:hover:not(.selected){color:#38363e}
+.spec-tile{border:1px solid rgba(0,0,0,.05);transition:transform .2s ease,box-shadow .2s ease}
+.spec-tile:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.05)}
+.button-primary{transition:all .2s ease}
+.button-primary:hover{background:#2b2b36;transform:translateY(-1px);box-shadow:0 8px 20px rgba(0,0,0,.15)}

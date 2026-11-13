@@ -202,17 +202,34 @@ export default function FrameViewer({ slug, title, tagline, mode = 'drag', autoR
   const requestViewerFullscreen = () => {
     const viewer = stage.current;
     if (!viewer || document.fullscreenElement === viewer || usesFullscreenFallback) return;
-    if (window.matchMedia('(max-width: 740px), (pointer: coarse)').matches) {
+    if (window.matchMedia('(max-width: 740px), (pointer: coarse)').matches || !document.fullscreenEnabled) {
       setUsesFullscreenFallback(true);
       return;
     }
+    const timer = setTimeout(() => {
+      if (document.fullscreenElement !== viewer) {
+        setUsesFullscreenFallback(true);
+      }
+    }, 280);
+
+    const onFsChange = () => {
+      clearTimeout(timer);
+      document.removeEventListener('fullscreenchange', onFsChange);
+    };
+    document.addEventListener('fullscreenchange', onFsChange, { once: true });
+
     if (viewer.requestFullscreen) {
       try {
-        viewer.requestFullscreen().catch(() => setUsesFullscreenFallback(true));
+        viewer.requestFullscreen().catch(() => {
+          clearTimeout(timer);
+          setUsesFullscreenFallback(true);
+        });
       } catch {
+        clearTimeout(timer);
         setUsesFullscreenFallback(true);
       }
     } else {
+      clearTimeout(timer);
       setUsesFullscreenFallback(true);
     }
   };
@@ -308,7 +325,7 @@ export default function FrameViewer({ slug, title, tagline, mode = 'drag', autoR
   const goToTourStep = (step: number) => {
     const stop = guidedStops[step];
     if (!stop) return;
-    if (step === 0 && !tourFullscreenAttempted.current && window.matchMedia('(max-width: 740px), (pointer: coarse)').matches) {
+    if (step === 0 && !tourFullscreenAttempted.current) {
       tourFullscreenAttempted.current = true;
       if (!isViewerFullscreen && !usesFullscreenFallback) {
         tourAutoFullscreenRef.current = true;
@@ -840,10 +857,14 @@ export default function FrameViewer({ slug, title, tagline, mode = 'drag', autoR
 
   const hasSplitDetail = tourStep !== null || activeHotspot !== null || Boolean(activeCampPin) || showObjectPhotos;
   const tourPrompt = showGuidedTour && showTourPrompt && introFinished && !exploded && !humanScale ? <aside className="guided-tour-prompt" aria-label="Guided object tour"><span>YOUR FIRST LOOK</span><b>Explore this model</b><p>Explore the model from every side and discover its details.</p><div><button type="button" disabled={!allFramesLoaded} onClick={() => { dismissTourPrompt(); goToTourStep(0); }}>{allFramesLoaded ? 'Start tour' : 'Loading tour…'}</button><button type="button" onClick={dismissTourPrompt}>Later</button></div></aside> : null;
-  return <div ref={stage} className={`viewer ${mode === 'scroll' ? 'viewer-scroll' : ''} ${usesFullscreenFallback ? 'viewer-fullscreen-fallback' : ''} ${isViewerFullscreen ? 'viewer-fullscreen-active' : ''} ${isViewerFullscreen && hasSplitDetail ? 'viewer-fullscreen-split' : ''} ${tourStep !== null ? 'viewer-tour-active' : ''}`} aria-label={`${slug} 3D viewer`}>
+  return <div ref={stage} className={`viewer ${mode === 'scroll' ? 'viewer-scroll' : ''} ${usesFullscreenFallback ? 'viewer-fullscreen-fallback' : ''} ${isViewerFullscreen ? 'viewer-fullscreen-active' : ''} ${hasSplitDetail ? 'viewer-split-active' : ''} ${isViewerFullscreen && hasSplitDetail ? 'viewer-fullscreen-split' : ''} ${tourStep !== null ? 'viewer-tour-active' : ''}`} aria-label={`${slug} 3D viewer`}>
     {tourPrompt && tourPromptTarget && createPortal(tourPrompt, tourPromptTarget)}
     <div className="viewer-fullscreen-header">
-      <span><img src="/any3d-mark.svg" alt=""/> ANYTHING<span className="viewer-fullscreen-dot">.</span></span>
+      <div className="viewer-fullscreen-brand">
+        <img src="/any3d-mark.svg" alt=""/>
+        <span>ANYTHING<span className="viewer-fullscreen-dot">.</span></span>
+        {(title || manifest?.name) && <span className="viewer-fullscreen-title">/ {title ?? manifest?.name}</span>}
+      </div>
       <div className="viewer-fullscreen-actions">
         {tourStep !== null && <button type="button" className="viewer-fullscreen-end" onClick={() => endGuidedTour(true)}>End tour</button>}
         <button type="button" onClick={toggleViewerFullscreen}>✕ <span>Exit</span></button>
